@@ -1,0 +1,37 @@
+For this iteration, please
+
+#1 Create the DB named as cs6232-g# (please do not use any other names for your DB), where # is your group number, and populate with some test data (if your DB is flawed, please make sure to fix them first before moving on to create the DB, please let me know if you have any questions.)
+start implementing the application with your planned user stories. 
+
+For this iteration, I'd like to see the following features (note that in a real development environment, you may start the development of user stories in the order that you planned. However, it will be hard for me to manage as we have several teams here. The following features are the minimal features that you need to implement for this iteration. You may implement more according to your plan if you choose to).
+Employee 
+
+Features
+
+log in and log out (Currently, you may store the password as plain text in the DB. However, in future iterations, I expect to see you store hashed passwords in the DB. Just keep it in mind)
+Display the name and username of the user who is logged in on all the views
+
+register a customer (make sure field validation is performed, e.g. phone numbers are 10 digits only, use a combo box for the state, gender, etc.)
+
+edit a selected customer (make sure field validation is performed, e.g. phone numbers are 10 digits only, use a combo box for the state, gender, etc.)
+
+search for a customer by criteria(id, phone number, or last name and first name together)
+
+Note that 
+
+There are different ways to assign tasks to different team members. For this project, each group should assign tasks by functionality. For instance, one member does the registration, and another does the search. It's important not to have one person whose sole task in this iteration is writing the DB script. Each team member should complete a user story within Visual Studio during every iteration. This approach ensures that everyone gains experience with the view, model, controller, and data access layer, fostering a more comprehensive understanding of the project architecture and promoting collaborative skill development. 
+This iteration doesn't involve a lot of features to implement. It aims to let each team set the foundation for the project and get familiar with working in a team environment using Git. 
+
+Requirements:
+Please make sure to submit all the required components. Have at least one group member check the submission to make sure everything required is submitted. I will grade the work based on what's submitted and will not ask you for additional files if they are missing.
+
+DB Name: Please create the DB with the name CS6232-gn (where n is your group number)
+GitHub: As your team members work together on the program, please commit your code regularly. I recommend one member create an initial Visual Studio solution with proper folders (e.g. Controller, View, Model, DAL, DB (for storing the DB scripts to create/populate the DB and any stored procedures and functions ) and commit it to GitHub. Keep in mind that some files should not be committed, for instance, .suo file, binary files under the bin directory, and debug directory. This should be taken care of by the Visual Studio Git feature. For your last commit for this iteration, please make sure to add a tag indicating the iteration # (e.g. iteration 1). This way I know which version to use to clone your code from GitHub directly. 
+include a read_me.txt file in your project that contains
+the username/password (for employees and admins).
+statements about what required features still don't work or are problematic.
+a DB folder with the script to create and populate your DB
+
+On Moodle (one submission per person)
+Submit Member contribution evaluation: type in the box provided below about what was done by each team member, and the percentage each person in the team has contributed to this iteration. Finally, if you think everyone deserves the same grade (even if they might not have contributed equally), simply state so
+Make sure everyone is making a considerable contribution to the project. It is not viewed as a "considerable" contribution if one simply aligns controls on the UI nicely and makes minor changes to the code (including but not limited to changing variable names, adding a few lines here and there without significant changes, cleaning up, etc.). 
