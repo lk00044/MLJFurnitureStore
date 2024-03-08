@@ -1,6 +1,4 @@
-﻿
-
-namespace Transaction.Controller
+﻿namespace Employee.Controller
 {
     internal class TransactionController
     {

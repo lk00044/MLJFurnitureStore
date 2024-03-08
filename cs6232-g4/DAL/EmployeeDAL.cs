@@ -1,6 +1,4 @@
-﻿
-
-namespace Employee.DAL
+﻿namespace Employee.DAL
 {
     internal class EmployeeDAL
     {

@@ -1,4 +1,4 @@
-﻿namespace cs6232_g4
+﻿namespace LineItem
 {
     partial class Form1
     {

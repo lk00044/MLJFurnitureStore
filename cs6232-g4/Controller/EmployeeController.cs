@@ -1,6 +1,4 @@
-﻿
-
-namespace Employee.Controller
+﻿namespace Employee.Controller
 {
     internal class EmployeeController
     {

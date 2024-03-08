@@ -1,6 +1,4 @@
-﻿
-
-namespace Transaction.DAL
+﻿namespace Employee.DAL
 {
     internal class TransactionDAL
     {

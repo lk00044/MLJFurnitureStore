@@ -1,4 +1,4 @@
-namespace cs6232_g4
+namespace Employee.View
 {
     public partial class Form1 : Form
     {

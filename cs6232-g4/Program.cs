@@ -1,4 +1,4 @@
-namespace cs6232_g4
+namespace Employee
 {
     internal static class Program
     {
