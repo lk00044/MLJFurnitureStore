@@ -1,4 +1,4 @@
-﻿using LineItem.Model;
+﻿using LineItems.Model;
 
 /// <summary>
 /// Transaction Class
@@ -10,7 +10,7 @@ namespace Transactions.Model
 {
     public class Transaction
     {
-        public int TransactionID { get; set; }
+        public int TransactionID { get; set; } 
 
         public DateTime DateOfTransaction { get; set; }
 
@@ -22,7 +22,7 @@ namespace Transactions.Model
 
         public DateTime? DateReturned { get; set; }
 
-        public List<LineItems> Items { get; set; }
+        public List<LineItem> Items { get; set; }
 
         public Transaction()
         {
@@ -30,7 +30,7 @@ namespace Transactions.Model
             EmployeeID = string.Empty;
             TotalAmount = 0;
             DateReturned = DateTime.MinValue;
-            Items = new List<LineItems>();
+            Items = new List<LineItem>();
 
         }
 

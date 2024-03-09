@@ -1,8 +1,8 @@
 ﻿
 
-namespace LineItem.Model
+namespace LineItems.Model
 {
-    public class LineItems
+    public class LineItem
     {
         public int TransactionID { get; set; }
 

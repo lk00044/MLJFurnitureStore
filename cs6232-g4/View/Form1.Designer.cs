@@ -1,4 +1,4 @@
-﻿namespace LineItem
+﻿namespace LineItems
 {
     partial class Form1
     {
