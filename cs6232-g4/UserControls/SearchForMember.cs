@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace cs6232_g4
+namespace cs6232_g4.UserControls
 {
-    public partial class Form1 : Form
+    public partial class SearchForMember : UserControl
     {
-        public Form1()
+        public SearchForMember()
         {
             InitializeComponent();
         }
+
     }
 }
