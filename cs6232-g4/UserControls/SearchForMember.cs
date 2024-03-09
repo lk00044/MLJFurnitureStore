@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿/// <summary>
+/// User Control to search for member
+/// Group 4
+/// Programmer: LKeller
+/// Date: 03/09/24
+/// </summary>
 
-namespace cs6232_g4.UserControls
+namespace SearchForMember.UserControls
 {
     public partial class SearchForMember : UserControl
     {
-        public SearchForMember()
+
+        private void FindMemberButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+
         }
-
-
     }
 }

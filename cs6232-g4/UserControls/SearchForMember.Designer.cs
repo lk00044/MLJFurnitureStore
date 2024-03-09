@@ -1,4 +1,4 @@
-﻿namespace cs6232_g4.UserControls
+﻿namespace SearchForMember.UserControls
 {
     partial class SearchForMember
     {
