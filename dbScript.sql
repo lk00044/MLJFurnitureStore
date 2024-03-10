@@ -135,14 +135,14 @@ GO
 
 INSERT [dbo].[Login] ([user_id], [password]) VALUES ('mikhail01','1234'), ('laskey01', '1234'), ('keller01', '1234'), ('admin', '1234');
 
-INSERT INTO [dbo].[Employee] VALUES ('mikhail01','regular','06-27-1992','Jonathan','Mikhail','999-555-1212','123 Main St.','','','','',''),
-				('laskey01','regular','03-12-1989','LM','Laskey','999-555-1212','123 Main St.','','','','',''),
-				('keller01','regular','01-03-1970','Leslie','Keller','999-555-1212','123 Main St.','','','','',''),
-				('admin','admin','10-18-1979','Admin','Admin','999-555-1212','123 Main St.','','','','','');
+INSERT INTO [dbo].[Employee] VALUES ('mikhail01','regular','06-27-1992','Jonathan','Mikhail','9995551212','123 Main St.','','Anywhere','WA','12345','M'),
+				('laskey01','regular','03-12-1989','LM','Laskey','9995551212','123 Main St.','','Anywhere','AL','12345',''),
+				('keller01','regular','01-03-1970','Leslie','Keller','9995551212','123 Main St.','Apt 8','Anywhere','NC','12345','F'),
+				('admin','admin','10-18-1979','Admin','Admin','9995551212','123 Main St.','','Anywhere','GA','','');
 
-INSERT [dbo].[StoreMember] VALUES ('06-27-1992','Joe','Smith','','','','','','',''), 
-				('02-19-1987','Ashish','Patel','','','','','','',''), 
-				('07-21-1992','Jane','Li','','','','','','','');
+INSERT [dbo].[StoreMember] VALUES ('06-27-1992','Joe','Smith','9995551212','123 Main St.','','Anywhere','IL','12345','M'),
+				('02-19-1987','Ashish','Patel','9995551212','123 Main St.','','Anywhere','OR','12345','N'),
+				('07-21-1992','Jane','Li','9995551212','123 Main St.','','Anywhere','MN','12345','F');
 
 INSERT INTO [dbo].[Style] VALUES ('MidCentury Modern'), ('Modern'), ('Traditional'), ('Contemporary');
 
