@@ -133,13 +133,33 @@ GO
 SET ANSI_PADDING OFF
 GO
 
-INSERT [dbo].[Login] ([user_id], [password]) VALUES ('mikhail01','1234');
-INSERT INTO [dbo].[Employee] VALUES ('mikhail01','regular','06-27-1992','Jonathan','Mikhail','999-555-1212','123 Main St.','','','','','');
-INSERT [dbo].[StoreMember] VALUES ('06-27-1992','Joe','Smith1','','','','','','','')
-INSERT INTO [dbo].[Style] VALUES ('MidCentury Modern');
-INSERT INTO [dbo].[Category] VALUES ('LRChair');
-INSERT INTO [dbo].[Furniture] VALUES ('Chair','Accent your living area with the mid-century allure of this Lounge Chair.', 1.5, 14, 30, 'LRChair','MidCentury Modern');
-INSERT INTO [dbo].[Furniture] VALUES ('Sofa','Accent your living area with the mid-century allure of this Lounge Chair.', 1.5, 14, 30, 'LRChair','MidCentury Modern');
+INSERT [dbo].[Login] ([user_id], [password]) VALUES ('mikhail01','1234'), ('laskey01', '1234'), ('keller01', '1234'), ('admin', '1234');
+
+INSERT INTO [dbo].[Employee] VALUES ('mikhail01','regular','06-27-1992','Jonathan','Mikhail','9995551212','123 Main St.','','Anywhere','WA','12345','M'),
+				('laskey01','regular','03-12-1989','LM','Laskey','9995551212','123 Main St.','','Anywhere','AL','12345',''),
+				('keller01','regular','01-03-1970','Leslie','Keller','9995551212','123 Main St.','Apt 8','Anywhere','NC','12345','F'),
+				('admin','admin','10-18-1979','Admin','Admin','9995551212','123 Main St.','','Anywhere','GA','','');
+
+INSERT [dbo].[StoreMember] VALUES ('06-27-1992','Joe','Smith','9995551212','123 Main St.','','Anywhere','IL','12345','M'),
+				('02-19-1987','Ashish','Patel','9995551212','123 Main St.','','Anywhere','OR','12345','N'),
+				('07-21-1992','Jane','Li','9995551212','123 Main St.','','Anywhere','MN','12345','F');
+
+INSERT INTO [dbo].[Style] VALUES ('MidCentury Modern'), ('Modern'), ('Traditional'), ('Contemporary');
+
+INSERT INTO [dbo].[Category] VALUES ('LRChair'), ('DRChair'), ('Sofa'), ('DiningSet');
+
+INSERT INTO [dbo].[Furniture] VALUES ('Chair1','Accent your living area with the mid-century allure of this Lounge Chair.', 1.5, 14, 30, 'LRChair','MidCentury Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Sofa1','Accent your living area with the mid-century allure of this Sofa.', 2.5, 4, 10, 'Sofa','MidCentury Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Sofa2','Sporting clean lines and sleek track arms, this sofa has a contemporary profile.', 1.99, 3, 8, 'Sofa', 'Contemporary');
+INSERT INTO [dbo].[Furniture] VALUES ('Chair2','With its back-to-nature sensibility, this dining room side chair is a natural fit.', 1.25, 14, 25, 'DRChair', 'Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Dining01','This modern counter-height table and barstool ensemble will highlight your dining', 2.25, 2, 5, 'DiningSet', 'Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Dining02','This dining package adds an air of playful simplicity to your dining space', 2.25, 3, 5, 'DiningSet', 'MidCentury Modern');
+
+
+
+
+
+
 
 /* Test Scenario: Customer rents 2 Chairs and 1 Sofa and returns them on due date*/
 /* 1- create a rental transaction */
