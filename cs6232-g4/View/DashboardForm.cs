@@ -16,5 +16,10 @@ namespace cs6232_g4
         {
             InitializeComponent();
         }
+
+        private void DashboardForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace Members.Controller
             MemberSource = new MemberDAL();
         }
 
-        public Member GetMemberByID(int ID)
+        public List <Member> GetMemberByID(int ID)
         {
             return this.MemberSource.GetMemberByID(ID);
         }

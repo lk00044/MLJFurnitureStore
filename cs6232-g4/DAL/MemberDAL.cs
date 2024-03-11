@@ -13,12 +13,12 @@ namespace Members.DAL
 {
     public class MemberDAL
     {
-        public Member GetMemberByID(int ID)
+        public List <Member> GetMemberByID(int ID)
         {
-            Member member = new Member();
+            List <Member> MemberList = new List <Member>();
 
             string selectStatement =
-                "SELECT member_id, fname,lname, addr1, addr2, city, state, zip, phone, date_of_birth " +
+                "SELECT member_id, fname,lname, address1, address2, city, state, zip, phone, date_of_birth " +
                 "FROM StoreMember " + 
                 "WHERE member_id = @ID"
             ;
@@ -35,22 +35,24 @@ namespace Members.DAL
                     {
                         while (reader.Read())
                         {
+                            Member member = new Member();
                             member.MemberID = (int)reader["member_id"];
                             member.FirstName = reader["fname"].ToString();
                             member.LastName = reader["lname"].ToString();
-                            member.Address1 = reader["addr1"].ToString();
-                            member.Address2 = reader["addr2"].ToString();
+                            member.Address1 = reader["address1"].ToString();
+                            member.Address2 = reader["address2"].ToString();
                             member.City = reader["city"].ToString();
                             member.State = reader["state"].ToString();
                             member.ZipCode = reader["zip"].ToString();
-                            member.Phone = reader["Phone"].ToString();
-                            member.Gender = (char)reader["gender"];
+                            member.Phone = reader["phone"].ToString();
+                            member.Gender = reader["gender"].ToString();
                             member.DateOfBirth = (DateTime?) reader["date_of_birth"];
+                            MemberList.Add(member);
                         }
                     }
                 }
             }
-            return member;
+            return MemberList;
         }
 
 
