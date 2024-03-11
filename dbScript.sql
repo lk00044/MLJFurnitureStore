@@ -39,7 +39,7 @@ CREATE TABLE [dbo].[Employee](
 	[date_of_birth] [date],
 	[fname] [varchar](25),
 	[lname] [varchar](25),
-	[phone] [char](12),
+	[phone] [char](10),
 	[address1] [varchar](25),
 	[address2] [varchar](25),
 	[city] [varchar](25),
