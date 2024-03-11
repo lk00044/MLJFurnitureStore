@@ -27,7 +27,7 @@ namespace Members.Model
 
         public string Phone { get; set; }
 
-        public string? Gender { get; set; }
+        public char Gender { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
     }
