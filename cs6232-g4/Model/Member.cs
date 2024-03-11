@@ -15,7 +15,9 @@ namespace Members.Model
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public string Address1 { get; set; }
+
+        public string Address2 { get; set; }
 
         public string City { get; set; }
 
@@ -27,7 +29,7 @@ namespace Members.Model
 
         public char Gender { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 
 }

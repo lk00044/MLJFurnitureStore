@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace cs6232_g4
+namespace cs6232_g4.UserControls
 {
-    public partial class DashboardForm : Form
+    public partial class EditMemberInfo : UserControl
     {
-        public DashboardForm()
+        public EditMemberInfo()
         {
             InitializeComponent();
         }
