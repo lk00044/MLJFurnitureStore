@@ -28,18 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            memberRegistrationUserControl1 = new UserControls.MemberRegistrationUserControl();
             SuspendLayout();
+            // 
+            // memberRegistrationUserControl1
+            // 
+            memberRegistrationUserControl1.Location = new Point(0, 0);
+            memberRegistrationUserControl1.Name = "memberRegistrationUserControl1";
+            memberRegistrationUserControl1.Size = new Size(415, 650);
+            memberRegistrationUserControl1.TabIndex = 0;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 685);
+            Controls.Add(memberRegistrationUserControl1);
             Name = "MainForm";
             Text = "MLJ Furniture";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private UserControls.MemberRegistrationUserControl memberRegistrationUserControl1;
     }
 }

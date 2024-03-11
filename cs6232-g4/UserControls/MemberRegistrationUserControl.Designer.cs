@@ -47,10 +47,12 @@
             address1TextBox = new TextBox();
             address2TextBox = new TextBox();
             cityTextBox = new TextBox();
-            stateTextBox = new TextBox();
             zipTextBox = new TextBox();
-            genderTextBox = new TextBox();
-            dobTextBox = new TextBox();
+            monthComboBox = new ComboBox();
+            dayComboBox = new ComboBox();
+            yearComboBox = new ComboBox();
+            genderComboBox = new ComboBox();
+            stateComboBox = new ComboBox();
             SuspendLayout();
             // 
             // memberRegistrationLabel
@@ -231,14 +233,6 @@
             cityTextBox.Size = new Size(202, 29);
             cityTextBox.TabIndex = 19;
             // 
-            // stateTextBox
-            // 
-            stateTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            stateTextBox.Location = new Point(148, 364);
-            stateTextBox.Name = "stateTextBox";
-            stateTextBox.Size = new Size(202, 29);
-            stateTextBox.TabIndex = 20;
-            // 
             // zipTextBox
             // 
             zipTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -247,30 +241,61 @@
             zipTextBox.Size = new Size(202, 29);
             zipTextBox.TabIndex = 21;
             // 
-            // genderTextBox
+            // monthComboBox
             // 
-            genderTextBox.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            genderTextBox.Location = new Point(148, 473);
-            genderTextBox.Name = "genderTextBox";
-            genderTextBox.Size = new Size(202, 26);
-            genderTextBox.TabIndex = 22;
+            monthComboBox.FormattingEnabled = true;
+            monthComboBox.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
+            monthComboBox.Location = new Point(148, 528);
+            monthComboBox.Name = "monthComboBox";
+            monthComboBox.Size = new Size(52, 23);
+            monthComboBox.TabIndex = 23;
             // 
-            // dobTextBox
+            // dayComboBox
             // 
-            dobTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dobTextBox.Location = new Point(148, 522);
-            dobTextBox.Name = "dobTextBox";
-            dobTextBox.Size = new Size(202, 29);
-            dobTextBox.TabIndex = 23;
+            dayComboBox.FormattingEnabled = true;
+            dayComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" });
+            dayComboBox.Location = new Point(206, 528);
+            dayComboBox.Name = "dayComboBox";
+            dayComboBox.Size = new Size(52, 23);
+            dayComboBox.TabIndex = 24;
+            // 
+            // yearComboBox
+            // 
+            yearComboBox.FormattingEnabled = true;
+            yearComboBox.Items.AddRange(new object[] { "1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024" });
+            yearComboBox.Location = new Point(264, 528);
+            yearComboBox.Name = "yearComboBox";
+            yearComboBox.Size = new Size(86, 23);
+            yearComboBox.TabIndex = 25;
+            // 
+            // genderComboBox
+            // 
+            genderComboBox.FormattingEnabled = true;
+            genderComboBox.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            genderComboBox.Location = new Point(148, 478);
+            genderComboBox.Name = "genderComboBox";
+            genderComboBox.Size = new Size(52, 23);
+            genderComboBox.TabIndex = 26;
+            // 
+            // stateComboBox
+            // 
+            stateComboBox.FormattingEnabled = true;
+            stateComboBox.Items.AddRange(new object[] { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" });
+            stateComboBox.Location = new Point(148, 366);
+            stateComboBox.Name = "stateComboBox";
+            stateComboBox.Size = new Size(52, 23);
+            stateComboBox.TabIndex = 27;
             // 
             // MemberRegistrationUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(dobTextBox);
-            Controls.Add(genderTextBox);
+            Controls.Add(stateComboBox);
+            Controls.Add(genderComboBox);
+            Controls.Add(yearComboBox);
+            Controls.Add(dayComboBox);
+            Controls.Add(monthComboBox);
             Controls.Add(zipTextBox);
-            Controls.Add(stateTextBox);
             Controls.Add(cityTextBox);
             Controls.Add(address2TextBox);
             Controls.Add(address1TextBox);
@@ -318,9 +343,11 @@
         private TextBox address1TextBox;
         private TextBox address2TextBox;
         private TextBox cityTextBox;
-        private TextBox stateTextBox;
         private TextBox zipTextBox;
-        private TextBox genderTextBox;
-        private TextBox dobTextBox;
+        private ComboBox monthComboBox;
+        private ComboBox dayComboBox;
+        private ComboBox yearComboBox;
+        private ComboBox genderComboBox;
+        private ComboBox stateComboBox;
     }
 }
