@@ -18,7 +18,7 @@ namespace Members.DAL
             List <Member> MemberList = new List <Member>();
 
             string selectStatement =
-                "SELECT member_id, date_of_birth, fname,lname, address1, address2, city, state, zip, phone " +
+                "SELECT member_id, date_of_birth, fname,lname, address1, address2, city, state, zip, phone, gender " +
                 "FROM StoreMember " + 
                 "WHERE member_id = @ID"
             ;
@@ -46,7 +46,7 @@ namespace Members.DAL
                             member.State = reader["state"].ToString();
                             member.ZipCode = reader["zip"].ToString();
                             member.Phone = reader["phone"].ToString();
-                            member.Gender = (char)reader["gender"];
+                            member.Gender = Convert.ToChar(reader["gender"]);
                             
                             MemberList.Add(member);
                         }
