@@ -61,9 +61,9 @@
             memberRegistrationLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             memberRegistrationLabel.Location = new Point(94, 17);
             memberRegistrationLabel.Name = "memberRegistrationLabel";
-            memberRegistrationLabel.Size = new Size(220, 30);
+            memberRegistrationLabel.Size = new Size(271, 30);
             memberRegistrationLabel.TabIndex = 0;
-            memberRegistrationLabel.Text = "Member Registration";
+            memberRegistrationLabel.Text = "StoreMember Registration";
             // 
             // firstNameLabel
             // 
@@ -174,6 +174,7 @@
             registerButton.TabIndex = 11;
             registerButton.Text = "Register";
             registerButton.UseVisualStyleBackColor = true;
+            registerButton.Click += RegisterButton_Click;
             // 
             // cancelButton
             // 
