@@ -1,6 +1,6 @@
 ﻿namespace cs6232_g4.UserControls
 {
-    partial class EditMemberInfo
+    partial class EditMemberInfoUserControl
     {
         /// <summary> 
         /// Required designer variable.

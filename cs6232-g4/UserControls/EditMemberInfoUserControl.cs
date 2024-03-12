@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace cs6232_g4.UserControls
 {
-    public partial class EditMemberInfo : UserControl
+    public partial class EditMemberInfoUserControl : UserControl
     {
-        public EditMemberInfo()
+        public EditMemberInfoUserControl()
         {
             InitializeComponent();
         }

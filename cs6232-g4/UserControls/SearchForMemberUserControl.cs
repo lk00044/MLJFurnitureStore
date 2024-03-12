@@ -1,18 +1,9 @@
 ﻿using Members.Controller;
 using Members.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace cs6232_g4.UserControls
 {
-    public partial class SearchForMember : UserControl
+    public partial class SearchForMemberUserControl : UserControl
     {
 
         private string MbrFName;
@@ -24,7 +15,7 @@ namespace cs6232_g4.UserControls
         private readonly MemberController _memberController;
 
 
-        public SearchForMember()
+        public SearchForMemberUserControl()
         {
             InitializeComponent();
             _memberController = new MemberController();
@@ -37,27 +28,74 @@ namespace cs6232_g4.UserControls
 
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
-            if (this.MbrIDTextBox.Text != "")
-            {
-                MbrId = int.Parse(this.MbrIDTextBox.Text);
-                MemberList = this._memberController.GetMemberByID(MbrId);
-                this.DisplayMemberMatches();
-            }
-            else if (this.MbrPhoneNumTextBox.Text != "")
-            {
-                this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
-                MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
-                this.DisplayMemberMatches();
-            }
-            else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
-            {
-                this.MbrLName = this.MbrLNameTextBox.Text;
-                this.MbrFName = this.MbrFNameTextBox.Text;
 
-                MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
-                this.DisplayMemberMatches();
+            if (this.CheckIfMissingAllInput())
+            {
+                this.ErrorLabel.Text = "You must enter one of the following options: 1) Member ID, 2) Member Phone Number, or 3) Member First and Last Name";
             }
 
+            if (this.CheckIfMissingNamePart())
+            {
+                this.ErrorLabel.Text = "You must enter both the Member First and Last Name";
+            }
+
+            try
+            {
+
+                if (this.MbrIDTextBox.Text != "")
+                {
+                    if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId)) {
+                        MemberList = this._memberController.GetMemberByID(MbrId);
+                        this.DisplayMemberMatches();
+                    }
+                    else
+                    {
+                        this.ErrorLabel.Text = "Member ID must be numberic.";
+                    }
+                    
+                }
+                else if (this.MbrPhoneNumTextBox.Text != "")
+                {
+                    if (Int64.TryParse(this.MbrPhoneNumTextBox.Text, out _))
+                    {
+                        this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
+                        MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
+                        this.DisplayMemberMatches();
+                    }
+                    else
+                    {
+                        this.ErrorLabel.Text = "The phone number should be numeric only, no - needed.";
+                    }
+                    
+                }
+                else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
+                {
+                    this.MbrLName = this.MbrLNameTextBox.Text;
+                    this.MbrFName = this.MbrFNameTextBox.Text;
+
+                    MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
+                    this.DisplayMemberMatches();
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }          
+
+        }
+
+        private bool CheckIfMissingAllInput()
+        {
+            return string.IsNullOrEmpty(MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
+                string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
+        }
+
+        private bool CheckIfMissingNamePart()
+        {
+            return (string.IsNullOrEmpty(MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
+                (!string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text) ||
+                string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && !string.IsNullOrEmpty(this.MbrFNameTextBox.Text)
+                );
         }
 
         private void DisplayMemberMatches()
@@ -99,21 +137,25 @@ namespace cs6232_g4.UserControls
         private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
+            this.ErrorLabel.Text = string.Empty;
         }
 
         private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
+            this.ErrorLabel.Text = string.Empty;
         }
 
         private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
+            this.ErrorLabel.Text = string.Empty;
         }
 
         private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
+            this.ErrorLabel.Text = string.Empty;
         }
     }
 }

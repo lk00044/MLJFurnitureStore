@@ -1,6 +1,6 @@
 ﻿namespace cs6232_g4.UserControls
 {
-    partial class SearchForMember
+    partial class SearchForMemberUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -51,6 +51,7 @@
             EnterMbrFNameLabel = new Label();
             EnterMbrPhoneNumLabel = new Label();
             SearchInstructionsLabel = new Label();
+            ErrorLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -182,6 +183,7 @@
             tableLayoutPanel1.Controls.Add(MbrIDTextBox, 1, 0);
             tableLayoutPanel1.Controls.Add(MbrFNameTextBox, 1, 2);
             tableLayoutPanel1.Controls.Add(MbrLNameTextBox, 1, 3);
+            tableLayoutPanel1.Controls.Add(ErrorLabel, 2, 1);
             tableLayoutPanel1.Location = new Point(14, 50);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
@@ -238,7 +240,16 @@
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
-            // SearchForMember
+            // ErrorLabel
+            // 
+            ErrorLabel.ForeColor = Color.Red;
+            ErrorLabel.Location = new Point(580, 35);
+            ErrorLabel.Name = "ErrorLabel";
+            tableLayoutPanel1.SetRowSpan(ErrorLabel, 3);
+            ErrorLabel.Size = new Size(254, 91);
+            ErrorLabel.TabIndex = 5;
+            // 
+            // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -246,7 +257,7 @@
             Controls.Add(MatchingMembersLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
-            Name = "SearchForMember";
+            Name = "SearchForMemberUserControl";
             Size = new Size(877, 687);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -279,5 +290,6 @@
         private Label EnterMbrFNameLabel;
         private Label EnterMbrPhoneNumLabel;
         private Label SearchInstructionsLabel;
+        private Label ErrorLabel;
     }
 }

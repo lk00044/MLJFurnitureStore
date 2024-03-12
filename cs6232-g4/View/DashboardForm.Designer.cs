@@ -35,7 +35,7 @@
             MainDBTabControl = new TabControl();
             RegMbrTabPage = new TabPage();
             Search4MbrTabPage = new TabPage();
-            search4Member1 = new UserControls.SearchForMember();
+            search4Member1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
             MbrTransTabPage = new TabPage();
             MainDBTabControl.SuspendLayout();
@@ -163,6 +163,6 @@
         private TabPage Search4MbrTabPage;
         private TabPage EditMbrTabPage;
         private TabPage MbrTransTabPage;
-        private UserControls.SearchForMember search4Member1;
+        private UserControls.SearchForMemberUserControl search4Member1;
     }
 }
