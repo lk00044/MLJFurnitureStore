@@ -1,4 +1,4 @@
-﻿namespace Employee.Controller
+﻿namespace Employees.Controller
 {
     internal class FurnitureController
     {

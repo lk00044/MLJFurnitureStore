@@ -1,6 +1,6 @@
 using cs6232_g4;
 
-namespace Employee
+namespace Employees
 {
     internal static class Program
     {

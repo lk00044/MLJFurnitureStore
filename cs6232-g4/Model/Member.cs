@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Employee Class
+/// Employees Class
 /// Group 4
 /// Programmer: LKeller
 /// Date: 08/03/24

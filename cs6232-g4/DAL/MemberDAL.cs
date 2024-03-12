@@ -13,6 +13,12 @@ namespace Members.DAL
 {
     public class MemberDAL
     {
+
+        /// <summary>
+        /// Gets all members with the specified id
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>member list</returns>
         public List <Member> GetMemberByID(int ID)
         {
             List <Member> MemberList = new List <Member>();
@@ -56,6 +62,11 @@ namespace Members.DAL
             return MemberList;
         }
 
+        /// <summary>
+        /// Gets all members with the specified phone
+        /// </summary>
+        /// <param name="Phone"></param>
+        /// <returns> member list </returns>
         public List<Member> GetMemberByPhone(string Phone)
         {
             List<Member> MemberList = new List<Member>();
@@ -100,7 +111,12 @@ namespace Members.DAL
         }
 
 
-
+        /// <summary>
+        /// Gets all members with the specified first and last names
+        /// </summary>
+        /// <param name="FName"></param>
+        /// <param name="LName"></param>
+        /// <returns></returns>
         public List<Member> GetMemberByName(string FName, string LName)
         {
             List<Member> MemberList = new List<Member>();
