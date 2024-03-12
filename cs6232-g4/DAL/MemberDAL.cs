@@ -56,6 +56,94 @@ namespace Members.DAL
             return MemberList;
         }
 
+        public List<Member> GetMemberByPhone(string Phone)
+        {
+            List<Member> MemberList = new List<Member>();
+
+            string selectStatement =
+                "SELECT member_id, date_of_birth, fname,lname, address1, address2, city, state, zip, phone, gender " +
+                "FROM StoreMember " +
+                "WHERE phone = @Phone"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@Phone", Phone));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member();
+                            member.MemberID = (int)reader["member_id"];
+                            member.DateOfBirth = (DateTime?)reader["date_of_birth"];
+                            member.FirstName = reader["fname"].ToString();
+                            member.LastName = reader["lname"].ToString();
+                            member.Address1 = reader["address1"].ToString();
+                            member.Address2 = reader["address2"].ToString();
+                            member.City = reader["city"].ToString();
+                            member.State = reader["state"].ToString();
+                            member.ZipCode = reader["zip"].ToString();
+                            member.Phone = reader["phone"].ToString();
+                            member.Gender = Convert.ToChar(reader["gender"]);
+
+                            MemberList.Add(member);
+                        }
+                    }
+                }
+            }
+            return MemberList;
+        }
+
+
+
+        public List<Member> GetMemberByName(string FName, string LName)
+        {
+            List<Member> MemberList = new List<Member>();
+
+            string selectStatement =
+                "SELECT member_id, date_of_birth, fname, lname, address1, address2, city, state, zip, phone, gender " +
+                "FROM StoreMember " +
+                "WHERE lname = @LName and fname = @FName"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@LName", LName));
+                    selectCommand.Parameters.Add(new SqlParameter("@FName", FName));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member();
+                            member.MemberID = (int)reader["member_id"];
+                            member.DateOfBirth = (DateTime?)reader["date_of_birth"];
+                            member.FirstName = reader["fname"].ToString();
+                            member.LastName = reader["lname"].ToString();
+                            member.Address1 = reader["address1"].ToString();
+                            member.Address2 = reader["address2"].ToString();
+                            member.City = reader["city"].ToString();
+                            member.State = reader["state"].ToString();
+                            member.ZipCode = reader["zip"].ToString();
+                            member.Phone = reader["phone"].ToString();
+                            member.Gender = Convert.ToChar(reader["gender"]);
+
+                            MemberList.Add(member);
+                        }
+                    }
+                }
+            }
+            return MemberList;
+        }
 
     }
 }

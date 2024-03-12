@@ -45,11 +45,17 @@ namespace cs6232_g4.UserControls
             }
             else if (this.MbrPhoneNumTextBox.Text != "")
             {
-
+                this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
+                MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
+                this.DisplayMemberMatches();
             }
             else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
             {
+                this.MbrLName = this.MbrLNameTextBox.Text;
+                this.MbrFName = this.MbrFNameTextBox.Text;
 
+                MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
+                this.DisplayMemberMatches();
             }
 
         }
@@ -90,7 +96,24 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.MatchingMembersListView.Items.Clear();
+        }
 
-        
+        private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.MatchingMembersListView.Items.Clear();
+        }
+
+        private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.MatchingMembersListView.Items.Clear();
+        }
+
+        private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.MatchingMembersListView.Items.Clear();
+        }
     }
 }

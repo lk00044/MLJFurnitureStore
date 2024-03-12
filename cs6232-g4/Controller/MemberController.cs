@@ -18,10 +18,20 @@ namespace Members.Controller
             MemberSource = new MemberDAL();
         }
 
-        public List <Member> GetMemberByID(int ID)
+        public List<Member> GetMemberByID(int ID)
         {
             return this.MemberSource.GetMemberByID(ID);
         }
 
-    } 
+        public List<Member> GetMemberByPhone(string Phone)
+        {
+            return this.MemberSource.GetMemberByPhone(Phone);
+        }
+
+        public List<Member> GetMemberByName(string FName, string LName)
+        {
+            return this.MemberSource.GetMemberByName(FName, LName);
+        }
+
+    }
 }

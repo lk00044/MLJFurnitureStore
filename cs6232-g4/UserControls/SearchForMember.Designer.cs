@@ -56,6 +56,7 @@
             // 
             // DOBColumnHeader
             // 
+            DOBColumnHeader.DisplayIndex = 9;
             DOBColumnHeader.Text = "Date of Birth";
             DOBColumnHeader.Width = 100;
             // 
@@ -99,7 +100,7 @@
             // 
             // MatchingMembersListView
             // 
-            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, GenderColumnHeader, DOBColumnHeader });
+            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, DOBColumnHeader, GenderColumnHeader });
             MatchingMembersListView.GridLines = true;
             MatchingMembersListView.Location = new Point(17, 250);
             MatchingMembersListView.Name = "MatchingMembersListView";
@@ -110,6 +111,7 @@
             // 
             // GenderColumnHeader
             // 
+            GenderColumnHeader.DisplayIndex = 8;
             GenderColumnHeader.Text = "Gender";
             // 
             // MatchingMembersLabel
@@ -127,39 +129,43 @@
             FindMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FindMemberButton.Location = new Point(580, 3);
             FindMemberButton.Name = "FindMemberButton";
-            FindMemberButton.Size = new Size(254, 26);
-            FindMemberButton.TabIndex = 5;
+            FindMemberButton.Size = new Size(254, 29);
+            FindMemberButton.TabIndex = 4;
             FindMemberButton.Text = "Find Member";
             FindMemberButton.UseVisualStyleBackColor = true;
             FindMemberButton.Click += FindMemberButton_Click;
             // 
             // MbrPhoneNumTextBox
             // 
-            MbrPhoneNumTextBox.Location = new Point(251, 35);
+            MbrPhoneNumTextBox.Location = new Point(251, 38);
             MbrPhoneNumTextBox.Name = "MbrPhoneNumTextBox";
             MbrPhoneNumTextBox.Size = new Size(280, 27);
-            MbrPhoneNumTextBox.TabIndex = 6;
+            MbrPhoneNumTextBox.TabIndex = 1;
+            MbrPhoneNumTextBox.TextChanged += MbrPhoneNumTextBox_TextChanged;
             // 
             // MbrIDTextBox
             // 
             MbrIDTextBox.Location = new Point(251, 3);
             MbrIDTextBox.Name = "MbrIDTextBox";
             MbrIDTextBox.Size = new Size(280, 27);
-            MbrIDTextBox.TabIndex = 4;
+            MbrIDTextBox.TabIndex = 0;
+            MbrIDTextBox.TextChanged += MbrIDTextBox_TextChanged;
             // 
             // MbrFNameTextBox
             // 
-            MbrFNameTextBox.Location = new Point(251, 67);
+            MbrFNameTextBox.Location = new Point(251, 75);
             MbrFNameTextBox.Name = "MbrFNameTextBox";
             MbrFNameTextBox.Size = new Size(280, 27);
-            MbrFNameTextBox.TabIndex = 7;
+            MbrFNameTextBox.TabIndex = 2;
+            MbrFNameTextBox.TextChanged += MbrFNameTextBox_TextChanged;
             // 
             // MbrLNameTextBox
             // 
-            MbrLNameTextBox.Location = new Point(251, 101);
+            MbrLNameTextBox.Location = new Point(251, 109);
             MbrLNameTextBox.Name = "MbrLNameTextBox";
             MbrLNameTextBox.Size = new Size(280, 27);
-            MbrLNameTextBox.TabIndex = 5;
+            MbrLNameTextBox.TabIndex = 3;
+            MbrLNameTextBox.TextChanged += MbrLNameTextBox_TextChanged;
             // 
             // tableLayoutPanel1
             // 
@@ -179,10 +185,10 @@
             tableLayoutPanel1.Location = new Point(14, 50);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             tableLayoutPanel1.Size = new Size(837, 141);
             tableLayoutPanel1.TabIndex = 10;
             // 
@@ -198,7 +204,7 @@
             // EnterMbrLNameLabel
             // 
             EnterMbrLNameLabel.AutoSize = true;
-            EnterMbrLNameLabel.Location = new Point(3, 98);
+            EnterMbrLNameLabel.Location = new Point(3, 106);
             EnterMbrLNameLabel.Name = "EnterMbrLNameLabel";
             EnterMbrLNameLabel.Size = new Size(184, 20);
             EnterMbrLNameLabel.TabIndex = 1;
@@ -207,7 +213,7 @@
             // EnterMbrFNameLabel
             // 
             EnterMbrFNameLabel.AutoSize = true;
-            EnterMbrFNameLabel.Location = new Point(3, 64);
+            EnterMbrFNameLabel.Location = new Point(3, 72);
             EnterMbrFNameLabel.Name = "EnterMbrFNameLabel";
             EnterMbrFNameLabel.Size = new Size(185, 20);
             EnterMbrFNameLabel.TabIndex = 2;
@@ -216,7 +222,7 @@
             // EnterMbrPhoneNumLabel
             // 
             EnterMbrPhoneNumLabel.AutoSize = true;
-            EnterMbrPhoneNumLabel.Location = new Point(3, 32);
+            EnterMbrPhoneNumLabel.Location = new Point(3, 35);
             EnterMbrPhoneNumLabel.Name = "EnterMbrPhoneNumLabel";
             EnterMbrPhoneNumLabel.Size = new Size(213, 20);
             EnterMbrPhoneNumLabel.TabIndex = 3;
