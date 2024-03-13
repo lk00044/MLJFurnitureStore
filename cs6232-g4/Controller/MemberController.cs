@@ -11,26 +11,43 @@ namespace Members.Controller
 {
     public class MemberController
     {
-        private MemberDAL MemberSource;
+        private readonly MemberDAL _memberDAL;
 
         public MemberController()
         {
-            MemberSource = new MemberDAL();
+            _memberDAL = new MemberDAL();
         }
 
+        /// <summary>
+        /// search a store member by ID
+        /// </summary>
         public List<Member> GetMemberByID(int ID)
         {
-            return this.MemberSource.GetMemberByID(ID);
+            return this._memberDAL.GetMemberByID(ID);
         }
 
+        /// <summary>
+        /// search store member by phone
+        /// </summary>
         public List<Member> GetMemberByPhone(string Phone)
         {
-            return this.MemberSource.GetMemberByPhone(Phone);
+            return this._memberDAL.GetMemberByPhone(Phone);
         }
 
+        /// <summary>
+        /// search a store member by name
+        /// </summary>
         public List<Member> GetMemberByName(string FName, string LName)
         {
-            return this.MemberSource.GetMemberByName(FName, LName);
+            return this._memberDAL.GetMemberByName(FName, LName);
+        }
+
+        /// <summary>
+        /// Register a store member
+        /// </summary>
+        public void RegisterStoreMember(Member storeMember)
+        {
+            this._memberDAL.RegisterStoreMember(storeMember);
         }
 
     }
