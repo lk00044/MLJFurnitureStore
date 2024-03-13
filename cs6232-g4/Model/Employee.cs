@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Employee Class
+/// Employees Class
 /// Group 4
 /// Programmer: LKeller
 /// Date: 08/03/24
@@ -27,6 +27,10 @@ namespace Employees.Model
         public char Gender { get; set; }
 
         public DateTime DateOfBirth { get; set; }
+
+        public string UserID { get; set; }
+
+        public string Password { get; set; }
     }
 
 

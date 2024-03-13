@@ -1,4 +1,4 @@
-﻿namespace Employee.DAL
+﻿namespace Employees.DAL
 {
     internal class FurnitureDAL
     {

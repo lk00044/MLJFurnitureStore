@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace cs6232_g4.UserControls
 {
-    public partial class SearchForMember : UserControl
+    public partial class EditMemberInfoUserControl : UserControl
     {
-        public SearchForMember()
+        public EditMemberInfoUserControl()
         {
             InitializeComponent();
         }
-
     }
 }
