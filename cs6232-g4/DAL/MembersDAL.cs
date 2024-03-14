@@ -5,7 +5,7 @@
 /// Date: 08/11/24
 /// </summary>
 
-using cs6232_g4.DAL;
+using Logon.DAL;
 using Members.Model;
 using System.Data.SqlClient;
 

@@ -1,4 +1,4 @@
-﻿namespace cs6232_g4.UserControls
+﻿namespace Logon.UserControls
 {
     partial class EditMemberInfoUserControl
     {

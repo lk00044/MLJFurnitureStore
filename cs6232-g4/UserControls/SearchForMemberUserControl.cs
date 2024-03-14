@@ -1,7 +1,7 @@
 ﻿using Members.Controller;
 using Members.Model;
 
-namespace cs6232_g4.UserControls
+namespace Logon.UserControls
 {
     public partial class SearchForMemberUserControl : UserControl
     {

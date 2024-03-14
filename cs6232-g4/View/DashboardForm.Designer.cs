@@ -1,4 +1,4 @@
-﻿namespace cs6232_g4
+﻿namespace Logon
 {
     partial class DashboardForm
     {
@@ -28,28 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            UserNameLabel = new Label();
+            UserIDLabel = new Label();
             NameLabel = new Label();
             DisplayNameLabel = new Label();
-            DisplayUserNameLabel = new Label();
+            DisplayUserIDLabel = new Label();
             MainDBTabControl = new TabControl();
             RegMbrTabPage = new TabPage();
             Search4MbrTabPage = new TabPage();
-            search4Member1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
             MbrTransTabPage = new TabPage();
             MainDBTabControl.SuspendLayout();
-            Search4MbrTabPage.SuspendLayout();
             SuspendLayout();
             // 
-            // UserNameLabel
+            // UserIDLabel
             // 
-            UserNameLabel.AutoSize = true;
-            UserNameLabel.Location = new Point(712, 9);
-            UserNameLabel.Name = "UserNameLabel";
-            UserNameLabel.Size = new Size(81, 20);
-            UserNameLabel.TabIndex = 1;
-            UserNameLabel.Text = "UserName:";
+            UserIDLabel.AutoSize = true;
+            UserIDLabel.Location = new Point(712, 9);
+            UserIDLabel.Name = "UserIDLabel";
+            UserIDLabel.Size = new Size(81, 20);
+            UserIDLabel.TabIndex = 1;
+            UserIDLabel.Text = "UserName:";
             // 
             // NameLabel
             // 
@@ -67,12 +65,12 @@
             DisplayNameLabel.Size = new Size(132, 25);
             DisplayNameLabel.TabIndex = 3;
             // 
-            // DisplayUserNameLabel
+            // DisplayUserIDLabel
             // 
-            DisplayUserNameLabel.Location = new Point(799, 8);
-            DisplayUserNameLabel.Name = "DisplayUserNameLabel";
-            DisplayUserNameLabel.Size = new Size(132, 25);
-            DisplayUserNameLabel.TabIndex = 4;
+            DisplayUserIDLabel.Location = new Point(799, 8);
+            DisplayUserIDLabel.Name = "DisplayUserIDLabel";
+            DisplayUserIDLabel.Size = new Size(132, 25);
+            DisplayUserIDLabel.TabIndex = 4;
             // 
             // MainDBTabControl
             // 
@@ -99,7 +97,6 @@
             // 
             // Search4MbrTabPage
             // 
-            Search4MbrTabPage.Controls.Add(search4Member1);
             Search4MbrTabPage.Location = new Point(4, 29);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
@@ -108,19 +105,11 @@
             Search4MbrTabPage.Text = "Member Search";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
-            // search4Member1
-            // 
-            search4Member1.Dock = DockStyle.Fill;
-            search4Member1.Location = new Point(3, 3);
-            search4Member1.Name = "search4Member1";
-            search4Member1.Size = new Size(875, 677);
-            search4Member1.TabIndex = 0;
-            // 
             // EditMbrTabPage
             // 
             EditMbrTabPage.Location = new Point(4, 29);
             EditMbrTabPage.Name = "EditMbrTabPage";
-            EditMbrTabPage.Size = new Size(881, 686);
+            EditMbrTabPage.Size = new Size(881, 683);
             EditMbrTabPage.TabIndex = 2;
             EditMbrTabPage.Text = "Member Update";
             EditMbrTabPage.UseVisualStyleBackColor = true;
@@ -129,7 +118,7 @@
             // 
             MbrTransTabPage.Location = new Point(4, 29);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(881, 686);
+            MbrTransTabPage.Size = new Size(881, 683);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
@@ -140,24 +129,24 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(889, 793);
             Controls.Add(MainDBTabControl);
-            Controls.Add(DisplayUserNameLabel);
+            Controls.Add(DisplayUserIDLabel);
             Controls.Add(DisplayNameLabel);
             Controls.Add(NameLabel);
-            Controls.Add(UserNameLabel);
+            Controls.Add(UserIDLabel);
             Name = "DashboardForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Me Furniture Rentals";
             Load += DashboardForm_Load;
             MainDBTabControl.ResumeLayout(false);
-            Search4MbrTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label UserNameLabel;
+        private Label UserIDLabel;
         private Label NameLabel;
         private Label DisplayNameLabel;
-        private Label DisplayUserNameLabel;
+        private Label DisplayUserIDLabel;
         private TabControl MainDBTabControl;
         private TabPage RegMbrTabPage;
         private TabPage Search4MbrTabPage;

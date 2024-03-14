@@ -1,4 +1,4 @@
-﻿namespace cs6232_g4.UserControls
+﻿namespace Logon.UserControls
 {
     partial class SearchForMemberUserControl
     {
@@ -109,7 +109,7 @@
             MatchingMembersListView.Size = new Size(834, 418);
             MatchingMembersListView.TabIndex = 13;
             MatchingMembersListView.UseCompatibleStateImageBehavior = false;
-            MatchingMembersListView.View = View.Details;
+            MatchingMembersListView.View = System.Windows.Forms.View.Details;
             // 
             // PhoneColumnHeader
             // 

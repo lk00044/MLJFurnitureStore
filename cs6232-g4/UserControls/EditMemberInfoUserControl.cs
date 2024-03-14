@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace cs6232_g4.UserControls
+namespace Logon.UserControls
 {
     public partial class EditMemberInfoUserControl : UserControl
     {

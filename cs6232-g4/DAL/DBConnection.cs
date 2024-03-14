@@ -6,7 +6,7 @@
 /// 
 using System.Data.SqlClient;
 
-namespace cs6232_g4.DAL
+namespace Logon.DAL
 {
     public static class DBConnection
     {

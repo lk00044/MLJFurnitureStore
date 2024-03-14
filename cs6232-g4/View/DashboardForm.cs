@@ -8,18 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace cs6232_g4
+namespace Logon
 {
     public partial class DashboardForm : Form
     {
-        public DashboardForm()
+
+        string userName;
+        string userID;
+
+        public DashboardForm(string userID, string emplName)
         {
             InitializeComponent();
+            this.userID = userID;
+            userName = emplName;
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
-
+            this.DisplayNameLabel.Text = userName;
+            this.DisplayUserIDLabel.Text = userID;
         }
     }
 }
