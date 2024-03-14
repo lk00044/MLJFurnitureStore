@@ -16,6 +16,7 @@ namespace Logon.View
         {
             string userID = "";
             string password = "";
+
             try
             {
                 userID = this.UserIDInputTextBox.Text;
@@ -29,7 +30,7 @@ namespace Logon.View
                     this.PasswordInputTextBox.Clear();
                 }
                                
-                else if (this._employeeController.CheckPassword(userID, password))
+                else if (this._employeeController.CheckIDAndPassword(userID, password))
                 {
                     this.PasswordErrorLabel.ForeColor = Color.Red;
                     this.PasswordErrorLabel.Text = "Invalid Password";
@@ -40,10 +41,18 @@ namespace Logon.View
                 {
                     string emplName = this._employeeController.GetUserName(userID, password);
 
-                    using (Form dashboardTabForm = new DashboardForm(userID, emplName))
+                    using (Form dashboardForm = new DashboardForm(userID, emplName))
                     {
                         this.Hide();
-                        dashboardTabForm.Show();                        
+                        DialogResult result = dashboardForm.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            this.Show();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
                     }
                 }
             }

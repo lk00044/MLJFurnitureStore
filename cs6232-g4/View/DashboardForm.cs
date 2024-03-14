@@ -20,13 +20,13 @@ namespace Logon
         {
             InitializeComponent();
             this.userID = userID;
-            userName = emplName;
+            this.userName = emplName;
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
-            this.DisplayNameLabel.Text = userName;
-            this.DisplayUserIDLabel.Text = userID;
+            this.DisplayNameLabel.Text = this.userName;
+            this.DisplayUserIDLabel.Text = this.userID;
         }
     }
 }

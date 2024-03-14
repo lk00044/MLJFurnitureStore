@@ -35,15 +35,17 @@
             MainDBTabControl = new TabControl();
             RegMbrTabPage = new TabPage();
             Search4MbrTabPage = new TabPage();
+            searchForMemberUserControl1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
             MbrTransTabPage = new TabPage();
             MainDBTabControl.SuspendLayout();
+            Search4MbrTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserIDLabel
             // 
             UserIDLabel.AutoSize = true;
-            UserIDLabel.Location = new Point(712, 9);
+            UserIDLabel.Location = new Point(208, 9);
             UserIDLabel.Name = "UserIDLabel";
             UserIDLabel.Size = new Size(81, 20);
             UserIDLabel.TabIndex = 1;
@@ -52,7 +54,7 @@
             // NameLabel
             // 
             NameLabel.AutoSize = true;
-            NameLabel.Location = new Point(516, 8);
+            NameLabel.Location = new Point(12, 9);
             NameLabel.Name = "NameLabel";
             NameLabel.Size = new Size(52, 20);
             NameLabel.TabIndex = 2;
@@ -60,16 +62,16 @@
             // 
             // DisplayNameLabel
             // 
-            DisplayNameLabel.Location = new Point(574, 3);
+            DisplayNameLabel.Location = new Point(66, 9);
             DisplayNameLabel.Name = "DisplayNameLabel";
             DisplayNameLabel.Size = new Size(132, 25);
             DisplayNameLabel.TabIndex = 3;
             // 
             // DisplayUserIDLabel
             // 
-            DisplayUserIDLabel.Location = new Point(799, 8);
+            DisplayUserIDLabel.Location = new Point(291, 9);
             DisplayUserIDLabel.Name = "DisplayUserIDLabel";
-            DisplayUserIDLabel.Size = new Size(132, 25);
+            DisplayUserIDLabel.Size = new Size(78, 25);
             DisplayUserIDLabel.TabIndex = 4;
             // 
             // MainDBTabControl
@@ -97,6 +99,7 @@
             // 
             // Search4MbrTabPage
             // 
+            Search4MbrTabPage.Controls.Add(searchForMemberUserControl1);
             Search4MbrTabPage.Location = new Point(4, 29);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
@@ -104,6 +107,14 @@
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Search";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
+            // 
+            // searchForMemberUserControl1
+            // 
+            searchForMemberUserControl1.Dock = DockStyle.Fill;
+            searchForMemberUserControl1.Location = new Point(3, 3);
+            searchForMemberUserControl1.Name = "searchForMemberUserControl1";
+            searchForMemberUserControl1.Size = new Size(875, 677);
+            searchForMemberUserControl1.TabIndex = 0;
             // 
             // EditMbrTabPage
             // 
@@ -138,6 +149,7 @@
             Text = "Rent Me Furniture Rentals";
             Load += DashboardForm_Load;
             MainDBTabControl.ResumeLayout(false);
+            Search4MbrTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -149,9 +161,9 @@
         private Label DisplayUserIDLabel;
         private TabControl MainDBTabControl;
         private TabPage RegMbrTabPage;
-        private TabPage Search4MbrTabPage;
         private TabPage EditMbrTabPage;
         private TabPage MbrTransTabPage;
-        private UserControls.SearchForMemberUserControl search4Member1;
+        private TabPage Search4MbrTabPage;
+        private UserControls.SearchForMemberUserControl searchForMemberUserControl1;
     }
 }

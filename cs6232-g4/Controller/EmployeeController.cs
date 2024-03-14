@@ -19,9 +19,9 @@ namespace Employees.Controller
         /// <param name="UserID">The user identifier.</param>
         /// <param name="PWord">The p word.</param>
         /// <returns></returns>
-        public bool CheckPassword(string UserID, string PWord)
+        public bool CheckIDAndPassword(string UserID, string PWord)
         {
-            return this.EmployeeSource.CheckPassword(UserID, PWord);
+            return this.EmployeeSource.CheckIDAndPassword(UserID, PWord);
         }
 
         /// <summary>

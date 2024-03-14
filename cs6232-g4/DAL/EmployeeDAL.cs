@@ -12,15 +12,15 @@ namespace Employees.DAL
     public class EmployeeDAL
     {
 
-        public bool CheckPassword(string UserID, string PWord)
+        public bool CheckIDAndPassword(string UserID, string PWord)
         {
+            string password = "";
+
             string selectStatement =
                 "SELECT user_id, password " +
                 "FROM Login " +
                 "WHERE user_id = @UserID and password = @PWord"
             ;
-
-            Employe employee = new Employe();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -35,18 +35,17 @@ namespace Employees.DAL
                     {
                         while (reader.Read())
                         {                            
-                            employee.UserID = reader["user_id"].ToString();
-                            employee.Password = reader["password"].ToString();
+                            password = reader["password"].ToString();
                         }
                     }
                 }
             }
-            return (string.IsNullOrEmpty(employee.Password));
+            return password == "";
         }
 
         public bool CheckUserID(string UserID)
         {
-            string pwd = "";
+            string id = "";
 
             string selectStatement =
                 "SELECT user_id, password " +
@@ -66,12 +65,12 @@ namespace Employees.DAL
                     {
                         while (reader.Read())
                         {
-                             pwd = reader["password"].ToString();
+                             id = reader["user_id"].ToString();
                         }
                     }
                 }
             }
-            return pwd == "";
+            return id == "";
         }
 
         /// <summary>
@@ -86,10 +85,11 @@ namespace Employees.DAL
                "SELECT l.user_id, l.password, e.fname, e.lname " +
                "FROM Login l " + 
                "LEFT JOIN Employee e " +
-               "ON l.user_id = @UserID and l.password = @PWord and l.user_id = e.employee_id "
+               "ON l.user_id = e.login_userID " +
+               "WHERE l.user_id = @UserID and l.password = @PWord"
            ;
 
-            Employe employee = new Employe();
+            Model.Employee employee = new Model.Employee();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {

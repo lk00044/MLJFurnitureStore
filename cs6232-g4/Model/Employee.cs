@@ -6,7 +6,7 @@
 /// </summary>
 namespace Employees.Model
 {
-    public class Employe
+    public class Employee
     {
         public int EmployeeID { get; set; }
 

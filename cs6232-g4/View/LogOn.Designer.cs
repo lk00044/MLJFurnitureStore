@@ -71,7 +71,7 @@
             PasswordInputTextBox.Name = "PasswordInputTextBox";
             PasswordInputTextBox.Size = new Size(180, 27);
             PasswordInputTextBox.TabIndex = 5;
-            PasswordInputTextBox.TextChanged += PasswordInputTextBox_Click;
+            PasswordInputTextBox.Click += PasswordInputTextBox_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -130,7 +130,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "LogOnForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Rent Me Furniture : Employe Logon";
+            Text = "Rent Me Furniture : Employee Logon";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
