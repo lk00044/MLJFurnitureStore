@@ -11,26 +11,26 @@ namespace Members.Controller
 {
     public class MembersController
     {
-        private MembersDAL MemberSource;
+        private MembersDAL _membersDAL;
 
         public MembersController()
         {
-            MemberSource = new MembersDAL();
+            _membersDAL = new MembersDAL();
         }
 
         public List<Member> GetMemberByID(int ID)
         {
-            return this.MemberSource.GetMemberByID(ID);
+            return this._membersDAL.GetMemberByID(ID);
         }
 
         public List<Member> GetMemberByPhone(string Phone)
         {
-            return this.MemberSource.GetMemberByPhone(Phone);
+            return this._membersDAL.GetMemberByPhone(Phone);
         }
 
         public List<Member> GetMemberByName(string FName, string LName)
         {
-            return this.MemberSource.GetMemberByName(FName, LName);
+            return this._membersDAL.GetMemberByName(FName, LName);
         }
 
     }

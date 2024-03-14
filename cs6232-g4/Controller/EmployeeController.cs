@@ -6,11 +6,11 @@ namespace Employees.Controller
     public class EmployeeController
     {
 
-        private EmployeeDAL EmployeeSource;
+        private EmployeeDAL _employeeDAL;
 
         public EmployeeController()
         {
-            EmployeeSource = new EmployeeDAL();
+            _employeeDAL = new EmployeeDAL();
         }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Employees.Controller
         /// <returns></returns>
         public bool CheckIDAndPassword(string UserID, string PWord)
         {
-            return this.EmployeeSource.CheckIDAndPassword(UserID, PWord);
+            return this._employeeDAL.CheckIDAndPassword(UserID, PWord);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Employees.Controller
         /// <returns> Employee Name </returns>
         public string GetUserName(string UserID, string PWord)
         {
-            return this.EmployeeSource.GetUserName(UserID, PWord);
+            return this._employeeDAL.GetUserName(UserID, PWord);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Employees.Controller
         /// <returns></returns>
         public bool CheckUserID(string UserID)
         {
-            return this.EmployeeSource.CheckUserID(UserID);
+            return this._employeeDAL.CheckUserID(UserID);
         }
     }
 }
