@@ -9,13 +9,13 @@ using Members.DAL;
 
 namespace Members.Controller
 {
-    public class MemberController
+    public class MembersController
     {
-        private MemberDAL MemberSource;
+        private MembersDAL MemberSource;
 
-        public MemberController()
+        public MembersController()
         {
-            MemberSource = new MemberDAL();
+            MemberSource = new MembersDAL();
         }
 
         public List<Member> GetMemberByID(int ID)
