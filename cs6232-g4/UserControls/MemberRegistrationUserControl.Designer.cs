@@ -53,17 +53,18 @@
             yearComboBox = new ComboBox();
             genderComboBox = new ComboBox();
             stateComboBox = new ComboBox();
+            messageLabel = new Label();
             SuspendLayout();
             // 
             // memberRegistrationLabel
             // 
             memberRegistrationLabel.AutoSize = true;
             memberRegistrationLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            memberRegistrationLabel.Location = new Point(94, 17);
+            memberRegistrationLabel.Location = new Point(95, 14);
             memberRegistrationLabel.Name = "memberRegistrationLabel";
-            memberRegistrationLabel.Size = new Size(271, 30);
+            memberRegistrationLabel.Size = new Size(220, 30);
             memberRegistrationLabel.TabIndex = 0;
-            memberRegistrationLabel.Text = "StoreMember Registration";
+            memberRegistrationLabel.Text = "Member Registration";
             // 
             // firstNameLabel
             // 
@@ -185,6 +186,7 @@
             cancelButton.TabIndex = 13;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += CancelButton_Click;
             // 
             // firstNameTextBox
             // 
@@ -209,6 +211,7 @@
             phoneTextBox.Name = "phoneTextBox";
             phoneTextBox.Size = new Size(202, 29);
             phoneTextBox.TabIndex = 16;
+            phoneTextBox.TextChanged += PhoneTextBox_TextChanged;
             // 
             // address1TextBox
             // 
@@ -241,6 +244,7 @@
             zipTextBox.Name = "zipTextBox";
             zipTextBox.Size = new Size(202, 29);
             zipTextBox.TabIndex = 21;
+            zipTextBox.TextChanged += ZipTextBox_TextChanged;
             // 
             // monthComboBox
             // 
@@ -287,10 +291,22 @@
             stateComboBox.Size = new Size(52, 23);
             stateComboBox.TabIndex = 27;
             // 
+            // messageLabel
+            // 
+            messageLabel.AutoSize = true;
+            messageLabel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            messageLabel.Location = new Point(132, 44);
+            messageLabel.Name = "messageLabel";
+            messageLabel.Size = new Size(104, 17);
+            messageLabel.TabIndex = 28;
+            messageLabel.Text = "placeholder msg";
+            messageLabel.Visible = false;
+            // 
             // MemberRegistrationUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(messageLabel);
             Controls.Add(stateComboBox);
             Controls.Add(genderComboBox);
             Controls.Add(yearComboBox);
@@ -350,5 +366,6 @@
         private ComboBox yearComboBox;
         private ComboBox genderComboBox;
         private ComboBox stateComboBox;
+        private Label messageLabel;
     }
 }

@@ -34,11 +34,11 @@
             DisplayUserNameLabel = new Label();
             MainDBTabControl = new TabControl();
             RegMbrTabPage = new TabPage();
+            memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             Search4MbrTabPage = new TabPage();
             search4Member1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
             MbrTransTabPage = new TabPage();
-            memberRegistrationUserControl1 = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
@@ -89,10 +89,11 @@
             MainDBTabControl.SelectedIndex = 0;
             MainDBTabControl.Size = new Size(778, 537);
             MainDBTabControl.TabIndex = 5;
+            MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
             // 
             // RegMbrTabPage
             // 
-            RegMbrTabPage.Controls.Add(memberRegistrationUserControl1);
+            RegMbrTabPage.Controls.Add(memberRegistrationUserControl);
             RegMbrTabPage.Location = new Point(4, 24);
             RegMbrTabPage.Margin = new Padding(3, 2, 3, 2);
             RegMbrTabPage.Name = "RegMbrTabPage";
@@ -101,6 +102,13 @@
             RegMbrTabPage.TabIndex = 0;
             RegMbrTabPage.Text = "Member Registration";
             RegMbrTabPage.UseVisualStyleBackColor = true;
+            // 
+            // memberRegistrationUserControl
+            // 
+            memberRegistrationUserControl.Location = new Point(201, 2);
+            memberRegistrationUserControl.Name = "memberRegistrationUserControl";
+            memberRegistrationUserControl.Size = new Size(381, 504);
+            memberRegistrationUserControl.TabIndex = 6;
             // 
             // Search4MbrTabPage
             // 
@@ -143,13 +151,6 @@
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
-            // memberRegistrationUserControl1
-            // 
-            memberRegistrationUserControl1.Location = new Point(201, 2);
-            memberRegistrationUserControl1.Name = "memberRegistrationUserControl1";
-            memberRegistrationUserControl1.Size = new Size(381, 504);
-            memberRegistrationUserControl1.TabIndex = 6;
-            // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -182,6 +183,6 @@
         private TabPage EditMbrTabPage;
         private TabPage MbrTransTabPage;
         private UserControls.SearchForMemberUserControl search4Member1;
-        private UserControls.MemberRegistrationUserControl memberRegistrationUserControl1;
+        private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
     }
 }
