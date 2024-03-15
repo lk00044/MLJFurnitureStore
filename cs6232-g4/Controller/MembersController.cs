@@ -11,11 +11,11 @@ namespace Members.Controller
 {
     public class MembersController
     {
-        private readonly MemberDAL _memberDAL;
+        private readonly MembersDAL _memberDAL;
 
         public MembersController()
         {
-            _memberDAL = new MemberDAL();
+            _memberDAL = new MembersDAL();
         }
 
         /// <summary>

@@ -14,12 +14,12 @@ namespace cs6232_g4.UserControls
 {
     public partial class MemberRegistrationUserControl : UserControl
     {
-        private readonly MemberController _memberController;
+        private readonly MembersController _memberController;
 
         public MemberRegistrationUserControl()
         {
             InitializeComponent();
-            this._memberController = new MemberController();
+            this._memberController = new MembersController();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace cs6232_g4.UserControls
                 this.messageLabel.Text = "Customer registered successfully!";
                 this.messageLabel.ForeColor = Color.Green;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 this.messageLabel.Text = "Failed to register customer";
                 this.messageLabel.ForeColor = Color.Red;
