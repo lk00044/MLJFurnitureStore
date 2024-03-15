@@ -21,5 +21,16 @@ namespace cs6232_g4
         {
 
         }
+
+        /// <summary>
+        /// tabs changing event handler
+        /// </summary>
+        private void MainDBTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.MainDBTabControl.SelectedIndex == 0)
+            {
+                this.memberRegistrationUserControl.ResetFields();
+            }
+        }
     }
 }
