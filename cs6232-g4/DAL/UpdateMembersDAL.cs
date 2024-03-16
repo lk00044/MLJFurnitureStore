@@ -84,6 +84,33 @@ namespace UpdateMembers.DAL
         }
 
         /// <summary>
+        /// Adds a new member to the database
+        /// </summary>
+        /// <param name="user"></param>
+        public void AddMember(User user)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                SqlCommand insertUserCommand = new SqlCommand("INSERT INTO Users (lastName, firstName, dob, gender, streetNumber, city, state, phone, zipcode) " +
+                "VALUES (@lastName, @firstName, @dob, @ssn, @gender, @streetNumber, @city, @state, @phone, @zipcode) " +
+                "SELECT scope_identity() as lastUserId ", connection, transaction);
+                insertUserCommand.Parameters.AddWithValue("@lastName", );
+                insertUserCommand.Parameters.AddWithValue("@firstName", user.FirstName);
+                insertUserCommand.Parameters.AddWithValue("@dob", user.DOB);
+                insertUserCommand.Parameters.AddWithValue("@gender", user.Gender);
+                insertUserCommand.Parameters.AddWithValue("@streetNumber", user.StreetNumber);
+                insertUserCommand.Parameters.AddWithValue("@addressTwo", user.AddressTwo);
+                insertUserCommand.Parameters.AddWithValue("@city", user.City);
+                insertUserCommand.Parameters.AddWithValue("@phone", user.Phone);
+                insertUserCommand.Parameters.AddWithValue("@zipcode", user.Zipcode);
+
+            }
+        }
+
+        /// <summary>
         /// Deletes a member from the database
         /// </summary>
         /// <param name="userId"></param>
@@ -116,10 +143,10 @@ namespace UpdateMembers.DAL
         }
 
         /// <summary>
-        /// Updates a user data in the database relating to the patient
+        /// Updates a user data in the database relating to the member
         /// </summary>
         /// <param name="user"></param>
-        public bool UpdatePatient(User user, User oldUser)
+        public bool UpdateMember(User user, User oldUser)
         {
             string insertStatement =
                 "UPDATE Users SET " +
@@ -148,7 +175,6 @@ namespace UpdateMembers.DAL
             {
                 connection.Open();
                 SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-                SqlParameter sqlParameter = insertCommand.Parameters.AddWithValue("@lastName", user.FirstName);
                 insertCommand.Parameters.AddWithValue("@firstName", user.LastName);
                 insertCommand.Parameters.AddWithValue("@streetNumber", user.StreetNumber);
                 insertCommand.Parameters.AddWithValue("@addressTwo", user.AddressTwo);
@@ -181,6 +207,9 @@ namespace UpdateMembers.DAL
             }
         }
 
-
+        internal void UpdateMember(Member storeMember)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

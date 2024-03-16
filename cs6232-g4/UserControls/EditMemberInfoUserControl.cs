@@ -16,5 +16,30 @@ namespace cs6232_g4.UserControls
         {
             InitializeComponent();
         }
+
+        private void NewFNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewLNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewStateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EnterMbrLNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

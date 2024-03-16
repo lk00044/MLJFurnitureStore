@@ -26,11 +26,11 @@ namespace Members.Controller
         }
 
         /// <summary>
-        /// Register a store member
+        /// Update/edit a store member
         /// </summary>
-        public void RegisterStoreMember(Member storeMember)
+        public void UpdateMember(Member storeMember)
         {
-            this._memberDAL.RegisterStoreMember(storeMember);
+            this._updateMemberDAL.UpdateMember(storeMember);
         }
 
     }

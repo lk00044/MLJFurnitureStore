@@ -63,6 +63,7 @@
             NewZipLabel = new Label();
             NewGenderLabel = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            label3 = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -84,12 +85,12 @@
             // SearchInstructionsLabel
             // 
             SearchInstructionsLabel.AutoSize = true;
-            SearchInstructionsLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            SearchInstructionsLabel.Font = new Font("Segoe UI", 10F, FontStyle.Italic);
             SearchInstructionsLabel.Location = new Point(33, 37);
             SearchInstructionsLabel.Name = "SearchInstructionsLabel";
-            SearchInstructionsLabel.Size = new Size(596, 25);
+            SearchInstructionsLabel.Size = new Size(437, 23);
             SearchInstructionsLabel.TabIndex = 12;
-            SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
+            SearchInstructionsLabel.Text = "Enter Member ID, Phone Number, or First and Last Name.";
             // 
             // DisplayIDLabel
             // 
@@ -102,10 +103,10 @@
             // EnterNewMbrNameLabel
             // 
             EnterNewMbrNameLabel.AutoSize = true;
-            EnterNewMbrNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            EnterNewMbrNameLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             EnterNewMbrNameLabel.Location = new Point(30, 251);
             EnterNewMbrNameLabel.Name = "EnterNewMbrNameLabel";
-            EnterNewMbrNameLabel.Size = new Size(106, 23);
+            EnterNewMbrNameLabel.Size = new Size(94, 20);
             EnterNewMbrNameLabel.TabIndex = 8;
             EnterNewMbrNameLabel.Text = "Member ID: ";
             // 
@@ -114,28 +115,28 @@
             NewDOBLabel.AutoSize = true;
             NewDOBLabel.Location = new Point(3, 321);
             NewDOBLabel.Name = "NewDOBLabel";
-            NewDOBLabel.Size = new Size(233, 20);
+            NewDOBLabel.Size = new Size(101, 20);
             NewDOBLabel.TabIndex = 19;
-            NewDOBLabel.Text = "Enter Member New Date of Birth: ";
+            NewDOBLabel.Text = "Date of Birth: ";
             // 
             // NewAddr1Label
             // 
             NewAddr1Label.AutoSize = true;
             NewAddr1Label.Location = new Point(3, 99);
             NewAddr1Label.Name = "NewAddr1Label";
-            NewAddr1Label.Size = new Size(213, 20);
+            NewAddr1Label.Size = new Size(65, 20);
             NewAddr1Label.TabIndex = 8;
-            NewAddr1Label.Text = "Enter Member New Address 1: ";
+            NewAddr1Label.Text = "Address:";
             // 
             // UpdateMemberButton
             // 
             UpdateMemberButton.FlatStyle = FlatStyle.Popup;
-            UpdateMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UpdateMemberButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             UpdateMemberButton.Location = new Point(580, 3);
             UpdateMemberButton.Name = "UpdateMemberButton";
-            UpdateMemberButton.Size = new Size(257, 26);
+            UpdateMemberButton.Size = new Size(260, 26);
             UpdateMemberButton.TabIndex = 5;
-            UpdateMemberButton.Text = "Update Member";
+            UpdateMemberButton.Text = "Update";
             UpdateMemberButton.UseVisualStyleBackColor = true;
             // 
             // NewFNameLabel
@@ -143,27 +144,29 @@
             NewFNameLabel.AutoSize = true;
             NewFNameLabel.Location = new Point(3, 0);
             NewFNameLabel.Name = "NewFNameLabel";
-            NewFNameLabel.Size = new Size(219, 20);
+            NewFNameLabel.Size = new Size(87, 20);
             NewFNameLabel.TabIndex = 2;
-            NewFNameLabel.Text = "Enter Member New First Name: ";
+            NewFNameLabel.Text = "First Name: ";
+            NewFNameLabel.Click += NewFNameLabel_Click;
             // 
             // NewPhoneLabel
             // 
             NewPhoneLabel.AutoSize = true;
             NewPhoneLabel.Location = new Point(3, 64);
             NewPhoneLabel.Name = "NewPhoneLabel";
-            NewPhoneLabel.Size = new Size(243, 20);
+            NewPhoneLabel.Size = new Size(111, 20);
             NewPhoneLabel.TabIndex = 3;
-            NewPhoneLabel.Text = "Enter Member New Phone Number: ";
+            NewPhoneLabel.Text = "Phone Number:";
             // 
             // NewLNameLabel
             // 
             NewLNameLabel.AutoSize = true;
             NewLNameLabel.Location = new Point(3, 32);
             NewLNameLabel.Name = "NewLNameLabel";
-            NewLNameLabel.Size = new Size(218, 20);
+            NewLNameLabel.Size = new Size(86, 20);
             NewLNameLabel.TabIndex = 1;
-            NewLNameLabel.Text = "Enter Member New Last Name: ";
+            NewLNameLabel.Text = "Last Name: ";
+            NewLNameLabel.Click += NewLNameLabel_Click;
             // 
             // MbrNewLNameTextBox
             // 
@@ -177,27 +180,28 @@
             label2.AutoSize = true;
             label2.Location = new Point(3, 172);
             label2.Name = "label2";
-            label2.Size = new Size(170, 20);
+            label2.Size = new Size(37, 20);
             label2.TabIndex = 9;
-            label2.Text = "Enter Member New City ";
+            label2.Text = "City:";
             // 
             // EnterMbrIDlabel
             // 
             EnterMbrIDlabel.AutoSize = true;
             EnterMbrIDlabel.Location = new Point(3, 0);
             EnterMbrIDlabel.Name = "EnterMbrIDlabel";
-            EnterMbrIDlabel.Size = new Size(129, 20);
+            EnterMbrIDlabel.Size = new Size(91, 20);
             EnterMbrIDlabel.TabIndex = 0;
-            EnterMbrIDlabel.Text = "Enter Member ID: ";
+            EnterMbrIDlabel.Text = "Member ID: ";
             // 
             // EnterMbrLNameLabel
             // 
             EnterMbrLNameLabel.AutoSize = true;
             EnterMbrLNameLabel.Location = new Point(3, 99);
             EnterMbrLNameLabel.Name = "EnterMbrLNameLabel";
-            EnterMbrLNameLabel.Size = new Size(184, 20);
+            EnterMbrLNameLabel.Size = new Size(86, 20);
             EnterMbrLNameLabel.TabIndex = 1;
-            EnterMbrLNameLabel.Text = "Enter Member Last Name: ";
+            EnterMbrLNameLabel.Text = "Last Name: ";
+            EnterMbrLNameLabel.Click += EnterMbrLNameLabel_Click;
             // 
             // NewAddr1TextBox
             // 
@@ -209,12 +213,12 @@
             // FindMemberButton
             // 
             FindMemberButton.FlatStyle = FlatStyle.Popup;
-            FindMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FindMemberButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             FindMemberButton.Location = new Point(580, 3);
             FindMemberButton.Name = "FindMemberButton";
             FindMemberButton.Size = new Size(257, 26);
             FindMemberButton.TabIndex = 5;
-            FindMemberButton.Text = "Find Member";
+            FindMemberButton.Text = "Search";
             FindMemberButton.UseVisualStyleBackColor = true;
             // 
             // MbrPhoneNumTextBox
@@ -275,18 +279,18 @@
             EnterMbrFNameLabel.AutoSize = true;
             EnterMbrFNameLabel.Location = new Point(3, 64);
             EnterMbrFNameLabel.Name = "EnterMbrFNameLabel";
-            EnterMbrFNameLabel.Size = new Size(185, 20);
+            EnterMbrFNameLabel.Size = new Size(87, 20);
             EnterMbrFNameLabel.TabIndex = 2;
-            EnterMbrFNameLabel.Text = "Enter Member First Name: ";
+            EnterMbrFNameLabel.Text = "First Name: ";
             // 
             // EnterMbrPhoneNumLabel
             // 
             EnterMbrPhoneNumLabel.AutoSize = true;
             EnterMbrPhoneNumLabel.Location = new Point(3, 32);
             EnterMbrPhoneNumLabel.Name = "EnterMbrPhoneNumLabel";
-            EnterMbrPhoneNumLabel.Size = new Size(213, 20);
+            EnterMbrPhoneNumLabel.Size = new Size(115, 20);
             EnterMbrPhoneNumLabel.TabIndex = 3;
-            EnterMbrPhoneNumLabel.Text = "Enter Member Phone Number: ";
+            EnterMbrPhoneNumLabel.Text = "Phone Number: ";
             // 
             // tableLayoutPanel1
             // 
@@ -339,36 +343,37 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 135);
             label1.Name = "label1";
-            label1.Size = new Size(209, 20);
+            label1.Size = new Size(77, 20);
             label1.TabIndex = 11;
-            label1.Text = "Enter Member New Address 2:";
+            label1.Text = "Address 2:";
             // 
             // NewStateLabel
             // 
             NewStateLabel.AutoSize = true;
             NewStateLabel.Location = new Point(3, 215);
             NewStateLabel.Name = "NewStateLabel";
-            NewStateLabel.Size = new Size(182, 20);
+            NewStateLabel.Size = new Size(46, 20);
             NewStateLabel.TabIndex = 10;
-            NewStateLabel.Text = "Enter Member New State: ";
+            NewStateLabel.Text = "State:";
+            NewStateLabel.Click += NewStateLabel_Click;
             // 
             // NewZipLabel
             // 
             NewZipLabel.AutoSize = true;
             NewZipLabel.Location = new Point(3, 251);
             NewZipLabel.Name = "NewZipLabel";
-            NewZipLabel.Size = new Size(170, 20);
+            NewZipLabel.Size = new Size(34, 20);
             NewZipLabel.TabIndex = 17;
-            NewZipLabel.Text = "Enter Member New Zip: ";
+            NewZipLabel.Text = "Zip:";
             // 
             // NewGenderLabel
             // 
             NewGenderLabel.AutoSize = true;
             NewGenderLabel.Location = new Point(3, 286);
             NewGenderLabel.Name = "NewGenderLabel";
-            NewGenderLabel.Size = new Size(196, 20);
+            NewGenderLabel.Size = new Size(64, 20);
             NewGenderLabel.TabIndex = 18;
-            NewGenderLabel.Text = "Enter Member New Gender: ";
+            NewGenderLabel.Text = "Gender: ";
             // 
             // tableLayoutPanel2
             // 
@@ -413,10 +418,22 @@
             tableLayoutPanel2.Size = new Size(846, 355);
             tableLayoutPanel2.TabIndex = 10;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Italic);
+            label3.Location = new Point(27, 226);
+            label3.Name = "label3";
+            label3.Size = new Size(302, 23);
+            label3.TabIndex = 13;
+            label3.Text = "Update/Edit Member Information below";
+            label3.Click += label3_Click;
+            // 
             // EditMemberInfoUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label3);
             Controls.Add(SearchInstructionsLabel);
             Controls.Add(DisplayIDLabel);
             Controls.Add(EnterNewMbrNameLabel);
@@ -469,5 +486,6 @@
         private Label NewZipLabel;
         private Label NewGenderLabel;
         private TableLayoutPanel tableLayoutPanel2;
+        private Label label3;
     }
 }
