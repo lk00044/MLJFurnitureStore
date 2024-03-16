@@ -12,7 +12,7 @@ namespace cs6232_g4.UserControls
         private string MbrPhoneNum;
         private List<Member> MemberList;
 
-        private readonly MembersController _memberController;
+        private readonly UpdateRegistrationController _memberController;
 
 
         public SearchForMemberUserControl()

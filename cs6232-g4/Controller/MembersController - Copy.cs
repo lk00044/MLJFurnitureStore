@@ -9,11 +9,11 @@ using Members.DAL;
 
 namespace Members.Controller
 {
-    public class MembersController
+    public class UpdateRegistrationController
     {
         private readonly MembersDAL _memberDAL;
 
-        public MembersController()
+        public UpdateRegistrationController()
         {
             _memberDAL = new MembersDAL();
         }

@@ -14,7 +14,7 @@ namespace cs6232_g4.UserControls
 {
     public partial class MemberRegistrationUserControl : UserControl
     {
-        private readonly MembersController _memberController;
+        private readonly UpdateRegistrationController _memberController;
 
         public MemberRegistrationUserControl()
         {

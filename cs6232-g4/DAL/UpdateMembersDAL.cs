@@ -1,8 +1,6 @@
 ﻿/// <summary>
 /// Member Data Access Layer
 /// Group 4
-/// Programmer: LKeller
-/// Date: 08/11/24
 /// </summary>
 
 using cs6232_g4.DAL;
