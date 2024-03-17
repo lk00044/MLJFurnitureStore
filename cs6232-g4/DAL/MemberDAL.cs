@@ -201,5 +201,50 @@ namespace Members.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// update a store member
+        /// </summary> UPDATE StoreMember SET
+
+        public void UpdateStoreMember(Member storeMember)
+        {
+            string command = $"UPDATE [dbo].[StoreMember] SET date_of_birth=@dob, fname=@fname, lname=@lname, phone=@phone, address1=@address1, address2=@address2, state=@state, city=@city, zip=@zip, gender=@gender"
+                            + " WHERE member_id=@id";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand insert_command = new SqlCommand(command, connection))
+                {
+                    insert_command.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                    insert_command.Parameters.Add("@dob", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@fname", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@lname", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@phone", System.Data.SqlDbType.NChar);
+                    insert_command.Parameters.Add("@address1", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@address2", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@city", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@state", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@zip", System.Data.SqlDbType.NVarChar);
+                    insert_command.Parameters.Add("@gender", System.Data.SqlDbType.NChar);
+
+                    insert_command.Parameters["@id"].Value = storeMember.MemberID;
+                    insert_command.Parameters["@dob"].Value = storeMember.DateOfBirth;
+                    insert_command.Parameters["@fname"].Value = storeMember.FirstName;
+                    insert_command.Parameters["@lname"].Value = storeMember.LastName;
+                    insert_command.Parameters["@phone"].Value = storeMember.Phone;
+                    insert_command.Parameters["@address1"].Value = storeMember.Address1;
+                    insert_command.Parameters["@address2"].Value = storeMember.Address2;
+                    insert_command.Parameters["@city"].Value = storeMember.City;
+                    insert_command.Parameters["@state"].Value = storeMember.State;
+                    insert_command.Parameters["@zip"].Value = storeMember.ZipCode;
+                    insert_command.Parameters["@gender"].Value = storeMember.Gender;
+
+                    insert_command.ExecuteNonQuery();
+
+                }
+            }
+        }
     }
 }

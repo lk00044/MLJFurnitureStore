@@ -159,7 +159,7 @@
             editMemberInfoUserControl1.Location = new Point(0, 0);
             editMemberInfoUserControl1.Margin = new Padding(3, 2, 3, 2);
             editMemberInfoUserControl1.Name = "editMemberInfoUserControl1";
-            editMemberInfoUserControl1.Size = new Size(770, 513);
+            editMemberInfoUserControl1.Size = new Size(774, 513);
             editMemberInfoUserControl1.TabIndex = 0;
             // 
             // DashboardForm

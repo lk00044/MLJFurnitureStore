@@ -63,7 +63,7 @@
             NewZipLabel = new Label();
             NewGenderLabel = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            ErrorLabel = new Label();
+            InfoLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -141,6 +141,7 @@
             UpdateMemberButton.TabIndex = 5;
             UpdateMemberButton.Text = "Update Member";
             UpdateMemberButton.UseVisualStyleBackColor = true;
+            UpdateMemberButton.Click += UpdateMemberButton_Click;
             // 
             // NewFNameLabel
             // 
@@ -431,15 +432,15 @@
             tableLayoutPanel2.Size = new Size(740, 266);
             tableLayoutPanel2.TabIndex = 10;
             // 
-            // ErrorLabel
+            // InfoLabel
             // 
-            ErrorLabel.AutoSize = true;
-            ErrorLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ErrorLabel.Location = new Point(213, 37);
-            ErrorLabel.Name = "ErrorLabel";
-            ErrorLabel.Size = new Size(60, 15);
-            ErrorLabel.TabIndex = 22;
-            ErrorLabel.Text = "ErrorLabel";
+            InfoLabel.AutoSize = true;
+            InfoLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            InfoLabel.Location = new Point(213, 37);
+            InfoLabel.Name = "InfoLabel";
+            InfoLabel.Size = new Size(56, 15);
+            InfoLabel.TabIndex = 22;
+            InfoLabel.Text = "InfoLabel";
             // 
             // EditMemberInfoUserControl
             // 
@@ -452,7 +453,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(UpdateMemberButton);
-            Controls.Add(ErrorLabel);
+            Controls.Add(InfoLabel);
             Margin = new Padding(3, 2, 3, 2);
             Name = "EditMemberInfoUserControl";
             Size = new Size(791, 500);
@@ -501,6 +502,6 @@
         private Label NewZipLabel;
         private Label NewGenderLabel;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label ErrorLabel;
+        private Label InfoLabel;
     }
 }
