@@ -12,13 +12,13 @@ namespace cs6232_g4.UserControls
         private string MbrPhoneNum;
         private List<Member> MemberList;
 
-        private readonly MemberController _memberController;
+        private readonly MembersController _memberController;
 
 
         public SearchForMemberUserControl()
         {
             InitializeComponent();
-            _memberController = new MemberController();
+            _memberController = new MembersController();
             MemberList = new List<Member>();
             MbrId = 0;
             MbrFName = string.Empty;
@@ -29,24 +29,21 @@ namespace cs6232_g4.UserControls
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
 
-            if (this.CheckIfMissingAllInput())
-            {
-                this.ErrorLabel.Text = "You must enter one of the following options: 1) Member ID, 2) Member Phone Number, or 3) Member First and Last Name";
-            }
-
-            if (this.CheckIfMissingNamePart())
-            {
-                this.ErrorLabel.Text = "You must enter both the Member First and Last Name";
-            }
-
             try
             {
 
-                if (this.MbrIDTextBox.Text != "")
+                if (this.CheckIfMissingAllInput())
                 {
-                    if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId)) {
+                    this.ErrorLabel.Text = "You must enter one of the following options: 1) Member ID, 2) Member Phone Number, or 3) Member First and Last Name";
+                }
+                else if (this.MbrIDTextBox.Text != "")
+                {
+                    if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId)) 
+                        {
                         MemberList = this._memberController.GetMemberByID(MbrId);
                         this.DisplayMemberMatches();
+                        this.ClearTextBoxes();
+                        this.ReEnableTextBoxes();
                     }
                     else
                     {
@@ -61,6 +58,8 @@ namespace cs6232_g4.UserControls
                         this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
                         MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
                         this.DisplayMemberMatches();
+                        this.ClearTextBoxes();
+                        this.ReEnableTextBoxes();
                     }
                     else
                     {
@@ -68,20 +67,46 @@ namespace cs6232_g4.UserControls
                     }
                     
                 }
+                else if(this.CheckIfMissingNamePart())
+                {
+                    this.ErrorLabel.Text = "You must enter both the Member's First and Last Name";
+                }
                 else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
                 {
                     this.MbrLName = this.MbrLNameTextBox.Text;
                     this.MbrFName = this.MbrFNameTextBox.Text;
 
                     MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
+                    this.ClearTextBoxes();
+                    this.ReEnableTextBoxes();
                     this.DisplayMemberMatches();
+                    
                 }
+                            
+
             }
             catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }          
 
+        }
+
+        private void ClearTextBoxes()
+        {
+            this.MbrIDTextBox.Text = string.Empty;
+            this.MbrPhoneNumTextBox.Text = string.Empty;    
+            this.MbrFNameTextBox.Text = string.Empty;
+            this.MbrLNameTextBox.Text= string.Empty;
+        }
+
+
+        private void ReEnableTextBoxes()
+        {
+            this.MbrIDTextBox.Enabled = true;
+            this.MbrFNameTextBox.Enabled = true;
+            this.MbrLNameTextBox.Enabled = true;
+            this.MbrPhoneNumTextBox.Enabled = true;
         }
 
         private bool CheckIfMissingAllInput()
@@ -132,30 +157,53 @@ namespace cs6232_g4.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+
+            
         }
 
-        private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrIDTextBox_Click(object sender, EventArgs e)
+        {
+            
+            this.ErrorLabel.Text = string.Empty;
+            this.MbrFNameTextBox.Enabled = false;
+            this.MbrLNameTextBox.Enabled = false;
+            this.MbrPhoneNumTextBox.Enabled = false;
+        }
+
+        private void MbrPhoneNumTextBox_Click(object sender, EventArgs e)
+       {
+            
+            this.ErrorLabel.Text = string.Empty;
+
+            this.MbrPhoneNumTextBox.Enabled = true;
+            this.MbrFNameTextBox.Enabled = false;
+            this.MbrLNameTextBox.Enabled = false;
+            this.MbrIDTextBox.Enabled = false;
+
+
+        }
+
+        private void MbrFNameTextBox_Click(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
             this.ErrorLabel.Text = string.Empty;
+
+            this.MbrPhoneNumTextBox.Enabled = false;
+            this.MbrFNameTextBox.Enabled = true;
+            this.MbrLNameTextBox.Enabled = true;
+            this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrLNameTextBox_Click(object sender, EventArgs e)
         {
             this.MatchingMembersListView.Items.Clear();
             this.ErrorLabel.Text = string.Empty;
-        }
 
-        private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.MatchingMembersListView.Items.Clear();
-            this.ErrorLabel.Text = string.Empty;
-        }
 
-        private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.MatchingMembersListView.Items.Clear();
-            this.ErrorLabel.Text = string.Empty;
+            this.MbrPhoneNumTextBox.Enabled = false;
+            this.MbrFNameTextBox.Enabled = true;
+            this.MbrLNameTextBox.Enabled = true;
+            this.MbrIDTextBox.Enabled = false;
         }
     }
 }

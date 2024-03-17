@@ -38,6 +38,7 @@
             MbrFNameColumnHeader = new ColumnHeader();
             MbrUDColumnHeader = new ColumnHeader();
             MatchingMembersListView = new ListView();
+            PhoneColumnHeader = new ColumnHeader();
             GenderColumnHeader = new ColumnHeader();
             MatchingMembersLabel = new Label();
             FindMemberButton = new Button();
@@ -50,8 +51,8 @@
             EnterMbrLNameLabel = new Label();
             EnterMbrFNameLabel = new Label();
             EnterMbrPhoneNumLabel = new Label();
-            SearchInstructionsLabel = new Label();
             ErrorLabel = new Label();
+            SearchInstructionsLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,7 +102,7 @@
             // 
             // MatchingMembersListView
             // 
-            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, DOBColumnHeader, GenderColumnHeader });
+            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, PhoneColumnHeader, GenderColumnHeader, DOBColumnHeader });
             MatchingMembersListView.GridLines = true;
             MatchingMembersListView.Location = new Point(17, 250);
             MatchingMembersListView.Name = "MatchingMembersListView";
@@ -109,6 +110,12 @@
             MatchingMembersListView.TabIndex = 13;
             MatchingMembersListView.UseCompatibleStateImageBehavior = false;
             MatchingMembersListView.View = View.Details;
+            // 
+            // PhoneColumnHeader
+            // 
+            PhoneColumnHeader.DisplayIndex = 10;
+            PhoneColumnHeader.Text = "Phone";
+            PhoneColumnHeader.Width = 120;
             // 
             // GenderColumnHeader
             // 
@@ -142,7 +149,7 @@
             MbrPhoneNumTextBox.Name = "MbrPhoneNumTextBox";
             MbrPhoneNumTextBox.Size = new Size(280, 27);
             MbrPhoneNumTextBox.TabIndex = 1;
-            MbrPhoneNumTextBox.TextChanged += MbrPhoneNumTextBox_TextChanged;
+            MbrPhoneNumTextBox.TextChanged += MbrPhoneNumTextBox_Click;
             // 
             // MbrIDTextBox
             // 
@@ -150,7 +157,7 @@
             MbrIDTextBox.Name = "MbrIDTextBox";
             MbrIDTextBox.Size = new Size(280, 27);
             MbrIDTextBox.TabIndex = 0;
-            MbrIDTextBox.TextChanged += MbrIDTextBox_TextChanged;
+            MbrIDTextBox.TextChanged += MbrIDTextBox_Click;
             // 
             // MbrFNameTextBox
             // 
@@ -158,7 +165,7 @@
             MbrFNameTextBox.Name = "MbrFNameTextBox";
             MbrFNameTextBox.Size = new Size(280, 27);
             MbrFNameTextBox.TabIndex = 2;
-            MbrFNameTextBox.TextChanged += MbrFNameTextBox_TextChanged;
+            MbrFNameTextBox.TextChanged += MbrFNameTextBox_Click;
             // 
             // MbrLNameTextBox
             // 
@@ -166,7 +173,7 @@
             MbrLNameTextBox.Name = "MbrLNameTextBox";
             MbrLNameTextBox.Size = new Size(280, 27);
             MbrLNameTextBox.TabIndex = 3;
-            MbrLNameTextBox.TextChanged += MbrLNameTextBox_TextChanged;
+            MbrLNameTextBox.TextChanged += MbrLNameTextBox_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -230,6 +237,15 @@
             EnterMbrPhoneNumLabel.TabIndex = 3;
             EnterMbrPhoneNumLabel.Text = "Enter Member Phone Number: ";
             // 
+            // ErrorLabel
+            // 
+            ErrorLabel.ForeColor = Color.Red;
+            ErrorLabel.Location = new Point(580, 35);
+            ErrorLabel.Name = "ErrorLabel";
+            tableLayoutPanel1.SetRowSpan(ErrorLabel, 3);
+            ErrorLabel.Size = new Size(254, 91);
+            ErrorLabel.TabIndex = 5;
+            // 
             // SearchInstructionsLabel
             // 
             SearchInstructionsLabel.AutoSize = true;
@@ -239,15 +255,6 @@
             SearchInstructionsLabel.Size = new Size(612, 25);
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
-            // 
-            // ErrorLabel
-            // 
-            ErrorLabel.ForeColor = Color.Red;
-            ErrorLabel.Location = new Point(580, 35);
-            ErrorLabel.Name = "ErrorLabel";
-            tableLayoutPanel1.SetRowSpan(ErrorLabel, 3);
-            ErrorLabel.Size = new Size(254, 91);
-            ErrorLabel.TabIndex = 5;
             // 
             // SearchForMemberUserControl
             // 
@@ -291,5 +298,6 @@
         private Label EnterMbrPhoneNumLabel;
         private Label SearchInstructionsLabel;
         private Label ErrorLabel;
+        private ColumnHeader PhoneColumnHeader;
     }
 }
