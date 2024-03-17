@@ -63,6 +63,7 @@
             NewZipLabel = new Label();
             NewGenderLabel = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            InfoLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -86,10 +87,10 @@
             // SearchInstructionsLabel
             // 
             SearchInstructionsLabel.AutoSize = true;
-            SearchInstructionsLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            SearchInstructionsLabel.Location = new Point(29, 28);
+            SearchInstructionsLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchInstructionsLabel.Location = new Point(24, 15);
             SearchInstructionsLabel.Name = "SearchInstructionsLabel";
-            SearchInstructionsLabel.Size = new Size(483, 20);
+            SearchInstructionsLabel.Size = new Size(535, 20);
             SearchInstructionsLabel.TabIndex = 12;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
@@ -133,13 +134,14 @@
             // 
             UpdateMemberButton.FlatStyle = FlatStyle.Popup;
             UpdateMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UpdateMemberButton.Location = new Point(508, 2);
+            UpdateMemberButton.Location = new Point(534, 190);
             UpdateMemberButton.Margin = new Padding(3, 2, 3, 2);
             UpdateMemberButton.Name = "UpdateMemberButton";
-            UpdateMemberButton.Size = new Size(225, 20);
+            UpdateMemberButton.Size = new Size(225, 24);
             UpdateMemberButton.TabIndex = 5;
             UpdateMemberButton.Text = "Update Member";
             UpdateMemberButton.UseVisualStyleBackColor = true;
+            UpdateMemberButton.Click += UpdateMemberButton_Click;
             // 
             // NewFNameLabel
             // 
@@ -214,14 +216,15 @@
             // FindMemberButton
             // 
             FindMemberButton.FlatStyle = FlatStyle.Popup;
-            FindMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FindMemberButton.Location = new Point(508, 2);
+            FindMemberButton.Font = new Font("Segoe UI Semibold", 10.2F);
+            FindMemberButton.Location = new Point(534, 37);
             FindMemberButton.Margin = new Padding(3, 2, 3, 2);
             FindMemberButton.Name = "FindMemberButton";
-            FindMemberButton.Size = new Size(225, 20);
+            FindMemberButton.Size = new Size(225, 26);
             FindMemberButton.TabIndex = 5;
             FindMemberButton.Text = "Find Member";
             FindMemberButton.UseVisualStyleBackColor = true;
+            FindMemberButton.Click += FindMemberButton_Click;
             // 
             // MbrPhoneNumTextBox
             // 
@@ -307,7 +310,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 217F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 288F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 235F));
-            tableLayoutPanel1.Controls.Add(FindMemberButton, 2, 0);
             tableLayoutPanel1.Controls.Add(MbrPhoneNumTextBox, 1, 1);
             tableLayoutPanel1.Controls.Add(EnterMbrIDlabel, 0, 0);
             tableLayoutPanel1.Controls.Add(EnterMbrLNameLabel, 0, 3);
@@ -395,7 +397,6 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 235F));
             tableLayoutPanel2.Controls.Add(NewDOBLabel, 0, 9);
             tableLayoutPanel2.Controls.Add(NewAddr1Label, 0, 3);
-            tableLayoutPanel2.Controls.Add(UpdateMemberButton, 2, 0);
             tableLayoutPanel2.Controls.Add(NewFNameLabel, 0, 0);
             tableLayoutPanel2.Controls.Add(NewPhoneLabel, 0, 2);
             tableLayoutPanel2.Controls.Add(NewLNameLabel, 0, 1);
@@ -431,15 +432,28 @@
             tableLayoutPanel2.Size = new Size(740, 266);
             tableLayoutPanel2.TabIndex = 10;
             // 
+            // InfoLabel
+            // 
+            InfoLabel.AutoSize = true;
+            InfoLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            InfoLabel.Location = new Point(213, 37);
+            InfoLabel.Name = "InfoLabel";
+            InfoLabel.Size = new Size(56, 15);
+            InfoLabel.TabIndex = 22;
+            InfoLabel.Text = "InfoLabel";
+            // 
             // EditMemberInfoUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(FindMemberButton);
             Controls.Add(SearchInstructionsLabel);
             Controls.Add(DisplayIDLabel);
             Controls.Add(EnterNewMbrNameLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
+            Controls.Add(UpdateMemberButton);
+            Controls.Add(InfoLabel);
             Margin = new Padding(3, 2, 3, 2);
             Name = "EditMemberInfoUserControl";
             Size = new Size(791, 500);
@@ -488,5 +502,6 @@
         private Label NewZipLabel;
         private Label NewGenderLabel;
         private TableLayoutPanel tableLayoutPanel2;
+        private Label InfoLabel;
     }
 }

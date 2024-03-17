@@ -39,9 +39,11 @@
             search4Member1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
             MbrTransTabPage = new TabPage();
+            editMemberInfoUserControl1 = new UserControls.EditMemberInfoUserControl();
             MainDBTabControl.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
+            EditMbrTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -133,6 +135,7 @@
             // 
             // EditMbrTabPage
             // 
+            EditMbrTabPage.Controls.Add(editMemberInfoUserControl1);
             EditMbrTabPage.Location = new Point(4, 24);
             EditMbrTabPage.Margin = new Padding(3, 2, 3, 2);
             EditMbrTabPage.Name = "EditMbrTabPage";
@@ -151,6 +154,14 @@
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
+            // editMemberInfoUserControl1
+            // 
+            editMemberInfoUserControl1.Location = new Point(0, 0);
+            editMemberInfoUserControl1.Margin = new Padding(3, 2, 3, 2);
+            editMemberInfoUserControl1.Name = "editMemberInfoUserControl1";
+            editMemberInfoUserControl1.Size = new Size(774, 513);
+            editMemberInfoUserControl1.TabIndex = 0;
+            // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -168,6 +179,7 @@
             MainDBTabControl.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             Search4MbrTabPage.ResumeLayout(false);
+            EditMbrTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,5 +196,6 @@
         private TabPage MbrTransTabPage;
         private UserControls.SearchForMemberUserControl search4Member1;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
+        private UserControls.EditMemberInfoUserControl editMemberInfoUserControl1;
     }
 }

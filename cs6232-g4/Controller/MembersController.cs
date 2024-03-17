@@ -50,5 +50,12 @@ namespace Members.Controller
             this._memberDAL.RegisterStoreMember(storeMember);
         }
 
+        /// <summary>
+        /// Update a store member
+        /// </summary>
+        public void UpdateStoreMember(Member storeMember)
+        {
+            this._memberDAL.UpdateStoreMember(storeMember);
+        }
     }
 }
