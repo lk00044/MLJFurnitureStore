@@ -5,14 +5,14 @@ namespace cs6232_g4.UserControls
 {
     public partial class EditMemberInfoUserControl : UserControl
     {
-        private readonly MemberController _memberController;
+        private readonly MembersController _memberController;
 
         private List<Member> MemberList;
 
         public EditMemberInfoUserControl()
         {
             InitializeComponent();
-            this._memberController = new MemberController();
+            this._memberController = new MembersController();
             MemberList = new List<Member>();
             this.InfoLabel.Text = string.Empty;
             this.InfoLabel.ForeColor = Color.Red;
