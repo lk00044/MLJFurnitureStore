@@ -97,7 +97,7 @@ namespace UpdateMembers.DAL
                 SqlCommand insertUserCommand = new SqlCommand("INSERT INTO Users (lastName, firstName, dob, gender, streetNumber, city, state, phone, zipcode) " +
                 "VALUES (@lastName, @firstName, @dob, @ssn, @gender, @streetNumber, @city, @state, @phone, @zipcode) " +
                 "SELECT scope_identity() as lastUserId ", connection, transaction);
-                insertUserCommand.Parameters.AddWithValue("@lastName", );
+                insertUserCommand.Parameters.AddWithValue("@lastName", user.LastName);
                 insertUserCommand.Parameters.AddWithValue("@firstName", user.FirstName);
                 insertUserCommand.Parameters.AddWithValue("@dob", user.DOB);
                 insertUserCommand.Parameters.AddWithValue("@gender", user.Gender);
