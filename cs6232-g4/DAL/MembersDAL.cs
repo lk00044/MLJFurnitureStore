@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Members.DAL
 {
-    public class LoginDAL
+    public class MembersDAL
     {
 
         /// <summary>
