@@ -34,6 +34,7 @@
             LblPassword = new Label();
             TextPassword = new TextBox();
             TextUsername = new TextBox();
+            BtnLogin = new Button();
             TableLayoutPanel.SuspendLayout();
             LoginBox.SuspendLayout();
             SuspendLayout();
@@ -43,12 +44,13 @@
             TableLayoutPanel.ColumnCount = 1;
             TableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             TableLayoutPanel.Controls.Add(LoginBox, 0, 0);
+            TableLayoutPanel.Controls.Add(BtnLogin, 0, 1);
             TableLayoutPanel.Location = new Point(0, 0);
             TableLayoutPanel.Name = "TableLayoutPanel";
             TableLayoutPanel.RowCount = 2;
             TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             TableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            TableLayoutPanel.Size = new Size(621, 325);
+            TableLayoutPanel.Size = new Size(659, 417);
             TableLayoutPanel.TabIndex = 1;
             // 
             // LoginBox
@@ -57,9 +59,10 @@
             LoginBox.Controls.Add(TextPassword);
             LoginBox.Controls.Add(LblPassword);
             LoginBox.Controls.Add(LblUsername);
+            LoginBox.Dock = DockStyle.Fill;
             LoginBox.Location = new Point(3, 3);
             LoginBox.Name = "LoginBox";
-            LoginBox.Size = new Size(615, 151);
+            LoginBox.Size = new Size(653, 202);
             LoginBox.TabIndex = 0;
             LoginBox.TabStop = false;
             LoginBox.Text = "Login";
@@ -74,6 +77,7 @@
             LblUsername.TabIndex = 0;
             LblUsername.Text = "Username";
             LblUsername.Click += label1_Click_1;
+            LblUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LblPassword
             // 
@@ -84,6 +88,7 @@
             LblPassword.Size = new Size(93, 28);
             LblPassword.TabIndex = 1;
             LblPassword.Text = "Password";
+            LblPassword.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TextPassword
             // 
@@ -99,11 +104,22 @@
             TextUsername.Size = new Size(390, 27);
             TextUsername.TabIndex = 3;
             // 
+            // BtnLogin
+            // 
+            BtnLogin.Font = new Font("Segoe UI", 14F);
+            BtnLogin.Location = new Point(3, 211);
+            BtnLogin.Name = "BtnLogin";
+            BtnLogin.Size = new Size(618, 70);
+            BtnLogin.TabIndex = 1;
+            BtnLogin.Text = "Login";
+            BtnLogin.UseVisualStyleBackColor = true;
+            BtnLogin.Click += new System.EventHandler(BtnLogin.Click);
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(624, 327);
+            ClientSize = new Size(624, 289);
             Controls.Add(TableLayoutPanel);
             Name = "LoginForm";
             Text = "Login";
@@ -122,5 +138,6 @@
         private Label LblUsername;
         private TextBox TextUsername;
         private TextBox TextPassword;
+        private Button BtnLogin;
     }
 }
