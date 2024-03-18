@@ -11,14 +11,17 @@ using System.Windows.Forms;
 using cs6232_g4.DAL;
 using cs6232_g4.Controller;
 using cs6232_g4.Model;
+using cs6232_g4.Helper;
+using Members.Controller;
 
 
 namespace cs6232_g4.View
 {
     public partial class LoginForm : Form
     {
-        private LoginController loginController;
-        private LoginForm _login;
+        private LoginController _loginController;
+        private Login _login;
+        private MembersController _memberController;
         public LoginForm()
         {
             InitializeComponent();
@@ -35,31 +38,22 @@ namespace cs6232_g4.View
         {
             try
             {
-                _login.Username = txtUsername.Text.Trim();
+
+                _login.Username = TextUsername.Text.Trim();
                 _login.Password = EncryptionHelper.EncryptString(_login.Password);
 
-                _login = _loginController.CheckIfLoginIsValid(_login);
-
-                if (_login.AdministratorId > 0)
+                
+                if (_login.Username is null)
                 {
-                    AdministratorForm _adminForm = new AdministratorForm(this);
-                    _adminForm.SetUsername(_login, _userController.GetUserAdminByLogin(_login));
+                    LoginForm _loginForm = new LoginForm();
+                    _loginForm._login = _login;
                     LoginDAL.SetLogin(_login);
                     Hide();
-                    _adminForm.Show();
-                }
-                else if (_login.NurseId > 0)
-                {
-                    LoginDAL.SetLogin(_login);
-
-                    SearchPatientForm _searchPatientForm = new SearchPatientForm(this);
-                    _searchPatientForm.SetUsername(_login, _userController.GetUserNurseByLogin(_login));
-                    Hide();
-                    _searchPatientForm.Show();
+                    _loginForm.Show();
                 }
                 else
                 {
-                    lblError.Text = "Invalid username/password";
+                    LblError.Text = "Invalid username/password";
                 }
             }
             catch (Exception ex)

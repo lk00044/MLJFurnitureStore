@@ -30,11 +30,12 @@
         {
             TableLayoutPanel = new TableLayoutPanel();
             LoginBox = new GroupBox();
-            LblUsername = new Label();
-            LblPassword = new Label();
-            TextPassword = new TextBox();
             TextUsername = new TextBox();
+            TextPassword = new TextBox();
+            LblPassword = new Label();
+            LblUsername = new Label();
             BtnLogin = new Button();
+            LblError = new Label();
             TableLayoutPanel.SuspendLayout();
             LoginBox.SuspendLayout();
             SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // LoginBox
             // 
+            LoginBox.Controls.Add(LblError);
             LoginBox.Controls.Add(TextUsername);
             LoginBox.Controls.Add(TextPassword);
             LoginBox.Controls.Add(LblPassword);
@@ -67,17 +69,19 @@
             LoginBox.TabStop = false;
             LoginBox.Text = "Login";
             // 
-            // LblUsername
+            // TextUsername
             // 
-            LblUsername.AutoSize = true;
-            LblUsername.Font = new Font("Segoe UI", 12F);
-            LblUsername.Location = new Point(33, 45);
-            LblUsername.Name = "LblUsername";
-            LblUsername.Size = new Size(99, 28);
-            LblUsername.TabIndex = 0;
-            LblUsername.Text = "Username";
-            LblUsername.Click += label1_Click_1;
-            LblUsername.TextAlign = ContentAlignment.MiddleCenter;
+            TextUsername.Location = new Point(182, 45);
+            TextUsername.Name = "TextUsername";
+            TextUsername.Size = new Size(390, 27);
+            TextUsername.TabIndex = 3;
+            // 
+            // TextPassword
+            // 
+            TextPassword.Location = new Point(182, 100);
+            TextPassword.Name = "TextPassword";
+            TextPassword.Size = new Size(390, 27);
+            TextPassword.TabIndex = 2;
             // 
             // LblPassword
             // 
@@ -90,19 +94,17 @@
             LblPassword.Text = "Password";
             LblPassword.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // TextPassword
+            // LblUsername
             // 
-            TextPassword.Location = new Point(182, 100);
-            TextPassword.Name = "TextPassword";
-            TextPassword.Size = new Size(390, 27);
-            TextPassword.TabIndex = 2;
-            // 
-            // TextUsername
-            // 
-            TextUsername.Location = new Point(182, 45);
-            TextUsername.Name = "TextUsername";
-            TextUsername.Size = new Size(390, 27);
-            TextUsername.TabIndex = 3;
+            LblUsername.AutoSize = true;
+            LblUsername.Font = new Font("Segoe UI", 12F);
+            LblUsername.Location = new Point(33, 45);
+            LblUsername.Name = "LblUsername";
+            LblUsername.Size = new Size(99, 28);
+            LblUsername.TabIndex = 0;
+            LblUsername.Text = "Username";
+            LblUsername.TextAlign = ContentAlignment.MiddleCenter;
+            LblUsername.Click += label1_Click_1;
             // 
             // BtnLogin
             // 
@@ -113,7 +115,17 @@
             BtnLogin.TabIndex = 1;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = true;
-            BtnLogin.Click += new System.EventHandler(BtnLogin.Click);
+            // 
+            // LblError
+            // 
+            LblError.AutoSize = true;
+            LblError.Font = new Font("Segoe UI", 10F);
+            LblError.ForeColor = Color.Red;
+            LblError.Location = new Point(241, 155);
+            LblError.Name = "LblError";
+            LblError.Size = new Size(0, 23);
+            LblError.TabIndex = 4;
+            LblError.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LoginForm
             // 
@@ -139,5 +151,6 @@
         private TextBox TextUsername;
         private TextBox TextPassword;
         private Button BtnLogin;
+        private Label LblError;
     }
 }
