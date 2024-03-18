@@ -1,4 +1,5 @@
 using cs6232_g4;
+using cs6232_g4.View;
 
 namespace Employees
 {
@@ -13,6 +14,7 @@ namespace Employees
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            Application.Run(new LoginForm());
             Application.Run(new DashboardForm());
         }
     }
