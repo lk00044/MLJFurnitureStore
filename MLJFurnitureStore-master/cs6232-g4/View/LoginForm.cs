@@ -42,7 +42,7 @@ namespace cs6232_g4.View
                 _login.Username = TextUsername.Text.Trim();
                 _login.Password = EncryptionHelper.EncryptString(_login.Password);
 
-
+                
                 if (_login.Username is null)
                 {
                     LoginForm _loginForm = new LoginForm();
@@ -62,13 +62,36 @@ namespace cs6232_g4.View
             }
         }
 
-        /// <summary>
-        /// Clears the textbox values
-        /// </summary>
-        public void Logout()
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void NameLabel_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void LoginBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

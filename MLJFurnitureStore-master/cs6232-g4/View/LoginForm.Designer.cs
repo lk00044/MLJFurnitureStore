@@ -30,12 +30,12 @@
         {
             TableLayoutPanel = new TableLayoutPanel();
             LoginBox = new GroupBox();
-            LblError = new Label();
             TextUsername = new TextBox();
             TextPassword = new TextBox();
             LblPassword = new Label();
             LblUsername = new Label();
             BtnLogin = new Button();
+            LblError = new Label();
             TableLayoutPanel.SuspendLayout();
             LoginBox.SuspendLayout();
             SuspendLayout();
@@ -68,17 +68,6 @@
             LoginBox.TabIndex = 0;
             LoginBox.TabStop = false;
             LoginBox.Text = "Login";
-            // 
-            // LblError
-            // 
-            LblError.AutoSize = true;
-            LblError.Font = new Font("Segoe UI", 10F);
-            LblError.ForeColor = Color.Red;
-            LblError.Location = new Point(241, 155);
-            LblError.Name = "LblError";
-            LblError.Size = new Size(0, 23);
-            LblError.TabIndex = 4;
-            LblError.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TextUsername
             // 
@@ -115,6 +104,7 @@
             LblUsername.TabIndex = 0;
             LblUsername.Text = "Username";
             LblUsername.TextAlign = ContentAlignment.MiddleCenter;
+            LblUsername.Click += label1_Click_1;
             // 
             // BtnLogin
             // 
@@ -125,7 +115,17 @@
             BtnLogin.TabIndex = 1;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = true;
-
+            // 
+            // LblError
+            // 
+            LblError.AutoSize = true;
+            LblError.Font = new Font("Segoe UI", 10F);
+            LblError.ForeColor = Color.Red;
+            LblError.Location = new Point(241, 155);
+            LblError.Name = "LblError";
+            LblError.Size = new Size(0, 23);
+            LblError.TabIndex = 4;
+            LblError.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LoginForm
             // 
@@ -135,6 +135,7 @@
             Controls.Add(TableLayoutPanel);
             Name = "LoginForm";
             Text = "Login";
+            Load += LoginForm_Load;
             TableLayoutPanel.ResumeLayout(false);
             LoginBox.ResumeLayout(false);
             LoginBox.PerformLayout();

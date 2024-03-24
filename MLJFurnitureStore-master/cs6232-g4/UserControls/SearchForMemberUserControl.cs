@@ -1,8 +1,5 @@
-﻿using cs6232_g4.Model;
-using cs6232_g4.View;
-using Members.Controller;
+﻿using Members.Controller;
 using Members.Model;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace cs6232_g4.UserControls
 {
@@ -14,16 +11,13 @@ namespace cs6232_g4.UserControls
         private int MbrId;
         private string MbrPhoneNum;
         private List<Member> MemberList;
-        private bool LoggedOut;
-        private readonly LoginForm _loginForm;
 
         private readonly MembersController _memberController;
 
 
-        public SearchForMemberUserControl(LoginForm loginForm)
+        public SearchForMemberUserControl()
         {
             InitializeComponent();
-            _loginForm = loginForm;
             _memberController = new MembersController();
             MemberList = new List<Member>();
             MbrId = 0;
@@ -44,8 +38,8 @@ namespace cs6232_g4.UserControls
                 }
                 else if (this.MbrIDTextBox.Text != "")
                 {
-                    if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId))
-                    {
+                    if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId)) 
+                        {
                         MemberList = this._memberController.GetMemberByID(MbrId);
                         this.DisplayMemberMatches();
                         this.ClearTextBoxes();
@@ -55,7 +49,7 @@ namespace cs6232_g4.UserControls
                     {
                         this.ErrorLabel.Text = "Member ID must be numberic.";
                     }
-
+                    
                 }
                 else if (this.MbrPhoneNumTextBox.Text != "")
                 {
@@ -71,9 +65,9 @@ namespace cs6232_g4.UserControls
                     {
                         this.ErrorLabel.Text = "The phone number should be numeric only, no - needed.";
                     }
-
+                    
                 }
-                else if (this.CheckIfMissingNamePart())
+                else if(this.CheckIfMissingNamePart())
                 {
                     this.ErrorLabel.Text = "You must enter both the Member's First and Last Name";
                 }
@@ -86,24 +80,24 @@ namespace cs6232_g4.UserControls
                     this.ClearTextBoxes();
                     this.ReEnableTextBoxes();
                     this.DisplayMemberMatches();
-
+                    
                 }
-
+                            
 
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
+            }          
 
         }
 
         private void ClearTextBoxes()
         {
             this.MbrIDTextBox.Text = string.Empty;
-            this.MbrPhoneNumTextBox.Text = string.Empty;
+            this.MbrPhoneNumTextBox.Text = string.Empty;    
             this.MbrFNameTextBox.Text = string.Empty;
-            this.MbrLNameTextBox.Text = string.Empty;
+            this.MbrLNameTextBox.Text= string.Empty;
         }
 
 
@@ -164,12 +158,12 @@ namespace cs6232_g4.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
 
-
+            
         }
 
         private void MbrIDTextBox_Click(object sender, EventArgs e)
         {
-
+            
             this.ErrorLabel.Text = string.Empty;
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
@@ -177,8 +171,8 @@ namespace cs6232_g4.UserControls
         }
 
         private void MbrPhoneNumTextBox_Click(object sender, EventArgs e)
-        {
-
+       {
+            
             this.ErrorLabel.Text = string.Empty;
 
             this.MbrPhoneNumTextBox.Enabled = true;
@@ -210,11 +204,6 @@ namespace cs6232_g4.UserControls
             this.MbrFNameTextBox.Enabled = true;
             this.MbrLNameTextBox.Enabled = true;
             this.MbrIDTextBox.Enabled = false;
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
     }
 }

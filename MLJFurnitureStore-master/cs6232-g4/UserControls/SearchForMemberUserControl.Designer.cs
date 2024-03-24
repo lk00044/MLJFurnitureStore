@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DOBColumnHeader = new ColumnHeader();
+            ZipColumnHeader = new ColumnHeader();
+            StateColumnHeader = new ColumnHeader();
+            CityColumnHeader = new ColumnHeader();
+            Addr2ColumnHeader = new ColumnHeader();
+            Addr1ColumnHeader = new ColumnHeader();
+            LNameColumnHeader = new ColumnHeader();
+            MbrFNameColumnHeader = new ColumnHeader();
+            MbrUDColumnHeader = new ColumnHeader();
+            MatchingMembersListView = new ListView();
+            PhoneColumnHeader = new ColumnHeader();
+            GenderColumnHeader = new ColumnHeader();
             MatchingMembersLabel = new Label();
             FindMemberButton = new Button();
             MbrPhoneNumTextBox = new TextBox();
@@ -41,21 +53,73 @@
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
-            MbrUDColumnHeader = new ColumnHeader();
-            MbrFNameColumnHeader = new ColumnHeader();
-            LNameColumnHeader = new ColumnHeader();
-            Addr1ColumnHeader = new ColumnHeader();
-            Addr2ColumnHeader = new ColumnHeader();
-            CityColumnHeader = new ColumnHeader();
-            StateColumnHeader = new ColumnHeader();
-            ZipColumnHeader = new ColumnHeader();
-            PhoneColumnHeader = new ColumnHeader();
-            GenderColumnHeader = new ColumnHeader();
-            DOBColumnHeader = new ColumnHeader();
-            MatchingMembersListView = new ListView();
-            LnkLogout = new LinkLabel();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // DOBColumnHeader
+            // 
+            DOBColumnHeader.DisplayIndex = 9;
+            DOBColumnHeader.Text = "Date of Birth";
+            DOBColumnHeader.Width = 100;
+            // 
+            // ZipColumnHeader
+            // 
+            ZipColumnHeader.Text = "Zip";
+            // 
+            // StateColumnHeader
+            // 
+            StateColumnHeader.Text = "State";
+            // 
+            // CityColumnHeader
+            // 
+            CityColumnHeader.Text = "City";
+            CityColumnHeader.Width = 100;
+            // 
+            // Addr2ColumnHeader
+            // 
+            Addr2ColumnHeader.Text = "Address 2";
+            Addr2ColumnHeader.Width = 120;
+            // 
+            // Addr1ColumnHeader
+            // 
+            Addr1ColumnHeader.Text = "Address 1";
+            Addr1ColumnHeader.Width = 150;
+            // 
+            // LNameColumnHeader
+            // 
+            LNameColumnHeader.Text = "Last Name";
+            LNameColumnHeader.Width = 120;
+            // 
+            // MbrFNameColumnHeader
+            // 
+            MbrFNameColumnHeader.Text = "First Name";
+            MbrFNameColumnHeader.Width = 120;
+            // 
+            // MbrUDColumnHeader
+            // 
+            MbrUDColumnHeader.Text = "Member ID";
+            MbrUDColumnHeader.Width = 120;
+            // 
+            // MatchingMembersListView
+            // 
+            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, PhoneColumnHeader, GenderColumnHeader, DOBColumnHeader });
+            MatchingMembersListView.GridLines = true;
+            MatchingMembersListView.Location = new Point(17, 250);
+            MatchingMembersListView.Name = "MatchingMembersListView";
+            MatchingMembersListView.Size = new Size(834, 418);
+            MatchingMembersListView.TabIndex = 13;
+            MatchingMembersListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // PhoneColumnHeader
+            // 
+            PhoneColumnHeader.DisplayIndex = 10;
+            PhoneColumnHeader.Text = "Phone";
+            PhoneColumnHeader.Width = 120;
+            // 
+            // GenderColumnHeader
+            // 
+            GenderColumnHeader.DisplayIndex = 8;
+            GenderColumnHeader.Text = "Gender";
             // 
             // MatchingMembersLabel
             // 
@@ -191,88 +255,10 @@
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
-            // MbrUDColumnHeader
-            // 
-            MbrUDColumnHeader.Text = "Member ID";
-            MbrUDColumnHeader.Width = 120;
-            // 
-            // MbrFNameColumnHeader
-            // 
-            MbrFNameColumnHeader.Text = "First Name";
-            MbrFNameColumnHeader.Width = 120;
-            // 
-            // LNameColumnHeader
-            // 
-            LNameColumnHeader.Text = "Last Name";
-            LNameColumnHeader.Width = 120;
-            // 
-            // Addr1ColumnHeader
-            // 
-            Addr1ColumnHeader.Text = "Address 1";
-            Addr1ColumnHeader.Width = 150;
-            // 
-            // Addr2ColumnHeader
-            // 
-            Addr2ColumnHeader.Text = "Address 2";
-            Addr2ColumnHeader.Width = 120;
-            // 
-            // CityColumnHeader
-            // 
-            CityColumnHeader.Text = "City";
-            CityColumnHeader.Width = 100;
-            // 
-            // StateColumnHeader
-            // 
-            StateColumnHeader.Text = "State";
-            // 
-            // ZipColumnHeader
-            // 
-            ZipColumnHeader.Text = "Zip";
-            // 
-            // PhoneColumnHeader
-            // 
-            PhoneColumnHeader.DisplayIndex = 10;
-            PhoneColumnHeader.Text = "Phone";
-            PhoneColumnHeader.Width = 120;
-            // 
-            // GenderColumnHeader
-            // 
-            GenderColumnHeader.DisplayIndex = 8;
-            GenderColumnHeader.Text = "Gender";
-            // 
-            // DOBColumnHeader
-            // 
-            DOBColumnHeader.DisplayIndex = 9;
-            DOBColumnHeader.Text = "Date of Birth";
-            DOBColumnHeader.Width = 100;
-            // 
-            // MatchingMembersListView
-            // 
-            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, PhoneColumnHeader, GenderColumnHeader, DOBColumnHeader });
-            MatchingMembersListView.GridLines = true;
-            MatchingMembersListView.Location = new Point(17, 250);
-            MatchingMembersListView.Name = "MatchingMembersListView";
-            MatchingMembersListView.Size = new Size(834, 418);
-            MatchingMembersListView.TabIndex = 13;
-            MatchingMembersListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // LnkLogout
-            // 
-            LnkLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            LnkLogout.AutoSize = true;
-            LnkLogout.Location = new Point(757, 15);
-            LnkLogout.Name = "LnkLogout";
-            LnkLogout.Size = new Size(56, 20);
-            LnkLogout.TabIndex = 14;
-            LnkLogout.TabStop = true;
-            LnkLogout.Text = "Logout";
-            LnkLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(LnkLogout);
             Controls.Add(MatchingMembersListView);
             Controls.Add(MatchingMembersLabel);
             Controls.Add(tableLayoutPanel1);
@@ -286,6 +272,18 @@
         }
 
         #endregion
+
+        private ColumnHeader DOBColumnHeader;
+        private ColumnHeader ZipColumnHeader;
+        private ColumnHeader StateColumnHeader;
+        private ColumnHeader CityColumnHeader;
+        private ColumnHeader Addr2ColumnHeader;
+        private ColumnHeader Addr1ColumnHeader;
+        private ColumnHeader LNameColumnHeader;
+        private ColumnHeader MbrFNameColumnHeader;
+        private ColumnHeader MbrUDColumnHeader;
+        private ListView MatchingMembersListView;
+        private ColumnHeader GenderColumnHeader;
         private Label MatchingMembersLabel;
         private Button FindMemberButton;
         private TextBox MbrPhoneNumTextBox;
@@ -299,18 +297,6 @@
         private Label EnterMbrPhoneNumLabel;
         private Label SearchInstructionsLabel;
         private Label ErrorLabel;
-        private ColumnHeader MbrUDColumnHeader;
-        private ColumnHeader MbrFNameColumnHeader;
-        private ColumnHeader LNameColumnHeader;
-        private ColumnHeader Addr1ColumnHeader;
-        private ColumnHeader Addr2ColumnHeader;
-        private ColumnHeader CityColumnHeader;
-        private ColumnHeader StateColumnHeader;
-        private ColumnHeader ZipColumnHeader;
         private ColumnHeader PhoneColumnHeader;
-        private ColumnHeader GenderColumnHeader;
-        private ColumnHeader DOBColumnHeader;
-        private ListView MatchingMembersListView;
-        private LinkLabel LnkLogout;
     }
 }
