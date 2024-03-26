@@ -34,11 +34,11 @@
             cartLabel = new Label();
             addItemButton = new Button();
             submitOrderButton = new Button();
-            listView1 = new ListView();
+            cartListView = new ListView();
             updateItemButton = new Button();
             totalCostLabel = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            furnitureIdTextBox = new TextBox();
+            quantityTextBox = new TextBox();
             totalCostValue = new Label();
             availableFurnitureGridView = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
@@ -87,12 +87,13 @@
             // addItemButton
             // 
             addItemButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            addItemButton.Location = new Point(19, 97);
+            addItemButton.Location = new Point(19, 131);
             addItemButton.Name = "addItemButton";
             addItemButton.Size = new Size(75, 23);
             addItemButton.TabIndex = 6;
             addItemButton.Text = "Add Item";
             addItemButton.UseVisualStyleBackColor = true;
+            addItemButton.Click += AddItemButton_Click;
             // 
             // submitOrderButton
             // 
@@ -104,19 +105,19 @@
             submitOrderButton.Text = "Submit Order";
             submitOrderButton.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // cartListView
             // 
-            listView1.Location = new Point(426, 36);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(199, 146);
-            listView1.TabIndex = 9;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = System.Windows.Forms.View.SmallIcon;
+            cartListView.Location = new Point(426, 36);
+            cartListView.Name = "cartListView";
+            cartListView.Size = new Size(192, 161);
+            cartListView.TabIndex = 9;
+            cartListView.UseCompatibleStateImageBehavior = false;
+            cartListView.View = System.Windows.Forms.View.SmallIcon;
             // 
             // updateItemButton
             // 
             updateItemButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            updateItemButton.Location = new Point(100, 97);
+            updateItemButton.Location = new Point(100, 131);
             updateItemButton.Name = "updateItemButton";
             updateItemButton.Size = new Size(86, 23);
             updateItemButton.TabIndex = 11;
@@ -133,19 +134,19 @@
             totalCostLabel.TabIndex = 12;
             totalCostLabel.Text = "Total Cost";
             // 
-            // textBox1
+            // furnitureIdTextBox
             // 
-            textBox1.Location = new Point(109, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 13;
+            furnitureIdTextBox.Location = new Point(109, 36);
+            furnitureIdTextBox.Name = "furnitureIdTextBox";
+            furnitureIdTextBox.Size = new Size(100, 23);
+            furnitureIdTextBox.TabIndex = 13;
             // 
-            // textBox2
+            // quantityTextBox
             // 
-            textBox2.Location = new Point(109, 65);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 14;
+            quantityTextBox.Location = new Point(109, 65);
+            quantityTextBox.Name = "quantityTextBox";
+            quantityTextBox.Size = new Size(100, 23);
+            quantityTextBox.TabIndex = 14;
             // 
             // totalCostValue
             // 
@@ -172,11 +173,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(availableFurnitureGridView);
             Controls.Add(totalCostValue);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(quantityTextBox);
+            Controls.Add(furnitureIdTextBox);
             Controls.Add(totalCostLabel);
             Controls.Add(updateItemButton);
-            Controls.Add(listView1);
+            Controls.Add(cartListView);
             Controls.Add(submitOrderButton);
             Controls.Add(addItemButton);
             Controls.Add(cartLabel);
@@ -199,11 +200,11 @@
         private Label cartLabel;
         private Button addItemButton;
         private Button submitOrderButton;
-        private ListView listView1;
+        private ListView cartListView;
         private Button updateItemButton;
         private Label totalCostLabel;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox furnitureIdTextBox;
+        private TextBox quantityTextBox;
         private Label totalCostValue;
         private DataGridView availableFurnitureGridView;
     }
