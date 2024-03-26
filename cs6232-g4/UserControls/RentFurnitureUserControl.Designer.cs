@@ -34,14 +34,14 @@
             cartLabel = new Label();
             addItemButton = new Button();
             submitOrderButton = new Button();
-            dataGridView1 = new DataGridView();
             listView1 = new ListView();
             updateItemButton = new Button();
             totalCostLabel = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             totalCostValue = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            availableFurnitureGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
             SuspendLayout();
             // 
             // availableFurnitureLabel
@@ -104,14 +104,6 @@
             submitOrderButton.Text = "Submit Order";
             submitOrderButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 297);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(638, 163);
-            dataGridView1.TabIndex = 8;
-            // 
             // listView1
             // 
             listView1.Location = new Point(426, 36);
@@ -166,17 +158,25 @@
             totalCostValue.TabIndex = 15;
             totalCostValue.Text = "$0.00";
             // 
+            // availableFurnitureGridView
+            // 
+            availableFurnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            availableFurnitureGridView.Location = new Point(3, 297);
+            availableFurnitureGridView.Name = "availableFurnitureGridView";
+            availableFurnitureGridView.Size = new Size(638, 163);
+            availableFurnitureGridView.TabIndex = 16;
+            // 
             // RentFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(availableFurnitureGridView);
             Controls.Add(totalCostValue);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(totalCostLabel);
             Controls.Add(updateItemButton);
             Controls.Add(listView1);
-            Controls.Add(dataGridView1);
             Controls.Add(submitOrderButton);
             Controls.Add(addItemButton);
             Controls.Add(cartLabel);
@@ -185,7 +185,8 @@
             Controls.Add(availableFurnitureLabel);
             Name = "RentFurnitureUserControl";
             Size = new Size(644, 463);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += RentFurnitureUserControl_Load;
+            ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -198,12 +199,12 @@
         private Label cartLabel;
         private Button addItemButton;
         private Button submitOrderButton;
-        private DataGridView dataGridView1;
         private ListView listView1;
         private Button updateItemButton;
         private Label totalCostLabel;
         private TextBox textBox1;
         private TextBox textBox2;
         private Label totalCostValue;
+        private DataGridView availableFurnitureGridView;
     }
 }

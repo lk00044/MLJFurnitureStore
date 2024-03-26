@@ -38,12 +38,14 @@
             Search4MbrTabPage = new TabPage();
             search4Member1 = new UserControls.SearchForMemberUserControl();
             EditMbrTabPage = new TabPage();
-            MbrTransTabPage = new TabPage();
             editMemberInfoUserControl1 = new UserControls.EditMemberInfoUserControl();
+            MbrTransTabPage = new TabPage();
+            rentFurnitureUserControl1 = new UserControls.RentFurnitureUserControl();
             MainDBTabControl.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             EditMbrTabPage.SuspendLayout();
+            MbrTransTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -119,7 +121,7 @@
             Search4MbrTabPage.Margin = new Padding(3, 2, 3, 2);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3, 2, 3, 2);
-            Search4MbrTabPage.Size = new Size(770, 509);
+            Search4MbrTabPage.Size = new Size(192, 72);
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Search";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
@@ -130,7 +132,7 @@
             search4Member1.Location = new Point(3, 2);
             search4Member1.Margin = new Padding(3, 2, 3, 2);
             search4Member1.Name = "search4Member1";
-            search4Member1.Size = new Size(764, 505);
+            search4Member1.Size = new Size(186, 68);
             search4Member1.TabIndex = 0;
             // 
             // EditMbrTabPage
@@ -139,20 +141,10 @@
             EditMbrTabPage.Location = new Point(4, 24);
             EditMbrTabPage.Margin = new Padding(3, 2, 3, 2);
             EditMbrTabPage.Name = "EditMbrTabPage";
-            EditMbrTabPage.Size = new Size(770, 509);
+            EditMbrTabPage.Size = new Size(192, 72);
             EditMbrTabPage.TabIndex = 2;
             EditMbrTabPage.Text = "Member Update";
             EditMbrTabPage.UseVisualStyleBackColor = true;
-            // 
-            // MbrTransTabPage
-            // 
-            MbrTransTabPage.Location = new Point(4, 24);
-            MbrTransTabPage.Margin = new Padding(3, 2, 3, 2);
-            MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(770, 509);
-            MbrTransTabPage.TabIndex = 3;
-            MbrTransTabPage.Text = "Member Transactions";
-            MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // editMemberInfoUserControl1
             // 
@@ -161,6 +153,24 @@
             editMemberInfoUserControl1.Name = "editMemberInfoUserControl1";
             editMemberInfoUserControl1.Size = new Size(774, 513);
             editMemberInfoUserControl1.TabIndex = 0;
+            // 
+            // MbrTransTabPage
+            // 
+            MbrTransTabPage.Controls.Add(rentFurnitureUserControl1);
+            MbrTransTabPage.Location = new Point(4, 24);
+            MbrTransTabPage.Margin = new Padding(3, 2, 3, 2);
+            MbrTransTabPage.Name = "MbrTransTabPage";
+            MbrTransTabPage.Size = new Size(770, 509);
+            MbrTransTabPage.TabIndex = 3;
+            MbrTransTabPage.Text = "Member Transactions";
+            MbrTransTabPage.UseVisualStyleBackColor = true;
+            // 
+            // rentFurnitureUserControl1
+            // 
+            rentFurnitureUserControl1.Location = new Point(0, 0);
+            rentFurnitureUserControl1.Name = "rentFurnitureUserControl1";
+            rentFurnitureUserControl1.Size = new Size(767, 506);
+            rentFurnitureUserControl1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -180,6 +190,7 @@
             RegMbrTabPage.ResumeLayout(false);
             Search4MbrTabPage.ResumeLayout(false);
             EditMbrTabPage.ResumeLayout(false);
+            MbrTransTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +208,6 @@
         private UserControls.SearchForMemberUserControl search4Member1;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private UserControls.EditMemberInfoUserControl editMemberInfoUserControl1;
+        private UserControls.RentFurnitureUserControl rentFurnitureUserControl1;
     }
 }
