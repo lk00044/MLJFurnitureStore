@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/// <summary>
+/// Login class
+/// </summary>
 
 namespace cs6232_g4.Model
 {

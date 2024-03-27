@@ -109,6 +109,7 @@
             MatchingMembersListView.Size = new Size(834, 418);
             MatchingMembersListView.TabIndex = 13;
             MatchingMembersListView.UseCompatibleStateImageBehavior = false;
+            MatchingMembersListView.View = System.Windows.Forms.View.Details;
             // 
             // PhoneColumnHeader
             // 

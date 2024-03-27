@@ -3,22 +3,17 @@
 /// Author: Laskey
 /// </summary>
 /// 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using cs6232_g4.Model;
+
 using cs6232_g4.DAL;
 
 namespace cs6232_g4.Controller
 {
     public class LoginController
     {
-        private LoginDAL loginDAL;
+        private LoginDAL _loginDAL;
 
         public LoginController() {
-            loginDAL = new LoginDAL();
+            _loginDAL = new LoginDAL();
         }
 
         /// <summary>
@@ -30,7 +25,17 @@ namespace cs6232_g4.Controller
         public bool CheckLogin(string userID, string password)
 
         {
-            return this.loginDAL.CheckLogin(userID, password);
+            return this._loginDAL.CheckLogin(userID, password);
         }
+
+        /// <summary>
+        /// Checks Login 
+        /// Author: Leslie Keller
+        /// </summary>
+        public bool CheckUserID(string UserID)
+        {
+            return this._loginDAL.CheckUserID(UserID);
+        }
+
     }
 }

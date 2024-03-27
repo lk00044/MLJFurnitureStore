@@ -1,20 +1,23 @@
 ﻿using Employees.DAL;
 
+/// <summary>
+/// Interacts with the DAL for the employee and the view
+/// </summary>
 namespace Employees.Controller
 {
     public class EmployeeController
     {
 
-        private EmployeeDAL EmployeeSource;
+        private EmployeeDAL _employeeDal;
 
         public EmployeeController()
         {
-            EmployeeSource = new EmployeeDAL();
+            _employeeDal = new EmployeeDAL();
         }
 
-        public bool CheckLogIn(string UserID, string PWord)
+        public string GetUserName(string UserID, string PWord)
         {
-            return this.EmployeeSource.CheckLogIn(UserID, PWord);
+            return this._employeeDal.GetUserName(UserID, PWord);
         }
 
     }

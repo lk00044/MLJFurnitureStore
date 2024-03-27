@@ -1,10 +1,10 @@
-﻿
-using cs6232_g4.DAL;
-using Employees.Model;
+﻿using cs6232_g4.DAL;
+using cs6232_g4.Helper;
 using System.Data.SqlClient;
 
 /// <summary>
-/// 
+/// Data Access Layer for employees
+/// Author: Leslie
 /// </summary>
 
 namespace Employees.DAL
@@ -12,15 +12,26 @@ namespace Employees.DAL
     public class EmployeeDAL
     {
 
-        public bool CheckLogIn(string UserID, string PWord)
+        /// <summary>
+        /// Gets the name of the user.
+        /// </summary>
+        /// <param name="UserID">The user identifier.</param>
+        /// <param name="PWord">The p word.</param>
+        /// <returns></returns>
+        public string GetUserName(string UserID, string Entered)
         {
-            string selectStatement =
-                "SELECT user_id, password " +
-                "FROM Login " +
-                "WHERE user_id = @UserID and password = @PWord"
-            ;
 
-            Employee employee = new Employee();
+            string PWord = EncryptionHelper.DecryptString(Entered);
+
+            string selectStatement =
+               "SELECT l.user_id, l.password, e.fname, e.lname " +
+               "FROM Login l " +
+               "LEFT JOIN Employee e " +
+               "ON l.user_id = e.login_userID " +
+               "WHERE l.user_id = @UserID and l.password = @PWord"
+           ;
+
+            Model.Employee employee = new Model.Employee();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -34,14 +45,14 @@ namespace Employees.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
-                        {                            
-                            employee.UserID = reader["user_id"].ToString();
-                            employee.Password = reader["password"].ToString();
+                        {
+                            employee.FirstName = reader["fname"].ToString();
+                            employee.LastName = reader["lname"].ToString();
                         }
                     }
                 }
             }
-            return !(string.IsNullOrEmpty(employee.UserID));
+            return employee.FirstName + " " + employee.LastName;
         }
     }
 }

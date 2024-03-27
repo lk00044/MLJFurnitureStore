@@ -1,32 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using cs6232_g4.DAL;
-using cs6232_g4.Controller;
-using cs6232_g4.Model;
+﻿using cs6232_g4.Controller;
 using cs6232_g4.Helper;
-using Members.Controller;
+using Employees.Controller;
 
 
+/// <summary>
+/// Interacts with the controller for the view for the login
+/// Author:         Leslie & LM
+/// Modifications:  From Iteration 1 Feedback:
+///                 Add getting employee name
+///                 Fix Login form functionality
+///                 Add authentication
+///                 Add showing user name
+///                 removed unneeded using statements
+/// Modified by:    Leslie
+/// Modified Date:  27 Mar 2024
+/// </summary>
+/// 
 namespace cs6232_g4.View
 {
     public partial class LoginForm : Form
     {
         private LoginController _loginController;
-        private Login _login;
-        private MembersController _memberController;
+        private EmployeeController _employeeController;
+
         public LoginForm()
         {
             InitializeComponent();
             _loginController = new LoginController();
-            _login = new Login();
+            _employeeController = new EmployeeController();
+
         }
 
         /// <summary>
@@ -36,62 +38,71 @@ namespace cs6232_g4.View
         /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string username = "";
+            string password = "";
+
             try
             {
+                username = this.TextUsername.Text.Trim();
+                string entered = this.TextPassword.Text.Trim();
+                password = EncryptionHelper.EncryptString(entered);
 
-                _login.Username = TextUsername.Text.Trim();
-                _login.Password = EncryptionHelper.EncryptString(_login.Password);
-
-                
-                if (_login.Username is null)
+                if (this._loginController.CheckUserID(username))
                 {
-                    LoginForm _loginForm = new LoginForm();
-                    _loginForm._login = _login;
-                    LoginDAL.SetLogin(_login);
-                    Hide();
-                    _loginForm.Show();
+                    this.UserNameErrorlabel.ForeColor = Color.Red;
+                    this.UserNameErrorlabel.Text = "Invalid UserName.";
+                    this.TextUsername.Clear();
+                    this.TextPassword.Clear();
+                }
+                else if (this._loginController.CheckLogin(username, password))
+                {
+                    this.PasswordErrorLabel.ForeColor = Color.Red;
+                    this.PasswordErrorLabel.Text = "Invalid Password";
+                    this.TextPassword.Clear();
                 }
                 else
                 {
-                    LblError.Text = "Invalid username/password";
+                    string emplName = this._employeeController.GetUserName(username, password);
+                    if (emplName == null || emplName == "")
+                    {
+                        emplName = "NA";
+                    }
+
+                    using (Form dashboardForm = new DashboardForm(username, emplName))
+                    {
+                        this.Hide();
+                        DialogResult result = dashboardForm.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            this.Show();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show("Invalid Input \n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            Application.Exit();
         }
 
-        private void NameLabel_Click(object sender, EventArgs e)
+        private void TextUsername_Click(object sender, EventArgs e)
         {
-
+            this.UserNameErrorlabel.Text = "";
+            this.PasswordErrorLabel.Text = "";
         }
 
-        private void LoginBox_Enter(object sender, EventArgs e)
+        private void TextPassword_Click(object sender, EventArgs e)
         {
-
+            this.PasswordErrorLabel.Text = "";
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }
