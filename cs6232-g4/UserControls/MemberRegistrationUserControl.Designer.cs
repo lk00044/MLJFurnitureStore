@@ -52,7 +52,6 @@
             lastNameTextBox = new TextBox();
             lastNameLabel = new Label();
             lNameErrorLabel = new Label();
-            genderLabel = new Label();
             dobLabel = new Label();
             genderComboBox = new ComboBox();
             dobDateTimePicker = new DateTimePicker();
@@ -61,6 +60,7 @@
             cityErrorLabel = new Label();
             stateErrorLabel = new Label();
             zipErrorLabel = new Label();
+            genderLabel = new Label();
             registerButton = new Button();
             regTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -69,7 +69,7 @@
             // 
             instructionsLabel.AutoSize = true;
             instructionsLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            instructionsLabel.Location = new Point(20, 19);
+            instructionsLabel.Location = new Point(19, 16);
             instructionsLabel.Name = "instructionsLabel";
             instructionsLabel.Size = new Size(420, 25);
             instructionsLabel.TabIndex = 43;
@@ -77,7 +77,8 @@
             // 
             // regFeedbackLabel
             // 
-            regFeedbackLabel.Location = new Point(314, 8);
+            regFeedbackLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            regFeedbackLabel.Location = new Point(22, 587);
             regFeedbackLabel.Name = "regFeedbackLabel";
             regFeedbackLabel.Size = new Size(419, 34);
             regFeedbackLabel.TabIndex = 42;
@@ -89,9 +90,10 @@
             cancelButton.Margin = new Padding(3, 4, 3, 4);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 43);
-            cancelButton.TabIndex = 41;
+            cancelButton.TabIndex = 13;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += CancelButton_Click;
             // 
             // regTableLayoutPanel
             // 
@@ -131,20 +133,20 @@
             regTableLayoutPanel.Controls.Add(zipErrorLabel, 3, 11);
             regTableLayoutPanel.Controls.Add(genderLabel, 0, 2);
             regTableLayoutPanel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            regTableLayoutPanel.Location = new Point(20, 54);
+            regTableLayoutPanel.Location = new Point(22, 61);
             regTableLayoutPanel.Name = "regTableLayoutPanel";
             regTableLayoutPanel.RowCount = 12;
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
-            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
             regTableLayoutPanel.Size = new Size(716, 511);
             regTableLayoutPanel.TabIndex = 40;
@@ -161,23 +163,27 @@
             // 
             // stateComboBox
             // 
+            stateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             stateComboBox.Font = new Font("Segoe UI", 10.8F);
             stateComboBox.FormattingEnabled = true;
+            stateComboBox.ItemHeight = 25;
             stateComboBox.Items.AddRange(new object[] { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" });
-            stateComboBox.Location = new Point(447, 359);
+            stateComboBox.Location = new Point(447, 349);
             stateComboBox.Margin = new Padding(3, 4, 3, 4);
             stateComboBox.Name = "stateComboBox";
             stateComboBox.Size = new Size(266, 33);
-            stateComboBox.TabIndex = 27;
+            stateComboBox.TabIndex = 10;
+            stateComboBox.SelectedIndexChanged += stateComboBox_SelectedIndexChanged;
             // 
             // zipTextBox
             // 
             zipTextBox.Font = new Font("Segoe UI", 10.8F);
-            zipTextBox.Location = new Point(447, 440);
+            zipTextBox.Location = new Point(447, 437);
             zipTextBox.Margin = new Padding(3, 4, 3, 4);
             zipTextBox.Name = "zipTextBox";
             zipTextBox.Size = new Size(266, 31);
-            zipTextBox.TabIndex = 21;
+            zipTextBox.TabIndex = 11;
+            zipTextBox.TextChanged += zipTextBox_TextChanged;
             // 
             // firstNameTextBox
             // 
@@ -186,7 +192,8 @@
             firstNameTextBox.Margin = new Padding(3, 4, 3, 4);
             firstNameTextBox.Name = "firstNameTextBox";
             firstNameTextBox.Size = new Size(230, 31);
-            firstNameTextBox.TabIndex = 14;
+            firstNameTextBox.TabIndex = 1;
+            firstNameTextBox.TextChanged += firstNameTextBox_TextChanged;
             // 
             // FNameErrorLabel
             // 
@@ -202,7 +209,8 @@
             phoneTextBox.Margin = new Padding(3, 4, 3, 4);
             phoneTextBox.Name = "phoneTextBox";
             phoneTextBox.Size = new Size(230, 31);
-            phoneTextBox.TabIndex = 16;
+            phoneTextBox.TabIndex = 5;
+            phoneTextBox.TextChanged += phoneTextBox_TextChanged;
             // 
             // phoneLabel
             // 
@@ -216,15 +224,15 @@
             // 
             // phoneErrorLabel
             // 
-            phoneErrorLabel.Location = new Point(106, 221);
+            phoneErrorLabel.Location = new Point(106, 213);
             phoneErrorLabel.Name = "phoneErrorLabel";
-            phoneErrorLabel.Size = new Size(231, 44);
+            phoneErrorLabel.Size = new Size(231, 41);
             phoneErrorLabel.TabIndex = 18;
             // 
             // stateLabel
             // 
             stateLabel.Font = new Font("Segoe UI", 10.8F);
-            stateLabel.Location = new Point(343, 355);
+            stateLabel.Location = new Point(343, 345);
             stateLabel.Name = "stateLabel";
             stateLabel.Size = new Size(98, 25);
             stateLabel.TabIndex = 7;
@@ -234,16 +242,17 @@
             // address1TextBox
             // 
             address1TextBox.Font = new Font("Segoe UI", 10.8F);
-            address1TextBox.Location = new Point(106, 269);
+            address1TextBox.Location = new Point(106, 258);
             address1TextBox.Margin = new Padding(3, 4, 3, 4);
             address1TextBox.Name = "address1TextBox";
             address1TextBox.Size = new Size(230, 31);
-            address1TextBox.TabIndex = 17;
+            address1TextBox.TabIndex = 6;
+            address1TextBox.TextChanged += address1TextBox_TextChanged;
             // 
             // address1Label
             // 
             address1Label.Font = new Font("Segoe UI", 10.8F);
-            address1Label.Location = new Point(3, 265);
+            address1Label.Location = new Point(3, 254);
             address1Label.Name = "address1Label";
             address1Label.Size = new Size(97, 25);
             address1Label.TabIndex = 4;
@@ -253,7 +262,7 @@
             // address2Label
             // 
             address2Label.Font = new Font("Segoe UI", 10.8F);
-            address2Label.Location = new Point(343, 265);
+            address2Label.Location = new Point(343, 254);
             address2Label.Name = "address2Label";
             address2Label.Size = new Size(98, 25);
             address2Label.TabIndex = 5;
@@ -263,25 +272,26 @@
             // address2TextBox
             // 
             address2TextBox.Font = new Font("Segoe UI", 10.8F);
-            address2TextBox.Location = new Point(447, 269);
+            address2TextBox.Location = new Point(447, 258);
             address2TextBox.Margin = new Padding(3, 4, 3, 4);
             address2TextBox.Name = "address2TextBox";
             address2TextBox.Size = new Size(266, 31);
-            address2TextBox.TabIndex = 18;
+            address2TextBox.TabIndex = 7;
             // 
             // cityTextBox
             // 
             cityTextBox.Font = new Font("Segoe UI", 10.8F);
-            cityTextBox.Location = new Point(106, 359);
+            cityTextBox.Location = new Point(106, 349);
             cityTextBox.Margin = new Padding(3, 4, 3, 4);
             cityTextBox.Name = "cityTextBox";
             cityTextBox.Size = new Size(230, 31);
-            cityTextBox.TabIndex = 19;
+            cityTextBox.TabIndex = 8;
+            cityTextBox.TextChanged += cityTextBox_TextChanged;
             // 
             // cityLabel
             // 
             cityLabel.Font = new Font("Segoe UI", 10.8F);
-            cityLabel.Location = new Point(3, 355);
+            cityLabel.Location = new Point(3, 345);
             cityLabel.Name = "cityLabel";
             cityLabel.Size = new Size(97, 25);
             cityLabel.TabIndex = 6;
@@ -290,7 +300,7 @@
             // 
             // addr1ErrorLabel
             // 
-            addr1ErrorLabel.Location = new Point(106, 315);
+            addr1ErrorLabel.Location = new Point(106, 302);
             addr1ErrorLabel.Name = "addr1ErrorLabel";
             addr1ErrorLabel.Size = new Size(231, 40);
             addr1ErrorLabel.TabIndex = 30;
@@ -298,7 +308,7 @@
             // zipLabel
             // 
             zipLabel.Font = new Font("Segoe UI", 10.8F);
-            zipLabel.Location = new Point(343, 436);
+            zipLabel.Location = new Point(343, 433);
             zipLabel.Name = "zipLabel";
             zipLabel.Size = new Size(98, 25);
             zipLabel.TabIndex = 8;
@@ -312,7 +322,8 @@
             lastNameTextBox.Margin = new Padding(3, 4, 3, 4);
             lastNameTextBox.Name = "lastNameTextBox";
             lastNameTextBox.Size = new Size(266, 32);
-            lastNameTextBox.TabIndex = 15;
+            lastNameTextBox.TabIndex = 2;
+            lastNameTextBox.TextChanged += lastNameTextBox_TextChanged;
             // 
             // lastNameLabel
             // 
@@ -328,18 +339,8 @@
             // 
             lNameErrorLabel.Location = new Point(447, 41);
             lNameErrorLabel.Name = "lNameErrorLabel";
-            lNameErrorLabel.Size = new Size(169, 27);
+            lNameErrorLabel.Size = new Size(266, 27);
             lNameErrorLabel.TabIndex = 17;
-            // 
-            // genderLabel
-            // 
-            genderLabel.Font = new Font("Segoe UI", 10.8F);
-            genderLabel.Location = new Point(3, 75);
-            genderLabel.Name = "genderLabel";
-            genderLabel.Size = new Size(97, 25);
-            genderLabel.TabIndex = 9;
-            genderLabel.Text = "Gender";
-            genderLabel.TextAlign = ContentAlignment.TopRight;
             // 
             // dobLabel
             // 
@@ -353,6 +354,7 @@
             // 
             // genderComboBox
             // 
+            genderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             genderComboBox.Font = new Font("Segoe UI", 10.8F);
             genderComboBox.FormattingEnabled = true;
             genderComboBox.Items.AddRange(new object[] { "Male", "Female", "Other" });
@@ -360,16 +362,19 @@
             genderComboBox.Margin = new Padding(3, 4, 3, 4);
             genderComboBox.Name = "genderComboBox";
             genderComboBox.Size = new Size(231, 33);
-            genderComboBox.TabIndex = 26;
+            genderComboBox.TabIndex = 3;
+            genderComboBox.SelectedIndexChanged += genderComboBox_SelectedIndexChanged;
             // 
             // dobDateTimePicker
             // 
+            dobDateTimePicker.Checked = false;
             dobDateTimePicker.Location = new Point(447, 78);
             dobDateTimePicker.MaxDate = new DateTime(2002, 12, 31, 0, 0, 0, 0);
             dobDateTimePicker.Name = "dobDateTimePicker";
             dobDateTimePicker.Size = new Size(266, 31);
-            dobDateTimePicker.TabIndex = 31;
+            dobDateTimePicker.TabIndex = 4;
             dobDateTimePicker.Value = new DateTime(2002, 12, 31, 0, 0, 0, 0);
+            dobDateTimePicker.ValueChanged += dobDateTimePicker_ValueChanged;
             // 
             // genderErrorLabel
             // 
@@ -387,14 +392,14 @@
             // 
             // cityErrorLabel
             // 
-            cityErrorLabel.Location = new Point(106, 402);
+            cityErrorLabel.Location = new Point(106, 392);
             cityErrorLabel.Name = "cityErrorLabel";
             cityErrorLabel.Size = new Size(231, 34);
             cityErrorLabel.TabIndex = 34;
             // 
             // stateErrorLabel
             // 
-            stateErrorLabel.Location = new Point(447, 402);
+            stateErrorLabel.Location = new Point(447, 392);
             stateErrorLabel.Name = "stateErrorLabel";
             stateErrorLabel.Size = new Size(266, 34);
             stateErrorLabel.TabIndex = 35;
@@ -406,6 +411,16 @@
             zipErrorLabel.Size = new Size(266, 34);
             zipErrorLabel.TabIndex = 36;
             // 
+            // genderLabel
+            // 
+            genderLabel.Font = new Font("Segoe UI", 10.8F);
+            genderLabel.Location = new Point(3, 75);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new Size(97, 25);
+            genderLabel.TabIndex = 9;
+            genderLabel.Text = "Gender";
+            genderLabel.TextAlign = ContentAlignment.TopRight;
+            // 
             // registerButton
             // 
             registerButton.Font = new Font("Segoe UI", 10.8F);
@@ -413,9 +428,10 @@
             registerButton.Margin = new Padding(3, 4, 3, 4);
             registerButton.Name = "registerButton";
             registerButton.Size = new Size(129, 43);
-            registerButton.TabIndex = 39;
+            registerButton.TabIndex = 12;
             registerButton.Text = "Register";
             registerButton.UseVisualStyleBackColor = true;
+            registerButton.Click += RegisterButton_Click;
             // 
             // MemberRegistrationUserControl
             // 

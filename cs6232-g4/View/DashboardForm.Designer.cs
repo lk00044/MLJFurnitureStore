@@ -106,7 +106,6 @@
             // 
             // memberRegistrationUserControl
             // 
-            memberRegistrationUserControl.Dock = DockStyle.Fill;
             memberRegistrationUserControl.Location = new Point(3, 3);
             memberRegistrationUserControl.Margin = new Padding(3, 5, 3, 5);
             memberRegistrationUserControl.Name = "memberRegistrationUserControl";
@@ -137,7 +136,7 @@
             EditMbrTabPage.Controls.Add(editMemberInfoUserControl1);
             EditMbrTabPage.Location = new Point(4, 29);
             EditMbrTabPage.Name = "EditMbrTabPage";
-            EditMbrTabPage.Size = new Size(192, 67);
+            EditMbrTabPage.Size = new Size(881, 683);
             EditMbrTabPage.TabIndex = 2;
             EditMbrTabPage.Text = "Member Update";
             EditMbrTabPage.UseVisualStyleBackColor = true;
@@ -181,6 +180,7 @@
             Controls.Add(NameLabel);
             Controls.Add(UserNameLabel);
             Name = "DashboardForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Me Furniture Rentals";
             Load += DashboardForm_Load;
             MainDBTabControl.ResumeLayout(false);
