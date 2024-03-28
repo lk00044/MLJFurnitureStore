@@ -18,30 +18,27 @@ namespace Employees.DAL
         {
             string insertCommand = $"INSERT INTO [dbo].[RentalTransaction] VALUES (GETDATE(),@member_id,@employee_id,@total_amount,@due_date)";
             string retrieveCommand = "SELECT SCOPE_IDENTITY();";
+            string combinedQuery = $"{insertCommand};{retrieveCommand}";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand insert_command = new SqlCommand(insertCommand, connection))
+                using (SqlCommand command = new SqlCommand(combinedQuery, connection))
                 {
-                    insert_command.Parameters.Add("@member_id", System.Data.SqlDbType.Int);
-                    insert_command.Parameters.Add("@employee_id", System.Data.SqlDbType.Int);
-                    insert_command.Parameters.Add("@total_amount", System.Data.SqlDbType.Decimal);
-                    insert_command.Parameters.Add("@due_date", System.Data.SqlDbType.DateTime);
+                    command.Parameters.Add("@member_id", System.Data.SqlDbType.Int);
+                    command.Parameters.Add("@employee_id", System.Data.SqlDbType.Int);
+                    command.Parameters.Add("@total_amount", System.Data.SqlDbType.Decimal);
+                    command.Parameters.Add("@due_date", System.Data.SqlDbType.DateTime);
 
-                    insert_command.Parameters["@member_id"].Value = transaction.MemberId;
-                    insert_command.Parameters["@employee_id"].Value = transaction.EmployeeId;
-                    insert_command.Parameters["@total_amount"].Value = transaction.TotalAmount;
-                    insert_command.Parameters["@due_date"].Value = transaction.DueDate;
+                    command.Parameters["@member_id"].Value = transaction.MemberId;
+                    command.Parameters["@employee_id"].Value = transaction.EmployeeId;
+                    command.Parameters["@total_amount"].Value = transaction.TotalAmount;
+                    command.Parameters["@due_date"].Value = transaction.DueDate;
 
-                    insert_command.ExecuteNonQuery();
+                    return int.Parse(command.ExecuteScalar().ToString());
                 }
 
-                using (SqlCommand selectCommand = new SqlCommand(retrieveCommand, connection))
-                {    
-                   return (int)selectCommand.ExecuteScalar();
-                }
             }
 
 

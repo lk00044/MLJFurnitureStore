@@ -45,6 +45,10 @@
             dayComboBox = new ComboBox();
             monthComboBox = new ComboBox();
             dobLabel = new Label();
+            memberIdTextBox = new TextBox();
+            employeeIdTextBox = new TextBox();
+            memberID = new Label();
+            employeeID = new Label();
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
             SuspendLayout();
             // 
@@ -102,12 +106,13 @@
             // submitOrderButton
             // 
             submitOrderButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            submitOrderButton.Location = new Point(471, 231);
+            submitOrderButton.Location = new Point(19, 252);
             submitOrderButton.Name = "submitOrderButton";
             submitOrderButton.Size = new Size(96, 23);
             submitOrderButton.TabIndex = 7;
             submitOrderButton.Text = "Submit Order";
             submitOrderButton.UseVisualStyleBackColor = true;
+            submitOrderButton.Click += SubmitOrderButton_Click;
             // 
             // cartListView
             // 
@@ -209,10 +214,48 @@
             dobLabel.TabIndex = 26;
             dobLabel.Text = "Due Date";
             // 
+            // memberIdTextBox
+            // 
+            memberIdTextBox.Location = new Point(109, 219);
+            memberIdTextBox.Name = "memberIdTextBox";
+            memberIdTextBox.Size = new Size(100, 23);
+            memberIdTextBox.TabIndex = 33;
+            // 
+            // employeeIdTextBox
+            // 
+            employeeIdTextBox.Location = new Point(109, 190);
+            employeeIdTextBox.Name = "employeeIdTextBox";
+            employeeIdTextBox.Size = new Size(100, 23);
+            employeeIdTextBox.TabIndex = 32;
+            // 
+            // memberID
+            // 
+            memberID.AutoSize = true;
+            memberID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold | FontStyle.Italic);
+            memberID.Location = new Point(19, 218);
+            memberID.Name = "memberID";
+            memberID.Size = new Size(78, 19);
+            memberID.TabIndex = 31;
+            memberID.Text = "Member ID";
+            // 
+            // employeeID
+            // 
+            employeeID.AutoSize = true;
+            employeeID.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold | FontStyle.Italic);
+            employeeID.Location = new Point(19, 190);
+            employeeID.Name = "employeeID";
+            employeeID.Size = new Size(87, 19);
+            employeeID.TabIndex = 30;
+            employeeID.Text = "Employee ID";
+            // 
             // RentFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(memberIdTextBox);
+            Controls.Add(employeeIdTextBox);
+            Controls.Add(memberID);
+            Controls.Add(employeeID);
             Controls.Add(yearComboBox);
             Controls.Add(dayComboBox);
             Controls.Add(monthComboBox);
@@ -257,5 +300,9 @@
         private ComboBox dayComboBox;
         private ComboBox monthComboBox;
         private Label dobLabel;
+        private TextBox memberIdTextBox;
+        private TextBox employeeIdTextBox;
+        private Label memberID;
+        private Label employeeID;
     }
 }
