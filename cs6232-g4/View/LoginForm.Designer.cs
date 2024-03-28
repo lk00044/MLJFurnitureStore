@@ -86,6 +86,7 @@
             TextUsername.Name = "TextUsername";
             TextUsername.Size = new Size(390, 27);
             TextUsername.TabIndex = 3;
+            TextUsername.TextChanged += TextUsername_TextChanged;
             // 
             // TextPassword
             // 
@@ -125,7 +126,7 @@
             BtnLogin.TabIndex = 1;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = true;
-
+            BtnLogin.Click += BtnLogin_Click_1;
             // 
             // LoginForm
             // 

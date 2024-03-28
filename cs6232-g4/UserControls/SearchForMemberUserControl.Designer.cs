@@ -54,6 +54,7 @@
             DOBColumnHeader = new ColumnHeader();
             MatchingMembersListView = new ListView();
             LnkLogout = new LinkLabel();
+            label1 = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -258,20 +259,30 @@
             // 
             // LnkLogout
             // 
-            LnkLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            LnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             LnkLogout.AutoSize = true;
-            LnkLogout.Location = new Point(757, 15);
+            LnkLogout.Location = new Point(809, 13);
             LnkLogout.Name = "LnkLogout";
             LnkLogout.Size = new Size(56, 20);
             LnkLogout.TabIndex = 14;
             LnkLogout.TabStop = true;
             LnkLogout.Text = "Logout";
-            LnkLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(710, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 20);
+            label1.TabIndex = 15;
+            label1.Text = "label1";
             // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label1);
             Controls.Add(LnkLogout);
             Controls.Add(MatchingMembersListView);
             Controls.Add(MatchingMembersLabel);
@@ -312,5 +323,6 @@
         private ColumnHeader DOBColumnHeader;
         private ListView MatchingMembersListView;
         private LinkLabel LnkLogout;
+        private Label label1;
     }
 }

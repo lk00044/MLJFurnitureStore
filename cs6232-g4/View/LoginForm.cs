@@ -26,6 +26,7 @@ namespace cs6232_g4.View
         {
             InitializeComponent();
             _loginController = new LoginController();
+            _memberController = new MembersController();
             _login = new Login();
         }
 
@@ -41,7 +42,7 @@ namespace cs6232_g4.View
 
                 _login.Username = TextUsername.Text.Trim();
                 _login.Password = EncryptionHelper.EncryptString(_login.Password);
-
+                _login = _loginController.CheckIfLoginIsValid(_login);
 
                 if (_login.Username is null)
                 {
@@ -67,7 +68,21 @@ namespace cs6232_g4.View
         /// </summary>
         public void Logout()
         {
+            TextUsername.Clear();
+            TextPassword.Clear();
+            Show();
+            TextUsername.Focus();
+            _login = new Login();
 
+        }
+
+        private void BtnLogin_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextUsername_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

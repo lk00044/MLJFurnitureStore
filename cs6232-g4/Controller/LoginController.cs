@@ -27,10 +27,20 @@ namespace cs6232_g4.Controller
         /// <param name="UserID">The user identifier.</param>
         /// <param name="PWord">The p word.</param>
         /// <returns></returns>
-        public bool CheckLogin(string userID, string password)
+        public Login CheckLogin(Login login)
 
         {
-            return this.loginDAL.CheckLogin(userID, password);
+            return this.loginDAL.CheckLogin(login);
+        }
+
+        /// <summary>
+        /// Checks the login fields are valid
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        public Login CheckIfLoginIsValid(Login login)
+        {
+            return loginDAL.CheckLogin(login);
         }
     }
 }

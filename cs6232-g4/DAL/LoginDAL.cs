@@ -42,12 +42,11 @@ namespace cs6232_g4.DAL
         }
 
     /// <summary>
-    /// Checks Password
+    /// Checks login
     /// </summary>
     /// <returns></returns>
-    public bool CheckLogin (string userID, string password)
+    public Login CheckLogin (Login login)
         {
-            string pword = "";
 
         string selectStatement =
             "SELECT user_id, password " +
@@ -60,18 +59,22 @@ namespace cs6232_g4.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add(new SqlParameter("@UserID", userID));
-                    selectCommand.Parameters.Add(new SqlParameter("@Password", pword));
+                    selectCommand.Parameters.Add(new SqlParameter("@UserID", login.Username));
+                    selectCommand.Parameters.Add(new SqlParameter("@Password", login.Password));
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            password = reader["password"].ToString();
-}
+                            if (reader["UserID"] != DBNull.Value)
+                            {
+                                login.MemberId = Convert.ToInt32(reader["userId"]);
+                                login.Active = Convert.ToBoolean(reader["active"]);
+                            }
+                        }
                     }
                 }
             }
-            return password == "";
+            return login;
         }
 
     /// <summary>

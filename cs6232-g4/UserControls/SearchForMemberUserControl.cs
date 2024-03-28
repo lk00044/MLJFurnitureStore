@@ -212,9 +212,5 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
     }
 }
