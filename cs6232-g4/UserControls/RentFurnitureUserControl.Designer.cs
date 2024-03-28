@@ -41,6 +41,10 @@
             quantityTextBox = new TextBox();
             totalCostValue = new Label();
             availableFurnitureGridView = new DataGridView();
+            yearComboBox = new ComboBox();
+            dayComboBox = new ComboBox();
+            monthComboBox = new ComboBox();
+            dobLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
             SuspendLayout();
             // 
@@ -123,6 +127,7 @@
             updateItemButton.TabIndex = 11;
             updateItemButton.Text = "Update Item";
             updateItemButton.UseVisualStyleBackColor = true;
+            updateItemButton.Click += UpdateItemButton_Click;
             // 
             // totalCostLabel
             // 
@@ -167,10 +172,51 @@
             availableFurnitureGridView.Size = new Size(638, 163);
             availableFurnitureGridView.TabIndex = 16;
             // 
+            // yearComboBox
+            // 
+            yearComboBox.FormattingEnabled = true;
+            yearComboBox.Items.AddRange(new object[] { "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050", "2051", "2052", "2053", "2054", "2055", "2056", "2057", "2058", "2059", "2060", "2061", "2062", "2063", "2064", "2065", "2066", "2067", "2068", "2069", "2070", "2071", "2072", "2073", "2074", "2075", "2076", "2077", "2078", "2079", "2080", "2081", "2082", "2083", "2084", "2085", "2086", "2087", "2088", "2089", "2090", "2091", "2092", "2093", "2094", "2095", "2096", "2097", "2098", "2099", "2100" });
+            yearComboBox.Location = new Point(225, 94);
+            yearComboBox.Name = "yearComboBox";
+            yearComboBox.Size = new Size(86, 23);
+            yearComboBox.TabIndex = 29;
+            // 
+            // dayComboBox
+            // 
+            dayComboBox.FormattingEnabled = true;
+            dayComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" });
+            dayComboBox.Location = new Point(167, 94);
+            dayComboBox.Name = "dayComboBox";
+            dayComboBox.Size = new Size(52, 23);
+            dayComboBox.TabIndex = 28;
+            // 
+            // monthComboBox
+            // 
+            monthComboBox.FormattingEnabled = true;
+            monthComboBox.Items.AddRange(new object[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" });
+            monthComboBox.Location = new Point(109, 94);
+            monthComboBox.Name = "monthComboBox";
+            monthComboBox.Size = new Size(52, 23);
+            monthComboBox.TabIndex = 27;
+            // 
+            // dobLabel
+            // 
+            dobLabel.AutoSize = true;
+            dobLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold | FontStyle.Italic);
+            dobLabel.Location = new Point(19, 94);
+            dobLabel.Name = "dobLabel";
+            dobLabel.Size = new Size(68, 19);
+            dobLabel.TabIndex = 26;
+            dobLabel.Text = "Due Date";
+            // 
             // RentFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(yearComboBox);
+            Controls.Add(dayComboBox);
+            Controls.Add(monthComboBox);
+            Controls.Add(dobLabel);
             Controls.Add(availableFurnitureGridView);
             Controls.Add(totalCostValue);
             Controls.Add(quantityTextBox);
@@ -207,5 +253,9 @@
         private TextBox quantityTextBox;
         private Label totalCostValue;
         private DataGridView availableFurnitureGridView;
+        private ComboBox yearComboBox;
+        private ComboBox dayComboBox;
+        private ComboBox monthComboBox;
+        private Label dobLabel;
     }
 }
