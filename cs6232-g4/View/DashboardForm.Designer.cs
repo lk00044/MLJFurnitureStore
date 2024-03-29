@@ -87,11 +87,11 @@
             MainDBTabControl.Controls.Add(EditMbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
-            MainDBTabControl.Location = new Point(0, 58);
+            MainDBTabControl.Location = new Point(0, 72);
             MainDBTabControl.Margin = new Padding(3, 2, 3, 2);
             MainDBTabControl.Name = "MainDBTabControl";
             MainDBTabControl.SelectedIndex = 0;
-            MainDBTabControl.Size = new Size(778, 537);
+            MainDBTabControl.Size = new Size(784, 537);
             MainDBTabControl.TabIndex = 5;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
             // 
@@ -160,23 +160,23 @@
             MbrTransTabPage.Location = new Point(4, 24);
             MbrTransTabPage.Margin = new Padding(3, 2, 3, 2);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(770, 509);
+            MbrTransTabPage.Size = new Size(776, 509);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl1
             // 
-            rentFurnitureUserControl1.Location = new Point(0, 0);
+            rentFurnitureUserControl1.Location = new Point(0, 3);
             rentFurnitureUserControl1.Name = "rentFurnitureUserControl1";
-            rentFurnitureUserControl1.Size = new Size(767, 506);
-            rentFurnitureUserControl1.TabIndex = 0;
+            rentFurnitureUserControl1.Size = new Size(785, 465);
+            rentFurnitureUserControl1.TabIndex = 6;
             // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(778, 595);
+            ClientSize = new Size(784, 609);
             Controls.Add(MainDBTabControl);
             Controls.Add(DisplayUserNameLabel);
             Controls.Add(DisplayNameLabel);
