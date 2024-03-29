@@ -10,19 +10,17 @@ namespace Furnitures.Model
     {
         public int FurnitureId { get; set; }
 
-        public string FurnitureName { get; set; }
+        public string Name { get; set; }
 
-        public string FurnitureDescription { get; set; }
+        public string Description { get; set; }
 
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
 
-        public string Style { get; set; }
+        public string StyleName { get; set; }
 
         public int TotalQuantity { get; set; }
 
-        public int AvailableQuantity { get; set; }
-
-        public decimal RentalRate { get; set; }
-
+        public int InstockQuantity { get; set; }
+        public decimal DailyRentalRate { get; set; }
     }
 }
