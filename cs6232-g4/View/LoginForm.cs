@@ -1,5 +1,7 @@
 ﻿using cs6232_g4.Controller;
+using cs6232_g4.DAL;
 using cs6232_g4.Helper;
+using cs6232_g4.Model;
 using Employees.Controller;
 
 
@@ -70,6 +72,10 @@ namespace cs6232_g4.View
 
                     using (Form dashboardForm = new DashboardForm(username, emplName))
                     {
+                        Login user = new Login();
+                        user.Username = username;
+                        user.EmployeeId = this._loginController.GetEmployeeId(username);
+                        this._loginController.SetLogin(user);
                         this.Hide();
                         DialogResult result = dashboardForm.ShowDialog();
                         if (result == DialogResult.OK)

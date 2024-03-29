@@ -161,7 +161,7 @@
             availableFurnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             availableFurnitureGridView.Location = new Point(3, 297);
             availableFurnitureGridView.Name = "availableFurnitureGridView";
-            availableFurnitureGridView.Size = new Size(776, 165);
+            availableFurnitureGridView.Size = new Size(737, 165);
             availableFurnitureGridView.TabIndex = 16;
             // 
             // dobLabel
@@ -241,7 +241,7 @@
             Controls.Add(label1);
             Controls.Add(availableFurnitureLabel);
             Name = "RentFurnitureUserControl";
-            Size = new Size(782, 464);
+            Size = new Size(747, 464);
             Load += RentFurnitureUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).EndInit();
             ResumeLayout(false);

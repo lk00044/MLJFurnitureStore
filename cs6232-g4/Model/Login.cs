@@ -13,7 +13,7 @@ namespace cs6232_g4.Model
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public int MemberId { get; set; }
+        public int EmployeeId { get; set; }
 
     }
 }

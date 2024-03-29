@@ -1,4 +1,6 @@
-﻿using cs6232_g4.Model;
+﻿using cs6232_g4.Controller;
+using cs6232_g4.DAL;
+using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
 using System;
@@ -17,12 +19,14 @@ namespace cs6232_g4.UserControls
     public partial class RentFurnitureUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
+        private readonly LoginController _loginController;
         private readonly TransactionController _transactionController;
         private RentalTransaction rentalTransaction;
         private List<Furniture> furnitureList;
         public RentFurnitureUserControl()
         {
             InitializeComponent();
+            this._loginController = new LoginController();
             this._furnitureController = new FurnitureController();
             this._transactionController = new TransactionController();
             this.furnitureList = new List<Furniture>();
@@ -96,9 +100,9 @@ namespace cs6232_g4.UserControls
 
         private void CreateRentalTransaction()
         {
-           // this.rentalTransaction.EmployeeId = int.Parse(this.employeeIdTextBox.Text);
+            this.rentalTransaction.EmployeeId = this._loginController.GetCurrentLogin().EmployeeId;
             this.rentalTransaction.MemberId = int.Parse(this.memberIdTextBox.Text);
-            //this.rentalTransaction.DueDate = DateTime.Parse(this.monthComboBox.Text + "/" + this.dayComboBox.Text + "/" + this.yearComboBox.Text, new CultureInfo("en-CA"));
+            this.rentalTransaction.DueDate = DateTime.Parse(this.dueDatePicker.Text);
             this.rentalTransaction.TotalAmount = decimal.Parse(this.totalCostValue.Text.Trim('$'));
             this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
         }
@@ -121,7 +125,6 @@ namespace cs6232_g4.UserControls
         {
             DateTime currentDate = DateTime.Now;
             DateTime dueDate = DateTime.Parse(this.dueDatePicker.Text);
-           // DateTime dueDate = DateTime.Parse(this.monthComboBox.Text + "/" + this.dayComboBox.Text + "/" + this.yearComboBox.Text, new CultureInfo("en-CA"));
             return (dueDate.Date - currentDate.Date).Days;
         }
 

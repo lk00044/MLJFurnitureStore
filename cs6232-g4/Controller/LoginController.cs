@@ -5,6 +5,7 @@
 /// 
 
 using cs6232_g4.DAL;
+using cs6232_g4.Model;
 
 namespace cs6232_g4.Controller
 {
@@ -37,5 +38,32 @@ namespace cs6232_g4.Controller
             return this._loginDAL.CheckUserID(UserID);
         }
 
+        /// <summary>
+        /// gets employee ID
+        /// </summary>
+        /// <returns></returns>
+        public int GetEmployeeId(string UserID)
+        {
+            return this._loginDAL.GetEmployeeId(UserID);
+        }
+
+
+        /// <summary>
+        /// Gets the current user logged in 
+        /// </summary>
+        /// <returns></returns>
+        public Login GetCurrentLogin()
+        {
+            return this._loginDAL.GetCurrentLogin();
+        }
+
+        /// <summary>
+        /// Sets the current user as logged in 
+        /// </summary>
+        /// <param name="login"></param>
+        public void SetLogin(Login login)
+        {
+            this._loginDAL.SetLogin(login);
+        }
     }
 }
