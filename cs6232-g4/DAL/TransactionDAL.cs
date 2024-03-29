@@ -73,6 +73,48 @@ namespace Employees.DAL
             }
         }
 
+        /// <summary>
+        /// Gets rental line items per transaction
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>rental line items list</returns>
+        public List<RentalLineItem> GetRentalLineItems(int rentalTransactionID)
+        {
+            List<RentalLineItem> LineItemsList = new List<RentalLineItem>();
+
+            string selectStatement =
+                "SELECT line_item_id, name , RentalLineItem.furniture_id, quantity, subtotal " +
+                "FROM RentalLineItem " +
+                "JOIN Furniture ON Furniture.furniture_id = RentalLineItem.furniture_id " + 
+                "WHERE rental_transaction_id = @rentalTransactionID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@rentalTransactionID", rentalTransactionID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalLineItem lineItem = new RentalLineItem();
+                            lineItem.LineItemId = (int)reader["line_item_id"];
+                            lineItem.Name =reader["name"].ToString();
+                            lineItem.FurnitureId = (int)reader["furniture_id"];
+                            lineItem.Quantity = (int)reader["quantity"];
+                            lineItem.Subtotal = (decimal)reader["subtotal"];
+                            lineItem.RentalTransactionId = rentalTransactionID;
+                            LineItemsList.Add(lineItem);
+                        }
+                    }
+                }
+            }
+            return LineItemsList;
+        }
     }
 
 

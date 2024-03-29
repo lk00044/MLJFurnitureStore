@@ -91,6 +91,7 @@ namespace cs6232_g4.UserControls
         {
             this.CreateRentalTransaction();
             this.CreateLineItems();
+            this.CreateReceipt();
         }
 
         private void CreateRentalTransaction()
@@ -121,6 +122,22 @@ namespace cs6232_g4.UserControls
             DateTime currentDate = DateTime.Now;
             DateTime dueDate = DateTime.Parse(this.monthComboBox.Text + "/" + this.dayComboBox.Text + "/" + this.yearComboBox.Text, new CultureInfo("en-CA"));
             return (dueDate.Date - currentDate.Date).Days;
+        }
+
+        private void CreateReceipt()
+        {
+            string lineItemsInfo = "";
+            foreach(RentalLineItem lineItem in this._transactionController.GetRentalLineItems(this.rentalTransaction.TransactionID))
+            {
+                lineItemsInfo += "    ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: " + lineItem.Subtotal + "\n";
+            }
+            string receipt = "Rental Transaction ID: " + this.rentalTransaction.TransactionID + "\n"
+            + "Due Date: " + this.rentalTransaction.DueDate + "\n"
+            + "Total Cost: " + this.rentalTransaction.TotalAmount + "\n"
+            + "Items Info: \n"
+            + lineItemsInfo;
+
+            MessageBox.Show(receipt,"Rental Receipt");
         }
     }
 }

@@ -33,5 +33,15 @@ namespace Members.Controller
         {
             this._transactionDAL.CreateRentalLineItem(lineItem);
         }
+
+        /// <summary>
+        /// Gets rental line items per transaction
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>rental line items list</returns>
+        public List<RentalLineItem> GetRentalLineItems(int rentalTransactionID)
+        {
+            return this._transactionDAL.GetRentalLineItems(rentalTransactionID);
+        }
     }
 }
