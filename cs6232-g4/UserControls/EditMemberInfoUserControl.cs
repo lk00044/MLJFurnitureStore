@@ -18,60 +18,7 @@ namespace cs6232_g4.UserControls
             this.InfoLabel.ForeColor = Color.Red;
         }
 
-        private void FindMemberButton_Click(object sender, EventArgs e)
-        {
 
-            if (this.CheckIfMissingAllInput())
-            {
-                this.InfoLabel.Text = "You must enter one of the following options: 1) Member ID, 2) Member Phone Number, or 3) Member First and Last Name";
-            }
-
-            if (this.CheckIfMissingNamePart())
-            {
-                this.InfoLabel.Text = "You must enter both the Member First and Last Name";
-            }
-
-            try
-            {
-
-                if (this.MbrIDTextBox.Text != "")
-                {
-                    if (Int32.TryParse(this.MbrIDTextBox.Text, out _))
-                    {
-                        MemberList = this._memberController.GetMemberByID(Int32.Parse(this.MbrIDTextBox.Text));
-                        this.PopulateUpdateFields();
-                    }
-                    else
-                    {
-                        this.InfoLabel.Text = "Member ID must be numberic.";
-                    }
-
-                }
-                else if (this.MbrPhoneNumTextBox.Text != "")
-                {
-                    if (Int64.TryParse(this.MbrPhoneNumTextBox.Text, out _))
-                    {
-                        MemberList = this._memberController.GetMemberByPhone(this.MbrPhoneNumTextBox.Text.Trim());
-                        this.PopulateUpdateFields();
-                    }
-                    else
-                    {
-                        this.InfoLabel.Text = "The phone number should be numeric only, no - needed.";
-                    }
-
-                }
-                else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
-                {
-                    MemberList = this._memberController.GetMemberByName(this.MbrFNameTextBox.Text, this.MbrLNameTextBox.Text);
-                    this.PopulateUpdateFields();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to find member!" + Environment.NewLine + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
 
         private void PopulateUpdateFields()
         {
@@ -88,7 +35,8 @@ namespace cs6232_g4.UserControls
             this.GenderComboBox.Text = MemberList[0].Gender.ToString();
         }
 
-        private bool CheckIfMissingAllInput()
+      /*
+      private bool CheckIfMissingAllInput()
         {
             return string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
                 string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
@@ -102,6 +50,7 @@ namespace cs6232_g4.UserControls
                 );
         }
 
+        */
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
             Member updatedMember = MemberList[0];

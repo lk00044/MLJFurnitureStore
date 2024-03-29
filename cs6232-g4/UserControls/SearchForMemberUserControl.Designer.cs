@@ -28,18 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DOBColumnHeader = new ColumnHeader();
-            ZipColumnHeader = new ColumnHeader();
-            StateColumnHeader = new ColumnHeader();
-            CityColumnHeader = new ColumnHeader();
-            Addr2ColumnHeader = new ColumnHeader();
-            Addr1ColumnHeader = new ColumnHeader();
-            LNameColumnHeader = new ColumnHeader();
-            MbrFNameColumnHeader = new ColumnHeader();
-            MbrUDColumnHeader = new ColumnHeader();
-            MatchingMembersListView = new ListView();
-            PhoneColumnHeader = new ColumnHeader();
-            GenderColumnHeader = new ColumnHeader();
             MatchingMembersLabel = new Label();
             FindMemberButton = new Button();
             MbrPhoneNumTextBox = new TextBox();
@@ -53,74 +41,11 @@
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
+            MembersDataGridView = new DataGridView();
+            UpdateMbrButton = new Button();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
-            // 
-            // DOBColumnHeader
-            // 
-            DOBColumnHeader.DisplayIndex = 9;
-            DOBColumnHeader.Text = "Date of Birth";
-            DOBColumnHeader.Width = 100;
-            // 
-            // ZipColumnHeader
-            // 
-            ZipColumnHeader.Text = "Zip";
-            // 
-            // StateColumnHeader
-            // 
-            StateColumnHeader.Text = "State";
-            // 
-            // CityColumnHeader
-            // 
-            CityColumnHeader.Text = "City";
-            CityColumnHeader.Width = 100;
-            // 
-            // Addr2ColumnHeader
-            // 
-            Addr2ColumnHeader.Text = "Address 2";
-            Addr2ColumnHeader.Width = 120;
-            // 
-            // Addr1ColumnHeader
-            // 
-            Addr1ColumnHeader.Text = "Address 1";
-            Addr1ColumnHeader.Width = 150;
-            // 
-            // LNameColumnHeader
-            // 
-            LNameColumnHeader.Text = "Last Name";
-            LNameColumnHeader.Width = 120;
-            // 
-            // MbrFNameColumnHeader
-            // 
-            MbrFNameColumnHeader.Text = "First Name";
-            MbrFNameColumnHeader.Width = 120;
-            // 
-            // MbrUDColumnHeader
-            // 
-            MbrUDColumnHeader.Text = "Member ID";
-            MbrUDColumnHeader.Width = 120;
-            // 
-            // MatchingMembersListView
-            // 
-            MatchingMembersListView.Columns.AddRange(new ColumnHeader[] { MbrUDColumnHeader, MbrFNameColumnHeader, LNameColumnHeader, Addr1ColumnHeader, Addr2ColumnHeader, CityColumnHeader, StateColumnHeader, ZipColumnHeader, PhoneColumnHeader, GenderColumnHeader, DOBColumnHeader });
-            MatchingMembersListView.GridLines = true;
-            MatchingMembersListView.Location = new Point(17, 250);
-            MatchingMembersListView.Name = "MatchingMembersListView";
-            MatchingMembersListView.Size = new Size(834, 418);
-            MatchingMembersListView.TabIndex = 13;
-            MatchingMembersListView.UseCompatibleStateImageBehavior = false;
-            MatchingMembersListView.View = System.Windows.Forms.View.Details;
-            // 
-            // PhoneColumnHeader
-            // 
-            PhoneColumnHeader.DisplayIndex = 10;
-            PhoneColumnHeader.Text = "Phone";
-            PhoneColumnHeader.Width = 120;
-            // 
-            // GenderColumnHeader
-            // 
-            GenderColumnHeader.DisplayIndex = 8;
-            GenderColumnHeader.Text = "Gender";
             // 
             // MatchingMembersLabel
             // 
@@ -256,11 +181,37 @@
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
+            // MembersDataGridView
+            // 
+            MembersDataGridView.AllowUserToAddRows = false;
+            MembersDataGridView.AllowUserToDeleteRows = false;
+            MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MembersDataGridView.Location = new Point(17, 254);
+            MembersDataGridView.Name = "MembersDataGridView";
+            MembersDataGridView.ReadOnly = true;
+            MembersDataGridView.RowHeadersWidth = 51;
+            MembersDataGridView.Size = new Size(834, 349);
+            MembersDataGridView.TabIndex = 14;
+            MembersDataGridView.CellContentClick += MembersDataGridView_CellContentClick;
+            // 
+            // UpdateMbrButton
+            // 
+            UpdateMbrButton.FlatStyle = FlatStyle.Popup;
+            UpdateMbrButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UpdateMbrButton.Location = new Point(594, 206);
+            UpdateMbrButton.Name = "UpdateMbrButton";
+            UpdateMbrButton.Size = new Size(254, 29);
+            UpdateMbrButton.TabIndex = 15;
+            UpdateMbrButton.Text = "Update Selected Member";
+            UpdateMbrButton.UseVisualStyleBackColor = true;
+            UpdateMbrButton.Click += UpdateMbrButton_Click;
+            // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(MatchingMembersListView);
+            Controls.Add(UpdateMbrButton);
+            Controls.Add(MembersDataGridView);
             Controls.Add(MatchingMembersLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
@@ -268,23 +219,12 @@
             Size = new Size(877, 687);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)MembersDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ColumnHeader DOBColumnHeader;
-        private ColumnHeader ZipColumnHeader;
-        private ColumnHeader StateColumnHeader;
-        private ColumnHeader CityColumnHeader;
-        private ColumnHeader Addr2ColumnHeader;
-        private ColumnHeader Addr1ColumnHeader;
-        private ColumnHeader LNameColumnHeader;
-        private ColumnHeader MbrFNameColumnHeader;
-        private ColumnHeader MbrUDColumnHeader;
-        private ListView MatchingMembersListView;
-        private ColumnHeader GenderColumnHeader;
         private Label MatchingMembersLabel;
         private Button FindMemberButton;
         private TextBox MbrPhoneNumTextBox;
@@ -298,6 +238,7 @@
         private Label EnterMbrPhoneNumLabel;
         private Label SearchInstructionsLabel;
         private Label ErrorLabel;
-        private ColumnHeader PhoneColumnHeader;
+        private DataGridView MembersDataGridView;
+        private Button UpdateMbrButton;
     }
 }
