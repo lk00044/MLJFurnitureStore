@@ -109,7 +109,7 @@
             SearchFurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             SearchFurnitureDataGridView.Size = new Size(900, 189);
             SearchFurnitureDataGridView.TabIndex = 2;
-            SearchFurnitureDataGridView.CellContentClick += SearchFurnitureDataGridView_CellContentClick;
+            SearchFurnitureDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(SearchFurnitureDataGridView_CellClick);
             // 
             // RentalIDText
             // 
@@ -169,7 +169,6 @@
             SearchLabel.Size = new Size(152, 25);
             SearchLabel.TabIndex = 3;
             SearchLabel.Text = "Search Furniture";
-            SearchLabel.Click += label1_Click;
             // 
             // RentalIDLabel
             // 
@@ -180,7 +179,6 @@
             RentalIDLabel.Size = new Size(73, 20);
             RentalIDLabel.TabIndex = 6;
             RentalIDLabel.Text = "Rental ID:";
-            RentalIDLabel.Click += label1_Click_2;
             // 
             // RentalComboBox
             // 
@@ -199,7 +197,6 @@
             CategoryLabel.Size = new Size(72, 20);
             CategoryLabel.TabIndex = 7;
             CategoryLabel.Text = "Category:";
-            CategoryLabel.Click += label1_Click_3;
             // 
             // CategoryComboBox
             // 
@@ -218,7 +215,6 @@
             StyleLabel.Size = new Size(44, 20);
             StyleLabel.TabIndex = 9;
             StyleLabel.Text = "Style:";
-            StyleLabel.Click += label2_Click;
             // 
             // StyleComboBox
             // 
@@ -237,7 +233,7 @@
             SearchBtn.TabIndex = 11;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = true;
-            SearchBtn.Click += button1_Click;
+            SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // CancelBtn
             // 
@@ -258,7 +254,6 @@
             FurnitureInfoLabel.Size = new Size(167, 20);
             FurnitureInfoLabel.TabIndex = 4;
             FurnitureInfoLabel.Text = "Furniture Information:";
-            FurnitureInfoLabel.Click += label1_Click_1;
             // 
             // CloseBtn
             // 
@@ -270,7 +265,7 @@
             CloseBtn.TabIndex = 13;
             CloseBtn.Text = "Close";
             CloseBtn.UseVisualStyleBackColor = true;
-            CloseBtn.Click += button1_Click_1;
+            CloseBtn.Click += new System.EventHandler(this.CloseBtn_Clicked);
             // 
             // UserLabel
             // 
@@ -282,7 +277,6 @@
             UserLabel.Size = new Size(75, 20);
             UserLabel.TabIndex = 14;
             UserLabel.Text = "Username";
-            UserLabel.Click += UserLabel_Click;
             // 
             // LogoutLink
             // 
@@ -294,7 +288,7 @@
             LogoutLink.TabIndex = 15;
             LogoutLink.TabStop = true;
             LogoutLink.Text = "Logout";
-            LogoutLink.LinkClicked += linkLabel1_LinkClicked;
+            LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
             // SearchFurnitureForm
             // 
@@ -304,7 +298,6 @@
             Controls.Add(SearchTableLayoutPanel);
             Name = "SearchFurnitureForm";
             Text = "Search Furniture";
-            Load += SearchFurnitureForm_Load;
             SearchTableLayoutPanel.ResumeLayout(false);
             SearchTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).EndInit();
