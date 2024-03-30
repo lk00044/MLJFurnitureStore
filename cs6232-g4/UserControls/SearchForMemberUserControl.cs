@@ -57,9 +57,20 @@ namespace cs6232_g4.UserControls
                     if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId))
                     {
                         MemberList = this._memberController.GetMemberByID(MbrId);
-                        this.DisplayMemberMatches();
-                        this.ClearTextBoxes();
-                        this.ReEnableTextBoxes();
+
+                        if (MemberList.Count > 0)
+                        {
+                            this.DisplayMemberMatches();
+                            this.ClearTextBoxes();
+                            this.ReEnableTextBoxes();
+                        }     
+                        else
+                        {
+                            this.ErrorLabel.Text = "No members with that ID.";
+                            this.clearGrid();
+                            this.ClearTextBoxes();
+                            this.ReEnableTextBoxes();
+                        }
                     }
                     else
                     {
@@ -73,9 +84,20 @@ namespace cs6232_g4.UserControls
                     {
                         this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
                         MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
-                        this.DisplayMemberMatches();
-                        this.ClearTextBoxes();
-                        this.ReEnableTextBoxes();
+
+                        if (MemberList.Count > 0)
+                        {
+                            this.DisplayMemberMatches();
+                            this.ClearTextBoxes();
+                            this.ReEnableTextBoxes();
+                        }
+                        else
+                        {
+                            this.ErrorLabel.Text = "No members with that ID.";
+                            this.clearGrid();
+                            this.ClearTextBoxes();
+                            this.ReEnableTextBoxes();
+                        }
                     }
                     else
                     {
@@ -93,9 +115,20 @@ namespace cs6232_g4.UserControls
                     this.MbrFName = this.MbrFNameTextBox.Text;
 
                     MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
-                    this.ClearTextBoxes();
-                    this.ReEnableTextBoxes();
-                    this.DisplayMemberMatches();
+
+                    if (MemberList.Count > 0)
+                    {
+                        this.DisplayMemberMatches();
+                        this.ClearTextBoxes();
+                        this.ReEnableTextBoxes();
+                    }
+                    else
+                    {
+                        this.ErrorLabel.Text = "No members with that ID.";
+                        this.clearGrid();
+                        this.ClearTextBoxes();
+                        this.ReEnableTextBoxes();
+                    }
                 }
 
             }
@@ -108,12 +141,10 @@ namespace cs6232_g4.UserControls
 
         private bool CheckRowIsSelected()
         {
-
             if (this.MembersDataGridView.SelectedRows.Count == 0) 
             {
                 return false;
             }
-
             return true;
         }
 
@@ -150,15 +181,23 @@ namespace cs6232_g4.UserControls
 
         private void RefreshDataGrid(List<Member> MatchingMembers)
         {
-            this.MembersDataGridView.DataSource = null;
-            this.MembersDataGridView.DataSource = MatchingMembers;
-            this.MembersDataGridView.ClearSelection();
+
+            if (MatchingMembers == null)
+            {
+                this.ErrorLabel.Text = "No members with that criteria.";
+            }
+            else
+            {
+                this.MembersDataGridView.DataSource = null;
+                this.MembersDataGridView.DataSource = MatchingMembers;
+                this.MembersDataGridView.ClearSelection();
+            }            
         }
 
         private void DisplayMemberMatches()
         {
             try
-            {                
+            {              
                 this.RefreshDataGrid(MemberList);
             }
             catch (Exception ex)
@@ -176,11 +215,6 @@ namespace cs6232_g4.UserControls
 
         }
 
-        private void MbrIDTextBox_Click(object sender, EventArgs e)
-        {
-            this.MembersDataGridView.DataSource = null;
-        }
-
         private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
         {
             this.ErrorLabel.Text = string.Empty;
@@ -196,7 +230,6 @@ namespace cs6232_g4.UserControls
         private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.ErrorLabel.Text = string.Empty;
-
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
             this.MbrLNameTextBox.Enabled = true;
@@ -214,7 +247,7 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+            private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.ErrorLabel.Text = "";
 
@@ -269,6 +302,11 @@ namespace cs6232_g4.UserControls
                     }
                 }
             }
+        }
+
+        private void clearGrid()
+        {
+            this.MembersDataGridView.Columns.Clear();
         }
     }
 }
