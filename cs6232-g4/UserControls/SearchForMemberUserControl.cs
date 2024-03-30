@@ -26,6 +26,7 @@ namespace cs6232_g4.UserControls
         private string MbrPhoneNum;
         private List<Member> MemberList;
         private Member SelectedMember;
+        private int SelectedMemberId;
 
         private readonly MembersController _memberController;
 
@@ -37,6 +38,7 @@ namespace cs6232_g4.UserControls
             MemberList = new List<Member>();
             SelectedMember = new Member();
             MbrId = 0;
+            SelectedMemberId = 0;
             MbrFName = string.Empty;
             MbrLName = string.Empty;
             MbrPhoneNum = string.Empty;
@@ -203,9 +205,9 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MembersDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (MembersDataGridView.SelectedRows.Count > 0)
+            if (MembersDataGridView.SelectedRows.Count > 1)
             {
                 this.ErrorLabel.Text = "Please only select one member.";
             }
@@ -215,13 +217,15 @@ namespace cs6232_g4.UserControls
             }
             else if (MembersDataGridView.SelectedRows.Count == 1)
             {
+                /// Get the row of data
                 int selectedrowindex = MembersDataGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = MembersDataGridView.Rows[selectedrowindex];
-                string cellValue = Convert.ToString(selectedRow.Cells["Member ID"].Value);
+                string cellValue = Convert.ToString(selectedRow.Cells[0].Value);
                 int MbrID = Int32.Parse(cellValue);
                 List<Member> searchList = new List<Member>();
                 searchList = this._memberController.GetMemberByID(MbrID);
                 this.SelectedMember = searchList[0];
+                this.SelectedMemberId = this.SelectedMember.MemberID;
             }
         }
 
@@ -233,10 +237,11 @@ namespace cs6232_g4.UserControls
             }
             else
             {
-                using (Form updateMemberForm = new View.UpdateMemberForm(SelectedMember.MemberID))
+                using (Form updateMemberForm = new View.UpdateMemberForm(SelectedMemberId))
                 {
 
                     DialogResult result = updateMemberForm.ShowDialog();
+
                     if (result == DialogResult.OK)
                     {
                         this.Show();

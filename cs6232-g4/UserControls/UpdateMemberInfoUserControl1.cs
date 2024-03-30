@@ -1,27 +1,35 @@
-﻿using Members.Controller;
+﻿using cs6232_g4.View;
+using Members.Controller;
 using Members.Model;
+/// <summary>
+/// Interaction between the view to update a member and the data
+/// Programmer:     Leslie
+/// Date:           29 March 2024
+/// Modification:   Moved to its own form for enhancement.
+/// </summary>
 
 namespace cs6232_g4.UserControls
 {
-    public partial class EditMemberInfoUserControl : UserControl
+    public partial class UpdateMemberInfoUserControl1 : UserControl
     {
         private readonly MembersController _memberController;
-
         private List<Member> MemberList;
+        private int _memberID;
 
-        public EditMemberInfoUserControl()
+        public UpdateMemberInfoUserControl1(int memberID)
         {
             InitializeComponent();
             this._memberController = new MembersController();
             MemberList = new List<Member>();
+            this._memberID = memberID;
             this.InfoLabel.Text = string.Empty;
             this.InfoLabel.ForeColor = Color.Red;
+            this.PopulateUpdateFields();
         }
-
-
 
         private void PopulateUpdateFields()
         {
+            this.MemberList = this._memberController.GetMemberByID(this._memberID);
             this.InfoLabel.Text = String.Empty;
             this.MbrNewFNameTextBox.Text = MemberList[0].FirstName;
             this.MbrNewLNameTextBox.Text = MemberList[0].LastName;
@@ -35,25 +43,27 @@ namespace cs6232_g4.UserControls
             this.GenderComboBox.Text = MemberList[0].Gender.ToString();
         }
 
-      /*
-      private bool CheckIfMissingAllInput()
-        {
-            return string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
-                string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
-        }
+        /*   
+           private bool CheckIfMissingAllInput()
+             {
+                 return string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
+                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
+             }
 
-        private bool CheckIfMissingNamePart()
-        {
-            return (string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
-                (!string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text) ||
-                string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && !string.IsNullOrEmpty(this.MbrFNameTextBox.Text)
-                );
-        }
+             private bool CheckIfMissingNamePart()
+             {
+                 return (string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
+                     (!string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text) ||
+                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && !string.IsNullOrEmpty(this.MbrFNameTextBox.Text)
+                     );
+             }
 
-        */
+       */
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
-            Member updatedMember = MemberList[0];
+            //   Member updatedMember = MemberList[0];
+            Member updatedMember = new Member();
+            updatedMember = this.MemberList[0];
             updatedMember.FirstName = this.MbrNewFNameTextBox.Text;
             updatedMember.LastName = this.MbrNewLNameTextBox.Text;
             updatedMember.Address1 = this.NewAddr1TextBox.Text;
@@ -69,4 +79,6 @@ namespace cs6232_g4.UserControls
             this.InfoLabel.Text = "Member updated successfully!";
         }
     }
+
+
 }

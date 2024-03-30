@@ -190,9 +190,10 @@
             MembersDataGridView.Name = "MembersDataGridView";
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
+            MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MembersDataGridView.Size = new Size(834, 349);
             MembersDataGridView.TabIndex = 14;
-            MembersDataGridView.CellContentClick += MembersDataGridView_CellContentClick;
+            MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
             // UpdateMbrButton
             // 

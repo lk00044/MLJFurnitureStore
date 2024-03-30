@@ -1,15 +1,13 @@
-﻿using Members.Model;
-
-namespace cs6232_g4.View
+﻿namespace cs6232_g4.UserControls
 {
-    partial class UpdateMemberForm
+    partial class UpdateMemberInfoUserControl1
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,15 +20,17 @@ namespace cs6232_g4.View
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            InfoLabel = new Label();
             fnameErrorLabel = new Label();
+            tableLayoutPanel2 = new TableLayoutPanel();
             NewFNameLabel = new Label();
             MbrNewLNameTextBox = new TextBox();
             NewGenderLabel = new Label();
@@ -45,16 +45,13 @@ namespace cs6232_g4.View
             NewAddr1Label = new Label();
             NewAddr1TextBox = new TextBox();
             NewStateComboBox = new ComboBox();
-            SearchInstructionsLabel = new Label();
-            DisplayIDLabel = new Label();
             NewStateLabel = new Label();
-            InfoLabel = new Label();
-            tableLayoutPanel2 = new TableLayoutPanel();
             NewCityTextBox = new TextBox();
             label2 = new Label();
             NewZipTextBox = new TextBox();
             NewZipLabel = new Label();
             genderErrorLabel = new Label();
+            label4 = new Label();
             dobErrorLabel = new Label();
             phoneErrorLabel = new Label();
             addr1ErrorLabel = new Label();
@@ -63,10 +60,18 @@ namespace cs6232_g4.View
             zipErrorLabel = new Label();
             UpdateMemberButton = new Button();
             MbrNewFNameTextBox = new TextBox();
-            label4 = new Label();
+            SearchInstructionsLabel = new Label();
             MemberIDLabel = new Label();
+            DisplayIDLabel = new Label();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
+            // 
+            // InfoLabel
+            // 
+            InfoLabel.Location = new Point(545, 50);
+            InfoLabel.Name = "InfoLabel";
+            InfoLabel.Size = new Size(311, 33);
+            InfoLabel.TabIndex = 37;
             // 
             // fnameErrorLabel
             // 
@@ -75,6 +80,62 @@ namespace cs6232_g4.View
             fnameErrorLabel.Name = "fnameErrorLabel";
             fnameErrorLabel.Size = new Size(253, 32);
             fnameErrorLabel.TabIndex = 23;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 135F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 259F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 128F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Controls.Add(fnameErrorLabel, 1, 1);
+            tableLayoutPanel2.Controls.Add(NewFNameLabel, 0, 0);
+            tableLayoutPanel2.Controls.Add(MbrNewLNameTextBox, 3, 0);
+            tableLayoutPanel2.Controls.Add(NewGenderLabel, 0, 2);
+            tableLayoutPanel2.Controls.Add(GenderComboBox, 1, 2);
+            tableLayoutPanel2.Controls.Add(NewLNameLabel, 2, 0);
+            tableLayoutPanel2.Controls.Add(NewDOBLabel, 2, 2);
+            tableLayoutPanel2.Controls.Add(NewDOBTextBox, 3, 2);
+            tableLayoutPanel2.Controls.Add(MbrNewPhoneNumTextBox, 1, 4);
+            tableLayoutPanel2.Controls.Add(NewPhoneLabel, 0, 4);
+            tableLayoutPanel2.Controls.Add(NewAddr2TextBox, 3, 6);
+            tableLayoutPanel2.Controls.Add(label1, 2, 6);
+            tableLayoutPanel2.Controls.Add(NewAddr1Label, 0, 6);
+            tableLayoutPanel2.Controls.Add(NewAddr1TextBox, 1, 6);
+            tableLayoutPanel2.Controls.Add(NewStateComboBox, 3, 8);
+            tableLayoutPanel2.Controls.Add(NewStateLabel, 2, 8);
+            tableLayoutPanel2.Controls.Add(NewCityTextBox, 1, 8);
+            tableLayoutPanel2.Controls.Add(label2, 0, 8);
+            tableLayoutPanel2.Controls.Add(NewZipTextBox, 1, 10);
+            tableLayoutPanel2.Controls.Add(NewZipLabel, 0, 10);
+            tableLayoutPanel2.Controls.Add(genderErrorLabel, 1, 3);
+            tableLayoutPanel2.Controls.Add(label4, 3, 1);
+            tableLayoutPanel2.Controls.Add(dobErrorLabel, 3, 3);
+            tableLayoutPanel2.Controls.Add(phoneErrorLabel, 1, 5);
+            tableLayoutPanel2.Controls.Add(addr1ErrorLabel, 1, 7);
+            tableLayoutPanel2.Controls.Add(cityErrorLabel, 1, 9);
+            tableLayoutPanel2.Controls.Add(stateErrorLabel, 3, 9);
+            tableLayoutPanel2.Controls.Add(zipErrorLabel, 1, 11);
+            tableLayoutPanel2.Controls.Add(UpdateMemberButton, 3, 11);
+            tableLayoutPanel2.Controls.Add(MbrNewFNameTextBox, 1, 0);
+            tableLayoutPanel2.Location = new Point(40, 115);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 12;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 19F));
+            tableLayoutPanel2.Size = new Size(816, 445);
+            tableLayoutPanel2.TabIndex = 34;
             // 
             // NewFNameLabel
             // 
@@ -192,24 +253,6 @@ namespace cs6232_g4.View
             NewStateComboBox.Size = new Size(279, 28);
             NewStateComboBox.TabIndex = 16;
             // 
-            // SearchInstructionsLabel
-            // 
-            SearchInstructionsLabel.AutoSize = true;
-            SearchInstructionsLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            SearchInstructionsLabel.Location = new Point(12, 22);
-            SearchInstructionsLabel.Name = "SearchInstructionsLabel";
-            SearchInstructionsLabel.Size = new Size(422, 25);
-            SearchInstructionsLabel.TabIndex = 41;
-            SearchInstructionsLabel.Text = "Enter numbers only for phone number and zip code. ";
-            // 
-            // DisplayIDLabel
-            // 
-            DisplayIDLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DisplayIDLabel.Location = new Point(128, 78);
-            DisplayIDLabel.Name = "DisplayIDLabel";
-            DisplayIDLabel.Size = new Size(153, 25);
-            DisplayIDLabel.TabIndex = 40;
-            // 
             // NewStateLabel
             // 
             NewStateLabel.Location = new Point(397, 286);
@@ -218,69 +261,6 @@ namespace cs6232_g4.View
             NewStateLabel.TabIndex = 10;
             NewStateLabel.Text = "State: ";
             NewStateLabel.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // InfoLabel
-            // 
-            InfoLabel.Location = new Point(520, 26);
-            InfoLabel.Name = "InfoLabel";
-            InfoLabel.Size = new Size(311, 33);
-            InfoLabel.TabIndex = 42;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 4;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 135F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 259F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 128F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Controls.Add(fnameErrorLabel, 1, 1);
-            tableLayoutPanel2.Controls.Add(NewFNameLabel, 0, 0);
-            tableLayoutPanel2.Controls.Add(MbrNewLNameTextBox, 3, 0);
-            tableLayoutPanel2.Controls.Add(NewGenderLabel, 0, 2);
-            tableLayoutPanel2.Controls.Add(GenderComboBox, 1, 2);
-            tableLayoutPanel2.Controls.Add(NewLNameLabel, 2, 0);
-            tableLayoutPanel2.Controls.Add(NewDOBLabel, 2, 2);
-            tableLayoutPanel2.Controls.Add(NewDOBTextBox, 3, 2);
-            tableLayoutPanel2.Controls.Add(MbrNewPhoneNumTextBox, 1, 4);
-            tableLayoutPanel2.Controls.Add(NewPhoneLabel, 0, 4);
-            tableLayoutPanel2.Controls.Add(NewAddr2TextBox, 3, 6);
-            tableLayoutPanel2.Controls.Add(label1, 2, 6);
-            tableLayoutPanel2.Controls.Add(NewAddr1Label, 0, 6);
-            tableLayoutPanel2.Controls.Add(NewAddr1TextBox, 1, 6);
-            tableLayoutPanel2.Controls.Add(NewStateComboBox, 3, 8);
-            tableLayoutPanel2.Controls.Add(NewStateLabel, 2, 8);
-            tableLayoutPanel2.Controls.Add(NewCityTextBox, 1, 8);
-            tableLayoutPanel2.Controls.Add(label2, 0, 8);
-            tableLayoutPanel2.Controls.Add(NewZipTextBox, 1, 10);
-            tableLayoutPanel2.Controls.Add(NewZipLabel, 0, 10);
-            tableLayoutPanel2.Controls.Add(genderErrorLabel, 1, 3);
-            tableLayoutPanel2.Controls.Add(dobErrorLabel, 3, 3);
-            tableLayoutPanel2.Controls.Add(phoneErrorLabel, 1, 5);
-            tableLayoutPanel2.Controls.Add(addr1ErrorLabel, 1, 7);
-            tableLayoutPanel2.Controls.Add(cityErrorLabel, 1, 9);
-            tableLayoutPanel2.Controls.Add(stateErrorLabel, 3, 9);
-            tableLayoutPanel2.Controls.Add(zipErrorLabel, 1, 11);
-            tableLayoutPanel2.Controls.Add(UpdateMemberButton, 3, 11);
-            tableLayoutPanel2.Controls.Add(MbrNewFNameTextBox, 1, 0);
-            tableLayoutPanel2.Controls.Add(label4, 2, 1);
-            tableLayoutPanel2.Location = new Point(25, 120);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 12;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 19F));
-            tableLayoutPanel2.Size = new Size(816, 445);
-            tableLayoutPanel2.TabIndex = 39;
             // 
             // NewCityTextBox
             // 
@@ -321,6 +301,14 @@ namespace cs6232_g4.View
             genderErrorLabel.Name = "genderErrorLabel";
             genderErrorLabel.Size = new Size(253, 32);
             genderErrorLabel.TabIndex = 24;
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(525, 32);
+            label4.Name = "label4";
+            label4.Size = new Size(270, 32);
+            label4.TabIndex = 25;
             // 
             // dobErrorLabel
             // 
@@ -389,36 +377,45 @@ namespace cs6232_g4.View
             MbrNewFNameTextBox.Size = new Size(253, 27);
             MbrNewFNameTextBox.TabIndex = 6;
             // 
-            // label4
+            // SearchInstructionsLabel
             // 
-            label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(397, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(122, 32);
-            label4.TabIndex = 25;
+            SearchInstructionsLabel.AutoSize = true;
+            SearchInstructionsLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            SearchInstructionsLabel.Location = new Point(12, 18);
+            SearchInstructionsLabel.Name = "SearchInstructionsLabel";
+            SearchInstructionsLabel.Size = new Size(422, 25);
+            SearchInstructionsLabel.TabIndex = 36;
+            SearchInstructionsLabel.Text = "Enter numbers only for phone number and zip code. ";
             // 
             // MemberIDLabel
             // 
             MemberIDLabel.AutoSize = true;
             MemberIDLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            MemberIDLabel.Location = new Point(25, 78);
+            MemberIDLabel.Location = new Point(12, 60);
             MemberIDLabel.Name = "MemberIDLabel";
             MemberIDLabel.Size = new Size(106, 23);
-            MemberIDLabel.TabIndex = 38;
+            MemberIDLabel.TabIndex = 33;
             MemberIDLabel.Text = "Member ID: ";
             // 
-            // UpdateMemberForm
+            // DisplayIDLabel
+            // 
+            DisplayIDLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DisplayIDLabel.Location = new Point(125, 58);
+            DisplayIDLabel.Name = "DisplayIDLabel";
+            DisplayIDLabel.Size = new Size(153, 25);
+            DisplayIDLabel.TabIndex = 35;
+            // 
+            // UpdateMemberInfoUserControl1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(873, 597);
-            Controls.Add(SearchInstructionsLabel);
-            Controls.Add(DisplayIDLabel);
             Controls.Add(InfoLabel);
             Controls.Add(tableLayoutPanel2);
+            Controls.Add(SearchInstructionsLabel);
             Controls.Add(MemberIDLabel);
-            Name = "UpdateMemberForm";
-            Text = "Rent Me Furniture Rentals : : Update Member";
+            Controls.Add(DisplayIDLabel);
+            Name = "UpdateMemberInfoUserControl1";
+            Size = new Size(899, 595);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             ResumeLayout(false);
@@ -427,14 +424,13 @@ namespace cs6232_g4.View
 
         #endregion
 
-        //  private UserControls.EditMemberInfoUserControl editMemberInfoUserControl;
-        private UserControls.UpdateMemberInfoUserControl1 updateMemberInfoUserControl11;
+        private Label InfoLabel;
         private Label fnameErrorLabel;
+        private TableLayoutPanel tableLayoutPanel2;
         private Label NewFNameLabel;
         private TextBox MbrNewLNameTextBox;
         private Label NewGenderLabel;
         private ComboBox GenderComboBox;
-        private Label NewLNameLabel;
         private Label NewDOBLabel;
         private TextBox NewDOBTextBox;
         private TextBox MbrNewPhoneNumTextBox;
@@ -444,16 +440,13 @@ namespace cs6232_g4.View
         private Label NewAddr1Label;
         private TextBox NewAddr1TextBox;
         private ComboBox NewStateComboBox;
-        private Label SearchInstructionsLabel;
-        private Label DisplayIDLabel;
         private Label NewStateLabel;
-        private Label InfoLabel;
-        private TableLayoutPanel tableLayoutPanel2;
         private TextBox NewCityTextBox;
         private Label label2;
         private TextBox NewZipTextBox;
         private Label NewZipLabel;
         private Label genderErrorLabel;
+        private Label label4;
         private Label dobErrorLabel;
         private Label phoneErrorLabel;
         private Label addr1ErrorLabel;
@@ -462,7 +455,9 @@ namespace cs6232_g4.View
         private Label zipErrorLabel;
         private Button UpdateMemberButton;
         private TextBox MbrNewFNameTextBox;
-        private Label label4;
+        private Label NewLNameLabel;
+        private Label SearchInstructionsLabel;
         private Label MemberIDLabel;
+        private Label DisplayIDLabel;
     }
 }
