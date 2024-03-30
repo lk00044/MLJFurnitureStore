@@ -7,7 +7,9 @@ using Members.Model;
 /// Date:           14 March 2024
 /// Modifications:  Changed from listview to datagridview
 ///                 Added ability to select member from the grid to pull of update
-///                 
+///                 Added new form to make updates
+///                 Added results back to this form
+///                 Added data validation and error checking
 /// Modified by:    Leslie
 /// Modified on:    29 March 2024
 /// </summary>
@@ -130,7 +132,6 @@ namespace cs6232_g4.UserControls
                         this.ReEnableTextBoxes();
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -181,7 +182,6 @@ namespace cs6232_g4.UserControls
 
         private void RefreshDataGrid(List<Member> MatchingMembers)
         {
-
             if (MatchingMembers == null)
             {
                 this.ErrorLabel.Text = "No members with that criteria.";
@@ -212,19 +212,15 @@ namespace cs6232_g4.UserControls
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
             this.MbrPhoneNumTextBox.Enabled = false;
-
         }
 
         private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
         {
             this.ErrorLabel.Text = string.Empty;
-
             this.MbrPhoneNumTextBox.Enabled = true;
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
             this.MbrIDTextBox.Enabled = false;
-
-
         }
 
         private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
@@ -239,15 +235,13 @@ namespace cs6232_g4.UserControls
         private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.ErrorLabel.Text = string.Empty;
-
-
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
             this.MbrLNameTextBox.Enabled = true;
             this.MbrIDTextBox.Enabled = false;
         }
 
-            private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.ErrorLabel.Text = "";
 

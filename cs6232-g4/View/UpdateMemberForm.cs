@@ -1,10 +1,18 @@
 ﻿using Members.Controller;
 using Members.Model;
-using System.Diagnostics.Eventing.Reader;
 
 /// <summary>
-/// 
-/// 
+/// Created from Jonathan's original tab code
+/// Programmer:     Jonathan
+/// Modified by:    Leslie
+/// Modified date:  30 March 2024
+/// Modifications:  Created a new form
+///                 Added data validation
+///                 Added error checking
+///                 Added ability to be opened from search form
+///                 and to return to search form showing updated data
+///                 Added Gender transformation from database char to string display
+///                 
 /// </summary>
 namespace cs6232_g4.View
 {
