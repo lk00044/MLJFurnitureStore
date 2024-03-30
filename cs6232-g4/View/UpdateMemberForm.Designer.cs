@@ -37,19 +37,19 @@ namespace cs6232_g4.View
             GenderComboBox = new ComboBox();
             NewLNameLabel = new Label();
             NewDOBLabel = new Label();
-            NewDOBTextBox = new TextBox();
-            MbrNewPhoneNumTextBox = new TextBox();
+            PhoneNumTextBox = new TextBox();
             NewPhoneLabel = new Label();
             NewAddr2TextBox = new TextBox();
             label1 = new Label();
             NewAddr1Label = new Label();
             NewAddr1TextBox = new TextBox();
-            NewStateComboBox = new ComboBox();
+            StateComboBox = new ComboBox();
             SearchInstructionsLabel = new Label();
             DisplayIDLabel = new Label();
             NewStateLabel = new Label();
             InfoLabel = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
+            label3 = new Label();
             NewCityTextBox = new TextBox();
             label2 = new Label();
             NewZipTextBox = new TextBox();
@@ -61,9 +61,12 @@ namespace cs6232_g4.View
             cityErrorLabel = new Label();
             stateErrorLabel = new Label();
             zipErrorLabel = new Label();
-            UpdateMemberButton = new Button();
             MbrNewFNameTextBox = new TextBox();
             label4 = new Label();
+            dobDateTimePicker = new DateTimePicker();
+            lNameErrorLabel = new Label();
+            UpdateMemberButton = new Button();
+            cancelButton = new Button();
             MemberIDLabel = new Label();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -89,8 +92,8 @@ namespace cs6232_g4.View
             // 
             MbrNewLNameTextBox.Location = new Point(525, 3);
             MbrNewLNameTextBox.Name = "MbrNewLNameTextBox";
-            MbrNewLNameTextBox.Size = new Size(281, 27);
-            MbrNewLNameTextBox.TabIndex = 7;
+            MbrNewLNameTextBox.Size = new Size(288, 27);
+            MbrNewLNameTextBox.TabIndex = 2;
             // 
             // NewGenderLabel
             // 
@@ -103,12 +106,13 @@ namespace cs6232_g4.View
             // 
             // GenderComboBox
             // 
+            GenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             GenderComboBox.FormattingEnabled = true;
             GenderComboBox.Items.AddRange(new object[] { "Female", "Male ", "Transgender", "Non-binary/non-conforming", "Prefer not to respond" });
             GenderComboBox.Location = new Point(138, 67);
             GenderComboBox.Name = "GenderComboBox";
             GenderComboBox.Size = new Size(253, 28);
-            GenderComboBox.TabIndex = 21;
+            GenderComboBox.TabIndex = 3;
             // 
             // NewLNameLabel
             // 
@@ -128,19 +132,12 @@ namespace cs6232_g4.View
             NewDOBLabel.Text = "Date of Birth: ";
             NewDOBLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // NewDOBTextBox
+            // PhoneNumTextBox
             // 
-            NewDOBTextBox.Location = new Point(525, 67);
-            NewDOBTextBox.Name = "NewDOBTextBox";
-            NewDOBTextBox.Size = new Size(281, 27);
-            NewDOBTextBox.TabIndex = 20;
-            // 
-            // MbrNewPhoneNumTextBox
-            // 
-            MbrNewPhoneNumTextBox.Location = new Point(138, 138);
-            MbrNewPhoneNumTextBox.Name = "MbrNewPhoneNumTextBox";
-            MbrNewPhoneNumTextBox.Size = new Size(253, 27);
-            MbrNewPhoneNumTextBox.TabIndex = 5;
+            PhoneNumTextBox.Location = new Point(138, 138);
+            PhoneNumTextBox.Name = "PhoneNumTextBox";
+            PhoneNumTextBox.Size = new Size(253, 27);
+            PhoneNumTextBox.TabIndex = 5;
             // 
             // NewPhoneLabel
             // 
@@ -156,7 +153,7 @@ namespace cs6232_g4.View
             NewAddr2TextBox.Location = new Point(525, 213);
             NewAddr2TextBox.Name = "NewAddr2TextBox";
             NewAddr2TextBox.Size = new Size(281, 27);
-            NewAddr2TextBox.TabIndex = 15;
+            NewAddr2TextBox.TabIndex = 7;
             // 
             // label1
             // 
@@ -181,16 +178,17 @@ namespace cs6232_g4.View
             NewAddr1TextBox.Location = new Point(138, 213);
             NewAddr1TextBox.Name = "NewAddr1TextBox";
             NewAddr1TextBox.Size = new Size(253, 27);
-            NewAddr1TextBox.TabIndex = 12;
+            NewAddr1TextBox.TabIndex = 6;
             // 
-            // NewStateComboBox
+            // StateComboBox
             // 
-            NewStateComboBox.FormattingEnabled = true;
-            NewStateComboBox.Items.AddRange(new object[] { "AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" });
-            NewStateComboBox.Location = new Point(525, 289);
-            NewStateComboBox.Name = "NewStateComboBox";
-            NewStateComboBox.Size = new Size(279, 28);
-            NewStateComboBox.TabIndex = 16;
+            StateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            StateComboBox.FormattingEnabled = true;
+            StateComboBox.Items.AddRange(new object[] { "AL", "AK", "AZ", "AR", "AS", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" });
+            StateComboBox.Location = new Point(525, 289);
+            StateComboBox.Name = "StateComboBox";
+            StateComboBox.Size = new Size(279, 28);
+            StateComboBox.TabIndex = 9;
             // 
             // SearchInstructionsLabel
             // 
@@ -221,10 +219,12 @@ namespace cs6232_g4.View
             // 
             // InfoLabel
             // 
+            InfoLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             InfoLabel.Location = new Point(520, 26);
             InfoLabel.Name = "InfoLabel";
             InfoLabel.Size = new Size(311, 33);
             InfoLabel.TabIndex = 42;
+            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel2
             // 
@@ -234,6 +234,7 @@ namespace cs6232_g4.View
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 128F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Controls.Add(label3, 0, 11);
             tableLayoutPanel2.Controls.Add(fnameErrorLabel, 1, 1);
             tableLayoutPanel2.Controls.Add(NewFNameLabel, 0, 0);
             tableLayoutPanel2.Controls.Add(MbrNewLNameTextBox, 3, 0);
@@ -241,14 +242,12 @@ namespace cs6232_g4.View
             tableLayoutPanel2.Controls.Add(GenderComboBox, 1, 2);
             tableLayoutPanel2.Controls.Add(NewLNameLabel, 2, 0);
             tableLayoutPanel2.Controls.Add(NewDOBLabel, 2, 2);
-            tableLayoutPanel2.Controls.Add(NewDOBTextBox, 3, 2);
-            tableLayoutPanel2.Controls.Add(MbrNewPhoneNumTextBox, 1, 4);
+            tableLayoutPanel2.Controls.Add(PhoneNumTextBox, 1, 4);
             tableLayoutPanel2.Controls.Add(NewPhoneLabel, 0, 4);
-            tableLayoutPanel2.Controls.Add(NewAddr2TextBox, 3, 6);
             tableLayoutPanel2.Controls.Add(label1, 2, 6);
             tableLayoutPanel2.Controls.Add(NewAddr1Label, 0, 6);
             tableLayoutPanel2.Controls.Add(NewAddr1TextBox, 1, 6);
-            tableLayoutPanel2.Controls.Add(NewStateComboBox, 3, 8);
+            tableLayoutPanel2.Controls.Add(StateComboBox, 3, 8);
             tableLayoutPanel2.Controls.Add(NewStateLabel, 2, 8);
             tableLayoutPanel2.Controls.Add(NewCityTextBox, 1, 8);
             tableLayoutPanel2.Controls.Add(label2, 0, 8);
@@ -261,9 +260,13 @@ namespace cs6232_g4.View
             tableLayoutPanel2.Controls.Add(cityErrorLabel, 1, 9);
             tableLayoutPanel2.Controls.Add(stateErrorLabel, 3, 9);
             tableLayoutPanel2.Controls.Add(zipErrorLabel, 1, 11);
-            tableLayoutPanel2.Controls.Add(UpdateMemberButton, 3, 11);
             tableLayoutPanel2.Controls.Add(MbrNewFNameTextBox, 1, 0);
             tableLayoutPanel2.Controls.Add(label4, 2, 1);
+            tableLayoutPanel2.Controls.Add(dobDateTimePicker, 3, 2);
+            tableLayoutPanel2.Controls.Add(NewAddr2TextBox, 3, 6);
+            tableLayoutPanel2.Controls.Add(lNameErrorLabel, 3, 1);
+            tableLayoutPanel2.Controls.Add(UpdateMemberButton, 3, 10);
+            tableLayoutPanel2.Controls.Add(cancelButton, 3, 11);
             tableLayoutPanel2.Location = new Point(25, 120);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 12;
@@ -282,12 +285,20 @@ namespace cs6232_g4.View
             tableLayoutPanel2.Size = new Size(816, 445);
             tableLayoutPanel2.TabIndex = 39;
             // 
+            // label3
+            // 
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(3, 400);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 32);
+            label3.TabIndex = 32;
+            // 
             // NewCityTextBox
             // 
             NewCityTextBox.Location = new Point(138, 289);
             NewCityTextBox.Name = "NewCityTextBox";
             NewCityTextBox.Size = new Size(253, 27);
-            NewCityTextBox.TabIndex = 14;
+            NewCityTextBox.TabIndex = 8;
             // 
             // label2
             // 
@@ -303,7 +314,7 @@ namespace cs6232_g4.View
             NewZipTextBox.Location = new Point(138, 364);
             NewZipTextBox.Name = "NewZipTextBox";
             NewZipTextBox.Size = new Size(253, 27);
-            NewZipTextBox.TabIndex = 13;
+            NewZipTextBox.TabIndex = 10;
             // 
             // NewZipLabel
             // 
@@ -370,24 +381,12 @@ namespace cs6232_g4.View
             zipErrorLabel.Size = new Size(253, 32);
             zipErrorLabel.TabIndex = 31;
             // 
-            // UpdateMemberButton
-            // 
-            UpdateMemberButton.FlatStyle = FlatStyle.Popup;
-            UpdateMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UpdateMemberButton.Location = new Point(525, 403);
-            UpdateMemberButton.Name = "UpdateMemberButton";
-            UpdateMemberButton.Size = new Size(288, 32);
-            UpdateMemberButton.TabIndex = 5;
-            UpdateMemberButton.Text = "Update Member";
-            UpdateMemberButton.UseVisualStyleBackColor = true;
-            UpdateMemberButton.Click += UpdateMemberButton_Click;
-            // 
             // MbrNewFNameTextBox
             // 
             MbrNewFNameTextBox.Location = new Point(138, 3);
             MbrNewFNameTextBox.Name = "MbrNewFNameTextBox";
             MbrNewFNameTextBox.Size = new Size(253, 27);
-            MbrNewFNameTextBox.TabIndex = 6;
+            MbrNewFNameTextBox.TabIndex = 1;
             // 
             // label4
             // 
@@ -396,6 +395,48 @@ namespace cs6232_g4.View
             label4.Name = "label4";
             label4.Size = new Size(122, 32);
             label4.TabIndex = 25;
+            // 
+            // dobDateTimePicker
+            // 
+            dobDateTimePicker.Location = new Point(525, 67);
+            dobDateTimePicker.MaxDate = new DateTime(2010, 12, 31, 0, 0, 0, 0);
+            dobDateTimePicker.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dobDateTimePicker.Name = "dobDateTimePicker";
+            dobDateTimePicker.Size = new Size(288, 27);
+            dobDateTimePicker.TabIndex = 4;
+            dobDateTimePicker.Value = new DateTime(2010, 12, 31, 0, 0, 0, 0);
+            // 
+            // lNameErrorLabel
+            // 
+            lNameErrorLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lNameErrorLabel.Location = new Point(525, 32);
+            lNameErrorLabel.Name = "lNameErrorLabel";
+            lNameErrorLabel.Size = new Size(253, 32);
+            lNameErrorLabel.TabIndex = 33;
+            // 
+            // UpdateMemberButton
+            // 
+            UpdateMemberButton.FlatStyle = FlatStyle.Popup;
+            UpdateMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UpdateMemberButton.Location = new Point(525, 364);
+            UpdateMemberButton.Name = "UpdateMemberButton";
+            UpdateMemberButton.Size = new Size(288, 32);
+            UpdateMemberButton.TabIndex = 11;
+            UpdateMemberButton.Text = "Update Member";
+            UpdateMemberButton.UseVisualStyleBackColor = true;
+            UpdateMemberButton.Click += UpdateMemberButton_Click;
+            // 
+            // cancelButton
+            // 
+            cancelButton.FlatStyle = FlatStyle.Popup;
+            cancelButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cancelButton.Location = new Point(525, 403);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(288, 32);
+            cancelButton.TabIndex = 12;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
             // MemberIDLabel
             // 
@@ -409,15 +450,21 @@ namespace cs6232_g4.View
             // 
             // UpdateMemberForm
             // 
+            AcceptButton = UpdateMemberButton;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(873, 597);
+            CancelButton = cancelButton;
+            ClientSize = new Size(873, 596);
             Controls.Add(SearchInstructionsLabel);
             Controls.Add(DisplayIDLabel);
             Controls.Add(InfoLabel);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(MemberIDLabel);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "UpdateMemberForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Me Furniture Rentals : : Update Member";
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -436,14 +483,13 @@ namespace cs6232_g4.View
         private ComboBox GenderComboBox;
         private Label NewLNameLabel;
         private Label NewDOBLabel;
-        private TextBox NewDOBTextBox;
-        private TextBox MbrNewPhoneNumTextBox;
+        private TextBox PhoneNumTextBox;
         private Label NewPhoneLabel;
         private TextBox NewAddr2TextBox;
         private Label label1;
         private Label NewAddr1Label;
         private TextBox NewAddr1TextBox;
-        private ComboBox NewStateComboBox;
+        private ComboBox StateComboBox;
         private Label SearchInstructionsLabel;
         private Label DisplayIDLabel;
         private Label NewStateLabel;
@@ -464,5 +510,9 @@ namespace cs6232_g4.View
         private TextBox MbrNewFNameTextBox;
         private Label label4;
         private Label MemberIDLabel;
+        private DateTimePicker dobDateTimePicker;
+        private Label label3;
+        private Label lNameErrorLabel;
+        private Button cancelButton;
     }
 }

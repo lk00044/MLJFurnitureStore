@@ -74,7 +74,7 @@
             MbrPhoneNumTextBox.Name = "MbrPhoneNumTextBox";
             MbrPhoneNumTextBox.Size = new Size(280, 27);
             MbrPhoneNumTextBox.TabIndex = 1;
-            MbrPhoneNumTextBox.TextChanged += MbrPhoneNumTextBox_Click;
+            MbrPhoneNumTextBox.TextChanged += MbrPhoneNumTextBox_TextChanged;
             // 
             // MbrIDTextBox
             // 
@@ -82,7 +82,7 @@
             MbrIDTextBox.Name = "MbrIDTextBox";
             MbrIDTextBox.Size = new Size(280, 27);
             MbrIDTextBox.TabIndex = 0;
-            MbrIDTextBox.TextChanged += MbrIDTextBox_Click;
+            MbrIDTextBox.TextChanged += MbrIDTextBox_TextChanged;
             // 
             // MbrFNameTextBox
             // 
@@ -90,7 +90,7 @@
             MbrFNameTextBox.Name = "MbrFNameTextBox";
             MbrFNameTextBox.Size = new Size(280, 27);
             MbrFNameTextBox.TabIndex = 2;
-            MbrFNameTextBox.TextChanged += MbrFNameTextBox_Click;
+            MbrFNameTextBox.TextChanged += MbrFNameTextBox_TextChanged;
             // 
             // MbrLNameTextBox
             // 
@@ -98,7 +98,7 @@
             MbrLNameTextBox.Name = "MbrLNameTextBox";
             MbrLNameTextBox.Size = new Size(280, 27);
             MbrLNameTextBox.TabIndex = 3;
-            MbrLNameTextBox.TextChanged += MbrLNameTextBox_Click;
+            MbrLNameTextBox.TextChanged += MbrLNameTextBox_TextChanged;
             // 
             // tableLayoutPanel1
             // 

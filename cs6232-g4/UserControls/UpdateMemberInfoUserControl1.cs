@@ -61,7 +61,7 @@ namespace cs6232_g4.UserControls
        */
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
-            //   Member updatedMember = MemberList[0];
+            //   Member memberToUpdate = MemberList[0];
             Member updatedMember = new Member();
             updatedMember = this.MemberList[0];
             updatedMember.FirstName = this.MbrNewFNameTextBox.Text;

@@ -1,8 +1,5 @@
-﻿using cs6232_g4.Model;
-using Members.Controller;
+﻿using Members.Controller;
 using Members.Model;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 /// <summary>
 /// Interact between the view and the data for members to search for a specific member
@@ -27,6 +24,8 @@ namespace cs6232_g4.UserControls
         private List<Member> MemberList;
         private Member SelectedMember;
         private int SelectedMemberId;
+        private List<Member> searchList;
+        private int MbrID;
 
         private readonly MembersController _memberController;
 
@@ -42,11 +41,11 @@ namespace cs6232_g4.UserControls
             MbrFName = string.Empty;
             MbrLName = string.Empty;
             MbrPhoneNum = string.Empty;
+            MbrID = 0;
         }
 
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (this.CheckIfMissingAllInput())
@@ -97,9 +96,7 @@ namespace cs6232_g4.UserControls
                     this.ClearTextBoxes();
                     this.ReEnableTextBoxes();
                     this.DisplayMemberMatches();
-
                 }
-
 
             }
             catch (Exception ex)
@@ -107,6 +104,17 @@ namespace cs6232_g4.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
 
+        }
+
+        private bool CheckRowIsSelected()
+        {
+
+            if (this.MembersDataGridView.SelectedRows.Count == 0) 
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void ClearTextBoxes()
@@ -144,34 +152,37 @@ namespace cs6232_g4.UserControls
         {
             this.MembersDataGridView.DataSource = null;
             this.MembersDataGridView.DataSource = MatchingMembers;
+            this.MembersDataGridView.ClearSelection();
         }
 
         private void DisplayMemberMatches()
         {
             try
-            {
+            {                
                 this.RefreshDataGrid(MemberList);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+        }
 
+        private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.ErrorLabel.Text = string.Empty;
+            this.MbrFNameTextBox.Enabled = false;
+            this.MbrLNameTextBox.Enabled = false;
+            this.MbrPhoneNumTextBox.Enabled = false;
 
         }
 
         private void MbrIDTextBox_Click(object sender, EventArgs e)
         {
-
-            this.ErrorLabel.Text = string.Empty;
-            this.MbrFNameTextBox.Enabled = false;
-            this.MbrLNameTextBox.Enabled = false;
-            this.MbrPhoneNumTextBox.Enabled = false;
+            this.MembersDataGridView.DataSource = null;
         }
 
-        private void MbrPhoneNumTextBox_Click(object sender, EventArgs e)
+        private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
         {
-
             this.ErrorLabel.Text = string.Empty;
 
             this.MbrPhoneNumTextBox.Enabled = true;
@@ -182,9 +193,8 @@ namespace cs6232_g4.UserControls
 
         }
 
-        private void MbrFNameTextBox_Click(object sender, EventArgs e)
+        private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.MembersDataGridView.DataSource = null;
             this.ErrorLabel.Text = string.Empty;
 
             this.MbrPhoneNumTextBox.Enabled = false;
@@ -193,9 +203,8 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MbrLNameTextBox_Click(object sender, EventArgs e)
+        private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.MembersDataGridView.DataSource = null;
             this.ErrorLabel.Text = string.Empty;
 
 
@@ -207,6 +216,8 @@ namespace cs6232_g4.UserControls
 
         private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.ErrorLabel.Text = "";
+
             if (MembersDataGridView.SelectedRows.Count > 1)
             {
                 this.ErrorLabel.Text = "Please only select one member.";
@@ -221,9 +232,8 @@ namespace cs6232_g4.UserControls
                 int selectedrowindex = MembersDataGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = MembersDataGridView.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells[0].Value);
-                int MbrID = Int32.Parse(cellValue);
-                List<Member> searchList = new List<Member>();
-                searchList = this._memberController.GetMemberByID(MbrID);
+                MbrID = Int32.Parse(cellValue);
+                this.searchList = this._memberController.GetMemberByID(MbrID);
                 this.SelectedMember = searchList[0];
                 this.SelectedMemberId = this.SelectedMember.MemberID;
             }
@@ -231,12 +241,15 @@ namespace cs6232_g4.UserControls
 
         private void UpdateMbrButton_Click(object sender, EventArgs e)
         {
-            if (this.SelectedMember == null)
+
+            if (!CheckRowIsSelected())
             {
-                this.ErrorLabel.Text = "Please click on a row to select a member.";
+                this.ErrorLabel.Text = "You must select a row first. ";
             }
             else
             {
+                this.ErrorLabel.Text = string.Empty;
+
                 using (Form updateMemberForm = new View.UpdateMemberForm(SelectedMemberId))
                 {
 
@@ -245,10 +258,14 @@ namespace cs6232_g4.UserControls
                     if (result == DialogResult.OK)
                     {
                         this.Show();
+                        MemberList = this._memberController.GetMemberByID(MbrId);
+                        this.DisplayMemberMatches();
+                        this.ErrorLabel.Text = "Member updated.";
+                  
                     }
                     else if (result == DialogResult.Cancel)
                     {
-                       
+                        this.ErrorLabel.Text = "Update cancelled.";
                     }
                 }
             }
