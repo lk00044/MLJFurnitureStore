@@ -56,7 +56,7 @@ namespace cs6232_g4.View
         private void PopulateUpdateFields()
         {
             this.MemberList = this._memberController.GetMemberByID(this._memberID);
-            this.memberToUpdate = this.MemberList[0];
+            this.memberToUpdate = this.MemberList[0];           
             this.InfoLabel.Text = String.Empty;
             this.MbrNewFNameTextBox.Text = this.memberToUpdate.FirstName;
             this.MbrNewLNameTextBox.Text = this.memberToUpdate.LastName;
@@ -67,7 +67,7 @@ namespace cs6232_g4.View
             this.StateComboBox.Text = this.memberToUpdate.State;
             this.NewZipTextBox.Text = this.memberToUpdate.ZipCode.ToString();
             this.dobDateTimePicker.Value = (DateTime)this.memberToUpdate.DateOfBirth;
-            this.SetOrigGender();
+            this.SetOrigGender();           
 
         }
 

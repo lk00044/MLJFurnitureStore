@@ -50,6 +50,8 @@ namespace cs6232_g4.UserControls
         {
             try
             {
+                this.ErrorLabel.Text = string.Empty;
+
                 if (this.CheckIfMissingAllInput())
                 {
                     this.ErrorLabel.Text = "You must enter one of the following options: 1) Member ID, 2) Member Phone Number, or 3) Member First and Last Name";
@@ -95,7 +97,7 @@ namespace cs6232_g4.UserControls
                         }
                         else
                         {
-                            this.ErrorLabel.Text = "No members with that ID.";
+                            this.ErrorLabel.Text = "No members with that number.";
                             this.clearGrid();
                             this.ClearTextBoxes();
                             this.ReEnableTextBoxes();
@@ -126,7 +128,7 @@ namespace cs6232_g4.UserControls
                     }
                     else
                     {
-                        this.ErrorLabel.Text = "No members with that ID.";
+                        this.ErrorLabel.Text = "No members with that name.";
                         this.clearGrid();
                         this.ClearTextBoxes();
                         this.ReEnableTextBoxes();
@@ -182,22 +184,15 @@ namespace cs6232_g4.UserControls
 
         private void RefreshDataGrid(List<Member> MatchingMembers)
         {
-            if (MatchingMembers == null)
-            {
-                this.ErrorLabel.Text = "No members with that criteria.";
-            }
-            else
-            {
                 this.MembersDataGridView.DataSource = null;
                 this.MembersDataGridView.DataSource = MatchingMembers;
-                this.MembersDataGridView.ClearSelection();
-            }            
+                this.MembersDataGridView.ClearSelection();          
         }
 
         private void DisplayMemberMatches()
         {
             try
-            {              
+            {    
                 this.RefreshDataGrid(MemberList);
             }
             catch (Exception ex)
@@ -208,7 +203,6 @@ namespace cs6232_g4.UserControls
 
         private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ErrorLabel.Text = string.Empty;
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
             this.MbrPhoneNumTextBox.Enabled = false;
@@ -216,7 +210,6 @@ namespace cs6232_g4.UserControls
 
         private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ErrorLabel.Text = string.Empty;
             this.MbrPhoneNumTextBox.Enabled = true;
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
@@ -225,7 +218,6 @@ namespace cs6232_g4.UserControls
 
         private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ErrorLabel.Text = string.Empty;
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
             this.MbrLNameTextBox.Enabled = true;
@@ -234,7 +226,6 @@ namespace cs6232_g4.UserControls
 
         private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.ErrorLabel.Text = string.Empty;
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
             this.MbrLNameTextBox.Enabled = true;
