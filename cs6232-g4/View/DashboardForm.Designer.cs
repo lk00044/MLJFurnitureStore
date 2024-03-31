@@ -41,7 +41,7 @@
             editMemberInfoUserControl1 = new UserControls.EditMemberInfoUserControl();
             MbrTransTabPage = new TabPage();
             LogOutLinkLabel = new LinkLabel();
-            rentFurnitureUserControl1 = new UserControls.RentFurnitureUserControl();
+            rentFurnitureUserControl = new UserControls.RentFurnitureUserControl();
             MainDBTabControl.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
@@ -158,7 +158,7 @@
             // 
             // MbrTransTabPage
             // 
-            MbrTransTabPage.Controls.Add(rentFurnitureUserControl1);
+            MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 24);
             MbrTransTabPage.Margin = new Padding(3, 2, 3, 2);
             MbrTransTabPage.Name = "MbrTransTabPage";
@@ -178,12 +178,12 @@
             LogOutLinkLabel.Text = "Log Out";
             LogOutLinkLabel.LinkClicked += LogOutLinkLabel_LinkClicked;
             // 
-            // rentFurnitureUserControl1
+            // rentFurnitureUserControl
             // 
-            rentFurnitureUserControl1.Location = new Point(0, 5);
-            rentFurnitureUserControl1.Name = "rentFurnitureUserControl1";
-            rentFurnitureUserControl1.Size = new Size(774, 501);
-            rentFurnitureUserControl1.TabIndex = 0;
+            rentFurnitureUserControl.Location = new Point(0, 5);
+            rentFurnitureUserControl.Name = "rentFurnitureUserControl";
+            rentFurnitureUserControl.Size = new Size(774, 501);
+            rentFurnitureUserControl.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -224,6 +224,6 @@
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private UserControls.EditMemberInfoUserControl editMemberInfoUserControl1;
         private LinkLabel LogOutLinkLabel;
-        private UserControls.RentFurnitureUserControl rentFurnitureUserControl1;
+        private UserControls.RentFurnitureUserControl rentFurnitureUserControl;
     }
 }

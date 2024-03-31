@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace cs6232_g4.UserControls
 {
@@ -20,6 +21,7 @@ namespace cs6232_g4.UserControls
     {
         private readonly FurnitureController _furnitureController;
         private readonly LoginController _loginController;
+        private readonly MembersController _membersController;
         private readonly TransactionController _transactionController;
         private RentalTransaction rentalTransaction;
         private List<Furniture> furnitureList;
@@ -30,8 +32,9 @@ namespace cs6232_g4.UserControls
             this._furnitureController = new FurnitureController();
             this._transactionController = new TransactionController();
             this.furnitureList = new List<Furniture>();
+            this._membersController = new MembersController();
             this.rentalTransaction = new RentalTransaction();
-            this.errorMessageLabel.Text = String.Empty;
+            this.infoMessageLabel.Text = string.Empty;
             this.dueDatePicker.MinDate = DateTime.Today.AddDays(1);
         }
         private void RentFurnitureUserControl_Load(object sender, EventArgs e)
@@ -62,7 +65,7 @@ namespace cs6232_g4.UserControls
                 listViewItem.SubItems.Add("$" + addedFurniture.DailyRentalRate.ToString());
                 listViewItem.SubItems.Add("$" + "0.00");
                 this.UpdateCostValues();
-                
+
             }
         }
 
@@ -103,18 +106,44 @@ namespace cs6232_g4.UserControls
 
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
-            this.CreateRentalTransaction();
-            this.CreateLineItems();
-            this.CreateReceipt();
+            if (!this.IsTransactionInputsValid()) return;
+            try
+            {
+                this.CreateRentalTransaction();
+                this.UpdateAvailableFurnitureQuantity();
+                this.CreateLineItems();
+                this.CreateReceipt();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show("Failed to submit order" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void UpdateAvailableFurnitureQuantity()
+        {
+            foreach (ListViewItem item in this.cartListView.Items)
+            {
+                int id = int.Parse(item.SubItems[0].Text);
+                int quantity = int.Parse(item.SubItems[2].Text);
+                this._furnitureController.UpdateFurniture(id, quantity);
+            }
+            this.PopulateAvailableFurniture();
+        }
         private void CreateRentalTransaction()
         {
-            this.rentalTransaction.EmployeeId = this._loginController.GetCurrentLogin().EmployeeId;
-            this.rentalTransaction.MemberId = int.Parse(this.memberIdTextBox.Text);
-            this.rentalTransaction.DueDate = DateTime.Parse(this.dueDatePicker.Text);
-            this.rentalTransaction.TotalAmount = decimal.Parse(this.totalCostValue.Text.Trim('$'));
-            this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
+            try
+            {
+                this.rentalTransaction.EmployeeId = this._loginController.GetCurrentLogin().EmployeeId;
+                this.rentalTransaction.MemberId = int.Parse(this.memberIdTextBox.Text);
+                this.rentalTransaction.DueDate = DateTime.Parse(this.dueDatePicker.Text);
+                this.rentalTransaction.TotalAmount = decimal.Parse(this.totalCostValue.Text.Trim('$'));
+                this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Failed to create rental transaction" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CreateLineItems()
@@ -140,18 +169,21 @@ namespace cs6232_g4.UserControls
 
         private void CreateReceipt()
         {
+            this.infoMessageLabel.Text = "Transaction created successfully!";
+            this.infoMessageLabel.ForeColor = Color.Green;
             string lineItemsInfo = "";
             foreach (RentalLineItem lineItem in this._transactionController.GetRentalLineItems(this.rentalTransaction.TransactionID))
             {
-                lineItemsInfo += "    ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: " + lineItem.Subtotal + "\n";
+                lineItemsInfo += "    ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: $" + lineItem.Subtotal + "\n";
             }
             string receipt = "Rental Transaction ID: " + this.rentalTransaction.TransactionID + "\n"
-            + "Due Date: " + this.rentalTransaction.DueDate + "\n"
-            + "Total Cost: " + this.rentalTransaction.TotalAmount + "\n"
+            + "Due Date: " + this.rentalTransaction.DueDate.ToString("MM/dd/yyyy") + "\n"
+            + "Total Cost: $" + this.rentalTransaction.TotalAmount + "\n"
             + "Items Info: \n"
             + lineItemsInfo;
 
             MessageBox.Show(receipt, "Rental Receipt");
+            this.ResetFields();
         }
 
         private void FurnitureIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,36 +195,76 @@ namespace cs6232_g4.UserControls
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+        private void MemberIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private bool IsTransactionInputsValid()
+        {
+            this.infoMessageLabel.ForeColor = Color.Red;
+            if (this.memberIdTextBox.Text == string.Empty)
+            {
+                this.infoMessageLabel.Text = "Please enter a valid member id";
+                return false;
+            }
+            if (this._membersController.GetMemberByID(int.Parse(this.memberIdTextBox.Text)).Count() == 0)
+            {
+                this.infoMessageLabel.Text = "Member not found!";
+                return false;
+            }
+            if (this.cartListView.Items.Count == 0)
+            {
+                this.infoMessageLabel.Text = "At least one item must be added in cart!";
+                return false;
+            }
+            return true;
+        }
 
         private bool IsValidItemInput(bool isUpdate)
         {
-            if (this.furnitureIdTextBox.Text == String.Empty)
+            this.infoMessageLabel.ForeColor = Color.Red;
+            if (this.furnitureIdTextBox.Text == string.Empty)
             {
-                this.errorMessageLabel.Text = "Please enter a valid furniture id";
+                this.infoMessageLabel.Text = "Please enter a valid furniture id";
                 return false;
             }
             if (!this.furnitureList.Exists(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text)))
             {
-                this.errorMessageLabel.Text = "Unable to find furniture with given id";
+                this.infoMessageLabel.Text = "Unable to find furniture with given id";
                 return false;
             }
             if (!isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) != null)
             {
-                this.errorMessageLabel.Text = "Item is already added in cart";
+                this.infoMessageLabel.Text = "Item is already added in cart";
                 return false;
             }
-            if (this.quantityTextBox.Text == String.Empty)
+            if (this.quantityTextBox.Text == string.Empty || this.quantityTextBox.Text == "0")
             {
-                this.errorMessageLabel.Text = "Please enter valid quantity";
+                this.infoMessageLabel.Text = "Please enter valid quantity";
                 return false;
             }
-            if (int.Parse(this.quantityTextBox.Text) > this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text)).TotalQuantity)
+            if (int.Parse(this.quantityTextBox.Text) > this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text)).InstockQuantity)
             {
-                this.errorMessageLabel.Text = "Item quantity cannot exceed the instock total";
+                this.infoMessageLabel.Text = "Item quantity cannot exceed the instock total";
                 return false;
             }
-            this.errorMessageLabel.Text = "";
+            this.infoMessageLabel.Text = "";
             return true;
+        }
+
+        private void ResetOrderButton_Click(object sender, EventArgs e)
+        {
+            this.ResetFields();
+        }
+
+        public void ResetFields()
+        {
+            this.furnitureIdTextBox.Text = string.Empty;
+            this.quantityTextBox.Text = string.Empty;
+            this.memberIdTextBox.Text = string.Empty;
+            this.infoMessageLabel.Text = string.Empty;
+            this.cartListView.Items.Clear();
+            this.totalCostValue.Text = string.Empty;
         }
     }
 }

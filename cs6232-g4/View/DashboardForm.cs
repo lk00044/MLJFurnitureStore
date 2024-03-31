@@ -50,6 +50,10 @@ namespace cs6232_g4
             {
                 this.memberRegistrationUserControl.ResetFields();
             }
+            if (this.MainDBTabControl.SelectedIndex == 3)
+            {
+                this.rentFurnitureUserControl.ResetFields();
+            }
         }
 
         /// <summary>

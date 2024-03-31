@@ -46,7 +46,7 @@
             resetOrderButton = new Button();
             dueDatePicker = new DateTimePicker();
             label3 = new Label();
-            errorMessageLabel = new Label();
+            infoMessageLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
             SuspendLayout();
             // 
@@ -183,6 +183,7 @@
             memberIdTextBox.Name = "memberIdTextBox";
             memberIdTextBox.Size = new Size(100, 23);
             memberIdTextBox.TabIndex = 33;
+            memberIdTextBox.KeyPress += MemberIdTextBox_KeyPress;
             // 
             // memberID
             // 
@@ -203,6 +204,7 @@
             resetOrderButton.TabIndex = 34;
             resetOrderButton.Text = "Reset Order";
             resetOrderButton.UseVisualStyleBackColor = true;
+            resetOrderButton.Click += ResetOrderButton_Click;
             // 
             // dueDatePicker
             // 
@@ -221,22 +223,22 @@
             label3.TabIndex = 5;
             label3.Text = "Cart";
             // 
-            // errorMessageLabel
+            // infoMessageLabel
             // 
-            errorMessageLabel.AutoSize = true;
-            errorMessageLabel.Font = new Font("Segoe UI", 10F);
-            errorMessageLabel.ForeColor = Color.Red;
-            errorMessageLabel.Location = new Point(113, 5);
-            errorMessageLabel.Name = "errorMessageLabel";
-            errorMessageLabel.Size = new Size(96, 19);
-            errorMessageLabel.TabIndex = 36;
-            errorMessageLabel.Text = "error message";
+            infoMessageLabel.AutoSize = true;
+            infoMessageLabel.Font = new Font("Segoe UI", 10F);
+            infoMessageLabel.ForeColor = Color.Red;
+            infoMessageLabel.Location = new Point(113, 5);
+            infoMessageLabel.Name = "infoMessageLabel";
+            infoMessageLabel.Size = new Size(96, 19);
+            infoMessageLabel.TabIndex = 36;
+            infoMessageLabel.Text = "error message";
             // 
             // RentFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(errorMessageLabel);
+            Controls.Add(infoMessageLabel);
             Controls.Add(dueDatePicker);
             Controls.Add(resetOrderButton);
             Controls.Add(memberIdTextBox);
@@ -283,6 +285,6 @@
         private Button resetOrderButton;
         private DateTimePicker dueDatePicker;
         private Label label3;
-        private Label errorMessageLabel;
+        private Label infoMessageLabel;
     }
 }
