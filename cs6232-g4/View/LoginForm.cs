@@ -24,6 +24,7 @@ namespace cs6232_g4.View
     {
         private LoginController _loginController;
         private EmployeeController _employeeController;
+        private Login _login;
 
         public LoginForm()
         {
@@ -109,6 +110,19 @@ namespace cs6232_g4.View
         private void TextPassword_Click(object sender, EventArgs e)
         {
             this.PasswordErrorLabel.Text = "";
+        }
+
+        /// <summary>
+        /// Clears the textbox values
+        /// </summary>
+        public void Logout()
+        {
+            
+            TextUsername.Clear();
+            TextPassword.Clear();
+            Show();
+            TextUsername.Focus();
+            _login = new Login();
         }
     }
 }
