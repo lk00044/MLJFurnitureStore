@@ -217,7 +217,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
             Name = "SearchForMemberUserControl";
-            Size = new Size(877, 687);
+            Size = new Size(877, 639);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).EndInit();
