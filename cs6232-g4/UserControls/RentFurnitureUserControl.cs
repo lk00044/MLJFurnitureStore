@@ -1,19 +1,7 @@
 ﻿using cs6232_g4.Controller;
-using cs6232_g4.DAL;
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace cs6232_g4.UserControls
 {
