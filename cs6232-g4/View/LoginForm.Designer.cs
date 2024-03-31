@@ -98,10 +98,10 @@
             tableLayoutPanel1.Controls.Add(TextUsername, 1, 0);
             tableLayoutPanel1.Controls.Add(LblPassword, 0, 2);
             tableLayoutPanel1.Controls.Add(TextPassword, 1, 2);
-            tableLayoutPanel1.Controls.Add(UserNameErrorlabel, 1, 1);
             tableLayoutPanel1.Controls.Add(PasswordErrorLabel, 1, 3);
             tableLayoutPanel1.Controls.Add(BtnLogin, 1, 4);
-            tableLayoutPanel1.Location = new Point(12, 34);
+            tableLayoutPanel1.Controls.Add(UserNameErrorlabel, 1, 1);
+            tableLayoutPanel1.Location = new Point(35, 23);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 53.623188F));
@@ -130,11 +130,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(340, 270);
+            ClientSize = new Size(398, 270);
             Controls.Add(tableLayoutPanel1);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
+            Text = "Rent Me Furniture Rentals : : Login";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);

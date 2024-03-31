@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            instructionsLabel = new Label();
             regFeedbackLabel = new Label();
             cancelButton = new Button();
             regTableLayoutPanel = new TableLayoutPanel();
@@ -62,18 +61,9 @@
             zipErrorLabel = new Label();
             genderLabel = new Label();
             registerButton = new Button();
+            instructionsLabel = new Label();
             regTableLayoutPanel.SuspendLayout();
             SuspendLayout();
-            // 
-            // instructionsLabel
-            // 
-            instructionsLabel.AutoSize = true;
-            instructionsLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            instructionsLabel.Location = new Point(19, 16);
-            instructionsLabel.Name = "instructionsLabel";
-            instructionsLabel.Size = new Size(420, 25);
-            instructionsLabel.TabIndex = 43;
-            instructionsLabel.Text = "Enter only numbers for phone number and zipcode.";
             // 
             // regFeedbackLabel
             // 
@@ -433,6 +423,16 @@
             registerButton.UseVisualStyleBackColor = true;
             registerButton.Click += RegisterButton_Click;
             // 
+            // instructionsLabel
+            // 
+            instructionsLabel.AutoSize = true;
+            instructionsLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            instructionsLabel.Location = new Point(22, 17);
+            instructionsLabel.Name = "instructionsLabel";
+            instructionsLabel.Size = new Size(412, 25);
+            instructionsLabel.TabIndex = 43;
+            instructionsLabel.Text = "Enter only numbers for phone number and zipcode.";
+            // 
             // MemberRegistrationUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -444,7 +444,7 @@
             Controls.Add(registerButton);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MemberRegistrationUserControl";
-            Size = new Size(756, 639);
+            Size = new Size(769, 639);
             Load += MemberRegistrationUserControl_Load;
             regTableLayoutPanel.ResumeLayout(false);
             regTableLayoutPanel.PerformLayout();
@@ -453,8 +453,6 @@
         }
 
         #endregion
-
-        private Label instructionsLabel;
         private Label regFeedbackLabel;
         private Button cancelButton;
         private TableLayoutPanel regTableLayoutPanel;
@@ -488,5 +486,6 @@
         private Label zipErrorLabel;
         private Label genderLabel;
         private Button registerButton;
+        private Label instructionsLabel;
     }
 }
