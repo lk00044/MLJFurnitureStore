@@ -53,4 +53,5 @@ namespace Members.Controller
         {
             return this._transactionDAL.GetMemberTransactions(memberID);
         }
+    }
 }
