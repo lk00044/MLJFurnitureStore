@@ -83,7 +83,9 @@ namespace cs6232_g4.View
                         }
                         else if (result == DialogResult.Cancel)
                         {
-                            this.Close();
+
+                            this.Show();
+
                         }
                     }
                 }
@@ -108,6 +110,8 @@ namespace cs6232_g4.View
         private void TextPassword_Click(object sender, EventArgs e)
         {
             this.PasswordErrorLabel.Text = "";
+            this.TextUsername.Clear();
+            this.TextPassword.Clear();
         }
     }
 }

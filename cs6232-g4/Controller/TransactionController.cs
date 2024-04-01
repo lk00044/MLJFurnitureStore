@@ -43,5 +43,14 @@ namespace Members.Controller
         {
             return this._transactionDAL.GetRentalLineItems(rentalTransactionID);
         }
-    }
+
+        /// <summary>
+        /// Gets the member transactions.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns></returns>
+        public List<RentalTransaction> GetMemberTransactions(int memberID)
+        {
+            return this._transactionDAL.GetMemberTransactions(memberID);
+        }
 }

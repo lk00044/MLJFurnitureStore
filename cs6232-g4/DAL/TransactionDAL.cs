@@ -1,9 +1,19 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
-using Members.Model;
 using System.Data.SqlClient;
-using System.Xml.Linq;
+using System.Transactions;
 
+
+/// <summary>
+/// Data access layer to handle interaction between view and database
+/// Programmer: Jonathan
+///             CreateRentalTransaction(RentalTransaction transaction)
+///             CreateRentalLineItem(RentalLineItem lineItem)
+///             GetRentalLineItems(int rentalTransactionID)
+/// Programmer: Leslie
+///             GetMemberTransactions(int memberID)
+/// </summary>
+/// 
 namespace Employees.DAL
 {
     public class TransactionDAL
@@ -103,7 +113,7 @@ namespace Employees.DAL
                         {
                             RentalLineItem lineItem = new RentalLineItem();
                             lineItem.LineItemId = (int)reader["line_item_id"];
-                            lineItem.Name =reader["name"].ToString();
+                            lineItem.Name = reader["name"].ToString();
                             lineItem.FurnitureId = (int)reader["furniture_id"];
                             lineItem.Quantity = (int)reader["quantity"];
                             lineItem.Subtotal = (decimal)reader["subtotal"];
@@ -115,6 +125,70 @@ namespace Employees.DAL
             }
             return LineItemsList;
         }
+
+
+        public List<RentalTransaction> GetMemberTransactions(int memberID)
+        {
+
+            List<RentalTransaction> RentalTransactionList = new List<RentalTransaction>();
+
+            string selectStatement =
+                "SELECT r.transaction_id, f.transaction_date, r.total_amount, r.due_date,  " +
+                        "li.line_item_id, li.quantity, li.subtotal, f.name as furniture_name, " +
+                        "concat(e.fname, ' ' , e.lname) as employee_name, " +
+                "FROM RentalTransaction r " +
+                "JOIN RentalLineItem li " +
+                "ON r.transaction_id = li.rental_transaction_id " +
+                "JOIN StoreMember m " +
+                "ON r.member_id = m.member_id " +
+                "JOIN Furniture f " +
+                "On li.furniture_id = f.furniture_id " +
+                "JOIN Employee e " +
+                "On r.employee_id = e.employee_id " +
+                "WHERE r.member_id = @memberID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@memberID", memberID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalTransaction transaction = new RentalTransaction();
+
+                            transaction.TransactionId = (int)reader["transaction_id"];
+
+                            if (reader.IsDBNull(reader.GetOrdinal("transaction_date")))
+                            {
+                                transaction.TransactionDate = null;
+                            }
+                            else
+                            {
+                                transaction.TransactionDate = (DateTime?)reader["transaction_date"];
+                            }
+                            transaction.TotalAmount = (decimal)reader["total_amount"];
+                            transaction.EmployeeName = reader["employee_name"].ToString();
+                            transaction.LineItemId = (int)reader["line_item_id"];
+                            transaction.FurnitureName = reader["furniture_name"].ToString();                            
+                            transaction.LineItemQty = (int)reader["quantity"];
+                            transaction.LineItemSubTotal = (decimal)reader["subtotal"];
+
+                            RentalTransactionList.Add(transaction);
+
+                        }
+                    }
+                }
+            }
+            return RentalTransactionList;
+
+        }
+
     }
 
 

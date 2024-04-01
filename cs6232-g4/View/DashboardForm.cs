@@ -38,7 +38,6 @@ namespace cs6232_g4
         {
             this.DisplayUserNameLabel.Text = userID;
             this.DisplayNameLabel.Text = userName;
-
         }
 
         /// <summary>
@@ -49,8 +48,7 @@ namespace cs6232_g4
             if (this.MainDBTabControl.SelectedIndex == 0)
             {
                 this.memberRegistrationUserControl.ResetFields();
-                this.memberRegistrationUserControl.ClearAllErrors();
-                
+                this.memberRegistrationUserControl.ClearAllErrors();                
             }
         }
 
@@ -61,7 +59,7 @@ namespace cs6232_g4
         /// <param name="e">The <see cref="LinkLabelLinkClickedEventArgs"/> instance containing the event data.</param>
         private void LogOutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
     }
 }
