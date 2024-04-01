@@ -233,7 +233,7 @@
             SearchBtn.TabIndex = 11;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = true;
-            SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            SearchBtn.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // CancelBtn
             // 
@@ -265,7 +265,7 @@
             CloseBtn.TabIndex = 13;
             CloseBtn.Text = "Close";
             CloseBtn.UseVisualStyleBackColor = true;
-            CloseBtn.Click += new System.EventHandler(this.CloseBtn_Clicked);
+            CloseBtn.Click += new System.EventHandler(CloseBtn_Click);
             // 
             // UserLabel
             // 

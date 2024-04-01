@@ -7,7 +7,7 @@
 using Employees.DAL;
 using Furnitures.Model;
 
-namespace Members.Controller
+namespace Furnitures.Controller
 {
     public class FurnitureController
     {
@@ -34,6 +34,21 @@ namespace Members.Controller
         public void UpdateFurniture(int furnitureId, int rentedQuantity)
         {
              this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
+        }
+
+        internal List<Furniture> GetFurnitureByCategory(string category)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal List<Furniture> GetFurnitureByID(string rental)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal List<Furniture> GetFurnituryByStyle(string style)
+        {
+            throw new NotImplementedException();
         }
     }
 }
