@@ -66,6 +66,7 @@
             FindMemberButton.TabIndex = 4;
             FindMemberButton.Text = "Find Member";
             FindMemberButton.UseVisualStyleBackColor = true;
+            FindMemberButton.Click += FindMemberButton_Click;
             // 
             // MbrPhoneNumTextBox
             // 
@@ -176,6 +177,7 @@
             ViewMbrTransHistoryButton.TabIndex = 20;
             ViewMbrTransHistoryButton.Text = "View Member Transactions History";
             ViewMbrTransHistoryButton.UseVisualStyleBackColor = true;
+            ViewMbrTransHistoryButton.Click += ViewMbrTransHistoryButton_Click;
             // 
             // MembersDataGridView
             // 

@@ -104,7 +104,7 @@ namespace cs6232_g4.UserControls
             this.rentalTransaction.MemberId = int.Parse(this.memberIdTextBox.Text);
             this.rentalTransaction.DueDate = DateTime.Parse(this.dueDatePicker.Text);
             this.rentalTransaction.TotalAmount = decimal.Parse(this.totalCostValue.Text.Trim('$'));
-            this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
+            this.rentalTransaction.TransactionId = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
         }
 
         private void CreateLineItems()
@@ -113,7 +113,7 @@ namespace cs6232_g4.UserControls
             foreach (ListViewItem item in this.cartListView.Items)
             {
                 RentalLineItem lineItem = new RentalLineItem();
-                lineItem.RentalTransactionId = this.rentalTransaction.TransactionID;
+                lineItem.RentalTransactionId = this.rentalTransaction.TransactionId;
                 lineItem.FurnitureId = int.Parse(item.SubItems[0].Text);
                 lineItem.Quantity = int.Parse(item.SubItems[2].Text);
                 lineItem.Subtotal = decimal.Parse(item.SubItems[4].Text.Trim('$'));
@@ -131,11 +131,11 @@ namespace cs6232_g4.UserControls
         private void CreateReceipt()
         {
             string lineItemsInfo = "";
-            foreach(RentalLineItem lineItem in this._transactionController.GetRentalLineItems(this.rentalTransaction.TransactionID))
+            foreach(RentalLineItem lineItem in this._transactionController.GetRentalLineItems(this.rentalTransaction.TransactionId))
             {
                 lineItemsInfo += "    ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: " + lineItem.Subtotal + "\n";
             }
-            string receipt = "Rental Transaction ID: " + this.rentalTransaction.TransactionID + "\n"
+            string receipt = "Rental Transaction ID: " + this.rentalTransaction.TransactionId + "\n"
             + "Due Date: " + this.rentalTransaction.DueDate + "\n"
             + "Total Cost: " + this.rentalTransaction.TotalAmount + "\n"
             + "Items Info: \n"
