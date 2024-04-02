@@ -1,7 +1,7 @@
 ﻿// <summary>
 /// Handles the interaction between the view and the Furniture Data Access Layer     
-/// Programmer: LKeller
-/// Date: 11 Mrach 2024
+/// Programmer: LKeller, Laskey
+/// Modified: 1 April 2024
 /// </summary>
 /// 
 using Employees.DAL;

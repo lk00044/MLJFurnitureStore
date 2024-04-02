@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 /// <summary>
 /// Furniture Search Form
-/// Author: LM
+/// Author: LM Laskey
 /// 30 Mar 2024
 /// </summary>
 /// 
@@ -89,11 +89,35 @@ namespace cs6232_g4.View
                     return;
                 }
                 _furniture = _furnitureController.GetFurnitureByID(rental);
+
+                if (_furniture.Count == 0)
+                {
+                    MessageBox.Show("No furniture matching that rental ID found");
+                }
+
+                else if (string.IsNullOrEmpty(rental) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
+                {
+                    MessageBox.Show("Please select rental ID, category, or style to search", "Rental ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 _furniture = _furnitureController.GetFurnitureByCategory(category);
+
+                if (_furniture.Count == 0)
+                {
+                    MessageBox.Show("No furniture matching that category found");
+                }
+
+                else if (string.IsNullOrEmpty(rental) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
+                {
+                    MessageBox.Show("Please select rental ID, category, or style to search", "Rental ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 _furniture = _furnitureController.GetFurnituryByStyle(style);
                 if (_furniture.Count == 0)
                 {
-                    MessageBox.Show("No furniture matching your search found");
+                    MessageBox.Show("No furniture matching that style found");
                 }
 
                 SearchFurnitureDataGridView.DataSource = _furniture;
