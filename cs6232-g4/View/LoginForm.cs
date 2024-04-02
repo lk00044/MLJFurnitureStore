@@ -29,7 +29,7 @@ namespace cs6232_g4.View
             InitializeComponent();
             _loginController = new LoginController();
             _employeeController = new EmployeeController();
-
+            this.TextUsername.Select();
         }
 
         /// <summary>
@@ -85,7 +85,8 @@ namespace cs6232_g4.View
                         {
 
                             this.Show();
-
+                            this.TextPassword.Text = "";
+                            this.TextUsername.Select();
                         }
                     }
                 }

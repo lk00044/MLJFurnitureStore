@@ -23,6 +23,7 @@ namespace cs6232_g4.UserControls
         private List<Member> searchList;
         private int MbrID;
         private string MemberName;
+        private TransactionController _transactionController;
 
         private readonly MembersController _memberController;
 
@@ -32,6 +33,7 @@ namespace cs6232_g4.UserControls
             this._memberController = new MembersController();
             this.MemberList = new List<Member>();
             this.SelectedMember = new Member();
+            this._transactionController = new TransactionController();  
             this.MbrId = 0;
             this.SelectedMemberId = 0;
             this.MbrFName = string.Empty;
@@ -259,13 +261,17 @@ namespace cs6232_g4.UserControls
             {
                 this.ErrorLabel.Text = "You must select a row first. ";
             }
+            else if (!this._transactionController.VerifyMemberTransactionavailable(this.SelectedMemberId))
+            {
+                this.ErrorLabel.Text = "No transactions for this member id.";
+            }
+
             else
             {
                 this.ErrorLabel.Text = string.Empty;
 
-                using (ViewMbrTransactionHistoryForm viewMbrTransHistory = new ViewMbrTransactionHistoryForm(this.MbrID, this.MemberName) )
-                { 
-
+                using (ViewMbrTransactionHistoryForm viewMbrTransHistory = new ViewMbrTransactionHistoryForm(this.SelectedMemberId, this.MemberName))
+                {
                     DialogResult result = viewMbrTransHistory.ShowDialog();
 
                     if (result == DialogResult.OK)

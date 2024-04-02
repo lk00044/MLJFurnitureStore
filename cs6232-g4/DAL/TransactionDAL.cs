@@ -12,6 +12,7 @@ using System.Transactions;
 ///             GetRentalLineItems(int rentalTransactionID)
 /// Programmer: Leslie
 ///             GetMemberTransactions(int memberID)
+///             VerifyMemberTransactionavailable(int memberID)
 /// </summary>
 /// 
 namespace Employees.DAL
@@ -126,16 +127,20 @@ namespace Employees.DAL
             return LineItemsList;
         }
 
-
+        /// <summary>
+        /// Gets the member transactions.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>List of rental transactions</returns>
         public List<RentalTransaction> GetMemberTransactions(int memberID)
         {
 
             List<RentalTransaction> RentalTransactionList = new List<RentalTransaction>();
 
             string selectStatement =
-                "SELECT r.transaction_id, f.transaction_date, r.total_amount, r.due_date,  " +
+                "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
                         "li.line_item_id, li.quantity, li.subtotal, f.name as furniture_name, " +
-                        "concat(e.fname, ' ' , e.lname) as employee_name, " +
+                        "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
                 "FROM RentalTransaction r " +
                 "JOIN RentalLineItem li " +
                 "ON r.transaction_id = li.rental_transaction_id " +
@@ -158,26 +163,31 @@ namespace Employees.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                       
+
                         while (reader.Read())
                         {
+
                             RentalTransaction transaction = new RentalTransaction();
 
                             transaction.TransactionId = (int)reader["transaction_id"];
-
+                            transaction.MemberId = (int)reader["member_id"]; 
+                            transaction.EmployeeId = (int)reader["employee_id"];
+                            transaction.EmployeeName = reader["employee_name"].ToString();
                             if (reader.IsDBNull(reader.GetOrdinal("transaction_date")))
                             {
                                 transaction.TransactionDate = null;
                             }
                             else
                             {
-                                transaction.TransactionDate = (DateTime?)reader["transaction_date"];
+                                transaction.TransactionDate = (DateTime)reader["transaction_date"];
                             }
-                            transaction.TotalAmount = (decimal)reader["total_amount"];
-                            transaction.EmployeeName = reader["employee_name"].ToString();
                             transaction.LineItemId = (int)reader["line_item_id"];
-                            transaction.FurnitureName = reader["furniture_name"].ToString();                            
+                            transaction.FurnitureName = reader["furniture_name"].ToString();
+                            transaction.DueDate = (DateTime)reader["due_date"];
                             transaction.LineItemQty = (int)reader["quantity"];
                             transaction.LineItemSubTotal = (decimal)reader["subtotal"];
+                            transaction.TotalAmount = (decimal)reader["total_amount"];
 
                             RentalTransactionList.Add(transaction);
 
@@ -187,6 +197,41 @@ namespace Employees.DAL
             }
             return RentalTransactionList;
 
+        }
+
+        /// <summary>
+        /// Verifies the member transactionavailable.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>bool - true of there is a transaction id</returns>
+        public bool VerifyMemberTransactionavailable(int memberID)
+        {
+            RentalTransaction transaction = new RentalTransaction();
+
+            string selectStatement =
+                "SELECT transaction_id " +  
+                "FROM RentalTransaction " +
+                "WHERE member_id = @memberID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@memberID", memberID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {                          
+                            transaction.TransactionId = (int)reader["transaction_id"];
+                        }
+                    }
+                }
+            }
+            return transaction.TransactionId != 0;
         }
 
     }

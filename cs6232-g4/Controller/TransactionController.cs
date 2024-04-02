@@ -48,10 +48,20 @@ namespace Members.Controller
         /// Gets the member transactions.
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
-        /// <returns></returns>
+        /// <returns>list of rental transactino for the member</returns>
         public List<RentalTransaction> GetMemberTransactions(int memberID)
         {
             return this._transactionDAL.GetMemberTransactions(memberID);
+        }
+
+        /// <summary>
+        /// Verifies the member transactionavailable.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>bool - true of there is a rental transaction for the member id</returns>
+        public bool VerifyMemberTransactionavailable(int memberID)
+        {
+            return this._transactionDAL.VerifyMemberTransactionavailable(memberID);
         }
     }
 }

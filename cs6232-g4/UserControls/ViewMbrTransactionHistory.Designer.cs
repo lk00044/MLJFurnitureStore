@@ -191,6 +191,7 @@
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MembersDataGridView.Size = new Size(834, 349);
             MembersDataGridView.TabIndex = 19;
+            MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
             // SearchInstructionsLabel
             // 

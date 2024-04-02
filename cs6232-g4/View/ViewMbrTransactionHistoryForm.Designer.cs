@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             MemberIDLabel = new Label();
             CloseButton = new Button();
             MemberTransactionsDataGridView = new DataGridView();
+            transactionDALBindingSource1 = new BindingSource(components);
             MemberNameLabel = new Label();
+            transactionDALBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource).BeginInit();
             SuspendLayout();
             // 
             // MemberIDLabel
@@ -40,7 +45,7 @@
             MemberIDLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             MemberIDLabel.Location = new Point(15, 20);
             MemberIDLabel.Name = "MemberIDLabel";
-            MemberIDLabel.Size = new Size(201, 25);
+            MemberIDLabel.Size = new Size(341, 25);
             MemberIDLabel.TabIndex = 21;
             MemberIDLabel.Text = "Member ID: ";
             // 
@@ -60,6 +65,7 @@
             // 
             MemberTransactionsDataGridView.AllowUserToAddRows = false;
             MemberTransactionsDataGridView.AllowUserToDeleteRows = false;
+            MemberTransactionsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             MemberTransactionsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             MemberTransactionsDataGridView.Location = new Point(17, 96);
             MemberTransactionsDataGridView.Name = "MemberTransactionsDataGridView";
@@ -69,28 +75,41 @@
             MemberTransactionsDataGridView.Size = new Size(808, 349);
             MemberTransactionsDataGridView.TabIndex = 22;
             // 
+            // transactionDALBindingSource1
+            // 
+            transactionDALBindingSource1.DataSource = typeof(Employees.DAL.TransactionDAL);
+            // 
             // MemberNameLabel
             // 
             MemberNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             MemberNameLabel.Location = new Point(15, 53);
             MemberNameLabel.Name = "MemberNameLabel";
-            MemberNameLabel.Size = new Size(201, 25);
+            MemberNameLabel.Size = new Size(341, 25);
             MemberNameLabel.TabIndex = 24;
             MemberNameLabel.Text = "Member Name: ";
+            MemberNameLabel.Click += MemberNameLabel_Click;
+            // 
+            // transactionDALBindingSource
+            // 
+            transactionDALBindingSource.DataSource = typeof(Employees.DAL.TransactionDAL);
             // 
             // ViewMbrTransactionHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(848, 468);
             Controls.Add(MemberNameLabel);
             Controls.Add(MemberIDLabel);
             Controls.Add(CloseButton);
             Controls.Add(MemberTransactionsDataGridView);
             Name = "ViewMbrTransactionHistoryForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Member Transaction History";
             Load += ViewMbrTransactionHistoryForm_Load;
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -100,5 +119,7 @@
         private Button CloseButton;
         private DataGridView MemberTransactionsDataGridView;
         private Label MemberNameLabel;
+        private BindingSource transactionDALBindingSource;
+        private BindingSource transactionDALBindingSource1;
     }
 }

@@ -116,7 +116,7 @@
             // BtnLogin
             // 
             BtnLogin.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnLogin.Location = new Point(99, 216);
+            BtnLogin.Location = new Point(97, 200);
             BtnLogin.Name = "BtnLogin";
             BtnLogin.Size = new Size(202, 42);
             BtnLogin.TabIndex = 3;
