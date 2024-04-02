@@ -52,7 +52,12 @@ namespace cs6232_g4
                 this.memberRegistrationUserControl.ClearAllErrors();
                 
             }
-            if (this.MainDBTabControl.SelectedIndex == 3)
+            if(this.MainDBTabControl.SelectedIndex == 1)
+            {
+                this.search4Member.ClearTextBoxes();
+                this.search4Member.ClearGrid();
+            }
+            if (this.MainDBTabControl.SelectedIndex == 2)
             {
                 this.rentFurnitureUserControl.ResetFields();
             }

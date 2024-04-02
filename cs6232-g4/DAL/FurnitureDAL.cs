@@ -1,6 +1,5 @@
 ﻿using cs6232_g4.DAL;
 using Furnitures.Model;
-using Members.Model;
 using System.Data.SqlClient;
 
 namespace Employees.DAL

@@ -2,7 +2,6 @@
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace cs6232_g4.UserControls
 {

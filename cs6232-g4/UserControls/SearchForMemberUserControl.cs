@@ -160,7 +160,7 @@ namespace cs6232_g4.UserControls
         /// <summary>
         /// clears the text boxes 
         /// </summary>
-        private void ClearTextBoxes()
+        public void ClearTextBoxes()
         {
             this.MbrIDTextBox.Text = string.Empty;
             this.MbrPhoneNumTextBox.Text = string.Empty;
@@ -318,7 +318,7 @@ namespace cs6232_g4.UserControls
         /// <summary>
         /// clears the grid 
         /// </summary>
-        private void ClearGrid()
+        public void ClearGrid()
         {
             this.MembersDataGridView.Columns.Clear();
         }

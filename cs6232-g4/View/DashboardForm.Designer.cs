@@ -36,7 +36,7 @@
             MbrTransTabPage = new TabPage();
             rentFurnitureUserControl = new UserControls.RentFurnitureUserControl();
             Search4MbrTabPage = new TabPage();
-            search4Member1 = new UserControls.SearchForMemberUserControl();
+            search4Member = new UserControls.SearchForMemberUserControl();
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
@@ -109,7 +109,7 @@
             // 
             // Search4MbrTabPage
             // 
-            Search4MbrTabPage.Controls.Add(search4Member1);
+            Search4MbrTabPage.Controls.Add(search4Member);
             Search4MbrTabPage.Location = new Point(4, 35);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
@@ -118,13 +118,13 @@
             Search4MbrTabPage.Text = "Member Search & Update";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
-            // search4Member1
+            // search4Member
             // 
-            search4Member1.Dock = DockStyle.Fill;
-            search4Member1.Location = new Point(3, 3);
-            search4Member1.Name = "search4Member1";
-            search4Member1.Size = new Size(875, 671);
-            search4Member1.TabIndex = 0;
+            search4Member.Dock = DockStyle.Fill;
+            search4Member.Location = new Point(3, 3);
+            search4Member.Name = "search4Member";
+            search4Member.Size = new Size(875, 671);
+            search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
             // 
@@ -191,7 +191,7 @@
         private TabPage MbrTransTabPage;
         private UserControls.RentFurnitureUserControl rentFurnitureUserControl;
         private TabPage Search4MbrTabPage;
-        private UserControls.SearchForMemberUserControl search4Member1;
+        private UserControls.SearchForMemberUserControl search4Member;
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;

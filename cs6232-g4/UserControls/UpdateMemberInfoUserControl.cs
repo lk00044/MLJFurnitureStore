@@ -1,5 +1,4 @@
-﻿using cs6232_g4.View;
-using Members.Controller;
+﻿using Members.Controller;
 using Members.Model;
 /// <summary>
 /// Interaction between the view to update a member and the data
@@ -75,6 +74,4 @@ namespace cs6232_g4.UserControls
             }
         }
     }
-
-
 }
