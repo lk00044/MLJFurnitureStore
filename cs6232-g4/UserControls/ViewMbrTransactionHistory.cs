@@ -183,6 +183,28 @@ namespace cs6232_g4.UserControls
             this.MembersDataGridView.DataSource = null;
             this.MembersDataGridView.DataSource = MatchingMembers;
             this.MembersDataGridView.ClearSelection();
+            this.SetupGrid();
+        }
+
+
+        private void SetupGrid()
+        {
+
+            this.MembersDataGridView.AutoGenerateColumns = false;
+            this.MembersDataGridView.AutoSize = true;
+            this.MembersDataGridView.Columns[0].HeaderText = "Member ID";
+            this.MembersDataGridView.Columns[1].HeaderText = "First Name";
+            this.MembersDataGridView.Columns[2].HeaderText = "Last Name";
+            this.MembersDataGridView.Columns[3].HeaderText = "Address 1";
+            this.MembersDataGridView.Columns[4].HeaderText = "Address 2";
+            this.MembersDataGridView.Columns[5].HeaderText = "City";
+            this.MembersDataGridView.Columns[6].HeaderText = "State";
+            this.MembersDataGridView.Columns[7].HeaderText = "Zip Code";
+            this.MembersDataGridView.Columns[8].HeaderText = "Phone";
+            this.MembersDataGridView.Columns[9].HeaderText = "Gender";
+            this.MembersDataGridView.Columns[10].HeaderText = "Date of Birth";
+            this.MembersDataGridView.Columns[10].DefaultCellStyle.Format = "MM/dd/yyyy";
+
         }
 
         private void DisplayMemberMatches()
@@ -281,7 +303,7 @@ namespace cs6232_g4.UserControls
                     }
                     else if (result == DialogResult.Cancel)
                     {
-                        this.ErrorLabel.Text = "View member transaction history cancelled.";
+                       
                     }
                 }
             }

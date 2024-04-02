@@ -73,7 +73,7 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.Columns[9].HeaderText = "SubTotal";
             this.MemberTransactionsDataGridView.Columns[9].DefaultCellStyle.Format = "c";
             this.MemberTransactionsDataGridView.Columns[10].HeaderText = "Transaction Total";
-            this.MemberTransactionsDataGridView.Columns[10].DefaultCellStyle.Format = "c"; ;
+            this.MemberTransactionsDataGridView.Columns[10].DefaultCellStyle.Format = "c"; 
 
         }
     
