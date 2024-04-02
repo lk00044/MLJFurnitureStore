@@ -23,7 +23,6 @@ namespace cs6232_g4.UserControls
         Member newMember;
         string enteredZip;
         string enteredPhone;
-        string enteredDOB;
         string enteredGender;
 
 
@@ -33,7 +32,6 @@ namespace cs6232_g4.UserControls
             this._memberController = new MembersController();
             this.enteredPhone = string.Empty;
             this.enteredZip = string.Empty;
-            this.enteredDOB = string.Empty;
             this.enteredGender = string.Empty;
         }
 
@@ -192,7 +190,7 @@ namespace cs6232_g4.UserControls
                 return false;
             }
 
-            this.newMember.ZipCode = enteredZip;
+
             return true;
         }
 
@@ -224,6 +222,7 @@ namespace cs6232_g4.UserControls
                 return false;
             }
 
+            this.newMember.ZipCode = enteredZip;
             return true;
         }
 
@@ -245,15 +244,22 @@ namespace cs6232_g4.UserControls
                 {
                     this.newMember.Gender = 'F';
                 }
-                else if (this.enteredGender.Equals("Other"))
+                else if (this.enteredGender.Equals("Transgender"))
                 {
-                    this.newMember.Gender = 'O';
+                    this.newMember.Gender = 'T';
                 }
-
-
+                else if (this.enteredGender.Equals("Non-binary/non-conforming"))
+                {
+                    this.newMember.Gender = 'N';
+                }
+                else if (this.enteredGender.Equals("Prefer not to respond"))
+                {
+                    this.newMember.Gender = 'P';
+                }
 
                 return true;
             }
+            return false;
         }
 
 
@@ -337,7 +343,7 @@ namespace cs6232_g4.UserControls
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void ClearAllErrors()
+        public void ClearAllErrors()
         {
             this.FNameErrorLabel.Text = string.Empty;
             this.lNameErrorLabel.Text = string.Empty;

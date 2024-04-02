@@ -49,6 +49,8 @@ namespace cs6232_g4
             if (this.MainDBTabControl.SelectedIndex == 0)
             {
                 this.memberRegistrationUserControl.ResetFields();
+                this.memberRegistrationUserControl.ClearAllErrors();
+                
             }
             if (this.MainDBTabControl.SelectedIndex == 3)
             {
