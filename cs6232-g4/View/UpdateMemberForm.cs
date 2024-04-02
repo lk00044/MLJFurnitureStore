@@ -134,6 +134,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        /// checks gender is correct and parsed 
+        /// </summary>
         private bool CheckGender()
         {
             this.enteredGender = this.enteredGender.Trim();
@@ -171,6 +174,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        /// checks all data is good for submit 
+        /// </summary>
         private bool ValidateData()
         {
 
@@ -220,6 +226,9 @@ namespace cs6232_g4.View
             return true;
         }
 
+        /// <summary>
+        /// checks if the zipcode is good
+        /// </summary>
         private bool CheckZipCode()
         {
             int ziplength = this.enteredZip.Trim().Length;
@@ -250,6 +259,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        /// checks the names
+        /// </summary>
         private bool CheckNames()
         {
             // if data deleted
@@ -275,6 +287,9 @@ namespace cs6232_g4.View
             return true;
         }
 
+        /// <summary>
+        /// checks valid dob 
+        /// </summary>
         private bool CheckDOB()
         {
             // if deleted dob

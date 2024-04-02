@@ -27,6 +27,9 @@ namespace cs6232_g4.UserControls
             this.PopulateUpdateFields();
         }
 
+        /// <summary>
+        /// pipulates the fields 
+        /// </summary>
         private void PopulateUpdateFields()
         {
             this.MemberList = this._memberController.GetMemberByID(this._memberID);
@@ -43,6 +46,9 @@ namespace cs6232_g4.UserControls
             this.GenderComboBox.Text = MemberList[0].Gender.ToString();
         }
 
+        /// <summary>
+        /// action when UpdateButton is clicked 
+        /// </summary>
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
             Member updatedMember = new Member();

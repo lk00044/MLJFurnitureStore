@@ -79,6 +79,10 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// helped function to verify all data before submitting 
+        /// </summary>
+        /// <returns>true if all data valid and false otherwise</returns>
         private bool ValidateData()
         {
             CheckNames();
@@ -95,6 +99,10 @@ namespace cs6232_g4.UserControls
             return false;
         }
 
+        /// <summary>
+        /// verifies the date of birth is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckDOB()
         {
             if (DateTime.Today.Year - this.dobDateTimePicker.Value.Year < 18 )
@@ -110,6 +118,10 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// verifies the phone is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckPhone()
         {
             if (string.IsNullOrEmpty(this.enteredPhone))
@@ -137,6 +149,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the name is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckNames()
         {
             if (string.IsNullOrEmpty(newMember.FirstName) || (string.IsNullOrEmpty(newMember.LastName)))
@@ -159,7 +175,10 @@ namespace cs6232_g4.UserControls
 
             return true;
         }
-
+        /// <summary>
+        /// verifies the address is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckAddress()
         {
 
@@ -191,6 +210,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the zipcode is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckZipCode()
         {
             if (string.IsNullOrEmpty(enteredZip))
@@ -223,6 +246,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the gender is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckGender()
         {
             if (string.IsNullOrEmpty(this.enteredGender))
@@ -340,6 +367,9 @@ namespace cs6232_g4.UserControls
             this.regFeedbackLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// clears all errors fields 
+        /// </summary>
         public void ClearAllErrors()
         {
             this.FNameErrorLabel.Text = string.Empty;
@@ -347,6 +377,7 @@ namespace cs6232_g4.UserControls
             this.addr1ErrorLabel.Text= string.Empty;
             this.cityErrorLabel.Text = string.Empty;
             this.stateErrorLabel.Text = string.Empty;
+            this.genderErrorLabel.Text = string.Empty;
             this.zipErrorLabel.Text = string.Empty;
             this.phoneErrorLabel.Text = string.Empty;
             this.dobErrorLabel.Text = string.Empty;

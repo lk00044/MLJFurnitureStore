@@ -36,12 +36,19 @@ namespace cs6232_g4.UserControls
             this.cartListView.Columns.Add("Daily Rate", 80);
             this.cartListView.Columns.Add("Subtotal", 80);
         }
+
+        /// <summary>
+        /// populates the available furniture section 
+        /// </summary>
         private void PopulateAvailableFurniture()
         {
             this.furnitureList = this._furnitureController.GetAllFurniture();
             this.availableFurnitureGridView.DataSource = furnitureList;
         }
 
+        /// <summary>
+        /// actions after add item button is clicked 
+        /// </summary>
         private void AddItemButton_Click(object sender, EventArgs e)
         {
             if (IsValidItemInput(false))
@@ -58,6 +65,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// update item click 
+        /// </summary>
         private void UpdateItemButton_Click(object sender, EventArgs e)
         {
             if (IsValidItemInput(true))
@@ -78,6 +88,9 @@ namespace cs6232_g4.UserControls
 
         }
 
+        /// <summary>
+        /// updates the values of the cost labels 
+        /// </summary>
         private void UpdateCostValues()
         {
 
@@ -93,6 +106,9 @@ namespace cs6232_g4.UserControls
             this.totalCostValue.Text = "$" + totalCost.ToString("F");
         }
 
+        /// <summary>
+        /// actions when submit order button is clicked 
+        /// </summary>
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
             if (!this.IsTransactionInputsValid()) return;
@@ -109,6 +125,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// updates the quantity of the furniture when submit an order 
+        /// </summary>
         private void UpdateAvailableFurnitureQuantity()
         {
             foreach (ListViewItem item in this.cartListView.Items)
@@ -123,6 +142,10 @@ namespace cs6232_g4.UserControls
             }
             this.PopulateAvailableFurniture();
         }
+
+        /// <summary>
+        /// creates the rental transaction in the database 
+        /// </summary>
         private void CreateRentalTransaction()
         {
             try
@@ -139,6 +162,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// creates the lines items in the database 
+        /// </summary>
         private void CreateLineItems()
         {
 
@@ -153,6 +179,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// helper gets the total days from duedate 
+        /// </summary>
         private int GetTotalDays()
         {
             DateTime currentDate = DateTime.Now;
@@ -160,6 +189,9 @@ namespace cs6232_g4.UserControls
             return (dueDate.Date - currentDate.Date).Days;
         }
 
+        /// <summary>
+        /// helper constuctrs a receipt 
+        /// </summary>
         private void CreateReceipt()
         {
             this.infoMessageLabel.Text = "Transaction created successfully!";
@@ -192,6 +224,10 @@ namespace cs6232_g4.UserControls
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        /// <summary>
+        /// checks the transaction inputs are valid to make a good transaction 
+        /// </summary>
         private bool IsTransactionInputsValid()
         {
             this.infoMessageLabel.ForeColor = Color.Red;
@@ -213,6 +249,9 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// checks the line item inputs good for db update 
+        /// </summary>
         private bool IsValidItemInput(bool isUpdate)
         {
             this.infoMessageLabel.ForeColor = Color.Red;
@@ -250,6 +289,9 @@ namespace cs6232_g4.UserControls
             this.ResetFields();
         }
 
+        /// <summary>
+        /// resets the fields 
+        /// </summary>
         public void ResetFields()
         {
             this.furnitureIdTextBox.Text = string.Empty;
