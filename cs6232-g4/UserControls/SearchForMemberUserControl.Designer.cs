@@ -59,7 +59,7 @@
             // FindMemberButton
             // 
             FindMemberButton.FlatStyle = FlatStyle.Popup;
-            FindMemberButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FindMemberButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             FindMemberButton.Location = new Point(508, 2);
             FindMemberButton.Margin = new Padding(3, 2, 3, 2);
             FindMemberButton.Name = "FindMemberButton";
@@ -205,7 +205,7 @@
             // UpdateMbrButton
             // 
             UpdateMbrButton.FlatStyle = FlatStyle.Popup;
-            UpdateMbrButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UpdateMbrButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             UpdateMbrButton.Location = new Point(520, 154);
             UpdateMbrButton.Margin = new Padding(3, 2, 3, 2);
             UpdateMbrButton.Name = "UpdateMbrButton";

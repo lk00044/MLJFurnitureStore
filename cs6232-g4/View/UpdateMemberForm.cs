@@ -114,10 +114,9 @@ namespace cs6232_g4.View
                 this.enteredPhone = this.PhoneNumTextBox.Text;
                 this.enteredGender = this.GenderComboBox.Text;
                 this.enteredState = this.StateComboBox.Text;
-
-                if (ValidateData())
+                if (!(ValidateData())) return;
+                if (this._memberController.UpdateStoreMember(memberToUpdate) > 0)
                 {
-                    this._memberController.UpdateStoreMember(memberToUpdate);
                     this.ResetFields();
                     this.ResetErrorLabels();
                     this.DialogResult = DialogResult.OK;
@@ -357,62 +356,7 @@ namespace cs6232_g4.View
             this.dobErrorLabel.Text = string.Empty;
         }
 
-        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.fnameErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-
-        }
-
-        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.lNameErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.genderErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void phoneTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.phoneErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void address1TextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.addr1ErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void cityTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.cityErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.stateErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void zipTextBox_TextChanged(object sender, EventArgs e)
-        {
-            this.zipErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            this.dobErrorLabel.Text = string.Empty;
-            this.InfoLabel.Text = string.Empty;
-        }
-
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.ResetFields();
             this.ResetErrorLabels();

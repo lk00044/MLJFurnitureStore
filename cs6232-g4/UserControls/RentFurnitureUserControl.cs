@@ -2,6 +2,7 @@
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace cs6232_g4.UserControls
 {
@@ -114,7 +115,11 @@ namespace cs6232_g4.UserControls
             {
                 int id = int.Parse(item.SubItems[0].Text);
                 int quantity = int.Parse(item.SubItems[2].Text);
-                this._furnitureController.UpdateFurniture(id, quantity);
+                if (this._furnitureController.UpdateFurniture(id, quantity) == 0)
+                {
+                    MessageBox.Show("Failed to update furniture" + Environment.NewLine + "Failed to update quantity for FurnitureId= " + id, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                };
             }
             this.PopulateAvailableFurniture();
         }

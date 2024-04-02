@@ -61,10 +61,9 @@ namespace cs6232_g4.UserControls
                 enteredGender = this.genderComboBox.Text;
                 enteredZip = this.zipTextBox.Text;
                 enteredPhone = this.phoneTextBox.Text;
-
-                if (ValidateData())
+                if (!ValidateData()) return;
+                if (this._memberController.RegisterStoreMember(newMember) > 0)
                 {
-                    this._memberController.RegisterStoreMember(newMember);
                     MessageBox.Show("Customer registered successfully!");
                     this.ResetFields();
                 }
@@ -287,55 +286,55 @@ namespace cs6232_g4.UserControls
             this.ResetFields();
         }
 
-        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
+        private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.FNameErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
+        private void LastNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.lNameErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.genderErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void phoneTextBox_TextChanged(object sender, EventArgs e)
+        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             this.phoneErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void address1TextBox_TextChanged(object sender, EventArgs e)
+        private void Address1TextBox_TextChanged(object sender, EventArgs e)
         {
             this.addr1ErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void cityTextBox_TextChanged(object sender, EventArgs e)
+        private void CityTextBox_TextChanged(object sender, EventArgs e)
         {
             this.cityErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.stateErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void zipTextBox_TextChanged(object sender, EventArgs e)
+        private void ZipTextBox_TextChanged(object sender, EventArgs e)
         {
             this.zipErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void DobDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this.dobErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;

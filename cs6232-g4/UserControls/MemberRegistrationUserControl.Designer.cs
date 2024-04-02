@@ -162,7 +162,7 @@
             stateComboBox.Name = "stateComboBox";
             stateComboBox.Size = new Size(233, 27);
             stateComboBox.TabIndex = 10;
-            stateComboBox.SelectedIndexChanged += stateComboBox_SelectedIndexChanged;
+            stateComboBox.SelectedIndexChanged += StateComboBox_SelectedIndexChanged;
             // 
             // zipTextBox
             // 
@@ -171,7 +171,7 @@
             zipTextBox.Name = "zipTextBox";
             zipTextBox.Size = new Size(233, 27);
             zipTextBox.TabIndex = 11;
-            zipTextBox.TextChanged += zipTextBox_TextChanged;
+            zipTextBox.TextChanged += ZipTextBox_TextChanged;
             // 
             // firstNameTextBox
             // 
@@ -180,7 +180,7 @@
             firstNameTextBox.Name = "firstNameTextBox";
             firstNameTextBox.Size = new Size(200, 27);
             firstNameTextBox.TabIndex = 1;
-            firstNameTextBox.TextChanged += firstNameTextBox_TextChanged;
+            firstNameTextBox.TextChanged += FirstNameTextBox_TextChanged;
             // 
             // FNameErrorLabel
             // 
@@ -196,7 +196,7 @@
             phoneTextBox.Name = "phoneTextBox";
             phoneTextBox.Size = new Size(200, 27);
             phoneTextBox.TabIndex = 5;
-            phoneTextBox.TextChanged += phoneTextBox_TextChanged;
+            phoneTextBox.TextChanged += PhoneTextBox_TextChanged;
             // 
             // phoneLabel
             // 
@@ -232,7 +232,7 @@
             address1TextBox.Name = "address1TextBox";
             address1TextBox.Size = new Size(200, 27);
             address1TextBox.TabIndex = 6;
-            address1TextBox.TextChanged += address1TextBox_TextChanged;
+            address1TextBox.TextChanged += Address1TextBox_TextChanged;
             // 
             // address1Label
             // 
@@ -269,7 +269,7 @@
             cityTextBox.Name = "cityTextBox";
             cityTextBox.Size = new Size(200, 27);
             cityTextBox.TabIndex = 8;
-            cityTextBox.TextChanged += cityTextBox_TextChanged;
+            cityTextBox.TextChanged += CityTextBox_TextChanged;
             // 
             // cityLabel
             // 
@@ -305,7 +305,7 @@
             lastNameTextBox.Name = "lastNameTextBox";
             lastNameTextBox.Size = new Size(233, 27);
             lastNameTextBox.TabIndex = 2;
-            lastNameTextBox.TextChanged += lastNameTextBox_TextChanged;
+            lastNameTextBox.TextChanged += LastNameTextBox_TextChanged;
             // 
             // lastNameLabel
             // 
@@ -344,7 +344,7 @@
             genderComboBox.Name = "genderComboBox";
             genderComboBox.Size = new Size(200, 27);
             genderComboBox.TabIndex = 3;
-            genderComboBox.SelectedIndexChanged += genderComboBox_SelectedIndexChanged;
+            genderComboBox.SelectedIndexChanged += GenderComboBox_SelectedIndexChanged;
             // 
             // dobDateTimePicker
             // 
@@ -356,7 +356,7 @@
             dobDateTimePicker.Size = new Size(233, 27);
             dobDateTimePicker.TabIndex = 4;
             dobDateTimePicker.Value = new DateTime(1999, 9, 9, 0, 0, 0, 0);
-            dobDateTimePicker.ValueChanged += dobDateTimePicker_ValueChanged;
+            dobDateTimePicker.ValueChanged += DobDateTimePicker_ValueChanged;
             // 
             // genderErrorLabel
             // 
