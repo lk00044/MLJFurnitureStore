@@ -25,7 +25,6 @@ namespace cs6232_g4.UserControls
         string enteredPhone;
         string enteredGender;
 
-
         public MemberRegistrationUserControl()
         {
             InitializeComponent();
@@ -66,8 +65,7 @@ namespace cs6232_g4.UserControls
                 if (ValidateData())
                 {
                     this._memberController.RegisterStoreMember(newMember);
-                    this.regFeedbackLabel.Text = "Customer registered successfully!";
-                    this.regFeedbackLabel.ForeColor = Color.Green;
+                    MessageBox.Show("Customer registered successfully!");
                     this.ResetFields();
                 }
                 else
@@ -100,10 +98,10 @@ namespace cs6232_g4.UserControls
 
         private bool CheckDOB()
         {
-            if (!this.dobDateTimePicker.Checked)
+            if (DateTime.Today.Year - this.dobDateTimePicker.Value.Year < 18 )
             {
                 this.dobErrorLabel.ForeColor = Color.Red;
-                this.dobErrorLabel.Text = "Date of birth is required.";
+                this.dobErrorLabel.Text = "customer cannot be less than 18 years old";
                 return false;
             }
             else
@@ -278,7 +276,7 @@ namespace cs6232_g4.UserControls
             this.zipTextBox.Text = string.Empty;
             this.stateComboBox.SelectedIndex = -1;            
             this.genderComboBox.SelectedIndex = -1;
-            this.dobDateTimePicker.Value = DateTime.Parse("2002-01-01");
+            this.dobDateTimePicker.Value = DateTime.Today.AddYears(-18);
         }
 
         /// <summary>
@@ -354,7 +352,6 @@ namespace cs6232_g4.UserControls
             this.phoneErrorLabel.Text = string.Empty;
             this.dobErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
-
         }
 
     }
