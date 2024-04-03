@@ -48,7 +48,7 @@ namespace cs6232_g4
             if (this.MainDBTabControl.SelectedIndex == 0)
             {
                 this.memberRegistrationUserControl.ResetFields();
-                this.memberRegistrationUserControl.ClearAllErrors();                
+                this.memberRegistrationUserControl.ClearAllErrors();
             }
         }
 
@@ -60,6 +60,11 @@ namespace cs6232_g4
         private void LogOutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Close();
+        }
+
+        private void DashboardForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
