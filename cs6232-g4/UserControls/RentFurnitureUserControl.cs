@@ -269,6 +269,11 @@ namespace cs6232_g4.UserControls
                 this.infoMessageLabel.Text = "Item is already added in cart";
                 return false;
             }
+            if (isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) == null)
+            {
+                this.infoMessageLabel.Text = "Cannot update item before it's added to cart";
+                return false;
+            }
             if (this.quantityTextBox.Text == string.Empty || this.quantityTextBox.Text == "0")
             {
                 this.infoMessageLabel.Text = "Please enter valid quantity";
