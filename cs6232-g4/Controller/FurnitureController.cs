@@ -31,9 +31,9 @@ namespace Members.Controller
         /// </summary>
         /// <param>furnitureId</param>
         /// <param>rentedQuantity</param>
-        public void UpdateFurniture(int furnitureId, int rentedQuantity)
+        public int UpdateFurniture(int furnitureId, int rentedQuantity)
         {
-             this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
+            return  this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
         }
     }
 }

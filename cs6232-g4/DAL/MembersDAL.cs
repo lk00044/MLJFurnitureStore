@@ -164,7 +164,8 @@ namespace Members.DAL
         /// <summary>
         /// Register a store member
         /// </summary>
-        public void RegisterStoreMember(Member storeMember)
+        /// <return>number of rows affected</return>
+        public int RegisterStoreMember(Member storeMember)
         {
             string command = $"INSERT INTO [dbo].[StoreMember] VALUES (@dob, @fname, @lname, @phone, @address1, @address2, @city, @state, @zip, @gender)";
 
@@ -196,8 +197,7 @@ namespace Members.DAL
                     insert_command.Parameters["@zip"].Value = storeMember.ZipCode;
                     insert_command.Parameters["@gender"].Value = storeMember.Gender;
 
-                    insert_command.ExecuteNonQuery();
-
+                    return insert_command.ExecuteNonQuery();
                 }
             }
         }
@@ -205,8 +205,9 @@ namespace Members.DAL
         /// <summary>
         /// update a store member
         /// </summary> UPDATE StoreMember SET
+        /// <returns>number of affected rows</returns>
 
-        public void UpdateStoreMember(Member storeMember)
+        public int UpdateStoreMember(Member storeMember)
         {
             string command = $"UPDATE [dbo].[StoreMember] SET date_of_birth=@dob, fname=@fname, lname=@lname, phone=@phone, address1=@address1, address2=@address2, state=@state, city=@city, zip=@zip, gender=@gender"
                             + " WHERE member_id=@id";
@@ -241,7 +242,7 @@ namespace Members.DAL
                     insert_command.Parameters["@zip"].Value = storeMember.ZipCode;
                     insert_command.Parameters["@gender"].Value = storeMember.Gender;
 
-                    insert_command.ExecuteNonQuery();
+                   return insert_command.ExecuteNonQuery();
 
                 }
             }

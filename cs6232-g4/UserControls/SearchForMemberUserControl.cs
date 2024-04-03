@@ -46,6 +46,9 @@ namespace cs6232_g4.UserControls
             MbrID = 0;
         }
 
+        /// <summary>
+        /// actions when the find member button is clicked 
+        /// </summary>
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
             try
@@ -71,7 +74,7 @@ namespace cs6232_g4.UserControls
                         else
                         {
                             this.ErrorLabel.Text = "No members with that ID.";
-                            this.clearGrid();
+                            this.ClearGrid();
                             this.ClearTextBoxes();
                             this.ReEnableTextBoxes();
                         }
@@ -98,7 +101,7 @@ namespace cs6232_g4.UserControls
                         else
                         {
                             this.ErrorLabel.Text = "No members with that number.";
-                            this.clearGrid();
+                            this.ClearGrid();
                             this.ClearTextBoxes();
                             this.ReEnableTextBoxes();
                         }
@@ -129,7 +132,7 @@ namespace cs6232_g4.UserControls
                     else
                     {
                         this.ErrorLabel.Text = "No members with that name.";
-                        this.clearGrid();
+                        this.ClearGrid();
                         this.ClearTextBoxes();
                         this.ReEnableTextBoxes();
                     }
@@ -142,6 +145,9 @@ namespace cs6232_g4.UserControls
 
         }
 
+        /// <summary>
+        /// checks whether a row is selected 
+        /// </summary>
         private bool CheckRowIsSelected()
         {
             if (this.MembersDataGridView.SelectedRows.Count == 0) 
@@ -151,7 +157,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
-        private void ClearTextBoxes()
+        /// <summary>
+        /// clears the text boxes 
+        /// </summary>
+        public void ClearTextBoxes()
         {
             this.MbrIDTextBox.Text = string.Empty;
             this.MbrPhoneNumTextBox.Text = string.Empty;
@@ -159,7 +168,9 @@ namespace cs6232_g4.UserControls
             this.MbrLNameTextBox.Text = string.Empty;
         }
 
-
+        /// <summary>
+        /// reenables the text boxes 
+        /// </summary>
         private void ReEnableTextBoxes()
         {
             this.MbrIDTextBox.Enabled = true;
@@ -168,12 +179,18 @@ namespace cs6232_g4.UserControls
             this.MbrPhoneNumTextBox.Enabled = true;
         }
 
+        /// <summary>
+        /// checks whether any inputs is missing 
+        /// </summary>
         private bool CheckIfMissingAllInput()
         {
             return string.IsNullOrEmpty(MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
                 string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
         }
 
+        /// <summary>
+        /// checks is the name is missing 
+        /// </summary>
         private bool CheckIfMissingNamePart()
         {
             return (string.IsNullOrEmpty(MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
@@ -182,6 +199,9 @@ namespace cs6232_g4.UserControls
                 );
         }
 
+        /// <summary>
+        /// repopulate the grid 
+        /// </summary>
         private void RefreshDataGrid(List<Member> MatchingMembers)
         {
                 this.MembersDataGridView.DataSource = null;
@@ -189,6 +209,9 @@ namespace cs6232_g4.UserControls
                 this.MembersDataGridView.ClearSelection();          
         }
 
+        /// <summary>
+        /// display the matches 
+        /// </summary>
         private void DisplayMemberMatches()
         {
             try
@@ -257,6 +280,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// actions when the button is clicked 
+        /// </summary>
         private void UpdateMbrButton_Click(object sender, EventArgs e)
         {
 
@@ -289,7 +315,10 @@ namespace cs6232_g4.UserControls
             }
         }
 
-        private void clearGrid()
+        /// <summary>
+        /// clears the grid 
+        /// </summary>
+        public void ClearGrid()
         {
             this.MembersDataGridView.Columns.Clear();
         }

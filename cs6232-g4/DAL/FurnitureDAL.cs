@@ -1,6 +1,5 @@
 ﻿using cs6232_g4.DAL;
 using Furnitures.Model;
-using Members.Model;
 using System.Data.SqlClient;
 
 namespace Employees.DAL
@@ -51,7 +50,8 @@ namespace Employees.DAL
         /// </summary>
         /// <param>furnitureId</param>
         /// <param>rentedQuantity</param>
-        public void UpdateFurniture(int furnitureId, int rentedQuantity)
+        /// <returns># of rows affected</returns>
+        public int UpdateFurniture(int furnitureId, int rentedQuantity)
         {
             string command = $"UPDATE [dbo].[Furniture] SET instock_quantity=instock_quantity-@rentedQuantity WHERE furniture_id=@furniture_id";
 
@@ -67,7 +67,7 @@ namespace Employees.DAL
                     insert_command.Parameters["@furniture_id"].Value = furnitureId;
                     insert_command.Parameters["@rentedQuantity"].Value = rentedQuantity;
 
-                    insert_command.ExecuteNonQuery();
+                    return insert_command.ExecuteNonQuery();
 
                 }
             }

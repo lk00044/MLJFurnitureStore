@@ -45,17 +45,17 @@ namespace Members.Controller
         /// <summary>
         /// Register a store member
         /// </summary>
-        public void RegisterStoreMember(Member storeMember)
+        public int RegisterStoreMember(Member storeMember)
         {
-            this._memberDAL.RegisterStoreMember(storeMember);
+            return this._memberDAL.RegisterStoreMember(storeMember);
         }
 
         /// <summary>
         /// Update a store member
         /// </summary>
-        public void UpdateStoreMember(Member storeMember)
+        public int UpdateStoreMember(Member storeMember)
         {
-            this._memberDAL.UpdateStoreMember(storeMember);
+           return this._memberDAL.UpdateStoreMember(storeMember);
         }
     }
 }

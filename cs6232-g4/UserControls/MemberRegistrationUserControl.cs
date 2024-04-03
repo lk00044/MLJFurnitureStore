@@ -25,7 +25,6 @@ namespace cs6232_g4.UserControls
         string enteredPhone;
         string enteredGender;
 
-
         public MemberRegistrationUserControl()
         {
             InitializeComponent();
@@ -62,12 +61,10 @@ namespace cs6232_g4.UserControls
                 enteredGender = this.genderComboBox.Text;
                 enteredZip = this.zipTextBox.Text;
                 enteredPhone = this.phoneTextBox.Text;
-
-                if (ValidateData())
+                if (!ValidateData()) return;
+                if (this._memberController.RegisterStoreMember(newMember) > 0)
                 {
-                    this._memberController.RegisterStoreMember(newMember);
-                    this.regFeedbackLabel.Text = "Customer registered successfully!";
-                    this.regFeedbackLabel.ForeColor = Color.Green;
+                    MessageBox.Show("Customer registered successfully!");
                     this.ResetFields();
                 }
                 else
@@ -82,6 +79,10 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// helped function to verify all data before submitting 
+        /// </summary>
+        /// <returns>true if all data valid and false otherwise</returns>
         private bool ValidateData()
         {
             CheckNames();
@@ -98,12 +99,16 @@ namespace cs6232_g4.UserControls
             return false;
         }
 
+        /// <summary>
+        /// verifies the date of birth is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckDOB()
         {
-            if (!this.dobDateTimePicker.Checked)
+            if (DateTime.Today.Year - this.dobDateTimePicker.Value.Year < 18 )
             {
                 this.dobErrorLabel.ForeColor = Color.Red;
-                this.dobErrorLabel.Text = "Date of birth is required.";
+                this.dobErrorLabel.Text = "customer cannot be less than 18 years old";
                 return false;
             }
             else
@@ -113,6 +118,10 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        /// verifies the phone is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckPhone()
         {
             if (string.IsNullOrEmpty(this.enteredPhone))
@@ -140,6 +149,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the name is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckNames()
         {
             if (string.IsNullOrEmpty(newMember.FirstName) || (string.IsNullOrEmpty(newMember.LastName)))
@@ -162,7 +175,10 @@ namespace cs6232_g4.UserControls
 
             return true;
         }
-
+        /// <summary>
+        /// verifies the address is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckAddress()
         {
 
@@ -194,6 +210,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the zipcode is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckZipCode()
         {
             if (string.IsNullOrEmpty(enteredZip))
@@ -226,6 +246,10 @@ namespace cs6232_g4.UserControls
             return true;
         }
 
+        /// <summary>
+        /// verifies the gender is correct 
+        /// </summary>
+        /// <returns>true if data valid and false otherwise</returns>
         private bool CheckGender()
         {
             if (string.IsNullOrEmpty(this.enteredGender))
@@ -278,7 +302,7 @@ namespace cs6232_g4.UserControls
             this.zipTextBox.Text = string.Empty;
             this.stateComboBox.SelectedIndex = -1;            
             this.genderComboBox.SelectedIndex = -1;
-            this.dobDateTimePicker.Value = DateTime.Parse("2002-01-01");
+            this.dobDateTimePicker.Value = DateTime.Today.AddYears(-18);
         }
 
         /// <summary>
@@ -289,60 +313,63 @@ namespace cs6232_g4.UserControls
             this.ResetFields();
         }
 
-        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
+        private void FirstNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.FNameErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
+        private void LastNameTextBox_TextChanged(object sender, EventArgs e)
         {
             this.lNameErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void genderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GenderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.genderErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void phoneTextBox_TextChanged(object sender, EventArgs e)
+        private void PhoneTextBox_TextChanged(object sender, EventArgs e)
         {
             this.phoneErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void address1TextBox_TextChanged(object sender, EventArgs e)
+        private void Address1TextBox_TextChanged(object sender, EventArgs e)
         {
             this.addr1ErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void cityTextBox_TextChanged(object sender, EventArgs e)
+        private void CityTextBox_TextChanged(object sender, EventArgs e)
         {
             this.cityErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void stateComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StateComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.stateErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void zipTextBox_TextChanged(object sender, EventArgs e)
+        private void ZipTextBox_TextChanged(object sender, EventArgs e)
         {
             this.zipErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void DobDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this.dobErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        /// clears all errors fields 
+        /// </summary>
         public void ClearAllErrors()
         {
             this.FNameErrorLabel.Text = string.Empty;
@@ -350,11 +377,11 @@ namespace cs6232_g4.UserControls
             this.addr1ErrorLabel.Text= string.Empty;
             this.cityErrorLabel.Text = string.Empty;
             this.stateErrorLabel.Text = string.Empty;
+            this.genderErrorLabel.Text = string.Empty;
             this.zipErrorLabel.Text = string.Empty;
             this.phoneErrorLabel.Text = string.Empty;
             this.dobErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
-
         }
 
     }
