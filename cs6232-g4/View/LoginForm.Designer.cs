@@ -46,6 +46,7 @@
             TextUsername.Size = new Size(202, 27);
             TextUsername.TabIndex = 1;
             TextUsername.Click += TextUsername_Click;
+            TextUsername.TextChanged += TextUsername_TextChanged;
             // 
             // TextPassword
             // 

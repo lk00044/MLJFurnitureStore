@@ -28,6 +28,9 @@ namespace cs6232_g4.UserControls
         private int SelectedMemberId;
         private List<Member> searchList;
         private int MbrID;
+        string origPhone;
+        string origFName;
+        string origLName;
 
         private readonly MembersController _memberController;
 
@@ -44,6 +47,9 @@ namespace cs6232_g4.UserControls
             MbrLName = string.Empty;
             MbrPhoneNum = string.Empty;
             MbrID = 0;
+            this.origFName = string.Empty;
+            this.origLName = string.Empty;
+            this.origPhone = string.Empty;
         }
 
         private void FindMemberButton_Click(object sender, EventArgs e)
@@ -273,7 +279,7 @@ namespace cs6232_g4.UserControls
                 int selectedrowindex = MembersDataGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = MembersDataGridView.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells[0].Value);
-                MbrID = Int32.Parse(cellValue);
+                this.MbrID = Int32.Parse(cellValue);
                 this.searchList = this._memberController.GetMemberByID(MbrID);
                 this.SelectedMember = searchList[0];
                 this.SelectedMemberId = this.SelectedMember.MemberID;
@@ -292,15 +298,16 @@ namespace cs6232_g4.UserControls
             {
                 this.ErrorLabel.Text = string.Empty;
 
-                using (Form updateMemberForm = new View.UpdateMemberForm(SelectedMemberId))
+                using (Form updateMemberForm = new View.UpdateMemberForm(this.MbrID))
                 {
+                    int mbrid = this.MbrID;
 
                     DialogResult result = updateMemberForm.ShowDialog();
 
                     if (result == DialogResult.OK)
                     {
                         this.Show();
-                        MemberList = this._memberController.GetMemberByID(MbrId);
+                        this.MemberList = this._memberController.GetMemberByID(mbrid);
                         this.DisplayMemberMatches();
                         this.ErrorLabel.Text = "Member updated.";
                   

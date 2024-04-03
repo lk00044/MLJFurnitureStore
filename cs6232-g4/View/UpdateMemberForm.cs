@@ -32,6 +32,7 @@ namespace cs6232_g4.View
         string enteredState;
 
 
+
         public UpdateMemberForm(int memberID)
         {
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace cs6232_g4.View
         private void PopulateUpdateFields()
         {
             this.MemberList = this._memberController.GetMemberByID(this._memberID);
+            this.DisplayIDLabel.Text = this._memberID.ToString();
             this.memberToUpdate = this.MemberList[0];           
             this.InfoLabel.Text = String.Empty;
             this.MbrNewFNameTextBox.Text = this.memberToUpdate.FirstName;

@@ -259,7 +259,6 @@ namespace cs6232_g4.UserControls
 
                 return true;
             }
-            return false;
         }
 
 
