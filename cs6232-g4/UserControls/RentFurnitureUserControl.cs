@@ -1,6 +1,7 @@
 ﻿using cs6232_g4.Controller;
 using cs6232_g4.DAL;
 using cs6232_g4.Model;
+using Furnitures.Controller;
 using Furnitures.Model;
 using Members.Controller;
 using System;
