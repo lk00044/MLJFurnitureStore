@@ -6,9 +6,9 @@
     /// 
     public class RentalTransaction
     {
-        public int TransactionId { get; set; }
+        public int TransactionID { get; set; }
 
-        public DateTime? TransactionDate { get; set; }
+        public DateTime TransactionDate { get; set; }
 
         public int MemberId { get; set; }
 
@@ -18,7 +18,7 @@
 
         public int LineItemId { get; set; }
 
-        public DateTime? DueDate { get; set; }
+        public DateTime DueDate { get; set; }
 
         public string FurnitureName { get; set; }
 

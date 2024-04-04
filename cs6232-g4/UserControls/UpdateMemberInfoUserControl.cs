@@ -1,5 +1,4 @@
-﻿using cs6232_g4.View;
-using Members.Controller;
+﻿using Members.Controller;
 using Members.Model;
 /// <summary>
 /// Interaction between the view to update a member and the data
@@ -10,13 +9,13 @@ using Members.Model;
 
 namespace cs6232_g4.UserControls
 {
-    public partial class UpdateMemberInfoUserControl1 : UserControl
+    public partial class UpdateMemberInfoUserControl : UserControl
     {
         private readonly MembersController _memberController;
         private List<Member> MemberList;
         private int _memberID;
 
-        public UpdateMemberInfoUserControl1(int memberID)
+        public UpdateMemberInfoUserControl(int memberID)
         {
             InitializeComponent();
             this._memberController = new MembersController();
@@ -27,6 +26,9 @@ namespace cs6232_g4.UserControls
             this.PopulateUpdateFields();
         }
 
+        /// <summary>
+        /// pipulates the fields 
+        /// </summary>
         private void PopulateUpdateFields()
         {
             this.MemberList = this._memberController.GetMemberByID(this._memberID);
@@ -43,25 +45,11 @@ namespace cs6232_g4.UserControls
             this.GenderComboBox.Text = MemberList[0].Gender.ToString();
         }
 
-        /*   
-           private bool CheckIfMissingAllInput()
-             {
-                 return string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
-                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
-             }
-
-             private bool CheckIfMissingNamePart()
-             {
-                 return (string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
-                     (!string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text) ||
-                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && !string.IsNullOrEmpty(this.MbrFNameTextBox.Text)
-                     );
-             }
-
-       */
+        /// <summary>
+        /// action when UpdateButton is clicked 
+        /// </summary>
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
-            //   Member memberToUpdate = MemberList[0];
             Member updatedMember = new Member();
             updatedMember = this.MemberList[0];
             updatedMember.FirstName = this.MbrNewFNameTextBox.Text;
@@ -74,11 +62,16 @@ namespace cs6232_g4.UserControls
             updatedMember.Gender = this.GenderComboBox.Text[0];
             updatedMember.City = this.NewCityTextBox.Text;
             updatedMember.ZipCode = this.NewZipTextBox.Text;
-            this._memberController.UpdateStoreMember(updatedMember);
-            this.InfoLabel.ForeColor = Color.Green;
-            this.InfoLabel.Text = "Member updated successfully!";
+            if (this._memberController.UpdateStoreMember(updatedMember) > 0)
+            {
+                this.InfoLabel.ForeColor = Color.Green;
+                this.InfoLabel.Text = "Member updated successfully!";
+            }
+            else
+            {
+                this.InfoLabel.ForeColor = Color.Red;
+                this.InfoLabel.Text = "Member failed to update!";
+            }
         }
     }
-
-
 }

@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[RentalTransaction](
 	[transaction_date] [datetime] NOT NULL,
 	[member_id] [int] NOT NULL,
 	[employee_id] [int] NOT NULL,
-	[total_amount] [decimal](6,2) NOT NULL,
+	[total_amount] [decimal](12,2) NOT NULL,
 	[due_date] [datetime] NOT NULL,
 	CONSTRAINT [PK_RentalTransaction] PRIMARY KEY CLUSTERED ([transaction_id] ASC),
 	CONSTRAINT [FK_RentalTransaction_Employee] FOREIGN KEY ([employee_id]) REFERENCES [dbo].[Employee] ([employee_id]),
@@ -106,7 +106,7 @@ CREATE TABLE [dbo].[RentalLineItem](
 	[rental_transaction_id] [int] NOT NULL,
 	[furniture_id] [int] NOT NULL,
 	[quantity] [int] NOT NULL,
-	[subtotal] [decimal](6,2) NOT NULL,
+	[subtotal] [decimal](12,2) NOT NULL,
 	CONSTRAINT [PK_RentalLineItem] PRIMARY KEY CLUSTERED ([line_item_id] ASC),
 	CONSTRAINT [FK_RentalLineItem_RentalTransaction] FOREIGN KEY ([rental_transaction_id]) REFERENCES [dbo].[RentalTransaction] ([transaction_id]),
 	CONSTRAINT [FK_RentalLineItem_Furniture] FOREIGN KEY ([furniture_id]) REFERENCES [dbo].[Furniture] ([furniture_id]),
@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[RentalLineItem](
 
 CREATE TABLE [dbo].[ReturnTransaction](
 	[return_transaction_id] [int] NOT NULL IDENTITY(1,1),
-	[fine] [decimal](6,2),
+	[fine] [decimal](12,2),
 	[return_date] [datetime] NOT NULL,
 	CONSTRAINT [PK_ReturnTransaction] PRIMARY KEY CLUSTERED ([return_transaction_id] )
 )

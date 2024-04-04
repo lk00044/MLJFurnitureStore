@@ -79,6 +79,17 @@
             LblUsername.Text = "Username";
             LblUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // BtnLogin
+            // 
+            BtnLogin.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnLogin.Location = new Point(111, 144);
+            BtnLogin.Name = "BtnLogin";
+            BtnLogin.Size = new Size(202, 42);
+            BtnLogin.TabIndex = 3;
+            BtnLogin.Text = "Login";
+            BtnLogin.UseVisualStyleBackColor = true;
+            BtnLogin.Click += LoginButton_Click;
+            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
@@ -123,7 +134,7 @@
             BtnLogin.TabIndex = 3;
             BtnLogin.Text = "Login";
             BtnLogin.UseVisualStyleBackColor = true;
-            BtnLogin.Click += btnLogin_Click;
+            BtnLogin.Click += LoginButton_Click;
             // 
             // LoginForm
             // 

@@ -1,7 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
 using System.Data.SqlClient;
-using System.Transactions;
 
 
 /// <summary>
@@ -170,18 +169,11 @@ namespace Employees.DAL
 
                             RentalTransaction transaction = new RentalTransaction();
 
-                            transaction.TransactionId = (int)reader["transaction_id"];
+                            transaction.TransactionID = (int)reader["transaction_id"];
                             transaction.MemberId = (int)reader["member_id"]; 
                             transaction.EmployeeId = (int)reader["employee_id"];
                             transaction.EmployeeName = reader["employee_name"].ToString();
-                            if (reader.IsDBNull(reader.GetOrdinal("transaction_date")))
-                            {
-                                transaction.TransactionDate = null;
-                            }
-                            else
-                            {
-                                transaction.TransactionDate = (DateTime)reader["transaction_date"];
-                            }
+                            transaction.TransactionDate = (DateTime)reader["transaction_date"];
                             transaction.LineItemId = (int)reader["line_item_id"];
                             transaction.FurnitureName = reader["furniture_name"].ToString();
                             transaction.DueDate = (DateTime)reader["due_date"];
@@ -226,12 +218,12 @@ namespace Employees.DAL
                     {
                         while (reader.Read())
                         {                          
-                            transaction.TransactionId = (int)reader["transaction_id"];
+                            transaction.TransactionID = (int)reader["transaction_id"];
                         }
                     }
                 }
             }
-            return transaction.TransactionId != 0;
+            return transaction.TransactionID != 0;
         }
 
     }

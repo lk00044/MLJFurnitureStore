@@ -37,7 +37,7 @@ namespace cs6232_g4.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             string username = "";
             string password = "";
@@ -91,11 +91,6 @@ namespace cs6232_g4.View
             {
                 MessageBox.Show("Invalid Input \n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
 
         private void TextUsername_Click(object sender, EventArgs e)

@@ -1,6 +1,5 @@
 ﻿using cs6232_g4.Model;
 using Employees.DAL;
-using Furnitures.Model;
 
 namespace Members.Controller
 {
