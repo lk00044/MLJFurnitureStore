@@ -43,6 +43,7 @@
             SearchInstructionsLabel = new Label();
             MembersDataGridView = new DataGridView();
             UpdateMbrButton = new Button();
+            ViewMbrTransHistoryButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
@@ -129,6 +130,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(732, 106);
             tableLayoutPanel1.TabIndex = 10;
             // 
@@ -206,19 +208,33 @@
             // 
             UpdateMbrButton.FlatStyle = FlatStyle.Popup;
             UpdateMbrButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            UpdateMbrButton.Location = new Point(520, 154);
+            UpdateMbrButton.Location = new Point(520, 152);
             UpdateMbrButton.Margin = new Padding(3, 2, 3, 2);
             UpdateMbrButton.Name = "UpdateMbrButton";
-            UpdateMbrButton.Size = new Size(222, 22);
+            UpdateMbrButton.Size = new Size(222, 24);
             UpdateMbrButton.TabIndex = 15;
             UpdateMbrButton.Text = "Update Selected Member";
             UpdateMbrButton.UseVisualStyleBackColor = true;
             UpdateMbrButton.Click += UpdateMbrButton_Click;
             // 
+            // ViewMbrTransHistoryButton
+            // 
+            ViewMbrTransHistoryButton.FlatStyle = FlatStyle.Popup;
+            ViewMbrTransHistoryButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            ViewMbrTransHistoryButton.Location = new Point(292, 152);
+            ViewMbrTransHistoryButton.Margin = new Padding(3, 2, 3, 2);
+            ViewMbrTransHistoryButton.Name = "ViewMbrTransHistoryButton";
+            ViewMbrTransHistoryButton.Size = new Size(222, 24);
+            ViewMbrTransHistoryButton.TabIndex = 16;
+            ViewMbrTransHistoryButton.Text = "View Member Transactions History";
+            ViewMbrTransHistoryButton.UseVisualStyleBackColor = true;
+            ViewMbrTransHistoryButton.Click += ViewMbrTransHistoryButton_Click;
+            // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ViewMbrTransHistoryButton);
             Controls.Add(UpdateMbrButton);
             Controls.Add(MembersDataGridView);
             Controls.Add(MatchingMembersLabel);
@@ -250,5 +266,6 @@
         private Label ErrorLabel;
         private DataGridView MembersDataGridView;
         private Button UpdateMbrButton;
+        private Button ViewMbrTransHistoryButton;
     }
 }
