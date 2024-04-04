@@ -29,7 +29,7 @@ namespace cs6232_g4.View
             InitializeComponent();
             _loginController = new LoginController();
             _employeeController = new EmployeeController();
-            this.TextUsername.Select();
+
         }
 
         /// <summary>
@@ -59,7 +59,6 @@ namespace cs6232_g4.View
                 {
                     this.PasswordErrorLabel.ForeColor = Color.Red;
                     this.PasswordErrorLabel.Text = "Invalid Password";
-                    this.UserNameErrorlabel.Text = string.Empty;
                     this.TextPassword.Clear();
                 }
                 else
@@ -72,6 +71,11 @@ namespace cs6232_g4.View
 
                     using (Form dashboardForm = new DashboardForm(username, emplName))
                     {
+                        Login user = new Login();
+                        user.Username = username;
+                        user.EmployeeId = this._loginController.GetEmployeeId(username);
+                        this._loginController.SetLogin(user);
+                        this.Hide();
                         DialogResult result = dashboardForm.ShowDialog();
                         if (result == DialogResult.OK)
                         {
@@ -79,10 +83,7 @@ namespace cs6232_g4.View
                         }
                         else if (result == DialogResult.Cancel)
                         {
-
-                            this.Show();
-                            this.TextPassword.Text = "";
-                            this.TextUsername.Select();
+                            this.Close();
                         }
                     }
                 }
@@ -102,14 +103,6 @@ namespace cs6232_g4.View
         private void TextPassword_Click(object sender, EventArgs e)
         {
             this.PasswordErrorLabel.Text = "";
-            this.UserNameErrorlabel.Text = "";
-            //     this.TextUsername.Clear();
-            this.TextPassword.Clear();
-        }
-
-        private void TextUsername_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
