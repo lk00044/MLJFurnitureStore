@@ -35,14 +35,14 @@
             MbrFNameTextBox = new TextBox();
             MbrLNameTextBox = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            MembersDataGridView = new DataGridView();
-            UpdateMbrButton = new Button();
             EnterMbrIDlabel = new Label();
             EnterMbrLNameLabel = new Label();
             EnterMbrFNameLabel = new Label();
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
+            MembersDataGridView = new DataGridView();
+            UpdateMbrButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
@@ -113,7 +113,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 228F));
             tableLayoutPanel1.Controls.Add(FindMemberButton, 2, 0);
             tableLayoutPanel1.Controls.Add(MbrPhoneNumTextBox, 1, 1);
-            tableLayoutPanel1.Controls.Add(MatchingMembersLabel, 0, 5);
             tableLayoutPanel1.Controls.Add(EnterMbrIDlabel, 0, 0);
             tableLayoutPanel1.Controls.Add(EnterMbrLNameLabel, 0, 3);
             tableLayoutPanel1.Controls.Add(EnterMbrFNameLabel, 0, 2);
@@ -132,34 +131,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
             tableLayoutPanel1.Size = new Size(732, 106);
             tableLayoutPanel1.TabIndex = 10;
-            // 
-            // MembersDataGridView
-            // 
-            MembersDataGridView.AllowUserToAddRows = false;
-            MembersDataGridView.AllowUserToDeleteRows = false;
-            MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
-            MembersDataGridView.Dock = DockStyle.Fill;
-            MembersDataGridView.Location = new Point(3, 217);
-            MembersDataGridView.Name = "MembersDataGridView";
-            MembersDataGridView.ReadOnly = true;
-            MembersDataGridView.RowHeadersWidth = 51;
-            MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(831, 335);
-            MembersDataGridView.TabIndex = 14;
-            MembersDataGridView.CellClick += MembersDataGridView_CellClick;
-            // 
-            // UpdateMbrButton
-            // 
-            UpdateMbrButton.FlatStyle = FlatStyle.Popup;
-            UpdateMbrButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UpdateMbrButton.Location = new Point(580, 167);
-            UpdateMbrButton.Name = "UpdateMbrButton";
-            UpdateMbrButton.Size = new Size(254, 29);
-            UpdateMbrButton.TabIndex = 15;
-            UpdateMbrButton.Text = "Update Selected Member";
-            UpdateMbrButton.UseVisualStyleBackColor = true;
-            UpdateMbrButton.Click += UpdateMbrButton_Click;
             // 
             // EnterMbrIDlabel
             // 
@@ -248,6 +219,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(UpdateMbrButton);
+            Controls.Add(MembersDataGridView);
+            Controls.Add(MatchingMembersLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
             Margin = new Padding(3, 2, 3, 2);
