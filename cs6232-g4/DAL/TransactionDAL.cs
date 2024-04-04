@@ -2,6 +2,18 @@
 using cs6232_g4.Model;
 using System.Data.SqlClient;
 
+
+/// <summary>
+/// Data access layer to handle interaction between view and database
+/// Programmer: Jonathan
+///             CreateRentalTransaction(RentalTransaction transaction)
+///             CreateRentalLineItem(RentalLineItem lineItem)
+///             GetRentalLineItems(int rentalTransactionID)
+/// Programmer: Leslie
+///             GetMemberTransactions(int memberID)
+///             VerifyMemberTransactionavailable(int memberID)
+/// </summary>
+/// 
 namespace Employees.DAL
 {
     public class TransactionDAL
@@ -101,7 +113,7 @@ namespace Employees.DAL
                         {
                             RentalLineItem lineItem = new RentalLineItem();
                             lineItem.LineItemId = (int)reader["line_item_id"];
-                            lineItem.Name =reader["name"].ToString();
+                            lineItem.Name = reader["name"].ToString();
                             lineItem.FurnitureId = (int)reader["furniture_id"];
                             lineItem.Quantity = (int)reader["quantity"];
                             lineItem.Subtotal = (decimal)reader["subtotal"];
@@ -113,6 +125,107 @@ namespace Employees.DAL
             }
             return LineItemsList;
         }
+
+        /// <summary>
+        /// Gets the member transactions.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>List of rental transactions</returns>
+        public List<RentalTransaction> GetMemberTransactions(int memberID)
+        {
+
+            List<RentalTransaction> RentalTransactionList = new List<RentalTransaction>();
+
+            string selectStatement =
+                "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
+                        "li.line_item_id, li.quantity, li.subtotal, f.name as furniture_name, " +
+                        "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
+                "FROM RentalTransaction r " +
+                "JOIN RentalLineItem li " +
+                "ON r.transaction_id = li.rental_transaction_id " +
+                "JOIN StoreMember m " +
+                "ON r.member_id = m.member_id " +
+                "JOIN Furniture f " +
+                "On li.furniture_id = f.furniture_id " +
+                "JOIN Employee e " +
+                "On r.employee_id = e.employee_id " +
+                "WHERE r.member_id = @memberID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@memberID", memberID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                       
+
+                        while (reader.Read())
+                        {
+
+                            RentalTransaction transaction = new RentalTransaction();
+
+                            transaction.TransactionID = (int)reader["transaction_id"];
+                            transaction.MemberId = (int)reader["member_id"]; 
+                            transaction.EmployeeId = (int)reader["employee_id"];
+                            transaction.EmployeeName = reader["employee_name"].ToString();
+                            transaction.TransactionDate = (DateTime)reader["transaction_date"];
+                            transaction.LineItemId = (int)reader["line_item_id"];
+                            transaction.FurnitureName = reader["furniture_name"].ToString();
+                            transaction.DueDate = (DateTime)reader["due_date"];
+                            transaction.LineItemQty = (int)reader["quantity"];
+                            transaction.LineItemSubTotal = (decimal)reader["subtotal"];
+                            transaction.TotalAmount = (decimal)reader["total_amount"];
+
+                            RentalTransactionList.Add(transaction);
+
+                        }
+                    }
+                }
+            }
+            return RentalTransactionList;
+
+        }
+
+        /// <summary>
+        /// Verifies the member transactionavailable.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>bool - true of there is a transaction id</returns>
+        public bool VerifyMemberTransactionavailable(int memberID)
+        {
+            RentalTransaction transaction = new RentalTransaction();
+
+            string selectStatement =
+                "SELECT transaction_id " +  
+                "FROM RentalTransaction " +
+                "WHERE member_id = @memberID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@memberID", memberID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {                          
+                            transaction.TransactionID = (int)reader["transaction_id"];
+                        }
+                    }
+                }
+            }
+            return transaction.TransactionID != 0;
+        }
+
     }
 
 

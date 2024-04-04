@@ -138,7 +138,7 @@ INSERT [dbo].[Login] ([user_id], [password]) VALUES ('mikhail01','1234'), ('lask
 INSERT INTO [dbo].[Employee] VALUES ('mikhail01','regular','06-27-1992','Jonathan','Mikhail','9995551212','123 Main St.','','Anywhere','WA','12345','M'),
 				('laskey01','regular','03-12-1989','LM','Laskey','9995551212','123 Main St.','','Anywhere','AL','12345',''),
 				('keller01','regular','01-03-1970','Leslie','Keller','9995551212','123 Main St.','Apt 8','Anywhere','NC','12345','F'),
-				('admin','admin','10-18-1979','Admin','Admin','9995551212','123 Main St.','','Anywhere','GA','','');
+				('admin','admin','10-18-1979','Admin','lname','9995551212','123 Main St.','','Anywhere','GA','','');
 
 INSERT [dbo].[StoreMember] VALUES ('06-27-1992','Joe','Smith','9995551212','123 Main St.','','Anywhere','IL','12345','M'),
 				('02-19-1987','Ashish','Patel','9995551212','123 Main St.','','Anywhere','OR','12345','N'),

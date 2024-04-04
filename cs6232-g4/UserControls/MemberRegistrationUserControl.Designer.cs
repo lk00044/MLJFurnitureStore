@@ -143,7 +143,7 @@
             // 
             // firstNameLabel
             // 
-            firstNameLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            firstNameLabel.Font = new Font("Segoe UI", 9F);
             firstNameLabel.Location = new Point(3, 0);
             firstNameLabel.Name = "firstNameLabel";
             firstNameLabel.Size = new Size(84, 19);
@@ -348,6 +348,7 @@
             // 
             // dobDateTimePicker
             // 
+            dobDateTimePicker.CalendarFont = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dobDateTimePicker.Checked = false;
             dobDateTimePicker.Location = new Point(390, 57);
             dobDateTimePicker.Margin = new Padding(3, 2, 3, 2);
