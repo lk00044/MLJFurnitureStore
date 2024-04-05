@@ -1,5 +1,4 @@
-﻿
-using Employees.Controller;
+﻿using Employees.Controller;
 using Furnitures.Controller;
 using Furnitures.Model;
 
@@ -104,9 +103,5 @@ namespace cs6232_g4.UserControls
             }
         }
 
-        private void UserLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

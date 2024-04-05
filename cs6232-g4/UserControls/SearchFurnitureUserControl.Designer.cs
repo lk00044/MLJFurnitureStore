@@ -81,8 +81,8 @@
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 87F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 240F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             SearchTableLayoutPanel.Size = new Size(908, 543);
             SearchTableLayoutPanel.TabIndex = 1;
             // 
@@ -103,9 +103,9 @@
             SearchFurnitureDataGridView.ReadOnly = true;
             SearchFurnitureDataGridView.RowHeadersWidth = 51;
             SearchFurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            SearchFurnitureDataGridView.Size = new Size(900, 189);
+            SearchFurnitureDataGridView.Size = new Size(900, 232);
             SearchFurnitureDataGridView.TabIndex = 2;
-            SearchFurnitureDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(SearchFurnitureDataGridView_CellClick);
+            SearchFurnitureDataGridView.CellClick += SearchFurnitureDataGridView_CellClick;
             // 
             // RentalIDText
             // 
@@ -229,7 +229,7 @@
             SearchBtn.TabIndex = 11;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = true;
-            SearchBtn.Click += new System.EventHandler(this.SearchButton_Click);
+            SearchBtn.Click += SearchButton_Click;
             // 
             // CancelBtn
             // 
@@ -262,14 +262,13 @@
             UserLabel.TabIndex = 14;
             UserLabel.Text = "Username";
             // 
-            // SearchFurnitureForm
+            // SearchFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(908, 543);
             Controls.Add(SearchTableLayoutPanel);
-            Name = "SearchFurnitureForm";
-            Text = "Search Furniture";
+            Name = "SearchFurnitureUserControl";
+            Size = new Size(908, 543);
             SearchTableLayoutPanel.ResumeLayout(false);
             SearchTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).EndInit();
