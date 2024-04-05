@@ -98,7 +98,7 @@ namespace Furnitures.DAL
         }
 
         /// <summary>
-        /// Gets all furniture with specified rental ID
+        /// Gets all furniture with specified furniture ID
         /// </summary>
         /// <param name="ID"></param>
         /// <returns> member list </returns>

@@ -8,7 +8,7 @@ namespace cs6232_g4.UserControls
 {
     public partial class SearchFurnitureUserControl : UserControl
     {
-        private int RentalID;
+        private int FurnitureID;
         private string Category;
         private string Style;
         private readonly EmployeeController _employeeController;
@@ -20,7 +20,7 @@ namespace cs6232_g4.UserControls
             InitializeComponent();
             _furnitureController = new FurnitureController();
             _furniture = new List<Furniture>();
-            RentalID = 0;
+            FurnitureID = 0;
             Category = string.Empty;
             Style = string.Empty;
 
@@ -28,7 +28,7 @@ namespace cs6232_g4.UserControls
 
         private void Clear()
         {
-            RentalComboBox.Text = "";
+            FurnitureComboBox.Text = "";
             CategoryComboBox.Text = "";
             StyleComboBox.Text = "";
 
@@ -59,28 +59,28 @@ namespace cs6232_g4.UserControls
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            string rental = RentalComboBox.Text;
+            string ID = FurnitureComboBox.Text;
             string category = CategoryComboBox.Text;
             string style = StyleComboBox.Text;
 
             try
             {
 
-                if (string.IsNullOrEmpty(rental) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
+                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
                 {
-                    MessageBox.Show("Please select rental ID, category, or style to search", "Rental ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                _furniture = _furnitureController.GetFurnitureByID(rental);
+                _furniture = _furnitureController.GetFurnitureByID(ID);
 
                 if (_furniture.Count == 0)
                 {
-                    MessageBox.Show("No furniture matching that rental ID found");
+                    MessageBox.Show("No furniture matching that furniture ID found");
                 }
 
-                else if (string.IsNullOrEmpty(rental) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
+                else if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
                 {
-                    MessageBox.Show("Please select rental ID, category, or style to search", "Rental ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -91,9 +91,9 @@ namespace cs6232_g4.UserControls
                     MessageBox.Show("No furniture matching that category found");
                 }
 
-                else if (string.IsNullOrEmpty(rental) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
+                else if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
                 {
-                    MessageBox.Show("Please select rental ID, category, or style to search", "Rental ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

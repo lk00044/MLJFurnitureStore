@@ -41,9 +41,9 @@ namespace Furnitures.Controller
             return this._furnitureDAL.GetFurnitureByCategory(category);
         }
 
-        public List<Furniture> GetFurnitureByID(string rental)
+        public List<Furniture> GetFurnitureByID(string ID)
         {
-            return this._furnitureDAL.GetFurnitureByID(rental);
+            return this._furnitureDAL.GetFurnitureByID(ID);
         }
 
         internal List<Furniture> GetFurnituryByStyle(string style)

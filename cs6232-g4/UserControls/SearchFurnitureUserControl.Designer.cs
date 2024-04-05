@@ -30,7 +30,7 @@
         {
             SearchTableLayoutPanel = new TableLayoutPanel();
             SearchFurnitureDataGridView = new DataGridView();
-            RentalIDText = new DataGridViewTextBoxColumn();
+            FurnitureIDText = new DataGridViewTextBoxColumn();
             FurnitureGridText = new DataGridViewTextBoxColumn();
             CategoryGridText = new DataGridViewTextBoxColumn();
             StyleGridText = new DataGridViewTextBoxColumn();
@@ -38,8 +38,8 @@
             InfoGridText = new DataGridViewTextBoxColumn();
             AvailableGridText = new DataGridViewTextBoxColumn();
             SearchLabel = new Label();
-            RentalIDLabel = new Label();
-            RentalComboBox = new ComboBox();
+            FurnitureIDLabel = new Label();
+            FurnitureComboBox = new ComboBox();
             CategoryLabel = new Label();
             CategoryComboBox = new ComboBox();
             StyleLabel = new Label();
@@ -60,8 +60,8 @@
             SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 303F));
             SearchTableLayoutPanel.Controls.Add(SearchFurnitureDataGridView, 0, 7);
             SearchTableLayoutPanel.Controls.Add(SearchLabel, 0, 0);
-            SearchTableLayoutPanel.Controls.Add(RentalIDLabel, 0, 1);
-            SearchTableLayoutPanel.Controls.Add(RentalComboBox, 1, 1);
+            SearchTableLayoutPanel.Controls.Add(FurnitureIDLabel, 0, 1);
+            SearchTableLayoutPanel.Controls.Add(FurnitureComboBox, 1, 1);
             SearchTableLayoutPanel.Controls.Add(CategoryLabel, 0, 2);
             SearchTableLayoutPanel.Controls.Add(CategoryComboBox, 1, 2);
             SearchTableLayoutPanel.Controls.Add(StyleLabel, 0, 3);
@@ -93,7 +93,7 @@
             SearchFurnitureDataGridView.AllowUserToResizeColumns = false;
             SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SearchFurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SearchFurnitureDataGridView.Columns.AddRange(new DataGridViewColumn[] { RentalIDText, FurnitureGridText, CategoryGridText, StyleGridText, QuantityGridText, InfoGridText, AvailableGridText });
+            SearchFurnitureDataGridView.Columns.AddRange(new DataGridViewColumn[] { FurnitureIDText, FurnitureGridText, CategoryGridText, StyleGridText, QuantityGridText, InfoGridText, AvailableGridText });
             SearchTableLayoutPanel.SetColumnSpan(SearchFurnitureDataGridView, 3);
             SearchFurnitureDataGridView.Dock = DockStyle.Fill;
             SearchFurnitureDataGridView.Location = new Point(4, 298);
@@ -107,12 +107,12 @@
             SearchFurnitureDataGridView.TabIndex = 2;
             SearchFurnitureDataGridView.CellClick += SearchFurnitureDataGridView_CellClick;
             // 
-            // RentalIDText
+            // FurnitureIDText
             // 
-            RentalIDText.HeaderText = "Rental ID";
-            RentalIDText.MinimumWidth = 6;
-            RentalIDText.Name = "RentalIDText";
-            RentalIDText.ReadOnly = true;
+            FurnitureIDText.HeaderText = "Furniture ID";
+            FurnitureIDText.MinimumWidth = 6;
+            FurnitureIDText.Name = "FurnitureIDText";
+            FurnitureIDText.ReadOnly = true;
             // 
             // FurnitureGridText
             // 
@@ -166,23 +166,23 @@
             SearchLabel.TabIndex = 3;
             SearchLabel.Text = "Search Furniture";
             // 
-            // RentalIDLabel
+            // FurnitureIDLabel
             // 
-            RentalIDLabel.AutoSize = true;
-            RentalIDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RentalIDLabel.Location = new Point(3, 36);
-            RentalIDLabel.Name = "RentalIDLabel";
-            RentalIDLabel.Size = new Size(73, 20);
-            RentalIDLabel.TabIndex = 6;
-            RentalIDLabel.Text = "Rental ID:";
+            FurnitureIDLabel.AutoSize = true;
+            FurnitureIDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FurnitureIDLabel.Location = new Point(3, 36);
+            FurnitureIDLabel.Name = "FurnitureIDLabel";
+            FurnitureIDLabel.Size = new Size(73, 20);
+            FurnitureIDLabel.TabIndex = 6;
+            FurnitureIDLabel.Text = "Furniture ID:";
             // 
-            // RentalComboBox
+            // FurnitureComboBox
             // 
-            RentalComboBox.FormattingEnabled = true;
-            RentalComboBox.Location = new Point(295, 39);
-            RentalComboBox.Name = "RentalComboBox";
-            RentalComboBox.Size = new Size(215, 28);
-            RentalComboBox.TabIndex = 5;
+            FurnitureComboBox.FormattingEnabled = true;
+            FurnitureComboBox.Location = new Point(295, 39);
+            FurnitureComboBox.Name = "FurnitureComboBox";
+            FurnitureComboBox.Size = new Size(215, 28);
+            FurnitureComboBox.TabIndex = 5;
             // 
             // CategoryLabel
             // 
@@ -280,15 +280,15 @@
         private DataGridView SearchFurnitureDataGridView;
         private Label SearchLabel;
         private Label FurnitureInfoLabel;
-        private ComboBox RentalComboBox;
-        private Label RentalIDLabel;
+        private ComboBox FurnitureComboBox;
+        private Label FurnitureIDLabel;
         private Label CategoryLabel;
         private ComboBox CategoryComboBox;
         private Label StyleLabel;
         private ComboBox StyleComboBox;
         private Button SearchBtn;
         private Button CancelBtn;
-        private DataGridViewTextBoxColumn RentalIDText;
+        private DataGridViewTextBoxColumn FurnitureIDText;
         private DataGridViewTextBoxColumn FurnitureGridText;
         private DataGridViewTextBoxColumn CategoryGridText;
         private DataGridViewTextBoxColumn StyleGridText;
