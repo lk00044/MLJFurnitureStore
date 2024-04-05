@@ -1,11 +1,16 @@
 ﻿using Employees.Controller;
 using Furnitures.Controller;
 using Furnitures.Model;
+using Members.Controller;
+using Members.Model;
 
 namespace cs6232_g4.UserControls
 {
     public partial class SearchFurnitureUserControl : UserControl
     {
+        private int RentalID;
+        private string Category;
+        private string Style;
         private readonly EmployeeController _employeeController;
         private readonly FurnitureController _furnitureController;
         private List<Furniture> _furniture;
@@ -13,6 +18,12 @@ namespace cs6232_g4.UserControls
         public SearchFurnitureUserControl()
         {
             InitializeComponent();
+            _furnitureController = new FurnitureController();
+            _furniture = new List<Furniture>();
+            RentalID = 0;
+            Category = string.Empty;
+            Style = string.Empty;
+
         }
 
         private void Clear()

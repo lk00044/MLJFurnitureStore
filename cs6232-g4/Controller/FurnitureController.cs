@@ -4,7 +4,7 @@
 /// Modified: 1 April 2024
 /// </summary>
 /// 
-using Employees.DAL;
+using Furnitures.DAL;
 using Furnitures.Model;
 
 namespace Furnitures.Controller
@@ -36,19 +36,19 @@ namespace Furnitures.Controller
              this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
         }
 
-        internal List<Furniture> GetFurnitureByCategory(string category)
+        public List<Furniture> GetFurnitureByCategory(string category)
         {
-            throw new NotImplementedException();
+            return this._furnitureDAL.GetFurnitureByCategory(category);
         }
 
-        internal List<Furniture> GetFurnitureByID(string rental)
+        public List<Furniture> GetFurnitureByID(string rental)
         {
-            throw new NotImplementedException();
+            return this._furnitureDAL.GetFurnitureByID(rental);
         }
 
         internal List<Furniture> GetFurnituryByStyle(string style)
         {
-            throw new NotImplementedException();
+            return this._furnitureDAL.GetFurnitureByStyle(style);
         }
     }
 }
