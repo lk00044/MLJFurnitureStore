@@ -1,6 +1,15 @@
 ﻿using Furnitures.Model;
 using Members.Controller;
 
+/// <summary>
+/// Class to handle the user interaction for the view and the database
+/// Programmer:     Leslie Keller
+/// Date:           06 Apr 2024
+/// Modified by:  
+/// Modified on:    
+/// Modifications:  
+/// </summary>
+/// 
 namespace cs6232_g4.UserControls
 {
     /// <summary>
@@ -89,11 +98,17 @@ namespace cs6232_g4.UserControls
 
         private void SetupGrid()
         {
+
+            this.FurnitureDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            this.FurnitureDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.FurnitureDataGridView.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            this.FurnitureDataGridView.Columns[5].Width = 150;
             this.FurnitureDataGridView.AutoGenerateColumns = false;
             this.FurnitureDataGridView.AutoSize = true;
+
             this.FurnitureDataGridView.Columns[0].HeaderText = "ID";
             this.FurnitureDataGridView.Columns[1].HeaderText = "Name";
-            this.FurnitureDataGridView.Columns[2].HeaderText = "Description";
+            this.FurnitureDataGridView.Columns[2].HeaderText = "Description";            
             this.FurnitureDataGridView.Columns[3].HeaderText = "Category";
             this.FurnitureDataGridView.Columns[4].HeaderText = "Style";
             this.FurnitureDataGridView.Columns[5].HeaderText = "Total Quantity";
@@ -148,6 +163,7 @@ namespace cs6232_g4.UserControls
                 {
                     this._selectedFurniture = this._furnitureController.GetFurnitureByCategory(selected);
                     this.ShowFurniture();
+                    this.resetComboBoxes();
                 }
             }
             catch (Exception ex)
@@ -166,6 +182,7 @@ namespace cs6232_g4.UserControls
                 {
                     this._selectedFurniture = this._furnitureController.GetFurnitureByStyle(selected);
                     this.ShowFurniture();
+                    this.resetComboBoxes();
                 }
             }
             catch (Exception ex)

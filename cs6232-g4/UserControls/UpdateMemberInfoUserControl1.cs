@@ -41,7 +41,8 @@ namespace cs6232_g4.UserControls
             this.NewCityTextBox.Text = MemberList[0].City;
             this.NewDOBTextBox.Text = MemberList[0].DateOfBirth.ToString();
             this.NewStateComboBox.Text = MemberList[0].State;
-            this.NewZipTextBox.Text = this.GetGenderDisplay();
+            this.NewZipTextBox.Text = MemberList[0].ZipCode;
+            this.GenderComboBox.Text = this.GetGenderDisplay();
         }
 
         private void UpdateMemberButton_Click(object sender, EventArgs e)
