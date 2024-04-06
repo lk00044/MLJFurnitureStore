@@ -1,5 +1,4 @@
-﻿using cs6232_g4.View;
-using Members.Controller;
+﻿using Members.Controller;
 using Members.Model;
 /// <summary>
 /// Interaction between the view to update a member and the data
@@ -15,6 +14,7 @@ namespace cs6232_g4.UserControls
         private readonly MembersController _memberController;
         private List<Member> MemberList;
         private int _memberID;
+        private string SelectedGender;
 
         public UpdateMemberInfoUserControl1(int memberID)
         {
@@ -23,9 +23,11 @@ namespace cs6232_g4.UserControls
             MemberList = new List<Member>();
             this._memberID = memberID;
             this.InfoLabel.Text = string.Empty;
+            this.SelectedGender = string.Empty;
             this.InfoLabel.ForeColor = Color.Red;
             this.PopulateUpdateFields();
         }
+
 
         private void PopulateUpdateFields()
         {
@@ -39,29 +41,11 @@ namespace cs6232_g4.UserControls
             this.NewCityTextBox.Text = MemberList[0].City;
             this.NewDOBTextBox.Text = MemberList[0].DateOfBirth.ToString();
             this.NewStateComboBox.Text = MemberList[0].State;
-            this.NewZipTextBox.Text = MemberList[0].ZipCode.ToString();
-            this.GenderComboBox.Text = MemberList[0].Gender.ToString();
+            this.NewZipTextBox.Text = this.GetGenderDisplay();
         }
 
-        /*   
-           private bool CheckIfMissingAllInput()
-             {
-                 return string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text) &&
-                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text);
-             }
-
-             private bool CheckIfMissingNamePart()
-             {
-                 return (string.IsNullOrEmpty(this.MbrIDTextBox.Text) && string.IsNullOrEmpty(this.MbrPhoneNumTextBox.Text)) &&
-                     (!string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && string.IsNullOrEmpty(this.MbrFNameTextBox.Text) ||
-                     string.IsNullOrEmpty(this.MbrLNameTextBox.Text) && !string.IsNullOrEmpty(this.MbrFNameTextBox.Text)
-                     );
-             }
-
-       */
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
-            //   Member memberToUpdate = MemberList[0];
             Member updatedMember = new Member();
             updatedMember = this.MemberList[0];
             updatedMember.FirstName = this.MbrNewFNameTextBox.Text;
@@ -71,12 +55,72 @@ namespace cs6232_g4.UserControls
             updatedMember.Phone = this.MbrNewPhoneNumTextBox.Text;
             updatedMember.State = this.NewStateComboBox.Text;
             updatedMember.DateOfBirth = DateTime.Parse(this.NewDOBTextBox.Text);
-            updatedMember.Gender = this.GenderComboBox.Text[0];
             updatedMember.City = this.NewCityTextBox.Text;
             updatedMember.ZipCode = this.NewZipTextBox.Text;
-            this._memberController.UpdateStoreMember(updatedMember);
+            updatedMember.Gender = this.GetGenderDB();
+            this._memberController.UpdateStoreMember(updatedMember); 
             this.InfoLabel.ForeColor = Color.Green;
             this.InfoLabel.Text = "Member updated successfully!";
+        }
+
+        private string GetGenderDisplay()
+        {
+            string gender = MemberList[0].Gender.ToString();
+
+            if (gender.Equals("M"))
+            {
+                return "Male";
+            } 
+            else if (gender.Equals("F"))
+            {
+                return "Female";
+            }
+            else if (gender.Equals("T"))
+            {
+                return "Transgender";
+            }
+            else if (gender.Equals("N"))
+            {
+                return "Non-binary/non-conforming";
+            }
+            else if (gender.Equals("P"))
+            {
+                return "Prefer not to respond";
+            }
+            else
+            {
+                return "Prefer not to respond";
+            }
+        }
+
+        private char GetGenderDB()
+        {
+            this.SelectedGender = this.GenderComboBox.Text[0].ToString();
+
+            if (this.SelectedGender.Equals("Male"))
+            {
+                return 'M';
+            }
+            else if (this.SelectedGender.Equals("Female"))
+            {
+                return 'F';
+            }
+            else if (this.SelectedGender.Equals("Transgender"))
+            {
+                return 'T';
+            }
+            else if (this.SelectedGender.Equals("Non-binary/non-conforming"))
+            {
+                return 'N';
+            }
+            else if (this.SelectedGender.Equals("Prefer not to respond"))
+            {
+                return 'P';
+            }
+            else
+            {
+                return 'P';
+            }
         }
     }
 

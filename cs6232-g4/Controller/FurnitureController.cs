@@ -27,13 +27,56 @@ namespace Members.Controller
         }
 
         /// <summary>
+        /// Gets the furniture categories.
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetFurnitureCategories()
+        {
+            return this._furnitureDAL.GetFurnitureCategories();
+        }
+
+        /// <summary>
+        /// Gets the furniture styles.
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetFurnitureStyles()
+        {
+            return this._furnitureDAL.GetFurnitureStyles();
+        }
+
+        /// <summary>
+        /// Gets all furniture identifiers.
+        /// </summary>
+        /// <returns></returns>
+        public List<int> GetAllFurnitureIDs()
+        {
+            return this._furnitureDAL.GetAllFurnitureIDs();
+        }
+
+        /// <summary>
         /// update furniture by ID
         /// </summary>
         /// <param>furnitureId</param>
         /// <param>rentedQuantity</param>
         public void UpdateFurniture(int furnitureId, int rentedQuantity)
         {
-             this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
+            this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
         }
+
+        public List<Furniture> GetFurnitureById(int furnitureID)
+        {
+            return this._furnitureDAL.GetFurnitureById(furnitureID);
+        }
+
+        public List<Furniture> GetFurnitureByCategory(string Category)
+        {
+            return this._furnitureDAL.GetFurnitureByCategory(Category);
+        }
+
+        public List<Furniture> GetFurnitureByStyle(string Style)
+        {
+            return this._furnitureDAL.GetFurnitureByStyle(Style);
+        }
+
     }
 }

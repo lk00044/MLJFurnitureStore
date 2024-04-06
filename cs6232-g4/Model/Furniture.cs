@@ -21,6 +21,7 @@ namespace Furnitures.Model
         public int TotalQuantity { get; set; }
 
         public int InstockQuantity { get; set; }
+
         public decimal DailyRentalRate { get; set; }
     }
 }

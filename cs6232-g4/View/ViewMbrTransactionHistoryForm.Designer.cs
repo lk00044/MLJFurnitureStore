@@ -93,7 +93,6 @@
             MemberNameLabel.Size = new Size(341, 30);
             MemberNameLabel.TabIndex = 24;
             MemberNameLabel.Text = "Member Name: ";
-            MemberNameLabel.Click += MemberNameLabel_Click;
             // 
             // transactionDALBindingSource
             // 

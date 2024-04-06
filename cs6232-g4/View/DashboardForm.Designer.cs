@@ -34,16 +34,19 @@
             DisplayUserNameLabel = new Label();
             LogOutLinkLabel = new LinkLabel();
             MbrTransTabPage = new TabPage();
-            rentFurnitureUserControl1 = new UserControls.RentFurnitureUserControl();
+            rentFurnitureUserControl = new UserControls.RentFurnitureUserControl();
             Search4MbrTabPage = new TabPage();
             search4Member1 = new UserControls.SearchForMemberUserControl();
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
+            SearchFurnitureTabPage = new TabPage();
+            furnitureSearchUserControl1 = new UserControls.FurnitureSearchUserControl();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
+            SearchFurnitureTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -91,7 +94,7 @@
             // 
             // MbrTransTabPage
             // 
-            MbrTransTabPage.Controls.Add(rentFurnitureUserControl1);
+            MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
             MbrTransTabPage.Size = new Size(881, 677);
@@ -99,13 +102,13 @@
             MbrTransTabPage.Text = "Create Member Transaction";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
-            // rentFurnitureUserControl1
+            // rentFurnitureUserControl
             // 
-            rentFurnitureUserControl1.Location = new Point(0, 7);
-            rentFurnitureUserControl1.Margin = new Padding(3, 5, 3, 5);
-            rentFurnitureUserControl1.Name = "rentFurnitureUserControl1";
-            rentFurnitureUserControl1.Size = new Size(885, 668);
-            rentFurnitureUserControl1.TabIndex = 0;
+            rentFurnitureUserControl.Location = new Point(0, 7);
+            rentFurnitureUserControl.Margin = new Padding(3, 5, 3, 5);
+            rentFurnitureUserControl.Name = "rentFurnitureUserControl";
+            rentFurnitureUserControl.Size = new Size(885, 668);
+            rentFurnitureUserControl.TabIndex = 0;
             // 
             // Search4MbrTabPage
             // 
@@ -150,6 +153,7 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
+            MainDBTabControl.Controls.Add(SearchFurnitureTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -158,6 +162,25 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 5;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
+            // 
+            // SearchFurnitureTabPage
+            // 
+            SearchFurnitureTabPage.Controls.Add(furnitureSearchUserControl1);
+            SearchFurnitureTabPage.Location = new Point(4, 35);
+            SearchFurnitureTabPage.Name = "SearchFurnitureTabPage";
+            SearchFurnitureTabPage.Padding = new Padding(3);
+            SearchFurnitureTabPage.Size = new Size(881, 677);
+            SearchFurnitureTabPage.TabIndex = 4;
+            SearchFurnitureTabPage.Text = "Furniture Search";
+            SearchFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchUserControl1
+            // 
+            furnitureSearchUserControl1.Dock = DockStyle.Fill;
+            furnitureSearchUserControl1.Location = new Point(3, 3);
+            furnitureSearchUserControl1.Name = "furnitureSearchUserControl1";
+            furnitureSearchUserControl1.Size = new Size(875, 671);
+            furnitureSearchUserControl1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -178,6 +201,7 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
+            SearchFurnitureTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,11 +213,13 @@
         private Label DisplayUserNameLabel;
         private LinkLabel LogOutLinkLabel;
         private TabPage MbrTransTabPage;
-        private UserControls.RentFurnitureUserControl rentFurnitureUserControl1;
+        private UserControls.RentFurnitureUserControl rentFurnitureUserControl;
         private TabPage Search4MbrTabPage;
         private UserControls.SearchForMemberUserControl search4Member1;
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
+        private TabPage SearchFurnitureTabPage;
+        private UserControls.FurnitureSearchUserControl furnitureSearchUserControl1;
     }
 }

@@ -1,26 +1,24 @@
 ﻿
 using cs6232_g4.Model;
 using Members.Controller;
-using System.Windows.Forms;
 
 /// <summary>
+/// Class to handle the view for the UI
 /// </summary>
-
 namespace cs6232_g4.View
 {
     public partial class ViewMbrTransactionHistoryForm : Form
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
-        /// </summary>
-
-
+        
         private readonly TransactionController _transactionController;
         private List<RentalTransaction> rentalTransactions;
         private int MemberID;
         private string MemberName;
         private BindingSource bindingSource1;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
+        /// </summary>
         public ViewMbrTransactionHistoryForm(int mbrID, string memberName)
         {
             InitializeComponent();
@@ -83,10 +81,6 @@ namespace cs6232_g4.View
             this.Close();
         }
 
-        private void MemberNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
