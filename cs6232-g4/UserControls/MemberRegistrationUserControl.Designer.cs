@@ -76,7 +76,7 @@
             // cancelButton
             // 
             cancelButton.Font = new Font("Segoe UI", 10.8F);
-            cancelButton.Location = new Point(668, 583);
+            cancelButton.Location = new Point(665, 604);
             cancelButton.Margin = new Padding(3, 4, 3, 4);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(129, 43);
@@ -123,7 +123,7 @@
             regTableLayoutPanel.Controls.Add(zipErrorLabel, 3, 11);
             regTableLayoutPanel.Controls.Add(genderLabel, 0, 2);
             regTableLayoutPanel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            regTableLayoutPanel.Location = new Point(22, 61);
+            regTableLayoutPanel.Location = new Point(22, 69);
             regTableLayoutPanel.Name = "regTableLayoutPanel";
             regTableLayoutPanel.RowCount = 12;
             regTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 55.5555573F));
@@ -415,7 +415,7 @@
             // registerButton
             // 
             registerButton.Font = new Font("Segoe UI", 10.8F);
-            registerButton.Location = new Point(507, 583);
+            registerButton.Location = new Point(512, 604);
             registerButton.Margin = new Padding(3, 4, 3, 4);
             registerButton.Name = "registerButton";
             registerButton.Size = new Size(129, 43);
@@ -445,7 +445,7 @@
             Controls.Add(registerButton);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MemberRegistrationUserControl";
-            Size = new Size(822, 639);
+            Size = new Size(822, 651);
             Load += MemberRegistrationUserControl_Load;
             regTableLayoutPanel.ResumeLayout(false);
             regTableLayoutPanel.PerformLayout();

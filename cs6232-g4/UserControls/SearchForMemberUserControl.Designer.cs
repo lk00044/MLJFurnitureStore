@@ -43,6 +43,7 @@
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
+            ViewMbrTransactionsButton = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
@@ -50,7 +51,7 @@
             // MatchingMembersLabel
             // 
             MatchingMembersLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            MatchingMembersLabel.Location = new Point(3, 164);
+            MatchingMembersLabel.Location = new Point(3, 180);
             MatchingMembersLabel.Name = "MatchingMembersLabel";
             MatchingMembersLabel.Size = new Size(201, 25);
             MatchingMembersLabel.TabIndex = 12;
@@ -106,8 +107,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 248F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 329F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 88F));
+            tableLayoutPanel1.Controls.Add(ViewMbrTransactionsButton, 2, 5);
             tableLayoutPanel1.Controls.Add(MembersDataGridView, 1, 6);
-            tableLayoutPanel1.Controls.Add(UpdateMbrButton, 2, 5);
             tableLayoutPanel1.Controls.Add(FindMemberButton, 2, 0);
             tableLayoutPanel1.Controls.Add(MbrPhoneNumTextBox, 1, 1);
             tableLayoutPanel1.Controls.Add(MatchingMembersLabel, 0, 5);
@@ -119,17 +120,19 @@
             tableLayoutPanel1.Controls.Add(MbrFNameTextBox, 1, 2);
             tableLayoutPanel1.Controls.Add(MbrLNameTextBox, 1, 3);
             tableLayoutPanel1.Controls.Add(ErrorLabel, 2, 1);
+            tableLayoutPanel1.Controls.Add(UpdateMbrButton, 2, 4);
             tableLayoutPanel1.Location = new Point(14, 50);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 7;
+            tableLayoutPanel1.RowCount = 8;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 13F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 11F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(837, 555);
             tableLayoutPanel1.TabIndex = 10;
             // 
@@ -140,12 +143,12 @@
             MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
             MembersDataGridView.Dock = DockStyle.Fill;
-            MembersDataGridView.Location = new Point(3, 217);
+            MembersDataGridView.Location = new Point(3, 231);
             MembersDataGridView.Name = "MembersDataGridView";
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(831, 335);
+            MembersDataGridView.Size = new Size(831, 321);
             MembersDataGridView.TabIndex = 14;
             MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
@@ -153,7 +156,7 @@
             // 
             UpdateMbrButton.FlatStyle = FlatStyle.Popup;
             UpdateMbrButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UpdateMbrButton.Location = new Point(580, 167);
+            UpdateMbrButton.Location = new Point(580, 143);
             UpdateMbrButton.Name = "UpdateMbrButton";
             UpdateMbrButton.Size = new Size(254, 29);
             UpdateMbrButton.TabIndex = 15;
@@ -203,7 +206,7 @@
             ErrorLabel.Location = new Point(580, 35);
             ErrorLabel.Name = "ErrorLabel";
             tableLayoutPanel1.SetRowSpan(ErrorLabel, 3);
-            ErrorLabel.Size = new Size(254, 91);
+            ErrorLabel.Size = new Size(254, 85);
             ErrorLabel.TabIndex = 5;
             // 
             // SearchInstructionsLabel
@@ -215,6 +218,18 @@
             SearchInstructionsLabel.Size = new Size(612, 25);
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
+            // 
+            // ViewMbrTransactionsButton
+            // 
+            ViewMbrTransactionsButton.FlatStyle = FlatStyle.Popup;
+            ViewMbrTransactionsButton.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ViewMbrTransactionsButton.Location = new Point(580, 183);
+            ViewMbrTransactionsButton.Name = "ViewMbrTransactionsButton";
+            ViewMbrTransactionsButton.Size = new Size(254, 29);
+            ViewMbrTransactionsButton.TabIndex = 16;
+            ViewMbrTransactionsButton.Text = "View Member Transactions";
+            ViewMbrTransactionsButton.UseVisualStyleBackColor = true;
+            ViewMbrTransactionsButton.Click += ViewMbrTransactionsButton_Click;
             // 
             // SearchForMemberUserControl
             // 
@@ -247,5 +262,6 @@
         private Label ErrorLabel;
         private DataGridView MembersDataGridView;
         private Button UpdateMbrButton;
+        private Button ViewMbrTransactionsButton;
     }
 }

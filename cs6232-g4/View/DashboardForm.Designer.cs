@@ -40,13 +40,10 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
-            ViewMbrTransHistTabPage = new TabPage();
-            viewMbrTransactionHistory1 = new UserControls.ViewMbrTransactionHistory();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
-            ViewMbrTransHistTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -99,7 +96,7 @@
             MbrTransTabPage.Name = "MbrTransTabPage";
             MbrTransTabPage.Size = new Size(881, 677);
             MbrTransTabPage.TabIndex = 3;
-            MbrTransTabPage.Text = "Member Transactions";
+            MbrTransTabPage.Text = "Create Member Transaction";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl1
@@ -118,7 +115,7 @@
             Search4MbrTabPage.Padding = new Padding(3);
             Search4MbrTabPage.Size = new Size(881, 677);
             Search4MbrTabPage.TabIndex = 1;
-            Search4MbrTabPage.Text = "Member Search & Update";
+            Search4MbrTabPage.Text = "Member Functions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
             // search4Member1
@@ -153,7 +150,6 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
-            MainDBTabControl.Controls.Add(ViewMbrTransHistTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -162,25 +158,6 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 5;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
-            // 
-            // ViewMbrTransHistTabPage
-            // 
-            ViewMbrTransHistTabPage.Controls.Add(viewMbrTransactionHistory1);
-            ViewMbrTransHistTabPage.Location = new Point(4, 35);
-            ViewMbrTransHistTabPage.Name = "ViewMbrTransHistTabPage";
-            ViewMbrTransHistTabPage.Padding = new Padding(3);
-            ViewMbrTransHistTabPage.Size = new Size(881, 677);
-            ViewMbrTransHistTabPage.TabIndex = 4;
-            ViewMbrTransHistTabPage.Text = "View Member Transaction History";
-            ViewMbrTransHistTabPage.UseVisualStyleBackColor = true;
-            // 
-            // viewMbrTransactionHistory1
-            // 
-            viewMbrTransactionHistory1.Dock = DockStyle.Top;
-            viewMbrTransactionHistory1.Location = new Point(3, 3);
-            viewMbrTransactionHistory1.Name = "viewMbrTransactionHistory1";
-            viewMbrTransactionHistory1.Size = new Size(875, 782);
-            viewMbrTransactionHistory1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -201,7 +178,6 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
-            ViewMbrTransHistTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -219,7 +195,5 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
-        private TabPage ViewMbrTransHistTabPage;
-        private UserControls.ViewMbrTransactionHistory viewMbrTransactionHistory1;
     }
 }
