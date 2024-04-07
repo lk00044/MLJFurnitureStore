@@ -5,6 +5,10 @@ using Members.Controller;
 
 namespace cs6232_g4.UserControls
 {
+    /// <summary>
+    /// Class to handle the interface between the user and the data
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RentFurnitureUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
@@ -13,6 +17,10 @@ namespace cs6232_g4.UserControls
         private readonly TransactionController _transactionController;
         private RentalTransaction rentalTransaction;
         private List<Furniture> furnitureList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
+        /// </summary>
         public RentFurnitureUserControl()
         {
             InitializeComponent();
@@ -25,6 +33,7 @@ namespace cs6232_g4.UserControls
             this.infoMessageLabel.Text = string.Empty;
             this.dueDatePicker.MinDate = DateTime.Today.AddDays(1);
         }
+
         private void RentFurnitureUserControl_Load(object sender, EventArgs e)
         {
             this.PopulateAvailableFurniture();
