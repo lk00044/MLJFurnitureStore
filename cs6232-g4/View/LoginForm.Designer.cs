@@ -49,7 +49,7 @@
             // 
             // TextPassword
             // 
-            TextPassword.Location = new Point(111, 77);
+            TextPassword.Location = new Point(111, 80);
             TextPassword.Name = "TextPassword";
             TextPassword.PasswordChar = '*';
             TextPassword.Size = new Size(202, 27);
@@ -60,7 +60,7 @@
             // 
             LblPassword.AutoSize = true;
             LblPassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LblPassword.Location = new Point(3, 74);
+            LblPassword.Location = new Point(3, 77);
             LblPassword.Name = "LblPassword";
             LblPassword.Size = new Size(80, 23);
             LblPassword.TabIndex = 1;
@@ -81,7 +81,7 @@
             // BtnLogin
             // 
             BtnLogin.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnLogin.Location = new Point(85, 198);
+            BtnLogin.Location = new Point(101, 188);
             BtnLogin.Name = "BtnLogin";
             BtnLogin.Size = new Size(202, 42);
             BtnLogin.TabIndex = 3;
@@ -100,26 +100,26 @@
             tableLayoutPanel1.Controls.Add(TextPassword, 1, 2);
             tableLayoutPanel1.Controls.Add(PasswordErrorLabel, 1, 3);
             tableLayoutPanel1.Controls.Add(UserNameErrorlabel, 1, 1);
-            tableLayoutPanel1.Location = new Point(35, 23);
+            tableLayoutPanel1.Location = new Point(43, 26);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45.9459457F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 54.0540543F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 54F));
-            tableLayoutPanel1.Size = new Size(316, 169);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 49.35065F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50.64935F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            tableLayoutPanel1.Size = new Size(316, 156);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // PasswordErrorLabel
             // 
-            PasswordErrorLabel.Location = new Point(111, 114);
+            PasswordErrorLabel.Location = new Point(111, 113);
             PasswordErrorLabel.Name = "PasswordErrorLabel";
             PasswordErrorLabel.Size = new Size(202, 25);
             PasswordErrorLabel.TabIndex = 5;
             // 
             // UserNameErrorlabel
             // 
-            UserNameErrorlabel.Location = new Point(111, 34);
+            UserNameErrorlabel.Location = new Point(111, 38);
             UserNameErrorlabel.Name = "UserNameErrorlabel";
             UserNameErrorlabel.Size = new Size(202, 25);
             UserNameErrorlabel.TabIndex = 4;

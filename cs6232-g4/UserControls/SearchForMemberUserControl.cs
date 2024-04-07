@@ -63,6 +63,12 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
+            this.MbrId = 0;
+            this.MbrLName = string.Empty;
+            this.MbrFName = string.Empty;
+            this.MbrPhoneNum = string.Empty;
+            this.MemberList.Clear();
+
             try
             {
                 this.ErrorLabel.Text = string.Empty;
@@ -75,11 +81,11 @@ namespace cs6232_g4.UserControls
                 {
                     if (Int32.TryParse(this.MbrIDTextBox.Text, out MbrId))
                     {
-                        MemberList = this._memberController.GetMemberByID(MbrId);
+                        this.MemberList = this._memberController.GetMemberByID(MbrId);
 
                         if (MemberList.Count > 0)
                         {
-                            this.DisplayMemberMatches();
+                            this.RefreshDataGrid();
                             this.ClearTextBoxes();
                             this.ReEnableTextBoxes();
                         }
@@ -222,17 +228,25 @@ namespace cs6232_g4.UserControls
         /// <summary>
         /// repopulate the grid 
         /// </summary>
-        private void RefreshDataGrid(List<Member> MatchingMembers)
-        {
-            this.MembersDataGridView.DataSource = null;
-            this.MembersDataGridView.DataSource = MatchingMembers;
-            this.MembersDataGridView.ClearSelection();
-            this.SetupGrid();
+        private void RefreshDataGrid()
+        {     
+            try
+            {
+                this.MembersDataGridView.DataSource = null;  
+                this.MembersDataGridView.DataSource = this.MemberList;
+                this.SetupGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+            //  this.MembersDataGridView.ClearSelection();
+
         }
 
         private void SetupGrid()
         {
-
             this.MembersDataGridView.AutoGenerateColumns = false;
             this.MembersDataGridView.AutoSize = true;
             this.MembersDataGridView.Columns[0].HeaderText = "Member ID";
@@ -257,7 +271,7 @@ namespace cs6232_g4.UserControls
         {
             try
             {
-                this.RefreshDataGrid(this.MemberList);
+                this.RefreshDataGrid();
             }
             catch (Exception ex)
             {
@@ -265,14 +279,14 @@ namespace cs6232_g4.UserControls
             }
         }
 
-        private void MbrIDTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrIDTextBox_Click(object sender, EventArgs e)
         {
             this.MbrFNameTextBox.Enabled = false;
             this.MbrLNameTextBox.Enabled = false;
             this.MbrPhoneNumTextBox.Enabled = false;
         }
 
-        private void MbrPhoneNumTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrPhoneNumTextBox_Click(object sender, EventArgs e)
         {
             this.MbrPhoneNumTextBox.Enabled = true;
             this.MbrFNameTextBox.Enabled = false;
@@ -280,7 +294,7 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MbrFNameTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrFNameTextBox_Click(object sender, EventArgs e)
         {
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
@@ -288,7 +302,7 @@ namespace cs6232_g4.UserControls
             this.MbrIDTextBox.Enabled = false;
         }
 
-        private void MbrLNameTextBox_TextChanged(object sender, EventArgs e)
+        private void MbrLNameTextBox_Click(object sender, EventArgs e)
         {
             this.MbrPhoneNumTextBox.Enabled = false;
             this.MbrFNameTextBox.Enabled = true;
@@ -363,7 +377,9 @@ namespace cs6232_g4.UserControls
         /// </summary>
         public void ClearGrid()
         {
-            this.MembersDataGridView.Columns.Clear();
+            this.MembersDataGridView.DataSource = null;
+            //        this.MembersDataGridView.Columns.Clear();
+
         }
 
         private void ViewTransactionsButton_Click(object sender, EventArgs e)

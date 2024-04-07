@@ -117,7 +117,7 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(192, 61);
+            Search4MbrTabPage.Size = new Size(898, 754);
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Functions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
@@ -128,7 +128,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(186, 55);
+            search4Member.Size = new Size(892, 748);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
@@ -137,7 +137,7 @@
             RegMbrTabPage.Location = new Point(4, 35);
             RegMbrTabPage.Name = "RegMbrTabPage";
             RegMbrTabPage.Padding = new Padding(3);
-            RegMbrTabPage.Size = new Size(898, 677);
+            RegMbrTabPage.Size = new Size(898, 754);
             RegMbrTabPage.TabIndex = 0;
             RegMbrTabPage.Text = "Member Registration";
             RegMbrTabPage.UseVisualStyleBackColor = true;
@@ -156,12 +156,12 @@
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
             MainDBTabControl.Controls.Add(FurnitureSearchTabPage);
-            MainDBTabControl.Dock = DockStyle.Bottom;
-            MainDBTabControl.Location = new Point(0, 77);
+            MainDBTabControl.Dock = DockStyle.Fill;
+            MainDBTabControl.Location = new Point(0, 0);
             MainDBTabControl.Name = "MainDBTabControl";
             MainDBTabControl.Padding = new Point(6, 6);
             MainDBTabControl.SelectedIndex = 0;
-            MainDBTabControl.Size = new Size(906, 716);
+            MainDBTabControl.Size = new Size(906, 793);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
             // 
@@ -171,7 +171,7 @@
             FurnitureSearchTabPage.Location = new Point(4, 35);
             FurnitureSearchTabPage.Name = "FurnitureSearchTabPage";
             FurnitureSearchTabPage.Padding = new Padding(3);
-            FurnitureSearchTabPage.Size = new Size(898, 677);
+            FurnitureSearchTabPage.Size = new Size(192, 61);
             FurnitureSearchTabPage.TabIndex = 4;
             FurnitureSearchTabPage.Text = "Furniture Search";
             FurnitureSearchTabPage.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@
             searchFurnitureUserControl1.Dock = DockStyle.Top;
             searchFurnitureUserControl1.Location = new Point(3, 3);
             searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
-            searchFurnitureUserControl1.Size = new Size(892, 571);
+            searchFurnitureUserControl1.Size = new Size(186, 571);
             searchFurnitureUserControl1.TabIndex = 0;
             // 
             // DashboardForm

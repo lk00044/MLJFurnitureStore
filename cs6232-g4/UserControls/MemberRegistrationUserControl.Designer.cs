@@ -33,7 +33,6 @@
             regTableLayoutPanel = new TableLayoutPanel();
             firstNameLabel = new Label();
             stateComboBox = new ComboBox();
-            zipTextBox = new TextBox();
             firstNameTextBox = new TextBox();
             FNameErrorLabel = new Label();
             phoneTextBox = new TextBox();
@@ -47,7 +46,6 @@
             cityTextBox = new TextBox();
             cityLabel = new Label();
             addr1ErrorLabel = new Label();
-            zipLabel = new Label();
             lastNameTextBox = new TextBox();
             lastNameLabel = new Label();
             lNameErrorLabel = new Label();
@@ -58,8 +56,10 @@
             dobErrorLabel = new Label();
             cityErrorLabel = new Label();
             stateErrorLabel = new Label();
-            zipErrorLabel = new Label();
             genderLabel = new Label();
+            zipTextBox = new TextBox();
+            zipLabel = new Label();
+            zipErrorLabel = new Label();
             registerButton = new Button();
             instructionsLabel = new Label();
             regTableLayoutPanel.SuspendLayout();
@@ -118,10 +118,10 @@
             regTableLayoutPanel.Controls.Add(dobErrorLabel, 3, 3);
             regTableLayoutPanel.Controls.Add(cityErrorLabel, 1, 9);
             regTableLayoutPanel.Controls.Add(stateErrorLabel, 3, 9);
-            regTableLayoutPanel.Controls.Add(zipErrorLabel, 3, 11);
             regTableLayoutPanel.Controls.Add(genderLabel, 0, 2);
             regTableLayoutPanel.Controls.Add(zipTextBox, 1, 10);
             regTableLayoutPanel.Controls.Add(zipLabel, 0, 10);
+            regTableLayoutPanel.Controls.Add(zipErrorLabel, 1, 11);
             regTableLayoutPanel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             regTableLayoutPanel.Location = new Point(22, 61);
             regTableLayoutPanel.Name = "regTableLayoutPanel";
@@ -164,16 +164,6 @@
             stateComboBox.Size = new Size(266, 33);
             stateComboBox.TabIndex = 9;
             stateComboBox.SelectedIndexChanged += StateComboBox_SelectedIndexChanged;
-            // 
-            // zipTextBox
-            // 
-            zipTextBox.Font = new Font("Segoe UI", 10.8F);
-            zipTextBox.Location = new Point(106, 437);
-            zipTextBox.Margin = new Padding(3, 4, 3, 4);
-            zipTextBox.Name = "zipTextBox";
-            zipTextBox.Size = new Size(228, 31);
-            zipTextBox.TabIndex = 11;
-            zipTextBox.TextChanged += ZipTextBox_TextChanged;
             // 
             // firstNameTextBox
             // 
@@ -295,16 +285,6 @@
             addr1ErrorLabel.Size = new Size(228, 40);
             addr1ErrorLabel.TabIndex = 30;
             // 
-            // zipLabel
-            // 
-            zipLabel.Font = new Font("Segoe UI", 10.8F);
-            zipLabel.Location = new Point(3, 433);
-            zipLabel.Name = "zipLabel";
-            zipLabel.Size = new Size(97, 25);
-            zipLabel.TabIndex = 8;
-            zipLabel.Text = "Zipcode";
-            zipLabel.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // lastNameTextBox
             // 
             lastNameTextBox.Font = new Font("Segoe UI", 11F);
@@ -347,7 +327,7 @@
             genderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             genderComboBox.Font = new Font("Segoe UI", 10.8F);
             genderComboBox.FormattingEnabled = true;
-            genderComboBox.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            genderComboBox.Items.AddRange(new object[] { "Male", "Female", "Transgender", "Non-binary/non-conforming", "Prefer not to respond" });
             genderComboBox.Location = new Point(106, 78);
             genderComboBox.Margin = new Padding(3, 4, 3, 4);
             genderComboBox.Name = "genderComboBox";
@@ -395,13 +375,6 @@
             stateErrorLabel.Size = new Size(266, 35);
             stateErrorLabel.TabIndex = 35;
             // 
-            // zipErrorLabel
-            // 
-            zipErrorLabel.Location = new Point(444, 477);
-            zipErrorLabel.Name = "zipErrorLabel";
-            zipErrorLabel.Size = new Size(266, 34);
-            zipErrorLabel.TabIndex = 36;
-            // 
             // genderLabel
             // 
             genderLabel.Font = new Font("Segoe UI", 10.8F);
@@ -411,6 +384,33 @@
             genderLabel.TabIndex = 9;
             genderLabel.Text = "Gender";
             genderLabel.TextAlign = ContentAlignment.TopRight;
+            // 
+            // zipTextBox
+            // 
+            zipTextBox.Font = new Font("Segoe UI", 10.8F);
+            zipTextBox.Location = new Point(106, 437);
+            zipTextBox.Margin = new Padding(3, 4, 3, 4);
+            zipTextBox.Name = "zipTextBox";
+            zipTextBox.Size = new Size(228, 31);
+            zipTextBox.TabIndex = 11;
+            zipTextBox.TextChanged += ZipTextBox_TextChanged;
+            // 
+            // zipLabel
+            // 
+            zipLabel.Font = new Font("Segoe UI", 10.8F);
+            zipLabel.Location = new Point(3, 433);
+            zipLabel.Name = "zipLabel";
+            zipLabel.Size = new Size(97, 25);
+            zipLabel.TabIndex = 8;
+            zipLabel.Text = "Zipcode";
+            zipLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // zipErrorLabel
+            // 
+            zipErrorLabel.Location = new Point(106, 477);
+            zipErrorLabel.Name = "zipErrorLabel";
+            zipErrorLabel.Size = new Size(228, 34);
+            zipErrorLabel.TabIndex = 36;
             // 
             // registerButton
             // 

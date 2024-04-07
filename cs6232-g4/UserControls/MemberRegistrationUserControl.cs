@@ -228,22 +228,21 @@ namespace cs6232_g4.UserControls
                 this.zipErrorLabel.Text = "Zipcode must be numeric.";
                 return false;
             }
-            if (enteredZip.Length > 9)
+
+            if (enteredZip.Length == 9 || enteredZip.Length == 5)
+            {
+                this.newMember.ZipCode = enteredZip;
+                return true;
+            }
+            else
             {
                 this.zipErrorLabel.ForeColor = Color.Red;
-                this.zipErrorLabel.Text = "Zipcode cannot be more than 9 numbers.";
+                this.zipErrorLabel.Text = "Zipcode can be either 5 or 9 numbers.";
                 return false;
             }
 
-            if (enteredZip.Length < 5)
-            {
-                this.zipErrorLabel.ForeColor = Color.Red;
-                this.zipErrorLabel.Text = "Zipcode cannot be less than 5 numbers.";
-                return false;
-            }
-
-            this.newMember.ZipCode = enteredZip;
-            return true;
+            
+          
         }
 
         /// <summary>

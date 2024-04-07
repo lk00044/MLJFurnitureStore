@@ -21,7 +21,7 @@ namespace cs6232_g4.UserControls
     public partial class SearchFurnitureUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
-         private List<Furniture> _selectedFurniture;
+        private List<Furniture> _selectedFurniture;
         private BindingSource bindingSource1;
 
         /// <summary>
@@ -33,6 +33,7 @@ namespace cs6232_g4.UserControls
             this._furnitureController = new FurnitureController();
             this._selectedFurniture = new List<Furniture>();
             this.bindingSource1 = new BindingSource();
+            this.InfoLabel.ForeColor = Color.Red;
         }
 
         /// <summary>
@@ -56,13 +57,28 @@ namespace cs6232_g4.UserControls
         private void LoadFurnitureIds()
         {
             this.furnitureIDComboBox.Items.Clear();
-
-            List<int> ids = new List<int>();
-            ids = this._furnitureController.GetAllFurnitureIDs();
-            foreach (int id in ids)
+            try
             {
-                this.furnitureIDComboBox.Items.Add(id);
+                List<int> ids = new List<int>();
+                ids = this._furnitureController.GetAllFurnitureIDs();
+                if (ids.Count > 0)
+                {                    
+                    foreach (int id in ids)
+                    {
+                        this.furnitureIDComboBox.Items.Add(id);
+                    }
+                }
+                else
+                {
+                    this.InfoLabel.Text = "No furniture by ID available.";
+                }
+                
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         /// <summary>
@@ -72,11 +88,26 @@ namespace cs6232_g4.UserControls
         {
             this.furnitureCategoriesComboBox.Items.Clear();
 
-            List<string> categories = new List<string>();
-            categories = this._furnitureController.GetFurnitureCategories();
-            foreach (string category in categories)
+            try
             {
-                this.furnitureCategoriesComboBox.Items.Add(category);
+                List<string> categories = new List<string>();
+                categories = this._furnitureController.GetFurnitureCategories();
+
+                if (categories.Count > 0)
+                {
+                    foreach (string category in categories)
+                    {
+                        this.furnitureCategoriesComboBox.Items.Add(category);
+                    }
+                }  
+                else
+                {
+                    this.InfoLabel.Text = "No furniture categories available.";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -87,12 +118,27 @@ namespace cs6232_g4.UserControls
         {
             this.furnitureStyleComboBox.Items.Clear();
 
-            List<string> styles = new List<string>();
-            styles = this._furnitureController.GetFurnitureStyles();
-            foreach (string style in styles)
+            try
             {
-                this.furnitureStyleComboBox.Items.Add(style);
+                List<string> styles = new List<string>();
+                styles = this._furnitureController.GetFurnitureStyles();
+                if (styles.Count > 0)
+                {
+                    foreach (string style in styles)
+                    {
+                        this.furnitureStyleComboBox.Items.Add(style);
+                    }
+                }
+                else
+                {
+                    this.InfoLabel.Text = "No furniture styles available.";
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         /// <summary>
@@ -146,16 +192,23 @@ namespace cs6232_g4.UserControls
         {
             try
             {
+                this.InfoLabel.Text = string.Empty;
                 string selected = this.furnitureIDComboBox.SelectedItem.ToString();
 
                 if (!string.IsNullOrEmpty(selected))
                 {
                     int idSelected = Int32.Parse(selected);
                     this._selectedFurniture = this._furnitureController.GetFurnitureById(idSelected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
+                    if (this._selectedFurniture.Count > 0)
+                    {
+                        this.ShowFurniture();
+                        this.resetComboBoxes();
+                    }
+                    else
+                    {
+                        this.InfoLabel.Text = "No furniture with that ID available.";
+                    }
                 }
-
             }
             catch (Exception ex)
             {
@@ -172,13 +225,22 @@ namespace cs6232_g4.UserControls
         {
             try
             {
+
+                this.InfoLabel.Text = string.Empty;
                 string selected = this.furnitureCategoriesComboBox.SelectedItem.ToString();
 
                 if (!string.IsNullOrEmpty(selected))
                 {
                     this._selectedFurniture = this._furnitureController.GetFurnitureByCategory(selected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
+                    if (this._selectedFurniture.Count > 0)
+                    {
+                        this.ShowFurniture();
+                        this.resetComboBoxes();
+                    }
+                    else
+                    {
+                        this.InfoLabel.Text = "No furniture with that category available.";
+                    }
                 }
             }
             catch (Exception ex)
@@ -196,13 +258,24 @@ namespace cs6232_g4.UserControls
         {
             try
             {
+
+                this.InfoLabel.Text = string.Empty;
                 string selected = this.furnitureStyleComboBox.SelectedItem.ToString();
 
                 if (!string.IsNullOrEmpty(selected))
                 {
                     this._selectedFurniture = this._furnitureController.GetFurnitureByStyle(selected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
+                    if (this._selectedFurniture.Count > 0)
+                    {
+                        this.ShowFurniture();
+                        this.resetComboBoxes();
+                    }
+                    else
+                    {
+                        this.InfoLabel.Text = "No furniture with that style available.";
+                        this.ShowFurniture();
+                        this.resetComboBoxes();
+                    }
                 }
             }
             catch (Exception ex)
