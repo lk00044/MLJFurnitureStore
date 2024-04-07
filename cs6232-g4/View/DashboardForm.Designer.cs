@@ -40,6 +40,7 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
+            FurnitureSearchTabPage = new TabPage();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
@@ -94,9 +95,9 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(881, 680);
+            MbrTransTabPage.Size = new Size(881, 677);
             MbrTransTabPage.TabIndex = 3;
-            MbrTransTabPage.Text = "Member Transactions";
+            MbrTransTabPage.Text = "Create a Member Transaction";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl
@@ -152,6 +153,7 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
+            MainDBTabControl.Controls.Add(FurnitureSearchTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -160,6 +162,16 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
+            // 
+            // FurnitureSearchTabPage
+            // 
+            FurnitureSearchTabPage.Location = new Point(4, 35);
+            FurnitureSearchTabPage.Name = "FurnitureSearchTabPage";
+            FurnitureSearchTabPage.Padding = new Padding(3);
+            FurnitureSearchTabPage.Size = new Size(881, 677);
+            FurnitureSearchTabPage.TabIndex = 4;
+            FurnitureSearchTabPage.Text = "Furniture Search";
+            FurnitureSearchTabPage.UseVisualStyleBackColor = true;
             // 
             // DashboardForm
             // 
@@ -197,5 +209,6 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
+        private TabPage FurnitureSearchTabPage;
     }
 }
