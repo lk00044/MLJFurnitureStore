@@ -14,6 +14,7 @@ namespace cs6232_g4.UserControls
         private readonly MembersController _memberController;
         private List<Member> MemberList;
         private int _memberID;
+        private string SelectedGender;
 
         public UpdateMemberInfoUserControl(int memberID)
         {
@@ -22,7 +23,9 @@ namespace cs6232_g4.UserControls
             MemberList = new List<Member>();
             this._memberID = memberID;
             this.InfoLabel.Text = string.Empty;
+            this.SelectedGender = string.Empty;
             this.InfoLabel.ForeColor = Color.Red;
+            this.MbrNewFNameTextBox.Select();
             this.PopulateUpdateFields();
         }
 
@@ -42,7 +45,7 @@ namespace cs6232_g4.UserControls
             this.NewDOBTextBox.Text = MemberList[0].DateOfBirth.ToString();
             this.NewStateComboBox.Text = MemberList[0].State;
             this.NewZipTextBox.Text = MemberList[0].ZipCode.ToString();
-            this.GenderComboBox.Text = MemberList[0].Gender.ToString();
+            this.GenderComboBox.Text = this.GetGenderDisplay();
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace cs6232_g4.UserControls
             updatedMember.Phone = this.MbrNewPhoneNumTextBox.Text;
             updatedMember.State = this.NewStateComboBox.Text;
             updatedMember.DateOfBirth = DateTime.Parse(this.NewDOBTextBox.Text);
-            updatedMember.Gender = this.GenderComboBox.Text[0];
+            updatedMember.Gender = this.GetGenderDB();
             updatedMember.City = this.NewCityTextBox.Text;
             updatedMember.ZipCode = this.NewZipTextBox.Text;
             if (this._memberController.UpdateStoreMember(updatedMember) > 0)
@@ -71,6 +74,71 @@ namespace cs6232_g4.UserControls
             {
                 this.InfoLabel.ForeColor = Color.Red;
                 this.InfoLabel.Text = "Member failed to update!";
+            }
+        }
+
+        private string GetGenderDisplay()
+        {
+            char gender = MemberList[0].Gender;
+
+            if (string.IsNullOrEmpty(gender.ToString()))  
+            {
+                return "Prefer not to respond";
+            }
+            else if (gender.Equals('M'))
+            {
+                return "Male";
+            }
+            else if (gender.Equals('F'))
+            {
+                return "Female";
+            }
+            else if (gender.Equals('T'))
+            {
+                return "Transgender";
+            }
+            else if (gender.Equals('N'))
+            {
+                return "Non-binary/non-conforming";
+            }
+            else if (gender.Equals('P'))
+            {
+                return "Prefer not to respond";
+            }
+            else
+            {
+                return "Prefer not to respond";
+            }
+
+        }
+
+        private char GetGenderDB()
+        {
+            this.SelectedGender = this.GenderComboBox.Text[0].ToString();
+
+            if (this.SelectedGender.Equals("Male"))
+            {
+                return 'M';
+            }
+            else if (this.SelectedGender.Equals("Female"))
+            {
+                return 'F';
+            }
+            else if (this.SelectedGender.Equals("Transgender"))
+            {
+                return 'T';
+            }
+            else if (this.SelectedGender.Equals("Non-binary/non-conforming"))
+            {
+                return 'N';
+            }
+            else if (this.SelectedGender.Equals("Prefer not to respond"))
+            {
+                return 'P';
+            }
+            else
+            {
+                return 'P';
             }
         }
     }

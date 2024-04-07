@@ -1,4 +1,5 @@
-﻿using Members.Controller;
+﻿using cs6232_g4.View;
+using Members.Controller;
 using Members.Model;
 
 /// <summary>
@@ -28,13 +29,16 @@ namespace cs6232_g4.UserControls
         private int SelectedMemberId;
         private List<Member> searchList;
         private int MbrID;
+        private string MemberName;
 
         private readonly MembersController _memberController;
+        private readonly TransactionController _transactionController;
 
 
         public SearchForMemberUserControl()
         {
             InitializeComponent();
+            this._transactionController = new TransactionController();
             _memberController = new MembersController();
             MemberList = new List<Member>();
             SelectedMember = new Member();
@@ -43,7 +47,9 @@ namespace cs6232_g4.UserControls
             MbrFName = string.Empty;
             MbrLName = string.Empty;
             MbrPhoneNum = string.Empty;
+            this.MemberName = string.Empty;
             MbrID = 0;
+            this.MbrFNameTextBox.Select();
         }
 
         /// <summary>
@@ -70,7 +76,7 @@ namespace cs6232_g4.UserControls
                             this.DisplayMemberMatches();
                             this.ClearTextBoxes();
                             this.ReEnableTextBoxes();
-                        }     
+                        }
                         else
                         {
                             this.ErrorLabel.Text = "No members with that ID.";
@@ -150,11 +156,19 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private bool CheckRowIsSelected()
         {
-            if (this.MembersDataGridView.SelectedRows.Count == 0) 
+            if (this.MembersDataGridView.SelectedRows.Count == 0)
             {
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Clears the errors.
+        /// </summary>
+        public void ClearErrors()
+        {
+            this.ErrorLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -204,9 +218,9 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private void RefreshDataGrid(List<Member> MatchingMembers)
         {
-                this.MembersDataGridView.DataSource = null;
-                this.MembersDataGridView.DataSource = MatchingMembers;
-                this.MembersDataGridView.ClearSelection();          
+            this.MembersDataGridView.DataSource = null;
+            this.MembersDataGridView.DataSource = MatchingMembers;
+            this.MembersDataGridView.ClearSelection();
         }
 
         /// <summary>
@@ -215,7 +229,7 @@ namespace cs6232_g4.UserControls
         private void DisplayMemberMatches()
         {
             try
-            {    
+            {
                 this.RefreshDataGrid(MemberList);
             }
             catch (Exception ex)
@@ -277,6 +291,7 @@ namespace cs6232_g4.UserControls
                 this.searchList = this._memberController.GetMemberByID(MbrID);
                 this.SelectedMember = searchList[0];
                 this.SelectedMemberId = this.SelectedMember.MemberID;
+                this.MemberName = this.SelectedMember.FirstName + " " + this.SelectedMember.LastName;   
             }
         }
 
@@ -305,7 +320,7 @@ namespace cs6232_g4.UserControls
                         MemberList = this._memberController.GetMemberByID(MbrId);
                         this.DisplayMemberMatches();
                         this.ErrorLabel.Text = "Member updated.";
-                  
+
                     }
                     else if (result == DialogResult.Cancel)
                     {
@@ -321,6 +336,36 @@ namespace cs6232_g4.UserControls
         public void ClearGrid()
         {
             this.MembersDataGridView.Columns.Clear();
+        }
+
+        private void ViewTransactionsButton_Click(object sender, EventArgs e)
+        {
+            if (!CheckRowIsSelected())
+            {
+                this.ErrorLabel.Text = "You must select a row first. ";
+            }
+            else if (!this._transactionController.VerifyMemberTransactionavailable(this.SelectedMemberId))
+            {
+                this.ErrorLabel.Text = "No transactions for this member id.";
+            }
+            else
+            {
+                this.ErrorLabel.Text = string.Empty;
+
+                using (ViewMbrTransactionHistoryForm viewMbrTransHistory = new ViewMbrTransactionHistoryForm(this.SelectedMemberId, this.MemberName))
+                {
+                    DialogResult result = viewMbrTransHistory.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        this.Show();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

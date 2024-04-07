@@ -405,7 +405,7 @@
             DisplayIDLabel.Size = new Size(153, 25);
             DisplayIDLabel.TabIndex = 35;
             // 
-            // UpdateMemberInfoUserControl1
+            // UpdateMemberInfoUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -414,7 +414,7 @@
             Controls.Add(SearchInstructionsLabel);
             Controls.Add(MemberIDLabel);
             Controls.Add(DisplayIDLabel);
-            Name = "UpdateMemberInfoUserControl1";
+            Name = "UpdateMemberInfoUserControl";
             Size = new Size(899, 595);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();

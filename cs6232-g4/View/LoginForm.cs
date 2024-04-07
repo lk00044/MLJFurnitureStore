@@ -29,6 +29,7 @@ namespace cs6232_g4.View
             InitializeComponent();
             _loginController = new LoginController();
             _employeeController = new EmployeeController();
+            this.TextUsername.Select();
 
         }
 
@@ -83,7 +84,9 @@ namespace cs6232_g4.View
                         }
                         else if (result == DialogResult.Cancel)
                         {
-                            this.Close();
+                            this.Show();
+                            this.TextPassword.Text = "";
+                            this.TextUsername.Select();
                         }
                     }
                 }
@@ -92,6 +95,11 @@ namespace cs6232_g4.View
             {
                 MessageBox.Show("Invalid Input \n" + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void TextUsername_Click(object sender, EventArgs e)
@@ -103,6 +111,8 @@ namespace cs6232_g4.View
         private void TextPassword_Click(object sender, EventArgs e)
         {
             this.PasswordErrorLabel.Text = "";
+            this.UserNameErrorlabel.Text = "";
+            this.TextPassword.Clear();
         }
     }
 }

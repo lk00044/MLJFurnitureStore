@@ -54,6 +54,7 @@ namespace cs6232_g4
             {
                 this.search4Member.ClearTextBoxes();
                 this.search4Member.ClearGrid();
+                this.search4Member.ClearErrors();
             }
             if (this.MainDBTabControl.SelectedIndex == 2)
             {
@@ -71,9 +72,5 @@ namespace cs6232_g4
             this.Close();
         }
 
-        private void DashboardForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

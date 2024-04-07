@@ -40,53 +40,50 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
-            ViewMbrTransHistTabPage = new TabPage();
-            viewMbrTransactionHistory1 = new UserControls.ViewMbrTransactionHistory();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
-            ViewMbrTransHistTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
             // 
             UserNameLabel.AutoSize = true;
-            UserNameLabel.Location = new Point(538, 7);
+            UserNameLabel.Location = new Point(615, 9);
             UserNameLabel.Name = "UserNameLabel";
-            UserNameLabel.Size = new Size(65, 15);
+            UserNameLabel.Size = new Size(81, 20);
             UserNameLabel.TabIndex = 1;
             UserNameLabel.Text = "UserName:";
             // 
             // NameLabel
             // 
             NameLabel.AutoSize = true;
-            NameLabel.Location = new Point(355, 7);
+            NameLabel.Location = new Point(406, 9);
             NameLabel.Name = "NameLabel";
-            NameLabel.Size = new Size(42, 15);
+            NameLabel.Size = new Size(52, 20);
             NameLabel.TabIndex = 2;
             NameLabel.Text = "Name:";
             // 
             // DisplayNameLabel
             // 
-            DisplayNameLabel.Location = new Point(400, 7);
+            DisplayNameLabel.Location = new Point(457, 9);
             DisplayNameLabel.Name = "DisplayNameLabel";
-            DisplayNameLabel.Size = new Size(140, 19);
+            DisplayNameLabel.Size = new Size(160, 25);
             DisplayNameLabel.TabIndex = 3;
             // 
             // DisplayUserNameLabel
             // 
-            DisplayUserNameLabel.Location = new Point(616, 7);
+            DisplayUserNameLabel.Location = new Point(704, 9);
             DisplayUserNameLabel.Name = "DisplayUserNameLabel";
-            DisplayUserNameLabel.Size = new Size(77, 19);
+            DisplayUserNameLabel.Size = new Size(88, 25);
             DisplayUserNameLabel.TabIndex = 4;
             // 
             // LogOutLinkLabel
             // 
             LogOutLinkLabel.AutoSize = true;
-            LogOutLinkLabel.Location = new Point(705, 7);
+            LogOutLinkLabel.Location = new Point(806, 9);
             LogOutLinkLabel.Name = "LogOutLinkLabel";
-            LogOutLinkLabel.Size = new Size(50, 15);
+            LogOutLinkLabel.Size = new Size(62, 20);
             LogOutLinkLabel.TabIndex = 6;
             LogOutLinkLabel.TabStop = true;
             LogOutLinkLabel.Text = "Log Out";
@@ -95,37 +92,38 @@
             // MbrTransTabPage
             // 
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
-            MbrTransTabPage.Location = new Point(4, 30);
-            MbrTransTabPage.Margin = new Padding(3, 2, 3, 2);
+            MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(770, 503);
+            MbrTransTabPage.Size = new Size(881, 680);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl
             // 
-            rentFurnitureUserControl.Location = new Point(0, 7);
-            rentFurnitureUserControl.Margin = new Padding(3, 5, 3, 5);
+            rentFurnitureUserControl.Location = new Point(0, 9);
+            rentFurnitureUserControl.Margin = new Padding(3, 7, 3, 7);
             rentFurnitureUserControl.Name = "rentFurnitureUserControl";
-            rentFurnitureUserControl.Size = new Size(885, 668);
+            rentFurnitureUserControl.Size = new Size(1011, 891);
             rentFurnitureUserControl.TabIndex = 0;
             // 
             // Search4MbrTabPage
             // 
             Search4MbrTabPage.Controls.Add(search4Member);
             Search4MbrTabPage.Location = new Point(4, 35);
+            Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
-            Search4MbrTabPage.Padding = new Padding(3, 2, 3, 2);
-            Search4MbrTabPage.Size = new Size(770, 503);
+            Search4MbrTabPage.Padding = new Padding(3);
+            Search4MbrTabPage.Size = new Size(881, 677);
             Search4MbrTabPage.TabIndex = 1;
-            Search4MbrTabPage.Text = "Member Search & Update";
+            Search4MbrTabPage.Text = "Member Functions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
             // search4Member
             // 
             search4Member.Dock = DockStyle.Fill;
             search4Member.Location = new Point(3, 3);
+            search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
             search4Member.Size = new Size(875, 671);
             search4Member.TabIndex = 0;
@@ -133,82 +131,55 @@
             // RegMbrTabPage
             // 
             RegMbrTabPage.Controls.Add(memberRegistrationUserControl);
-            RegMbrTabPage.Location = new Point(4, 30);
-            RegMbrTabPage.Margin = new Padding(3, 2, 3, 2);
+            RegMbrTabPage.Location = new Point(4, 35);
             RegMbrTabPage.Name = "RegMbrTabPage";
-            RegMbrTabPage.Padding = new Padding(3, 2, 3, 2);
-            RegMbrTabPage.Size = new Size(770, 503);
+            RegMbrTabPage.Padding = new Padding(3);
+            RegMbrTabPage.Size = new Size(881, 677);
             RegMbrTabPage.TabIndex = 0;
             RegMbrTabPage.Text = "Member Registration";
             RegMbrTabPage.UseVisualStyleBackColor = true;
             // 
             // memberRegistrationUserControl
             // 
-            memberRegistrationUserControl.Location = new Point(3, 2);
-            memberRegistrationUserControl.Margin = new Padding(3, 4, 3, 4);
+            memberRegistrationUserControl.Location = new Point(3, 3);
+            memberRegistrationUserControl.Margin = new Padding(3, 5, 3, 5);
             memberRegistrationUserControl.Name = "memberRegistrationUserControl";
-            memberRegistrationUserControl.Size = new Size(766, 508);
-            memberRegistrationUserControl.TabIndex = 6;
+            memberRegistrationUserControl.Size = new Size(875, 677);
+            memberRegistrationUserControl.TabIndex = 5;
             // 
             // MainDBTabControl
             // 
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
-            MainDBTabControl.Controls.Add(ViewMbrTransHistTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
-            MainDBTabControl.Location = new Point(0, 58);
-            MainDBTabControl.Margin = new Padding(3, 2, 3, 2);
+            MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
             MainDBTabControl.Padding = new Point(6, 6);
             MainDBTabControl.SelectedIndex = 0;
-            MainDBTabControl.Size = new Size(778, 537);
-            MainDBTabControl.TabIndex = 5;
+            MainDBTabControl.Size = new Size(889, 716);
+            MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
-            // 
-            // ViewMbrTransHistTabPage
-            // 
-            ViewMbrTransHistTabPage.Controls.Add(viewMbrTransactionHistory1);
-            ViewMbrTransHistTabPage.Location = new Point(4, 30);
-            ViewMbrTransHistTabPage.Margin = new Padding(3, 2, 3, 2);
-            ViewMbrTransHistTabPage.Name = "ViewMbrTransHistTabPage";
-            ViewMbrTransHistTabPage.Padding = new Padding(3, 2, 3, 2);
-            ViewMbrTransHistTabPage.Size = new Size(770, 503);
-            ViewMbrTransHistTabPage.TabIndex = 4;
-            ViewMbrTransHistTabPage.Text = "View Member Transaction History";
-            ViewMbrTransHistTabPage.UseVisualStyleBackColor = true;
-            // 
-            // viewMbrTransactionHistory1
-            // 
-            viewMbrTransactionHistory1.Dock = DockStyle.Top;
-            viewMbrTransactionHistory1.Location = new Point(3, 2);
-            viewMbrTransactionHistory1.Margin = new Padding(3, 2, 3, 2);
-            viewMbrTransactionHistory1.Name = "viewMbrTransactionHistory1";
-            viewMbrTransactionHistory1.Size = new Size(764, 586);
-            viewMbrTransactionHistory1.TabIndex = 0;
             // 
             // DashboardForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(778, 595);
+            ClientSize = new Size(889, 793);
             Controls.Add(LogOutLinkLabel);
             Controls.Add(MainDBTabControl);
             Controls.Add(DisplayUserNameLabel);
             Controls.Add(DisplayNameLabel);
             Controls.Add(NameLabel);
             Controls.Add(UserNameLabel);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "DashboardForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Me Furniture Rentals";
-            FormClosing += DashboardForm_FormClosing;
             Load += DashboardForm_Load;
             MbrTransTabPage.ResumeLayout(false);
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
-            ViewMbrTransHistTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -226,7 +197,5 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
-        private TabPage ViewMbrTransHistTabPage;
-        private UserControls.ViewMbrTransactionHistory viewMbrTransactionHistory1;
     }
 }

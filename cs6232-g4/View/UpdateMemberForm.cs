@@ -75,7 +75,7 @@ namespace cs6232_g4.View
         {
             char gender = this.memberToUpdate.Gender;
 
-            if (gender == 'M')
+            if (gender.Equals('M'))
             {
                 this.GenderComboBox.Text = "Male";
             }
