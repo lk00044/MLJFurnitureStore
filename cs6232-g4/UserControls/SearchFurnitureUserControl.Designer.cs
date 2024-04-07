@@ -1,4 +1,7 @@
-﻿namespace cs6232_g4.UserControls
+﻿using Furnitures.Model;
+using System.ComponentModel;
+
+namespace cs6232_g4.UserControls
 {
     partial class SearchFurnitureUserControl : UserControl
     {
@@ -47,7 +50,6 @@
             SearchBtn = new Button();
             CancelBtn = new Button();
             FurnitureInfoLabel = new Label();
-            UserLabel = new Label();
             SearchTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).BeginInit();
             SuspendLayout();
@@ -69,16 +71,15 @@
             SearchTableLayoutPanel.Controls.Add(SearchBtn, 0, 4);
             SearchTableLayoutPanel.Controls.Add(CancelBtn, 1, 4);
             SearchTableLayoutPanel.Controls.Add(FurnitureInfoLabel, 0, 5);
-            SearchTableLayoutPanel.Controls.Add(UserLabel, 2, 0);
             SearchTableLayoutPanel.Dock = DockStyle.Fill;
             SearchTableLayoutPanel.Location = new Point(0, 0);
             SearchTableLayoutPanel.Name = "SearchTableLayoutPanel";
             SearchTableLayoutPanel.RowCount = 9;
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 46.5517235F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 53.4482765F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 87F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 91F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 240F));
@@ -172,7 +173,7 @@
             FurnitureIDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FurnitureIDLabel.Location = new Point(3, 36);
             FurnitureIDLabel.Name = "FurnitureIDLabel";
-            FurnitureIDLabel.Size = new Size(73, 20);
+            FurnitureIDLabel.Size = new Size(89, 20);
             FurnitureIDLabel.TabIndex = 6;
             FurnitureIDLabel.Text = "Furniture ID:";
             // 
@@ -196,7 +197,9 @@
             // 
             // CategoryComboBox
             // 
+            CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryComboBox.FormattingEnabled = true;
+            CategoryComboBox.Items.AddRange(new object[] { "LRChair", "DRChair", "Sofa", "DiningSet" });
             CategoryComboBox.Location = new Point(295, 81);
             CategoryComboBox.Name = "CategoryComboBox";
             CategoryComboBox.Size = new Size(215, 28);
@@ -206,7 +209,7 @@
             // 
             StyleLabel.AutoSize = true;
             StyleLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            StyleLabel.Location = new Point(3, 123);
+            StyleLabel.Location = new Point(3, 119);
             StyleLabel.Name = "StyleLabel";
             StyleLabel.Size = new Size(44, 20);
             StyleLabel.TabIndex = 9;
@@ -214,8 +217,10 @@
             // 
             // StyleComboBox
             // 
+            StyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StyleComboBox.FormattingEnabled = true;
-            StyleComboBox.Location = new Point(295, 126);
+            StyleComboBox.Items.AddRange(new object[] { "MidCentury Modern", "Modern", "Traditional", "Contemporary" });
+            StyleComboBox.Location = new Point(295, 122);
             StyleComboBox.Name = "StyleComboBox";
             StyleComboBox.Size = new Size(215, 28);
             StyleComboBox.TabIndex = 10;
@@ -223,7 +228,7 @@
             // SearchBtn
             // 
             SearchBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchBtn.Location = new Point(3, 174);
+            SearchBtn.Location = new Point(3, 170);
             SearchBtn.Name = "SearchBtn";
             SearchBtn.Size = new Size(193, 39);
             SearchBtn.TabIndex = 11;
@@ -234,7 +239,7 @@
             // CancelBtn
             // 
             CancelBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CancelBtn.Location = new Point(295, 174);
+            CancelBtn.Location = new Point(295, 170);
             CancelBtn.Name = "CancelBtn";
             CancelBtn.Size = new Size(193, 39);
             CancelBtn.TabIndex = 12;
@@ -250,17 +255,6 @@
             FurnitureInfoLabel.Size = new Size(167, 20);
             FurnitureInfoLabel.TabIndex = 4;
             FurnitureInfoLabel.Text = "Furniture Information:";
-            // 
-            // UserLabel
-            // 
-            UserLabel.Anchor = AnchorStyles.Right;
-            UserLabel.AutoSize = true;
-            UserLabel.ImageAlign = ContentAlignment.TopRight;
-            UserLabel.Location = new Point(830, 8);
-            UserLabel.Name = "UserLabel";
-            UserLabel.Size = new Size(75, 20);
-            UserLabel.TabIndex = 14;
-            UserLabel.Text = "Username";
             // 
             // SearchFurnitureUserControl
             // 
@@ -295,6 +289,5 @@
         private DataGridViewTextBoxColumn QuantityGridText;
         private DataGridViewTextBoxColumn InfoGridText;
         private DataGridViewTextBoxColumn AvailableGridText;
-        private Label UserLabel;
     }
 }
