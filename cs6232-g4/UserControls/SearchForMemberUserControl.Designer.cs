@@ -142,12 +142,13 @@
             MembersDataGridView.AllowUserToDeleteRows = false;
             MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
+            MembersDataGridView.Dock = DockStyle.Fill;
             MembersDataGridView.Location = new Point(3, 243);
             MembersDataGridView.Name = "MembersDataGridView";
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(832, 314);
+            MembersDataGridView.Size = new Size(832, 320);
             MembersDataGridView.TabIndex = 14;
             MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 

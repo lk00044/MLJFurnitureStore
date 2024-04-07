@@ -29,6 +29,9 @@ namespace cs6232_g4.UserControls
         private int SelectedMemberId;
         private List<Member> searchList;
         private int MbrID;
+        string origPhone;
+        string origFName;
+        string origLName;
         private string MemberName;
 
         private readonly MembersController _memberController;
@@ -48,6 +51,9 @@ namespace cs6232_g4.UserControls
             MbrLName = string.Empty;
             MbrPhoneNum = string.Empty;
             this.MemberName = string.Empty;
+            this.origFName = string.Empty;
+            this.origLName = string.Empty;
+            this.origPhone = string.Empty;
             MbrID = 0;
             this.MbrFNameTextBox.Select();
         }
@@ -221,6 +227,27 @@ namespace cs6232_g4.UserControls
             this.MembersDataGridView.DataSource = null;
             this.MembersDataGridView.DataSource = MatchingMembers;
             this.MembersDataGridView.ClearSelection();
+            this.SetupGrid();
+        }
+
+        private void SetupGrid()
+        {
+
+            this.MembersDataGridView.AutoGenerateColumns = false;
+            this.MembersDataGridView.AutoSize = true;
+            this.MembersDataGridView.Columns[0].HeaderText = "Member ID";
+            this.MembersDataGridView.Columns[1].HeaderText = "First Name";
+            this.MembersDataGridView.Columns[2].HeaderText = "Last Name";
+            this.MembersDataGridView.Columns[3].HeaderText = "Address 1";
+            this.MembersDataGridView.Columns[4].HeaderText = "Address 2";
+            this.MembersDataGridView.Columns[5].HeaderText = "City";
+            this.MembersDataGridView.Columns[6].HeaderText = "State";
+            this.MembersDataGridView.Columns[7].HeaderText = "Zip Code";
+            this.MembersDataGridView.Columns[8].HeaderText = "Phone";
+            this.MembersDataGridView.Columns[9].HeaderText = "Gender";
+            this.MembersDataGridView.Columns[10].HeaderText = "Date of Birth";
+            this.MembersDataGridView.Columns[10].DefaultCellStyle.Format = "MM/dd/yyyy";
+
         }
 
         /// <summary>
@@ -230,7 +257,7 @@ namespace cs6232_g4.UserControls
         {
             try
             {
-                this.RefreshDataGrid(MemberList);
+                this.RefreshDataGrid(this.MemberList);
             }
             catch (Exception ex)
             {
@@ -287,11 +314,11 @@ namespace cs6232_g4.UserControls
                 int selectedrowindex = MembersDataGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = MembersDataGridView.Rows[selectedrowindex];
                 string cellValue = Convert.ToString(selectedRow.Cells[0].Value);
-                MbrID = Int32.Parse(cellValue);
+                this.MbrID = Int32.Parse(cellValue);
                 this.searchList = this._memberController.GetMemberByID(MbrID);
                 this.SelectedMember = searchList[0];
                 this.SelectedMemberId = this.SelectedMember.MemberID;
-                this.MemberName = this.SelectedMember.FirstName + " " + this.SelectedMember.LastName;   
+                this.MemberName = this.SelectedMember.FirstName + " " + this.SelectedMember.LastName;
             }
         }
 
@@ -309,15 +336,16 @@ namespace cs6232_g4.UserControls
             {
                 this.ErrorLabel.Text = string.Empty;
 
-                using (Form updateMemberForm = new View.UpdateMemberForm(SelectedMemberId))
+                using (Form updateMemberForm = new View.UpdateMemberForm(this.MbrID))
                 {
+                    int mbrid = this.MbrID;
 
                     DialogResult result = updateMemberForm.ShowDialog();
 
                     if (result == DialogResult.OK)
                     {
                         this.Show();
-                        MemberList = this._memberController.GetMemberByID(MbrId);
+                        this.MemberList = this._memberController.GetMemberByID(mbrid);
                         this.DisplayMemberMatches();
                         this.ErrorLabel.Text = "Member updated.";
 
@@ -362,10 +390,10 @@ namespace cs6232_g4.UserControls
                     }
                     else if (result == DialogResult.Cancel)
                     {
-
                     }
                 }
             }
         }
+
     }
 }

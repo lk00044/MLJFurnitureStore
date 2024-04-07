@@ -95,7 +95,6 @@
             regTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 273F));
             regTableLayoutPanel.Controls.Add(firstNameLabel, 0, 0);
             regTableLayoutPanel.Controls.Add(stateComboBox, 3, 8);
-            regTableLayoutPanel.Controls.Add(zipTextBox, 3, 9);
             regTableLayoutPanel.Controls.Add(firstNameTextBox, 1, 0);
             regTableLayoutPanel.Controls.Add(FNameErrorLabel, 1, 1);
             regTableLayoutPanel.Controls.Add(phoneTextBox, 1, 4);
@@ -109,7 +108,6 @@
             regTableLayoutPanel.Controls.Add(cityTextBox, 1, 8);
             regTableLayoutPanel.Controls.Add(cityLabel, 0, 8);
             regTableLayoutPanel.Controls.Add(addr1ErrorLabel, 1, 7);
-            regTableLayoutPanel.Controls.Add(zipLabel, 2, 10);
             regTableLayoutPanel.Controls.Add(lastNameTextBox, 3, 0);
             regTableLayoutPanel.Controls.Add(lastNameLabel, 2, 0);
             regTableLayoutPanel.Controls.Add(lNameErrorLabel, 3, 1);
@@ -122,6 +120,8 @@
             regTableLayoutPanel.Controls.Add(stateErrorLabel, 3, 9);
             regTableLayoutPanel.Controls.Add(zipErrorLabel, 3, 11);
             regTableLayoutPanel.Controls.Add(genderLabel, 0, 2);
+            regTableLayoutPanel.Controls.Add(zipTextBox, 1, 10);
+            regTableLayoutPanel.Controls.Add(zipLabel, 0, 10);
             regTableLayoutPanel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             regTableLayoutPanel.Location = new Point(22, 61);
             regTableLayoutPanel.Name = "regTableLayoutPanel";
@@ -168,10 +168,10 @@
             // zipTextBox
             // 
             zipTextBox.Font = new Font("Segoe UI", 10.8F);
-            zipTextBox.Location = new Point(3, 437);
+            zipTextBox.Location = new Point(106, 437);
             zipTextBox.Margin = new Padding(3, 4, 3, 4);
             zipTextBox.Name = "zipTextBox";
-            zipTextBox.Size = new Size(97, 31);
+            zipTextBox.Size = new Size(228, 31);
             zipTextBox.TabIndex = 11;
             zipTextBox.TextChanged += ZipTextBox_TextChanged;
             // 
@@ -298,12 +298,12 @@
             // zipLabel
             // 
             zipLabel.Font = new Font("Segoe UI", 10.8F);
-            zipLabel.Location = new Point(340, 433);
+            zipLabel.Location = new Point(3, 433);
             zipLabel.Name = "zipLabel";
             zipLabel.Size = new Size(97, 25);
             zipLabel.TabIndex = 8;
             zipLabel.Text = "Zipcode";
-            zipLabel.TextAlign = ContentAlignment.TopRight;
+            zipLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lastNameTextBox
             // 
