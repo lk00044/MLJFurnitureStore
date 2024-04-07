@@ -41,10 +41,12 @@
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
             FurnitureSearchTabPage = new TabPage();
+            searchFurnitureUserControl1 = new UserControls.SearchFurnitureUserControl();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
+            FurnitureSearchTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -95,7 +97,7 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(881, 677);
+            MbrTransTabPage.Size = new Size(192, 61);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Create a Member Transaction";
             MbrTransTabPage.UseVisualStyleBackColor = true;
@@ -115,7 +117,7 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(881, 677);
+            Search4MbrTabPage.Size = new Size(192, 61);
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Functions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
@@ -126,7 +128,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(875, 671);
+            search4Member.Size = new Size(186, 55);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
@@ -135,7 +137,7 @@
             RegMbrTabPage.Location = new Point(4, 35);
             RegMbrTabPage.Name = "RegMbrTabPage";
             RegMbrTabPage.Padding = new Padding(3);
-            RegMbrTabPage.Size = new Size(881, 677);
+            RegMbrTabPage.Size = new Size(898, 677);
             RegMbrTabPage.TabIndex = 0;
             RegMbrTabPage.Text = "Member Registration";
             RegMbrTabPage.UseVisualStyleBackColor = true;
@@ -159,25 +161,34 @@
             MainDBTabControl.Name = "MainDBTabControl";
             MainDBTabControl.Padding = new Point(6, 6);
             MainDBTabControl.SelectedIndex = 0;
-            MainDBTabControl.Size = new Size(889, 716);
+            MainDBTabControl.Size = new Size(906, 716);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
             // 
             // FurnitureSearchTabPage
             // 
+            FurnitureSearchTabPage.Controls.Add(searchFurnitureUserControl1);
             FurnitureSearchTabPage.Location = new Point(4, 35);
             FurnitureSearchTabPage.Name = "FurnitureSearchTabPage";
             FurnitureSearchTabPage.Padding = new Padding(3);
-            FurnitureSearchTabPage.Size = new Size(881, 677);
+            FurnitureSearchTabPage.Size = new Size(898, 677);
             FurnitureSearchTabPage.TabIndex = 4;
             FurnitureSearchTabPage.Text = "Furniture Search";
             FurnitureSearchTabPage.UseVisualStyleBackColor = true;
+            // 
+            // searchFurnitureUserControl1
+            // 
+            searchFurnitureUserControl1.Dock = DockStyle.Top;
+            searchFurnitureUserControl1.Location = new Point(3, 3);
+            searchFurnitureUserControl1.Name = "searchFurnitureUserControl1";
+            searchFurnitureUserControl1.Size = new Size(892, 571);
+            searchFurnitureUserControl1.TabIndex = 0;
             // 
             // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(889, 793);
+            ClientSize = new Size(906, 793);
             Controls.Add(LogOutLinkLabel);
             Controls.Add(MainDBTabControl);
             Controls.Add(DisplayUserNameLabel);
@@ -192,6 +203,7 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
+            FurnitureSearchTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -210,5 +222,6 @@
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
         private TabPage FurnitureSearchTabPage;
+        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl1;
     }
 }
