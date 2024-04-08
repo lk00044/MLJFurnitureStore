@@ -40,10 +40,13 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
+            SearchFurnTabPage = new TabPage();
+            furnitureSearchUserControl1 = new UserControls.FurnitureSearchUserControl();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
+            SearchFurnTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -94,7 +97,7 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(881, 680);
+            MbrTransTabPage.Size = new Size(192, 61);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Member Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
@@ -114,9 +117,9 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(881, 677);
+            Search4MbrTabPage.Size = new Size(192, 61);
             Search4MbrTabPage.TabIndex = 1;
-            Search4MbrTabPage.Text = "Member Functions";
+            Search4MbrTabPage.Text = "Member Tasks";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
             // search4Member
@@ -125,7 +128,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(875, 671);
+            search4Member.Size = new Size(186, 55);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
@@ -152,6 +155,7 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
+            MainDBTabControl.Controls.Add(SearchFurnTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -160,6 +164,24 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
+            // 
+            // SearchFurnTabPage
+            // 
+            SearchFurnTabPage.Controls.Add(furnitureSearchUserControl1);
+            SearchFurnTabPage.Location = new Point(4, 35);
+            SearchFurnTabPage.Name = "SearchFurnTabPage";
+            SearchFurnTabPage.Size = new Size(881, 677);
+            SearchFurnTabPage.TabIndex = 4;
+            SearchFurnTabPage.Text = "Furniture Search";
+            SearchFurnTabPage.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchUserControl1
+            // 
+            furnitureSearchUserControl1.Dock = DockStyle.Top;
+            furnitureSearchUserControl1.Location = new Point(0, 0);
+            furnitureSearchUserControl1.Name = "furnitureSearchUserControl1";
+            furnitureSearchUserControl1.Size = new Size(881, 584);
+            furnitureSearchUserControl1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -180,6 +202,7 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
+            SearchFurnTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +220,7 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
+        private TabPage SearchFurnTabPage;
+        private UserControls.FurnitureSearchUserControl furnitureSearchUserControl1;
     }
 }
