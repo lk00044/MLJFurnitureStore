@@ -178,7 +178,7 @@ namespace cs6232_g4.UserControls
             FurnitureIDLabel.Text = "Furniture ID:";
             // 
             // FurnitureComboBox
-            // 
+            FurnitureComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             FurnitureComboBox.FormattingEnabled = true;
             FurnitureComboBox.Location = new Point(295, 39);
             FurnitureComboBox.Name = "FurnitureComboBox";

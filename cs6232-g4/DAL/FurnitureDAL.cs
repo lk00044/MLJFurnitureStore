@@ -22,7 +22,9 @@ namespace Furnitures.DAL
             List<Furniture> FurnitureList = new List<Furniture>();
 
             string selectStatement =
-                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name FROM Furniture";
+                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name" +
+                "FROM Furniture" +
+                "Where furniture_id = @furnitureID";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -185,6 +187,99 @@ namespace Furnitures.DAL
                 }
             }
             return FurnitureList;
+        }
+
+        /// <summary>
+        /// Gets all furniture IDs
+        /// </summary>
+        /// <returns></returns>
+        public List<int> GetAllFurnitureIDs()
+        {
+            List<int> FurnitureIDList = new List<int>();
+
+            string selectStatement =
+                "SELECT distinct furniture_id FROM Furniture";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int FurnitureId = (int)reader["furniture_id"];
+
+                            FurnitureIDList.Add(FurnitureId);
+                        }
+                    }
+                }
+            }
+            return FurnitureIDList;
+        }
+
+        /// <summary>
+        /// Gets all furniture categories
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetAllFurnitureCategories()
+        {
+            List<string> FurnitureCategoryList = new List<string>();
+
+            string selectStatement =
+                "SELECT category_name FROM Category";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string category = (string)reader["category_name"];
+
+                            FurnitureCategoryList.Add(category);
+                        }
+                    }
+                }
+            }
+            return FurnitureCategoryList;
+        }
+
+        /// <summary>
+        /// Gets all furniture Styles
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetAllFurnitureStyles()
+        {
+            List<string> FurnitureStyleList = new List<string>();
+
+            string selectStatement =
+                "SELECT style_name FROM Style";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string style = (string)reader["style_name"];
+
+                            FurnitureStyleList.Add(style);
+                        }
+                    }
+                }
+            }
+            return FurnitureStyleList;
         }
 
         /// <summary>

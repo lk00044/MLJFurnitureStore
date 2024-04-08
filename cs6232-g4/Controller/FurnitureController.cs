@@ -27,6 +27,30 @@ namespace Furnitures.Controller
         }
 
         /// <summary>
+        /// get all furniture IDs
+        /// </summary>
+        public List<int> GetAllFurnitureIDs()
+        {
+            return this._furnitureDAL.GetAllFurnitureIDs();
+        }
+
+        /// <summary>
+        /// get all furniture Categories
+        /// </summary>
+        public List<string> GetAllFurnitureCategories()
+        {
+            return this._furnitureDAL.GetAllFurnitureCategories();
+        }
+
+        /// <summary>
+        /// get all furniture Styles
+        /// </summary>
+        public List<string> GetAllFurnitureStyles()
+        {
+            return this._furnitureDAL.GetAllFurnitureStyles();
+        }
+
+        /// <summary>
         /// update furniture by ID
         /// </summary>
         /// <param>furnitureId</param>

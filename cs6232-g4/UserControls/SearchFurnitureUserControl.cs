@@ -1,28 +1,21 @@
 ﻿using Employees.Controller;
 using Furnitures.Controller;
 using Furnitures.Model;
-using Members.Controller;
-using Members.Model;
 
 namespace cs6232_g4.UserControls
 {
     public partial class SearchFurnitureUserControl : UserControl
     {
-        private int FurnitureID;
-        private string Category;
-        private string Style;
-        private readonly EmployeeController _employeeController;
         private readonly FurnitureController _furnitureController;
         private List<Furniture> _furniture;
+        private BindingSource _bindingSource;
 
         public SearchFurnitureUserControl()
         {
             InitializeComponent();
             _furnitureController = new FurnitureController();
             _furniture = new List<Furniture>();
-            FurnitureID = 0;
-            Category = string.Empty;
-            Style = string.Empty;
+            _bindingSource = new BindingSource();
 
         }
 
@@ -32,6 +25,13 @@ namespace cs6232_g4.UserControls
             CategoryComboBox.Text = "";
             StyleComboBox.Text = "";
 
+        }
+
+        private void FurnitureSearchUserControl_Load(object sender, EventArgs e)
+        {
+            this.LoadFurnitureCategories();
+            this.LoadFurnitureIDs();
+            this.LoadFurnitureStyles();
         }
 
         private void SearchFurnitureDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -55,6 +55,42 @@ namespace cs6232_g4.UserControls
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void LoadFurnitureIDs()
+        {
+            this.FurnitureComboBox.Items.Clear();
+
+            List<int> ids = new List<int>();
+            ids = this._furnitureController.GetAllFurnitureIDs();
+            foreach (int id in ids)
+            {
+                this.FurnitureComboBox.Items.Add(id);
+            }
+        }
+
+        private void LoadFurnitureCategories()
+        {
+            this.CategoryComboBox.Items.Clear();
+
+            List<string> categories = new List<string>();
+            categories = this._furnitureController.GetAllFurnitureCategories();
+            foreach (string category in categories)
+            {
+                this.CategoryComboBox.Items.Add(category);
+            }
+        }
+
+        private void LoadFurnitureStyles()
+        {
+            this.StyleComboBox.Items.Clear();
+
+            List<string> styles = new List<string>();
+            styles = this._furnitureController.GetAllFurnitureStyles();
+            foreach (string style in styles)
+            {
+                this.StyleComboBox.Items.Add(style);
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

@@ -198,7 +198,7 @@
             // 
             // searchFurnitureUserControl
             // 
-            searchFurnitureUserControl.Dock = DockStyle.Fill;
+            searchFurnitureUserControl.Dock = DockStyle.Top;
             searchFurnitureUserControl.Location = new Point(3, 3);
             searchFurnitureUserControl.Name = "searchFurnitureUserControl";
             searchFurnitureUserControl.Size = new Size(875, 677);
