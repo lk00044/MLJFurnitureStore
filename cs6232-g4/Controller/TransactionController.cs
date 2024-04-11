@@ -62,5 +62,10 @@ namespace Members.Controller
         {
             return this._transactionDAL.VerifyMemberTransactionavailable(memberID);
         }
+
+        public bool CreateReturnTransaction(List<RentalLineItem> rentalLineItems)
+        {
+            return this._transactionDAL.CreateReturnTransaction(rentalLineItems);
+        }
     }
 }

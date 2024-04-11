@@ -114,7 +114,7 @@ CREATE TABLE [dbo].[RentalLineItem](
 
 CREATE TABLE [dbo].[ReturnTransaction](
 	[return_transaction_id] [int] NOT NULL IDENTITY(1,1),
-	[fine] [decimal](12,2),
+	[fine_or_refund] [decimal](12,2),
 	[return_date] [datetime] NOT NULL,
 	CONSTRAINT [PK_ReturnTransaction] PRIMARY KEY CLUSTERED ([return_transaction_id] )
 )

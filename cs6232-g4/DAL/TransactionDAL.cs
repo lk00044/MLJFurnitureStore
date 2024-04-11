@@ -1,5 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
+using Members.Controller;
 using System.Data.SqlClient;
 
 
@@ -224,6 +225,86 @@ namespace Employees.DAL
                 }
             }
             return transaction.TransactionID != 0;
+        }
+
+        public bool CreateReturnTransaction(List<RentalLineItem> lineItems)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+
+                // Start a local transaction.
+                transaction = connection.BeginTransaction();
+
+                // Must assign both transaction object and connection
+                // to Command object for a pending local transaction
+                command.Connection = connection;
+                command.Transaction = transaction;
+    
+                try
+                {
+                    //Create a return transaction and get its ID
+                    command.CommandText =
+                        "INSERT INTO [dbo].[ReturnTransaction] VALUES (NULL,GETDATE());" +
+                        "SELECT SCOPE_IDENTITY();";
+                    int returnTxnId = int.Parse(command.ExecuteScalar().ToString());
+                    //Create return line items for those returned rentals
+                    double txnTotalChange = 0;
+                    foreach (RentalLineItem lineItem in lineItems)
+                    {
+                        command.CommandText = $"INSERT INTO [dbo].[ReturnLineItem] VALUES (@lineItemId,{returnTxnId},@quantity);";
+                        command.Parameters.Add("@lineItemId", System.Data.SqlDbType.Int);
+                        command.Parameters.Add("@quantity", System.Data.SqlDbType.Int);
+                        command.Parameters["@lineItemId"].Value = lineItem.LineItemId;
+                        command.Parameters["@quantity"].Value = lineItem.Quantity;
+                        command.ExecuteNonQuery();
+                        // update total amount with refunds
+                        command.CommandText = $"SELECT daily_rental_rate FROM [dbo].[Furniture] WHERE furniture_id=@FurnitureId;";
+                        command.Parameters.Add("@FurnitureId", System.Data.SqlDbType.Int);
+                        command.Parameters["@FurnitureId"].Value = lineItem.FurnitureId;
+                        double rentalRate = double.Parse(command.ExecuteScalar().ToString());
+                        double fineOrRefund = (DateTime.Now - lineItem.DueDate).Days * rentalRate;
+                        txnTotalChange += fineOrRefund;
+                        //update returned furniture
+                        command.CommandText = $"UPDATE [dbo].[Furniture] SET instock_quantity=instock_quantity+@quantity WHERE furniture_id=@FurnitureId";
+                        command.ExecuteNonQuery();
+                        // Update rental transaction total with fine or refund
+                        command.CommandText = $"UPDATE [dbo].[RentalTransaction] SET total_amount=total_amount+{fineOrRefund} WHERE transaction_id=@RentalTransactionId;";
+                        command.Parameters.Add("@RentalTransactionId", System.Data.SqlDbType.Int);
+                        command.Parameters["@RentalTransactionId"].Value = lineItem.RentalTransactionId;
+                        command.ExecuteNonQuery();
+                    }
+                    // Update return transaction with fine or refund
+                    command.CommandText = $"UPDATE [dbo].[ReturnTransaction] SET fine={txnTotalChange} WHERE return_transaction_id={returnTxnId}";
+                    command.ExecuteNonQuery();
+                    // Attempt to commit the transaction.
+                    transaction.Commit();
+                    Console.WriteLine("Both records are written to database.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                    Console.WriteLine("  Message: {0}", ex.Message);
+
+                    // Attempt to roll back the transaction.
+                    try
+                    {
+                        transaction.Rollback();
+                    }
+                    catch (Exception ex2)
+                    {
+                        // This catch block will handle any errors that may have occurred
+                        // on the server that would cause the rollback to fail, such as
+                        // a closed connection.
+                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                        Console.WriteLine("  Message: {0}", ex2.Message);
+                    }
+                }
+            }
+            return true;
         }
 
     }
