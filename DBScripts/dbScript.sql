@@ -148,44 +148,9 @@ INSERT INTO [dbo].[Style] VALUES ('MidCentury Modern'), ('Modern'), ('Traditiona
 
 INSERT INTO [dbo].[Category] VALUES ('LRChair'), ('DRChair'), ('Sofa'), ('DiningSet');
 
-INSERT INTO [dbo].[Furniture] VALUES ('Chair1','Accent your living area with the mid-century allure of this Lounge Chair.', 1.5, 14, 30, 'LRChair','MidCentury Modern');
-INSERT INTO [dbo].[Furniture] VALUES ('Sofa1','Accent your living area with the mid-century allure of this Sofa.', 2.5, 4, 10, 'Sofa','MidCentury Modern');
-INSERT INTO [dbo].[Furniture] VALUES ('Sofa2','Sporting clean lines and sleek track arms, this sofa has a contemporary profile.', 1.99, 3, 8, 'Sofa', 'Contemporary');
-INSERT INTO [dbo].[Furniture] VALUES ('Chair2','With its back-to-nature sensibility, this dining room side chair is a natural fit.', 1.25, 14, 25, 'DRChair', 'Modern');
-INSERT INTO [dbo].[Furniture] VALUES ('Dining01','This modern counter-height table and barstool ensemble will highlight your dining', 2.25, 2, 5, 'DiningSet', 'Modern');
-INSERT INTO [dbo].[Furniture] VALUES ('Dining02','This dining package adds an air of playful simplicity to your dining space', 2.25, 3, 5, 'DiningSet', 'MidCentury Modern');
-
-
-
-
-
-
-
-/* Test Scenario: Customer rents 2 Chairs and 1 Sofa and returns them on due date*/
-/* 1- create a rental transaction */
-INSERT INTO [dbo].[RentalTransaction] VALUES (GETDATE(),1,1,185.44,'04-06-2024');
-/* 2- track the rented items */
-INSERT INTO [dbo].[RentalLineItem] VALUES (1,1,2,50);
-INSERT INTO [dbo].[RentalLineItem] VALUES (1,2,1,50);
-/* 3- remove rented furniture from stock record */
-UPDATE Furniture SET instock_quantity = instock_quantity-2 WHERE furniture_id = 1;
-UPDATE Furniture SET instock_quantity = instock_quantity-1 WHERE furniture_id = 2;
-/* 4- create a return transaction for two chairs one month prior to due_date */
-INSERT INTO [dbo].[ReturnTransaction] VALUES (NULL,'03-06-2024');
-/* 5- Update RentalTransaction's total_amount with Refund amount $10 */
-UPDATE RentalTransaction SET total_amount = total_amount+10;
-/* 6- record returned chairs (line item 1) */
-INSERT INTO [dbo].[ReturnLineItem] VALUES (1,1,2)
-/* 7- update Furniture stock with returned chairs */
-UPDATE Furniture SET instock_quantity = instock_quantity+2 WHERE furniture_id = 1;
-/* 8- create a return transaction for the sofa */
-INSERT INTO [dbo].[ReturnTransaction] VALUES (NULL,'04-06-2024');
-/* 9- record returned sofa (line item 2) */
-INSERT INTO [dbo].[ReturnLineItem] VALUES (2,2,1)
-/* 10- update Furniture stock with returned sofa */
-UPDATE Furniture SET instock_quantity = instock_quantity+1 WHERE furniture_id = 2;
-
-/* Q1: Given return transaction with ID = 1, find its rental transaction */
-SELECT rental_transaction_id FROM ReturnTransaction RT
-JOIN ReturnLineItem RetLI ON RT.return_transaction_id = RetLI.return_transaction_id
-JOIN RentalLineItem RenLI ON RetLI.line_item_id = RenLI.line_item_id
+INSERT INTO [dbo].[Furniture] VALUES ('Chair1','Accent your living area with the mid-century allure of this Lounge Chair.', 1.5, 30, 30, 'LRChair','MidCentury Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Sofa1','Accent your living area with the mid-century allure of this Sofa.', 2.5, 10, 10, 'Sofa','MidCentury Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Sofa2','Sporting clean lines and sleek track arms, this sofa has a contemporary profile.', 1.99, 8, 8, 'Sofa', 'Contemporary');
+INSERT INTO [dbo].[Furniture] VALUES ('Chair2','With its back-to-nature sensibility, this dining room side chair is a natural fit.', 1.25, 25, 25, 'DRChair', 'Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Dining01','This modern counter-height table and barstool ensemble will highlight your dining', 2.25, 5, 5, 'DiningSet', 'Modern');
+INSERT INTO [dbo].[Furniture] VALUES ('Dining02','This dining package adds an air of playful simplicity to your dining space', 2.25, 5, 5, 'DiningSet', 'MidCentury Modern');

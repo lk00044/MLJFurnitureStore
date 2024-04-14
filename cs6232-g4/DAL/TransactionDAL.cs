@@ -139,11 +139,12 @@ namespace Employees.DAL
 
             string selectStatement =
                 "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
-                        "li.line_item_id, li.quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
+                        "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
                         "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
                 "FROM RentalTransaction r " +
                 "JOIN RentalLineItem li " +
                 "ON r.transaction_id = li.rental_transaction_id " +
+                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
                 "JOIN StoreMember m " +
                 "ON r.member_id = m.member_id " +
                 "JOIN Furniture f " +
@@ -228,7 +229,7 @@ namespace Employees.DAL
             return transaction.TransactionID != 0;
         }
 
-        public bool CreateReturnTransaction(List<RentalLineItem> lineItems)
+        public List<double> CreateReturnTransaction(List<RentalLineItem> lineItems)
         {
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -257,15 +258,12 @@ namespace Employees.DAL
                     foreach (RentalLineItem lineItem in lineItems)
                     {
                         command.CommandText = $"INSERT INTO [dbo].[ReturnLineItem] VALUES (@lineItemId,{returnTxnId},@quantity);";
-                        command.Parameters.Add("@lineItemId", System.Data.SqlDbType.Int);
-                        command.Parameters.Add("@quantity", System.Data.SqlDbType.Int);
-                        command.Parameters["@lineItemId"].Value = lineItem.LineItemId;
-                        command.Parameters["@quantity"].Value = lineItem.Quantity;
+                        command.Parameters.AddWithValue("@lineItemId", lineItem.LineItemId);
+                        command.Parameters.AddWithValue("@quantity", lineItem.Quantity);
                         command.ExecuteNonQuery();
                         // update total amount with refunds
                         command.CommandText = $"SELECT daily_rental_rate FROM [dbo].[Furniture] WHERE furniture_id=@FurnitureId;";
-                        command.Parameters.Add("@FurnitureId", System.Data.SqlDbType.Int);
-                        command.Parameters["@FurnitureId"].Value = lineItem.FurnitureId;
+                        command.Parameters.AddWithValue("@FurnitureId", lineItem.FurnitureId);
                         double rentalRate = double.Parse(command.ExecuteScalar().ToString());
                         double fineOrRefund = (DateTime.Now - lineItem.DueDate).Days * rentalRate;
                         txnTotalChange += fineOrRefund;
@@ -274,16 +272,16 @@ namespace Employees.DAL
                         command.ExecuteNonQuery();
                         // Update rental transaction total with fine or refund
                         command.CommandText = $"UPDATE [dbo].[RentalTransaction] SET total_amount=total_amount+{fineOrRefund} WHERE transaction_id=@RentalTransactionId;";
-                        command.Parameters.Add("@RentalTransactionId", System.Data.SqlDbType.Int);
-                        command.Parameters["@RentalTransactionId"].Value = lineItem.RentalTransactionId;
+                        command.Parameters.AddWithValue("@RentalTransactionId", lineItem.RentalTransactionId);
                         command.ExecuteNonQuery();
+                        command.Parameters.Clear();
                     }
                     // Update return transaction with fine or refund
-                    command.CommandText = $"UPDATE [dbo].[ReturnTransaction] SET fine={txnTotalChange} WHERE return_transaction_id={returnTxnId}";
+                    command.CommandText = $"UPDATE [dbo].[ReturnTransaction] SET fine_or_refund={txnTotalChange} WHERE return_transaction_id={returnTxnId}";
                     command.ExecuteNonQuery();
                     // Attempt to commit the transaction.
                     transaction.Commit();
-                    Console.WriteLine("Both records are written to database.");
+                    return [returnTxnId,txnTotalChange];
                 }
                 catch (Exception ex)
                 {
@@ -303,9 +301,9 @@ namespace Employees.DAL
                         Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
                         Console.WriteLine("  Message: {0}", ex2.Message);
                     }
+                    return [0,0];
                 }
             }
-            return true;
         }
 
     }

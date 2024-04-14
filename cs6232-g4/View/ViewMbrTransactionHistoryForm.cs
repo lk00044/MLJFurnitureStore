@@ -34,7 +34,7 @@ namespace cs6232_g4.View
             this.MemberID = mbrID;
             this.MemberName = memberName;
             bindingSource1 = new BindingSource();
-            this.errorLabel.ForeColor = Color.Red;
+            this.infoMessageLabel.ForeColor = Color.Red;
         }
 
         private void ViewMbrTransactionHistoryForm_Load(object sender, EventArgs e)
@@ -111,11 +111,11 @@ namespace cs6232_g4.View
         }
         private void MemberTransactionsDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.errorLabel.Text = "";
+            this.infoMessageLabel.Text = "";
 
             if (MemberTransactionsDataGridView.SelectedRows.Count != 1)
             {
-                this.errorLabel.Text = "You must select one item to add to cart.";
+                this.infoMessageLabel.Text = "You must select one item to add to cart.";
             }
             else
             {
@@ -155,7 +155,7 @@ namespace cs6232_g4.View
             }
             else
             {
-                this.errorLabel.Text = "cannot update an item not in cart";
+                this.infoMessageLabel.Text = "cannot update an item not in cart";
             }
         }
 
@@ -170,36 +170,82 @@ namespace cs6232_g4.View
             }
             else
             {
-                this.errorLabel.Text = "cannot remove an item not in cart";
+                this.infoMessageLabel.Text = "cannot remove an item not in cart";
             }
         }
 
         private bool IsValidInput(bool isUpdate)
         {
-            this.errorLabel.Text = string.Empty;
+            this.infoMessageLabel.Text = string.Empty;
             if (this.selectedLineItem.FurnitureId == 0)
             {
-                this.errorLabel.Text = "You must select one item to add to cart.";
+                this.infoMessageLabel.Text = "You must select one item to add to cart.";
                 return false;
             }
             else if (!isUpdate && this.rentalLineItemList.Find(item => item.FurnitureId == this.selectedLineItem.FurnitureId) != null)
             {
-                this.errorLabel.Text = "cannot add an item already in return cart";
+                this.infoMessageLabel.Text = "cannot add an item already in return cart";
                 return false;
             }
-            else if (this.quantityTextBox.Text == string.Empty || this.quantityTextBox.Text == "0" || !int.TryParse(this.quantityTextBox.Text,out _))
+            else if (this.quantityTextBox.Text == string.Empty || this.quantityTextBox.Text == "0" || !int.TryParse(this.quantityTextBox.Text, out _))
             {
-                this.errorLabel.Text = "Please enter valid quantity";
+                this.infoMessageLabel.Text = "Please enter valid quantity";
                 return false;
             }
             else if (int.Parse(this.quantityTextBox.Text) > this.selectedLineItem.Quantity)
             {
-                this.errorLabel.Text = "returned quantity must be less or equal to rented quantity";
+                this.infoMessageLabel.Text = "returned quantity must be less or equal to rented quantity";
                 return false;
             }
             return true;
         }
 
+        private void SubmitOrderButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to submit?" , "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(result == DialogResult.Yes)
+            {
+                try
+                {
+                    List<double> txnDetails = this._transactionController.CreateReturnTransaction(this.rentalLineItemList);
+                    this.CreateReceipt(txnDetails[0], txnDetails[1]);
+                }
+                catch
+                {
+                    this.infoMessageLabel.Text = "failed to return items please try again later.";
+                }
+            }
+            
+        }
+
+        /// <summary>
+        /// helper constuctrs a receipt 
+        /// </summary>
+        private void CreateReceipt(double returnTxnId, double refund_or_fine)
+        {
+            this.infoMessageLabel.Text = "Items returned successfully!";
+            this.infoMessageLabel.ForeColor = Color.Green;
+            string lineItemsInfo = "";
+            foreach (RentalLineItem lineItem in this.rentalLineItemList)
+            {
+                lineItemsInfo += "    Rental Txn ID: " + lineItem.RentalTransactionId + ", Item ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + "\n";
+            }
+            string receipt = "Return Transaction ID: " + returnTxnId + "\n"
+            + "Fine or refund: " + refund_or_fine.ToString("F") + "\n"
+            + "Items Info: \n"
+            + lineItemsInfo;
+            MessageBox.Show(receipt, "Rental Receipt");
+            this.ResetFields();
+        }
+
+        public void ResetFields()
+        {
+            this.quantityTextBox.Text = string.Empty;
+            this.infoMessageLabel.Text = string.Empty;
+            this.cartListView.Items.Clear();
+            this.rentalLineItemList.Clear();
+            this.ShowTransactions();
+        }
     }
 }
 

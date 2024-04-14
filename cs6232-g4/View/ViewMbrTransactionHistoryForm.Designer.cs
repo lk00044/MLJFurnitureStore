@@ -43,7 +43,7 @@
             label3 = new Label();
             submitOrderButton = new Button();
             button1 = new Button();
-            errorLabel = new Label();
+            infoMessageLabel = new Label();
             button2 = new Button();
             button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).BeginInit();
@@ -181,6 +181,7 @@
             submitOrderButton.TabIndex = 34;
             submitOrderButton.Text = "Submit Return";
             submitOrderButton.UseVisualStyleBackColor = true;
+            submitOrderButton.Click += SubmitOrderButton_Click;
             // 
             // button1
             // 
@@ -193,14 +194,14 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += AddToCartButton_Click;
             // 
-            // errorLabel
+            // infoMessageLabel
             // 
-            errorLabel.AutoSize = true;
-            errorLabel.Font = new Font("Segoe UI Semibold", 7F);
-            errorLabel.Location = new Point(58, 9);
-            errorLabel.Name = "errorLabel";
-            errorLabel.Size = new Size(0, 12);
-            errorLabel.TabIndex = 36;
+            infoMessageLabel.AutoSize = true;
+            infoMessageLabel.Font = new Font("Segoe UI Semibold", 7F);
+            infoMessageLabel.Location = new Point(58, 9);
+            infoMessageLabel.Name = "infoMessageLabel";
+            infoMessageLabel.Size = new Size(0, 12);
+            infoMessageLabel.TabIndex = 36;
             // 
             // button2
             // 
@@ -232,7 +233,7 @@
             ClientSize = new Size(770, 329);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(errorLabel);
+            Controls.Add(infoMessageLabel);
             Controls.Add(button1);
             Controls.Add(submitOrderButton);
             Controls.Add(cartListView);
@@ -271,7 +272,7 @@
         private Label label3;
         private Button submitOrderButton;
         private Button button1;
-        private Label errorLabel;
+        private Label infoMessageLabel;
         private Button button2;
         private Button button3;
     }

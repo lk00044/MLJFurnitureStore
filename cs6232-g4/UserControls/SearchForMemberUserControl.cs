@@ -57,15 +57,6 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
-            List<RentalLineItem> lineItems = new List<RentalLineItem>();
-            RentalLineItem lineItem = new RentalLineItem();
-            lineItem.LineItemId = 1;
-            lineItem.Quantity = 2;
-            lineItem.RentalTransactionId = 1;
-            lineItem.FurnitureId = 1;
-            lineItem.DueDate = DateTime.Parse("2024-04-06 00:00:00.000");
-            lineItems.Add(lineItem);
-            this._transactionController.CreateReturnTransaction(lineItems);
             try
             {
                 this.ErrorLabel.Text = string.Empty;
