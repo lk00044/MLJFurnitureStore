@@ -1,5 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
+using Members.Controller;
 using System.Data.SqlClient;
 
 
@@ -138,11 +139,12 @@ namespace Employees.DAL
 
             string selectStatement =
                 "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
-                        "li.line_item_id, li.quantity, li.subtotal, f.name as furniture_name, " +
+                        "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
                         "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
                 "FROM RentalTransaction r " +
                 "JOIN RentalLineItem li " +
                 "ON r.transaction_id = li.rental_transaction_id " +
+                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
                 "JOIN StoreMember m " +
                 "ON r.member_id = m.member_id " +
                 "JOIN Furniture f " +
@@ -175,6 +177,7 @@ namespace Employees.DAL
                             transaction.EmployeeName = reader["employee_name"].ToString();
                             transaction.TransactionDate = (DateTime)reader["transaction_date"];
                             transaction.LineItemId = (int)reader["line_item_id"];
+                            transaction.FurnitureID = (int)reader["furniture_id"];
                             transaction.FurnitureName = reader["furniture_name"].ToString();
                             transaction.DueDate = (DateTime)reader["due_date"];
                             transaction.LineItemQty = (int)reader["quantity"];
@@ -224,6 +227,83 @@ namespace Employees.DAL
                 }
             }
             return transaction.TransactionID != 0;
+        }
+
+        public List<double> CreateReturnTransaction(List<RentalLineItem> lineItems)
+        {
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+
+                // Start a local transaction.
+                transaction = connection.BeginTransaction();
+
+                // Must assign both transaction object and connection
+                // to Command object for a pending local transaction
+                command.Connection = connection;
+                command.Transaction = transaction;
+    
+                try
+                {
+                    //Create a return transaction and get its ID
+                    command.CommandText =
+                        "INSERT INTO [dbo].[ReturnTransaction] VALUES (NULL,GETDATE());" +
+                        "SELECT SCOPE_IDENTITY();";
+                    int returnTxnId = int.Parse(command.ExecuteScalar().ToString());
+                    //Create return line items for those returned rentals
+                    double txnTotalChange = 0;
+                    foreach (RentalLineItem lineItem in lineItems)
+                    {
+                        command.CommandText = $"INSERT INTO [dbo].[ReturnLineItem] VALUES (@lineItemId,{returnTxnId},@quantity);";
+                        command.Parameters.AddWithValue("@lineItemId", lineItem.LineItemId);
+                        command.Parameters.AddWithValue("@quantity", lineItem.Quantity);
+                        command.ExecuteNonQuery();
+                        // update total amount with refunds
+                        command.CommandText = $"SELECT daily_rental_rate FROM [dbo].[Furniture] WHERE furniture_id=@FurnitureId;";
+                        command.Parameters.AddWithValue("@FurnitureId", lineItem.FurnitureId);
+                        double rentalRate = double.Parse(command.ExecuteScalar().ToString());
+                        double fineOrRefund = (DateTime.Now - lineItem.DueDate).Days * rentalRate;
+                        txnTotalChange += fineOrRefund;
+                        //update returned furniture
+                        command.CommandText = $"UPDATE [dbo].[Furniture] SET instock_quantity=instock_quantity+@quantity WHERE furniture_id=@FurnitureId";
+                        command.ExecuteNonQuery();
+                        // Update rental transaction total with fine or refund
+                        command.CommandText = $"UPDATE [dbo].[RentalTransaction] SET total_amount=total_amount+{fineOrRefund} WHERE transaction_id=@RentalTransactionId;";
+                        command.Parameters.AddWithValue("@RentalTransactionId", lineItem.RentalTransactionId);
+                        command.ExecuteNonQuery();
+                        command.Parameters.Clear();
+                    }
+                    // Update return transaction with fine or refund
+                    command.CommandText = $"UPDATE [dbo].[ReturnTransaction] SET fine_or_refund={txnTotalChange} WHERE return_transaction_id={returnTxnId}";
+                    command.ExecuteNonQuery();
+                    // Attempt to commit the transaction.
+                    transaction.Commit();
+                    return [returnTxnId,txnTotalChange];
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                    Console.WriteLine("  Message: {0}", ex.Message);
+
+                    // Attempt to roll back the transaction.
+                    try
+                    {
+                        transaction.Rollback();
+                    }
+                    catch (Exception ex2)
+                    {
+                        // This catch block will handle any errors that may have occurred
+                        // on the server that would cause the rollback to fail, such as
+                        // a closed connection.
+                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                        Console.WriteLine("  Message: {0}", ex2.Message);
+                    }
+                    return [0,0];
+                }
+            }
         }
 
     }

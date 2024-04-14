@@ -1,4 +1,5 @@
-﻿using cs6232_g4.View;
+﻿using cs6232_g4.Model;
+using cs6232_g4.View;
 using Members.Controller;
 using Members.Model;
 
@@ -33,7 +34,6 @@ namespace cs6232_g4.UserControls
 
         private readonly MembersController _memberController;
         private readonly TransactionController _transactionController;
-
 
         public SearchForMemberUserControl()
         {

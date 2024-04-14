@@ -8,5 +8,6 @@
         public int FurnitureId { get; set; }
         public int Quantity { get; set; }
         public decimal Subtotal { get; set; }
+        public DateTime DueDate { get; set; }
     }
 }
