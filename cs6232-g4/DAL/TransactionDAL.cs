@@ -139,7 +139,7 @@ namespace Employees.DAL
 
             string selectStatement =
                 "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
-                        "li.line_item_id, li.quantity, li.subtotal, f.name as furniture_name, " +
+                        "li.line_item_id, li.quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
                         "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
                 "FROM RentalTransaction r " +
                 "JOIN RentalLineItem li " +
@@ -176,6 +176,7 @@ namespace Employees.DAL
                             transaction.EmployeeName = reader["employee_name"].ToString();
                             transaction.TransactionDate = (DateTime)reader["transaction_date"];
                             transaction.LineItemId = (int)reader["line_item_id"];
+                            transaction.FurnitureID = (int)reader["furniture_id"];
                             transaction.FurnitureName = reader["furniture_name"].ToString();
                             transaction.DueDate = (DateTime)reader["due_date"];
                             transaction.LineItemQty = (int)reader["quantity"];
