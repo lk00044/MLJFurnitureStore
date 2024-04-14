@@ -80,7 +80,7 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.Columns[6].DefaultCellStyle.Format = "MM/dd/yyyy";
             this.MemberTransactionsDataGridView.Columns[7].HeaderText = "Furniture ID";
             this.MemberTransactionsDataGridView.Columns[8].HeaderText = "Furniture Name";
-            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Quantity";
+            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Remaining Quantity";
             this.MemberTransactionsDataGridView.Columns[10].HeaderText = "SubTotal";
             this.MemberTransactionsDataGridView.Columns[10].DefaultCellStyle.Format = "c";
             this.MemberTransactionsDataGridView.Columns[11].HeaderText = "Transaction Total";
