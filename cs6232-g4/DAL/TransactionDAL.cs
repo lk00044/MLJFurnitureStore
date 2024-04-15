@@ -306,6 +306,70 @@ namespace Employees.DAL
             }
         }
 
+        /// <summary>
+        /// Gets a list of member returns.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>List of rental transactions</returns>
+        public List<ReturnLineItem> GetMemberReturns(int memberID)
+        {
+
+            List<ReturnLineItem> ReturnsList = new List<ReturnLineItem>();
+
+            string selectStatement =
+                "SELECT r.return_transaction_id, r.transaction_date, r.total_amount, r.member_id, " +
+                        "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, f.furniture_id as furniture_id,f.name as furniture_name, " +
+                        "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
+                "FROM RentalTransaction r " +
+                "JOIN RentalLineItem li " +
+                "ON r.return_transaction_id = li.rental_return_transaction_id " +
+                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
+                "JOIN StoreMember m " +
+                "ON r.member_id = m.member_id " +
+                "JOIN Furniture f " +
+                "On li.furniture_id = f.furniture_id " +
+                "JOIN Employee e " +
+                "On r.employee_id = e.employee_id " +
+                "WHERE r.member_id = @memberID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@memberID", memberID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+
+
+                        while (reader.Read())
+                        {
+
+                            ReturnLineItem returnItm = new ReturnLineItem();
+
+                            returnItm.ReturnTransactionID = (int)reader["return_transaction_id"];
+                            returnItm.MemberId = (int)reader["member_id"];
+                            returnItm.EmployeeId = (int)reader["employee_id"];
+                            returnItm.EmployeeName = reader["employee_name"].ToString();
+                            returnItm.TransactionDate = (DateTime)reader["transaction_date"];
+                            returnItm.LineItemID = (int)reader["line_item_id"];
+                            returnItm.FurnitureID = (int)reader["furniture_id"];
+                            returnItm.FurnitureName = reader["furniture_name"].ToString();
+                            returnItm.Quantity = (int)reader["quantity"];
+
+                            ReturnsList.Add(returnItm);
+
+                        }
+                    }
+                }
+            }
+            return ReturnsList;
+
+        }
+
     }
 
 

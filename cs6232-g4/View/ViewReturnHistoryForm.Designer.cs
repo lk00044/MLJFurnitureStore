@@ -1,6 +1,6 @@
 ﻿namespace cs6232_g4.View
 {
-    partial class ViewReturnHistory
+    partial class ViewReturnHistoryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             ReturnHistLayoutPanel = new TableLayoutPanel();
-            ReturnsDataGridView = new DataGridView();
-            TransactionDALBindingSource = new BindingSource(components);
-            MemberNameLabel = new Label();
             MemberIDLabel = new Label();
+            ReturnsDataGridView = new DataGridView();
+            MemberNameLabel = new Label();
+            TransactionDALBindingSource = new BindingSource(components);
             ReturnHistLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TransactionDALBindingSource).BeginInit();
@@ -52,29 +52,9 @@
             ReturnHistLayoutPanel.RowCount = 3;
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 34.83146F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 65.16854F));
-            ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 277F));
-            ReturnHistLayoutPanel.Size = new Size(427, 367);
+            ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 333F));
+            ReturnHistLayoutPanel.Size = new Size(427, 414);
             ReturnHistLayoutPanel.TabIndex = 0;
-            ReturnHistLayoutPanel.Paint += ReturnHistLayoutPanel_Paint;
-            // 
-            // ReturnsDataGridView
-            // 
-            ReturnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReturnHistLayoutPanel.SetColumnSpan(ReturnsDataGridView, 2);
-            ReturnsDataGridView.Location = new Point(3, 92);
-            ReturnsDataGridView.Name = "ReturnsDataGridView";
-            ReturnsDataGridView.RowHeadersWidth = 51;
-            ReturnsDataGridView.Size = new Size(421, 272);
-            ReturnsDataGridView.TabIndex = 1;
-            // 
-            // MemberNameLabel
-            // 
-            MemberNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            MemberNameLabel.Location = new Point(3, 31);
-            MemberNameLabel.Name = "MemberNameLabel";
-            MemberNameLabel.Size = new Size(207, 29);
-            MemberNameLabel.TabIndex = 25;
-            MemberNameLabel.Text = "Member Name: ";
             // 
             // MemberIDLabel
             // 
@@ -85,13 +65,32 @@
             MemberIDLabel.TabIndex = 26;
             MemberIDLabel.Text = "Member ID: ";
             // 
-            // ViewReturnHistory
+            // ReturnsDataGridView
+            // 
+            ReturnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ReturnHistLayoutPanel.SetColumnSpan(ReturnsDataGridView, 2);
+            ReturnsDataGridView.Location = new Point(3, 83);
+            ReturnsDataGridView.Name = "ReturnsDataGridView";
+            ReturnsDataGridView.RowHeadersWidth = 51;
+            ReturnsDataGridView.Size = new Size(421, 328);
+            ReturnsDataGridView.TabIndex = 1;
+            // 
+            // MemberNameLabel
+            // 
+            MemberNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            MemberNameLabel.Location = new Point(3, 28);
+            MemberNameLabel.Name = "MemberNameLabel";
+            MemberNameLabel.Size = new Size(207, 29);
+            MemberNameLabel.TabIndex = 25;
+            MemberNameLabel.Text = "Member Name: ";
+            // 
+            // ViewReturnHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(691, 450);
+            ClientSize = new Size(691, 510);
             Controls.Add(ReturnHistLayoutPanel);
-            Name = "ViewReturnHistory";
+            Name = "ViewReturnHistoryForm";
             Text = "Return History";
             ReturnHistLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).EndInit();
