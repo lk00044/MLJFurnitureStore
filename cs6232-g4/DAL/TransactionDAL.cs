@@ -1,6 +1,5 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
-using Members.Controller;
 using System.Data.SqlClient;
 
 
