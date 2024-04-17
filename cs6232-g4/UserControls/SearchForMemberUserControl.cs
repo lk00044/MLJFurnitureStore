@@ -1,4 +1,4 @@
-﻿using cs6232_g4.Model;
+﻿
 using cs6232_g4.View;
 using Members.Controller;
 using Members.Model;
