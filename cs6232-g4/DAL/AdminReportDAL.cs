@@ -37,9 +37,9 @@ namespace cs6232_g4.DAL
         ///    furniture among all the people who rented the qualified furniture during 
         ///    the specified period.
 
-        public IList<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
+        public List<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
         {
-            IList<AdminReport> reportData = new List<AdminReport>();
+            List<AdminReport> reportData = new List<AdminReport>();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -65,8 +65,7 @@ namespace cs6232_g4.DAL
                             data.PctOfQualifyingTransactions = (decimal)reader["pct_qualifying_transactions"];
                             data.TotalRentalsOfInterest = (int)reader["total_qualifying_trans"];
                             data.PctOfMembers18To29 = (decimal)reader["pct_18_to_29"];
-                            data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];
-                            
+                            data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];                            
 
                             reportData.Add(data);
                         }
@@ -110,7 +109,6 @@ namespace cs6232_g4.DAL
                         while (reader.Read())
                         {
                             totalOverallTransactions = (int)reader["total"];
-
                         }
                     }
                 }
