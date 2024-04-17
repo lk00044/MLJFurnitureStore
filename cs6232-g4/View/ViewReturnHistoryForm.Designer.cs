@@ -84,6 +84,10 @@
             MemberNameLabel.TabIndex = 25;
             MemberNameLabel.Text = "Member Name: ";
             // 
+            // TransactionDALBindingSource
+            // 
+            TransactionDALBindingSource.DataSource = typeof(Employees.DAL.TransactionDAL);
+            // 
             // ViewReturnHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
