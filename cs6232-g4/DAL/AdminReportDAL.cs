@@ -62,9 +62,11 @@ namespace cs6232_g4.DAL
                             data.FurnitureId = (int)reader["furniture_id"];
                             data.Name = (string)reader["name"];
                             data.CategoryName = (string)reader["category_name"];
+                            data.PctOfQualifyingTransactions = (decimal)reader["pct_qualifying_transactions"];
+                            data.TotalRentalsOfInterest = (int)reader["total_qualifying_trans"];
                             data.PctOfMembers18To29 = (decimal)reader["pct_18_to_29"];
                             data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];
-                            data.TotalRentals = (int)reader["total_transactions"];
+                            
 
                             reportData.Add(data);
                         }
@@ -85,11 +87,13 @@ namespace cs6232_g4.DAL
         {
             int totalOverallTransactions = 0;
 
-
             string selectStatement =
-                "SELECT count(transaction_id) as total " +
-                "FROM RentalTransaction " +
-                "WHERE transaction_date between @StartDate and @EndDate"
+                "SELECT count(rt.transaction_id) as total, li.furniture_id " +
+                "FROM RentalTransaction rt " +
+                "INNER JOIN RentalLineItem li " +
+                "ON rt.transaction_id = li.rental_transaction_id " +
+                "WHERE rt.transaction_date between @StartDate and @EndDate " +
+                "GROUPBY li.furniture_id "
             ;
 
             using (SqlConnection connection = DBConnection.GetConnection())
@@ -106,6 +110,7 @@ namespace cs6232_g4.DAL
                         while (reader.Read())
                         {
                             totalOverallTransactions = (int)reader["total"];
+
                         }
                     }
                 }

@@ -12,9 +12,9 @@
 
         public string CategoryName { get; set; }
 
-        public int TotalRentals { get; set; }
+        public int TotalRentalsOfInterest { get; set; }
 
-        public decimal PctOfTransactions { get; set; }
+        public decimal PctOfQualifyingTransactions { get; set; }
 
         public decimal PctOfMembers18To29 { get; set; }
 
