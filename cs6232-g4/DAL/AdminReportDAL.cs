@@ -25,8 +25,7 @@ namespace cs6232_g4.DAL
         /// 3) furniture name, 
         /// 4) the total number of rental transactions in which the qualified furniture 
         ///    was rented during the specified period, 
-        /// 5) the total number of all the furniture rental transactions(occurred) 
-        ///    during the specified period, 
+
         /// 6) the percentage of the number in 4) over the number in 5), 
         /// 7) the percentage of members aged 18-29 (at the time when the 
         ///    furniture was rented) who rented the qualified furniture among all 
@@ -38,63 +37,34 @@ namespace cs6232_g4.DAL
         ///    furniture among all the people who rented the qualified furniture during 
         ///    the specified period.
 
-        public List<AdminReport> getAdminReport(DateTime StartDate, DateTime EndDate)
+        public IList<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
         {
-            List<AdminReport> reportData = new List<AdminReport>();
-
-            /// Get all rentals on furniture that have more than 1 rental
-            string selectStatement =
-               "SELECT  f.furniture_id, f.name, f.category_name, " +
-               "        count(rt.transaction_id) as totalTransactions " +
-               "        count(li.line_item_id) as totalRentals " +
-               "        count(mbr.member_id) as totalNumOfMembers " +
-               "        rt.transaction_date, mbr.date_of_birth " +
-
-
-               "        concat(round((COUNT(IF(DATE_FORMAT(FROM_DAYS(DATEDIFF(rt.transaction_date, mbr.date_of_birth)), '%Y') > 17 and " +
-               "        DATE_FORMAT(FROM_DAYS(DATEDIFF(rt.transaction_date, mbr.date_of_birth)), '%Y') < 30, mbr.member_id, NULL)) / " +
-               "        count(mbr.member_id)), 2) * 100) as pct_18_to_29, " +
-
-               "        pct_out_of_age_range as (100 - pct_18_to_29) " +
-
-               "        FROM Furniture f " +
-
-               "        INNER JOIN RentalTransaction rt " +
-               "        ON f.furniture_id = rt.furniture_id " +
-
-               "        INNER JOIN RentalLineItem li " +
-               "        ON rt.transaction_id = li.transaction_id " +
-
-               "        INNER JOIN StoreMember mbr " +
-               "        ON rt.member_id = mbr.member_id " +
-
-                        "WHERE totalRentals > 1 and " +
-                        "and (rt.transaction_date between @StartDate and @EndDate) "
-               ;
-
+            IList<AdminReport> reportData = new List<AdminReport>();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                using (SqlCommand selectCommand = new SqlCommand("GetAdminReport", connection))
                 {
-
                     selectCommand.Parameters.Add(new SqlParameter("@StartDate", StartDate));
                     selectCommand.Parameters.Add(new SqlParameter("@EndDate", EndDate));
+                    selectCommand.Parameters["@StartDate"].Direction = System.Data.ParameterDirection.Input;
+                    selectCommand.Parameters["@EndDate"].Direction = System.Data.ParameterDirection.Input;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        AdminReport data = new AdminReport(); ;
+                        AdminReport data;
 
                         while (reader.Read())
                         {
                             data = new AdminReport();
                             data.FurnitureId = (int)reader["furniture_id"];
                             data.Name = (string)reader["name"];
-                            data.CategoryName = (string)reader["category"];
-                            data.PctOfMembers18To29 = pct_18_to_29;
-                            data.TotalRentals = (int)totalRentals;
+                            data.CategoryName = (string)reader["category_name"];
+                            data.PctOfMembers18To29 = (decimal)reader["pct_18_to_29"];
+                            data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];
+                            data.TotalRentals = (int)reader["total_transactions"];
 
                             reportData.Add(data);
                         }
@@ -102,6 +72,47 @@ namespace cs6232_g4.DAL
                 }
             }
             return reportData;
+        }
+
+        /// <summary>
+        /// 5) the total number of all the furniture rental transactions(occurred) 
+        ///    during the specified period, 
+        /// </summary>
+        /// <param name="StartDate">The start date.</param>
+        /// <param name="EndDate">The end date.</param>
+        /// <returns>total number of transactions between dates inclusively</returns>
+        public int getTotalOverallTransactions(DateTime StartDate, DateTime EndDate)
+        {
+            int totalOverallTransactions = 0;
+
+
+            string selectStatement =
+                "SELECT count(transaction_id) as total " +
+                "FROM RentalTransaction " +
+                "WHERE transaction_date between @StartDate and @EndDate"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@StartDate", StartDate));
+                    selectCommand.Parameters.Add(new SqlParameter("@EndDate", EndDate));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            totalOverallTransactions = (int)reader["total"];
+                        }
+                    }
+                }
+            }
+
+            return totalOverallTransactions;
+
         }
     }
 }
