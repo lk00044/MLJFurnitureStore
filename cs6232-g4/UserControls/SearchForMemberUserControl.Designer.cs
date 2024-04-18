@@ -133,7 +133,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 9F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel1.Size = new Size(837, 565);
+            tableLayoutPanel1.Size = new Size(837, 566);
             tableLayoutPanel1.TabIndex = 10;
             // 
             // MembersDataGridView
@@ -147,7 +147,7 @@
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(831, 315);
+            MembersDataGridView.Size = new Size(832, 314);
             MembersDataGridView.TabIndex = 14;
             MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
@@ -246,6 +246,21 @@
         }
 
         #endregion
-
+        private Label MatchingMembersLabel;
+        private Button FindMemberButton;
+        private TextBox MbrPhoneNumTextBox;
+        private TextBox MbrIDTextBox;
+        private TextBox MbrFNameTextBox;
+        private TextBox MbrLNameTextBox;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label EnterMbrIDlabel;
+        private Label EnterMbrLNameLabel;
+        private Label EnterMbrFNameLabel;
+        private Label EnterMbrPhoneNumLabel;
+        private Label SearchInstructionsLabel;
+        private Label ErrorLabel;
+        private DataGridView MembersDataGridView;
+        private Button UpdateMbrButton;
+        private Button ViewTransactionsButton;
     }
 }
