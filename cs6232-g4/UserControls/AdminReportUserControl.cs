@@ -62,29 +62,6 @@ namespace cs6232_g4.UserControls
             this.InfoLabel.Text = "Report as of " + this.Current.ToString();
         }
 
-        private void SetUpGridHeaders()
-        {
-          
-            this.ReportDataGridView.AutoGenerateColumns = false;
-            this.ReportDataGridView.AutoSize = true;
-            this.ReportDataGridView.Columns[0].Width = 100;
-            this.ReportDataGridView.Columns[0].HeaderText = "Furniture ID";
-            this.ReportDataGridView.Columns[1].Width = 200;
-            this.ReportDataGridView.Columns[1].HeaderText = "Furniture Name";
-            this.ReportDataGridView.Columns[2].Width = 150;
-            this.ReportDataGridView.Columns[2].HeaderText = "Furniture Category";
-            this.ReportDataGridView.Columns[3].Width = 150;
-            this.ReportDataGridView.Columns[3].HeaderText = "Total Transactions";
-            this.ReportDataGridView.Columns[4].Width = 250;
-            this.ReportDataGridView.Columns[4].HeaderText = "Total Qualifying Transactions";
-            this.ReportDataGridView.Columns[5].Width = 250;
-            this.ReportDataGridView.Columns[5].DefaultCellStyle.Format = "p";
-            this.ReportDataGridView.Columns[5].HeaderText = "Pct. of Qualifying Transactions";
-            this.ReportDataGridView.Columns[6].Width = 200;
-            this.ReportDataGridView.Columns[6].HeaderText = "Pct. of Ages 18 - 29";
-            this.ReportDataGridView.Columns[7].Width = 200;
-            this.ReportDataGridView.Columns[7].HeaderText = "Pct. of Ages Over 29";
-        }
 
         /// <summary>
         /// Clears the grid.
