@@ -33,12 +33,12 @@
             SelectStartDatelabel = new Label();
             GetReportButton = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            InfoLabel = new Label();
             StartDateTimePicker = new DateTimePicker();
             ReportDataGridView = new DataGridView();
             EndDateTimePicker = new DateTimePicker();
             StartDateErrorLabel = new Label();
             EndDateErrorLabel = new Label();
-            InfoLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportDataGridView).BeginInit();
             SuspendLayout();
@@ -111,6 +111,16 @@
             tableLayoutPanel1.Size = new Size(837, 565);
             tableLayoutPanel1.TabIndex = 12;
             // 
+            // InfoLabel
+            // 
+            InfoLabel.Font = new Font("Segoe UI", 11F);
+            InfoLabel.ForeColor = Color.Red;
+            InfoLabel.Location = new Point(509, 107);
+            InfoLabel.Name = "InfoLabel";
+            InfoLabel.Size = new Size(326, 31);
+            InfoLabel.TabIndex = 38;
+            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // StartDateTimePicker
             // 
             StartDateTimePicker.Location = new Point(199, 3);
@@ -123,6 +133,7 @@
             // 
             ReportDataGridView.AllowUserToAddRows = false;
             ReportDataGridView.AllowUserToDeleteRows = false;
+            ReportDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             ReportDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(ReportDataGridView, 3);
             ReportDataGridView.Dock = DockStyle.Fill;
@@ -155,16 +166,6 @@
             EndDateErrorLabel.Name = "EndDateErrorLabel";
             EndDateErrorLabel.Size = new Size(304, 31);
             EndDateErrorLabel.TabIndex = 19;
-            // 
-            // InfoLabel
-            // 
-            InfoLabel.Font = new Font("Segoe UI", 11F);
-            InfoLabel.ForeColor = Color.Red;
-            InfoLabel.Location = new Point(509, 107);
-            InfoLabel.Name = "InfoLabel";
-            InfoLabel.Size = new Size(326, 31);
-            InfoLabel.TabIndex = 38;
-            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // AdminReportUserControl
             // 
