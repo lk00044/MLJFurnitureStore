@@ -34,12 +34,13 @@
             GetReportButton = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             StartDateTimePicker = new DateTimePicker();
-            MembersDataGridView = new DataGridView();
-            endDateTimePicker = new DateTimePicker();
+            ReportDataGridView = new DataGridView();
+            EndDateTimePicker = new DateTimePicker();
             StartDateErrorLabel = new Label();
             EndDateErrorLabel = new Label();
+            InfoLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ReportDataGridView).BeginInit();
             SuspendLayout();
             // 
             // InstructionsLabel
@@ -91,9 +92,9 @@
             tableLayoutPanel1.Controls.Add(GetReportButton, 2, 0);
             tableLayoutPanel1.Controls.Add(SelectStartDatelabel, 0, 0);
             tableLayoutPanel1.Controls.Add(StartDateTimePicker, 1, 0);
-            tableLayoutPanel1.Controls.Add(MembersDataGridView, 1, 4);
+            tableLayoutPanel1.Controls.Add(ReportDataGridView, 1, 4);
             tableLayoutPanel1.Controls.Add(SelectEndDateLabel, 0, 2);
-            tableLayoutPanel1.Controls.Add(endDateTimePicker, 1, 2);
+            tableLayoutPanel1.Controls.Add(EndDateTimePicker, 1, 2);
             tableLayoutPanel1.Controls.Add(StartDateErrorLabel, 1, 1);
             tableLayoutPanel1.Controls.Add(EndDateErrorLabel, 1, 3);
             tableLayoutPanel1.Location = new Point(13, 53);
@@ -116,27 +117,27 @@
             StartDateTimePicker.Size = new Size(250, 27);
             StartDateTimePicker.TabIndex = 15;
             // 
-            // MembersDataGridView
+            // ReportDataGridView
             // 
-            MembersDataGridView.AllowUserToAddRows = false;
-            MembersDataGridView.AllowUserToDeleteRows = false;
-            MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
-            MembersDataGridView.Dock = DockStyle.Fill;
-            MembersDataGridView.Location = new Point(3, 156);
-            MembersDataGridView.Name = "MembersDataGridView";
-            MembersDataGridView.ReadOnly = true;
-            MembersDataGridView.RowHeadersWidth = 51;
-            MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(832, 406);
-            MembersDataGridView.TabIndex = 17;
+            ReportDataGridView.AllowUserToAddRows = false;
+            ReportDataGridView.AllowUserToDeleteRows = false;
+            ReportDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanel1.SetColumnSpan(ReportDataGridView, 3);
+            ReportDataGridView.Dock = DockStyle.Fill;
+            ReportDataGridView.Location = new Point(3, 156);
+            ReportDataGridView.Name = "ReportDataGridView";
+            ReportDataGridView.ReadOnly = true;
+            ReportDataGridView.RowHeadersWidth = 51;
+            ReportDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ReportDataGridView.Size = new Size(832, 406);
+            ReportDataGridView.TabIndex = 17;
             // 
-            // endDateTimePicker
+            // EndDateTimePicker
             // 
-            endDateTimePicker.Location = new Point(199, 74);
-            endDateTimePicker.Name = "endDateTimePicker";
-            endDateTimePicker.Size = new Size(250, 27);
-            endDateTimePicker.TabIndex = 16;
+            EndDateTimePicker.Location = new Point(199, 74);
+            EndDateTimePicker.Name = "EndDateTimePicker";
+            EndDateTimePicker.Size = new Size(250, 27);
+            EndDateTimePicker.TabIndex = 16;
             // 
             // StartDateErrorLabel
             // 
@@ -152,17 +153,26 @@
             EndDateErrorLabel.Size = new Size(304, 31);
             EndDateErrorLabel.TabIndex = 19;
             // 
+            // InfoLabel
+            // 
+            InfoLabel.ForeColor = Color.Red;
+            InfoLabel.Location = new Point(522, 7);
+            InfoLabel.Name = "InfoLabel";
+            InfoLabel.Size = new Size(328, 33);
+            InfoLabel.TabIndex = 38;
+            // 
             // AdminReportUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(InfoLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(InstructionsLabel);
             Name = "AdminReportUserControl";
             Size = new Size(861, 631);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)MembersDataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReportDataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,9 +185,10 @@
         private Label SelectStartDatelabel;
         private Label SelectEndDateLabel;
         private DateTimePicker StartDateTimePicker;
-        private DataGridView MembersDataGridView;
-        private DateTimePicker endDateTimePicker;
+        private DataGridView ReportDataGridView;
+        private DateTimePicker EndDateTimePicker;
         private Label StartDateErrorLabel;
         private Label EndDateErrorLabel;
+        public Label InfoLabel;
     }
 }

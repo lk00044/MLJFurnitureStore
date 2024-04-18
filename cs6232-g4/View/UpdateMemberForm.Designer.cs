@@ -475,7 +475,7 @@ namespace cs6232_g4.View
         #endregion
 
         //  private UserControls.EditMemberInfoUserControl editMemberInfoUserControl;
-        private UserControls.UpdateMemberInfoUserControl updateMemberInfoUserControl11;
+        private UserControls.UpdateMemberInfoUserControl updateMemberInfoUserControl;
         private Label fnameErrorLabel;
         private Label NewFNameLabel;
         private TextBox MbrNewLNameTextBox;

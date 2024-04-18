@@ -40,10 +40,13 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
+            AdminReportTabPage = new TabPage();
+            adminReportUserControl1 = new UserControls.AdminReportUserControl();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
+            AdminReportTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
@@ -94,9 +97,9 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(881, 680);
+            MbrTransTabPage.Size = new Size(192, 61);
             MbrTransTabPage.TabIndex = 3;
-            MbrTransTabPage.Text = "Member Transactions";
+            MbrTransTabPage.Text = "Rental Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl
@@ -114,9 +117,9 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(881, 677);
+            Search4MbrTabPage.Size = new Size(192, 61);
             Search4MbrTabPage.TabIndex = 1;
-            Search4MbrTabPage.Text = "Member Functions";
+            Search4MbrTabPage.Text = "Member Transactions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
             // search4Member
@@ -125,7 +128,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(875, 671);
+            search4Member.Size = new Size(186, 55);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
@@ -152,6 +155,7 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
+            MainDBTabControl.Controls.Add(AdminReportTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -160,6 +164,24 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
+            // 
+            // AdminReportTabPage
+            // 
+            AdminReportTabPage.Controls.Add(adminReportUserControl1);
+            AdminReportTabPage.Location = new Point(4, 35);
+            AdminReportTabPage.Name = "AdminReportTabPage";
+            AdminReportTabPage.Size = new Size(881, 677);
+            AdminReportTabPage.TabIndex = 4;
+            AdminReportTabPage.Text = "Admin Report";
+            AdminReportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adminReportUserControl1
+            // 
+            adminReportUserControl1.Dock = DockStyle.Top;
+            adminReportUserControl1.Location = new Point(0, 0);
+            adminReportUserControl1.Name = "adminReportUserControl1";
+            adminReportUserControl1.Size = new Size(881, 789);
+            adminReportUserControl1.TabIndex = 0;
             // 
             // DashboardForm
             // 
@@ -180,6 +202,7 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
+            AdminReportTabPage.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +220,7 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
+        private TabPage AdminReportTabPage;
+        private UserControls.AdminReportUserControl adminReportUserControl1;
     }
 }

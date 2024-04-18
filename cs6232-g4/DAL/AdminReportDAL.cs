@@ -62,8 +62,9 @@ namespace cs6232_g4.DAL
                             data.FurnitureId = (int)reader["furniture_id"];
                             data.Name = (string)reader["name"];
                             data.CategoryName = (string)reader["category_name"];
-                            data.PctOfQualifyingTransactions = (decimal)reader["pct_qualifying_transactions"];
                             data.TotalRentalsOfInterest = (int)reader["total_qualifying_trans"];
+                            data.TotalTransactions = (int)reader["total_transactions"];
+                            data.PctOfQualifyingTransactions = (decimal)reader["pct_qualifying_transactions"];
                             data.PctOfMembers18To29 = (decimal)reader["pct_18_to_29"];
                             data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];                            
 

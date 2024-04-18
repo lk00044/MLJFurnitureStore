@@ -38,6 +38,12 @@ namespace cs6232_g4
         {
             this.DisplayUserNameLabel.Text = userID;
             this.DisplayNameLabel.Text = userName;
+            this.AdminReportTabPage.Enabled = false;
+
+            if (this.verifyAdminLogin())
+            {
+                this.AdminReportTabPage.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -60,7 +66,33 @@ namespace cs6232_g4
             {
                 this.rentFurnitureUserControl.ResetFields();
             }
+            if (this.MainDBTabControl.SelectedIndex == 3)
+            {
+                if (this.verifyAdminLogin())
+                {
+                    this.AdminReportTabPage.Enabled = true;
+                }
+                else
+                {
+                    this.AdminReportTabPage.Enabled = false;
+                    this.adminReportUserControl1.InfoLabel.ForeColor = Color.Red;
+                    this.adminReportUserControl1.InfoLabel.Text = "Access by Admin Only";
+                }
+            }
         }
+
+        private bool verifyAdminLogin()
+        {
+            if (this.userID.ToLower().Equals("admin"))
+            {
+                return true;
+            }
+            else
+            { 
+                return false; 
+            }            
+        }
+
 
         /// <summary>
         /// Handles the LinkClicked event of the LogOutLinkLabel control to close the application
