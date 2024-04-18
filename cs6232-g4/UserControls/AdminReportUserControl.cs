@@ -64,10 +64,10 @@ namespace cs6232_g4.UserControls
 
         private void SetUpGridHeaders()
         {
-          //  this.ReportDataGridView.AutoResizeColumnHeadersHeight();
+          
             this.ReportDataGridView.AutoGenerateColumns = false;
             this.ReportDataGridView.AutoSize = true;
-            this.ReportDataGridView.Columns[0].Width = 120;
+            this.ReportDataGridView.Columns[0].Width = 100;
             this.ReportDataGridView.Columns[0].HeaderText = "Furniture ID";
             this.ReportDataGridView.Columns[1].Width = 200;
             this.ReportDataGridView.Columns[1].HeaderText = "Furniture Name";
@@ -75,7 +75,7 @@ namespace cs6232_g4.UserControls
             this.ReportDataGridView.Columns[2].HeaderText = "Furniture Category";
             this.ReportDataGridView.Columns[3].Width = 150;
             this.ReportDataGridView.Columns[3].HeaderText = "Total Transactions";
-            this.ReportDataGridView.Columns[4].Width = 200;
+            this.ReportDataGridView.Columns[4].Width = 250;
             this.ReportDataGridView.Columns[4].HeaderText = "Total Qualifying Transactions";
             this.ReportDataGridView.Columns[5].Width = 250;
             this.ReportDataGridView.Columns[5].DefaultCellStyle.Format = "p";
