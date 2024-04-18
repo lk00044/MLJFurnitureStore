@@ -69,20 +69,13 @@ namespace Members.Controller
         }
 
         /// <summary>
-        /// Create a return transaction ID
+        /// Gets the member return transactions.
         /// </summary>
-        /// <return>
-        /// created transaction id
-        /// </return>
-        public int CreateReturnTransactionID(ReturnTransaction transaction)
-        {
-            return this._transactionDAL.CreateReturnTransactionID(transaction);
-        }
-
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>list of return transactions for the member</returns>
         public List<ReturnTransaction> GetMemberReturns(int memberID)
         {
             return this._transactionDAL.GetMemberReturns(memberID);
         }
-
     }
 }

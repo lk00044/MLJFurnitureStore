@@ -59,20 +59,28 @@ namespace cs6232_g4.View
             this.ReturnsDataGridView.AutoGenerateColumns = false;
             this.ReturnsDataGridView.AutoSize = true;
             this.ReturnsDataGridView.Columns[0].HeaderText = "Return Transaction ID";
-            this.ReturnsDataGridView.Columns[1].HeaderText = "Return Transaction Date";
-            this.ReturnsDataGridView.Columns[1].DefaultCellStyle.Format = "MM/dd/yyyy";
-            this.ReturnsDataGridView.Columns[2].HeaderText = "Member ID";
-            this.ReturnsDataGridView.Columns[3].HeaderText = "Employee ID";
-            this.ReturnsDataGridView.Columns[4].HeaderText = "Employee Name";
-            this.ReturnsDataGridView.Columns[5].HeaderText = "Line Item ID";
-            this.ReturnsDataGridView.Columns[7].HeaderText = "Furniture ID";
-            this.ReturnsDataGridView.Columns[8].HeaderText = "Furniture Name";
+            this.ReturnsDataGridView.Columns[1].HeaderText = "Member ID";
+            this.ReturnsDataGridView.Columns[2].HeaderText = "Employee ID";
+            this.ReturnsDataGridView.Columns[3].HeaderText = "Employee Name";
+            this.ReturnsDataGridView.Columns[4].HeaderText = "Line Item ID";
+            this.ReturnsDataGridView.Columns[5].HeaderText = "Furniture ID";
+            this.ReturnsDataGridView.Columns[6].HeaderText = "Furniture Name";
+            this.ReturnsDataGridView.Columns[7].HeaderText = "Fine or Refund";
+            this.ReturnsDataGridView.Columns[8].HeaderText = "Return Date";
+            this.ReturnsDataGridView.Columns[8].DefaultCellStyle.Format = "MM/dd/yyyy";
 
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void ResetFields()
+        {
+            this.infoMessageLabel.Text = string.Empty;
+            this.returnLineItemList.Clear();
+            this.ShowReturns();
         }
     }
 }

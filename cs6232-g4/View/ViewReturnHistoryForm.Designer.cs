@@ -34,6 +34,7 @@
             ReturnsDataGridView = new DataGridView();
             MemberNameLabel = new Label();
             TransactionDALBindingSource = new BindingSource(components);
+            infoMessageLabel = new Label();
             ReturnHistLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TransactionDALBindingSource).BeginInit();
@@ -53,6 +54,7 @@
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 34.83146F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 65.16854F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 333F));
+            ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             ReturnHistLayoutPanel.Size = new Size(427, 414);
             ReturnHistLayoutPanel.TabIndex = 0;
             // 
@@ -88,18 +90,30 @@
             // 
             TransactionDALBindingSource.DataSource = typeof(Employees.DAL.TransactionDAL);
             // 
+            // infoMessageLabel
+            // 
+            infoMessageLabel.AutoSize = true;
+            infoMessageLabel.Font = new Font("Segoe UI Semibold", 7F);
+            infoMessageLabel.Location = new Point(31, 22);
+            infoMessageLabel.Name = "infoMessageLabel";
+            infoMessageLabel.Size = new Size(0, 15);
+            infoMessageLabel.TabIndex = 37;
+            // 
             // ViewReturnHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(691, 510);
+            Controls.Add(infoMessageLabel);
             Controls.Add(ReturnHistLayoutPanel);
             Name = "ViewReturnHistoryForm";
             Text = "Return History";
+            Load += ViewReturnHistory_Load;
             ReturnHistLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)TransactionDALBindingSource).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -109,5 +123,6 @@
         private BindingSource TransactionDALBindingSource;
         private Label MemberNameLabel;
         private Label MemberIDLabel;
+        private Label infoMessageLabel;
     }
 }

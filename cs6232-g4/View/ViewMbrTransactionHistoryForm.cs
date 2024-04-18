@@ -243,23 +243,6 @@ namespace cs6232_g4.View
             this.ResetFields();
         }
 
-        /// <summary>
-        /// creates the return transaction in the database 
-        /// </summary>
-        private void CreateReturnTransaction()
-        {
-            try
-            {
-                this.returnTransaction.EmployeeId = this._loginController.GetCurrentLogin().EmployeeId;
-                this.returnTransaction.MemberId = this.MemberID;
-                this.returnTransaction.ReturnTransactionID = this._transactionController.CreateReturnTransactionID(this.returnTransaction);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Failed to create return transaction" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         public void ResetFields()
         {
             this.quantityTextBox.Text = string.Empty;

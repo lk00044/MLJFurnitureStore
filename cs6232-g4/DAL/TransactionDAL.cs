@@ -2,6 +2,7 @@
 using cs6232_g4.Model;
 using Members.Controller;
 using System.Data.SqlClient;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 
 /// <summary>
@@ -13,6 +14,10 @@ using System.Data.SqlClient;
 /// Programmer: Leslie
 ///             GetMemberTransactions(int memberID)
 ///             VerifyMemberTransactionavailable(int memberID)
+/// Programmer: LM
+///             GetMemberReturns(int memberID)
+///             GetReturnLineItems(int returnTransactionID)
+///            
 /// </summary>
 /// 
 namespace Employees.DAL
@@ -139,12 +144,12 @@ namespace Employees.DAL
 
             string selectStatement =
                 "SELECT r.transaction_id, r.transaction_date, r.total_amount, r.due_date, r.member_id, " +
-                        "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
+                        "li.line_item_id, li.quantity - ISNULL(ri.quantity,0) as quantity, li.subtotal, f.furniture_id as furniture_id,f.name as furniture_name, " +
                         "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
                 "FROM RentalTransaction r " +
                 "JOIN RentalLineItem li " +
                 "ON r.transaction_id = li.rental_transaction_id " +
-                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
+                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
                 "JOIN StoreMember m " +
                 "ON r.member_id = m.member_id " +
                 "JOIN Furniture f " +
@@ -317,21 +322,17 @@ namespace Employees.DAL
             List<ReturnTransaction> ReturnsList = new List<ReturnTransaction>();
 
             string selectStatement =
-                "SELECT r.return_transaction_id, r.transaction_date, r.total_amount, r.member_id, " +
-                        "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, f.furniture_id as furniture_id,f.name as furniture_name, " +
-                        "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
+                "SELECT r.return_transaction_id, r.fine_or_refund, r.return_date, " +
+                "rl.line_item_id, rl.quantity - ISNULL(ri.quantity, 0) as quantity, " +
+                "f.furniture_id, f.name as furniture_name " +
                 "FROM ReturnTransaction r " +
-                "JOIN ReturnLineItem li " +
-                "ON r.return_transaction_id = li.rental_return_transaction_id " +
-                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
-                "JOIN StoreMember m " +
-                "ON r.member_id = m.member_id " +
-                "JOIN Furniture f " +
-                "On li.furniture_id = f.furniture_id " +
-                "JOIN Employee e " +
-                "On r.employee_id = e.employee_id " +
-                "WHERE r.member_id = @memberID"
-            ;
+                "JOIN ReturnLineItem rl ON r.return_transaction_id = rl.return_transaction_id " + // Join with ReturnLineItem to access line_item_id
+                "JOIN RentalLineItem rr ON rl.line_item_id = rr.line_item_id " + // Join with RentalLineItem to access furniture_id
+                "JOIN RentalTransaction rt ON rr.rental_transaction_id = rt.transaction_id " + // Join with RentalTransaction using transaction_id
+                "LEFT JOIN (SELECT line_item_id, SUM(quantity) as quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = rl.line_item_id " +
+                "JOIN Furniture f ON rr.furniture_id = f.furniture_id " + // Join with Furniture to access furniture details
+                "WHERE rt.member_id = @memberID";
+
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -344,26 +345,19 @@ namespace Employees.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
 
-
                         while (reader.Read())
                         {
-
                             ReturnTransaction returnTransaction = new ReturnTransaction();
 
                             returnTransaction.ReturnTransactionID = (int)reader["return_transaction_id"];
-                            returnTransaction.MemberId = (int)reader["member_id"];
-                            returnTransaction.EmployeeId = (int)reader["employee_id"];
-                            returnTransaction.EmployeeName = reader["employee_name"].ToString();
-                            returnTransaction.TransactionDate = (DateTime)reader["transaction_date"];
+                            returnTransaction.FineOrRefund = (decimal)reader["fine_or_refund"];
+                            returnTransaction.ReturnDate = (DateTime)reader["return_date"];
                             returnTransaction.LineItemID = (int)reader["line_item_id"];
                             returnTransaction.FurnitureID = (int)reader["furniture_id"];
                             returnTransaction.FurnitureName = reader["furniture_name"].ToString();
                             returnTransaction.Quantity = (int)reader["quantity"];
-                            returnTransaction.FineOrRefund = (decimal)reader["total_amount"];
-                            returnTransaction.ReturnDate = (DateTime)reader["transaction_date"];
 
                             ReturnsList.Add(returnTransaction);
-
                         }
                     }
                 }
@@ -380,13 +374,11 @@ namespace Employees.DAL
         public List<ReturnLineItem> GetReturnLineItems(int returnTransactionID)
         {
             List<ReturnLineItem> ReturnLineItemsList = new List<ReturnLineItem>();
-
             string selectStatement =
-                "SELECT line_item_id, name , ReturnLineItem.furniture_id, quantity, subtotal " +
+                "SELECT line_item_id, name , ReturnLineItem.furniture_id, quantity " +
                 "FROM ReturnLineItem " +
                 "JOIN Furniture ON Furniture.furniture_id = ReturnLineItem.furniture_id " +
-                "WHERE return_transaction_id = @returnTransactionID"
-            ;
+                "WHERE return_transaction_id = @returnTransactionID";
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -404,6 +396,7 @@ namespace Employees.DAL
                             returnLineItem.LineItemID = (int)reader["line_item_id"];
                             returnLineItem.Quantity = (int)reader["quantity"];
                             returnLineItem.ReturnTransactionID = returnTransactionID;
+
                             ReturnLineItemsList.Add(returnLineItem);
                         }
                     }
@@ -411,39 +404,6 @@ namespace Employees.DAL
             }
             return ReturnLineItemsList;
         }
-
-        /// <summary>
-        /// Create a rental transaction
-        /// </summary>
-        /// <return>
-        /// created transaction id
-        /// </return>
-        public int CreateReturnTransactionID(ReturnTransaction returnTransaction)
-        {
-            string insertCommand = $"INSERT INTO [dbo].[ReturnTransaction] VALUES (GETDATE(),@member_id,@employee_id,@fine_or_refund,@return_date)";
-            string retrieveCommand = "SELECT SCOPE_IDENTITY();";
-            string combinedQuery = $"{insertCommand};{retrieveCommand}";
-
-            using (SqlConnection connection = DBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(combinedQuery, connection))
-                {
-                  
-                    command.Parameters.Add("@fine_or_refund", System.Data.SqlDbType.Decimal);
-                    command.Parameters.Add("@return_date", System.Data.SqlDbType.DateTime);
-
-                    command.Parameters["@fine_or_refund"].Value = returnTransaction.FineOrRefund;
-                    command.Parameters["@return_date"].Value = returnTransaction.ReturnDate;
-
-                    return int.Parse(command.ExecuteScalar().ToString());
-                }
-
-            }
-
-        }
-
 
     }
 }
