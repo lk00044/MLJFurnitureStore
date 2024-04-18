@@ -1,6 +1,5 @@
 ﻿using cs6232_g4.Controller;
 using cs6232_g4.Model;
-using System.Windows.Forms;
 
 /// <summary>
 /// 
@@ -24,14 +23,14 @@ namespace cs6232_g4.UserControls
         public AdminReportUserControl()
         {
             InitializeComponent();
-            Start = DateTime.Now;
-            End = DateTime.Now;
+           // Start = DateTime.Now;
+           // End = DateTime.Now;
             Current = DateTime.Now;
             ReportData = new List<AdminReport>();
             _adminReportController = new AdminReportController();
         }
 
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -40,23 +39,9 @@ namespace cs6232_g4.UserControls
         public void GetReportButton_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (!String.IsNullOrEmpty(this.StartDateTimePicker.Value.ToShortDateString()))
-                {
-                    this.StartDateErrorLabel.Text = "Please select a start date. ";
-                }
-                else
-                {
-                    this.Start = this.StartDateTimePicker.Value.Date;
-                }
-                if (!String.IsNullOrEmpty(this.EndDateTimePicker.Value.ToShortDateString()))
-                {
-                    this.EndDateErrorLabel.Text = "Please select a end date. ";
-                }
-                else
-                {
-                    this.End = this.EndDateTimePicker.Value.Date;
-                }
+            {                
+                this.Start = this.StartDateTimePicker.Value.Date;
+                this.End = this.EndDateTimePicker.Value.Date;              
 
                 this.DisplayReport();
             }
@@ -64,15 +49,16 @@ namespace cs6232_g4.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-            
+
         }
 
         private void DisplayReport()
         {
-            this.ReportData = this._adminReportController.GetAdminReportData(this.Start, this.End);
             this.ReportDataGridView.DataSource = null;
+            this.ReportData = this._adminReportController.GetAdminReportData(this.Start, this.End);
             this.ReportDataGridView.DataSource = this.ReportData;
-            this.InfoLabel.Text = "Data as of " + this.Current.ToString();
+            this.InfoLabel.ForeColor = Color.Black;
+            this.InfoLabel.Text = "Report as of " + this.Current.ToString();
         }
 
         /// <summary>
@@ -81,6 +67,16 @@ namespace cs6232_g4.UserControls
         public void ClearGrid()
         {
             this.ReportDataGridView.Columns.Clear();
+        }
+
+        private void StartDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.Start = this.StartDateTimePicker.Value.Date;
+        }
+
+        private void EndDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.End = this.EndDateTimePicker.Value.Date;
         }
     }
 }

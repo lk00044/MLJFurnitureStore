@@ -37,9 +37,9 @@ namespace cs6232_g4.DAL
         ///    furniture among all the people who rented the qualified furniture during 
         ///    the specified period.
 
-        public List<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
+        public IList<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
         {
-            List<AdminReport> reportData = new List<AdminReport>();
+            var reportData = new List<AdminReport>();
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
@@ -47,6 +47,8 @@ namespace cs6232_g4.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand("GetAdminReport", connection))
                 {
+                    selectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
                     selectCommand.Parameters.Add(new SqlParameter("@StartDate", StartDate));
                     selectCommand.Parameters.Add(new SqlParameter("@EndDate", EndDate));
                     selectCommand.Parameters["@StartDate"].Direction = System.Data.ParameterDirection.Input;
@@ -64,9 +66,9 @@ namespace cs6232_g4.DAL
                             data.CategoryName = (string)reader["category_name"];
                             data.TotalRentalsOfInterest = (int)reader["total_qualifying_trans"];
                             data.TotalTransactions = (int)reader["total_transactions"];
-                            data.PctOfQualifyingTransactions = (decimal)reader["pct_qualifying_transactions"];
-                            data.PctOfMembers18To29 = (decimal)reader["pct_18_to_29"];
-                            data.PctOfRemainingMembers = (decimal)reader["pct_over_age_range"];                            
+                            data.PctOfQualifyingTransactions = (int)reader["pct_qualifying_transactions"];
+                            data.PctOfMembers18To29 = (int)reader["pct_18_to_29"];
+                            data.PctOfRemainingMembers = (int)reader["pct_over_age_range"];                            
 
                             reportData.Add(data);
                         }

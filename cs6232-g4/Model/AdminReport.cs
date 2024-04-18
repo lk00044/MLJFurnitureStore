@@ -16,11 +16,11 @@
 
         public int TotalTransactions { get; set; }
 
-        public decimal PctOfQualifyingTransactions { get; set; }
+        public int PctOfQualifyingTransactions { get; set; }
 
-        public decimal PctOfMembers18To29 { get; set; }
+        public int PctOfMembers18To29 { get; set; }
 
-        public decimal PctOfRemainingMembers {  get; set; }
+        public int PctOfRemainingMembers {  get; set; }
 
     }
 }

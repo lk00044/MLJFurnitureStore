@@ -47,7 +47,7 @@
             // 
             InstructionsLabel.AutoSize = true;
             InstructionsLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            InstructionsLabel.Location = new Point(13, 15);
+            InstructionsLabel.Location = new Point(13, 13);
             InstructionsLabel.Name = "InstructionsLabel";
             InstructionsLabel.Size = new Size(384, 25);
             InstructionsLabel.TabIndex = 13;
@@ -89,6 +89,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 196F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 310F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 332F));
+            tableLayoutPanel1.Controls.Add(InfoLabel, 2, 3);
             tableLayoutPanel1.Controls.Add(GetReportButton, 2, 0);
             tableLayoutPanel1.Controls.Add(SelectStartDatelabel, 0, 0);
             tableLayoutPanel1.Controls.Add(StartDateTimePicker, 1, 0);
@@ -116,6 +117,7 @@
             StartDateTimePicker.Name = "StartDateTimePicker";
             StartDateTimePicker.Size = new Size(250, 27);
             StartDateTimePicker.TabIndex = 15;
+            StartDateTimePicker.ValueChanged += StartDateTimePicker_ValueChanged;
             // 
             // ReportDataGridView
             // 
@@ -138,6 +140,7 @@
             EndDateTimePicker.Name = "EndDateTimePicker";
             EndDateTimePicker.Size = new Size(250, 27);
             EndDateTimePicker.TabIndex = 16;
+            EndDateTimePicker.ValueChanged += EndDateTimePicker_ValueChanged;
             // 
             // StartDateErrorLabel
             // 
@@ -155,17 +158,18 @@
             // 
             // InfoLabel
             // 
+            InfoLabel.Font = new Font("Segoe UI", 11F);
             InfoLabel.ForeColor = Color.Red;
-            InfoLabel.Location = new Point(522, 7);
+            InfoLabel.Location = new Point(509, 107);
             InfoLabel.Name = "InfoLabel";
-            InfoLabel.Size = new Size(328, 33);
+            InfoLabel.Size = new Size(326, 31);
             InfoLabel.TabIndex = 38;
+            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // AdminReportUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(InfoLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(InstructionsLabel);
             Name = "AdminReportUserControl";

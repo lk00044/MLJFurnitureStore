@@ -24,7 +24,7 @@ namespace cs6232_g4.Controller
         /// <returns></returns>
         public List<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
         {
-            return this._adminReportDAL.GetAdminReportData(StartDate, EndDate);
+            return (List<AdminReport>)this._adminReportDAL.GetAdminReportData(StartDate, EndDate);
         }
 
     }
