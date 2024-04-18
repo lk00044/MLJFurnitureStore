@@ -68,9 +68,21 @@ namespace Members.Controller
             return this._transactionDAL.CreateReturnTransaction(rentalLineItems);
         }
 
-        internal List<ReturnLineItem> GetMemberReturns(int memberID)
+        /// <summary>
+        /// Create a return transaction ID
+        /// </summary>
+        /// <return>
+        /// created transaction id
+        /// </return>
+        public int CreateReturnTransactionID(ReturnTransaction transaction)
+        {
+            return this._transactionDAL.CreateReturnTransactionID(transaction);
+        }
+
+        public List<ReturnTransaction> GetMemberReturns(int memberID)
         {
             return this._transactionDAL.GetMemberReturns(memberID);
         }
+
     }
 }

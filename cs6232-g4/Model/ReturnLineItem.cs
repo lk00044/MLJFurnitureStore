@@ -7,21 +7,7 @@
     public class ReturnLineItem
     {
         public int LineItemID { get; set; }
-       
         public int ReturnTransactionID { get; set; }
-
-        public DateTime TransactionDate { get; set; }
-
-        public int MemberId { get; set; }
-
-        public int EmployeeId { get; set; }
-
-        public string EmployeeName { get; set; }
-
-        public int FurnitureID { get; set; }
-        
-        public string FurnitureName { get; set; }
-        
         public int Quantity { get; set; }
     }
 }

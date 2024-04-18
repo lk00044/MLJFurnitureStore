@@ -96,7 +96,7 @@ namespace Employees.DAL
             string selectStatement =
                 "SELECT line_item_id, name , RentalLineItem.furniture_id, quantity, subtotal " +
                 "FROM RentalLineItem " +
-                "JOIN Furniture ON Furniture.furniture_id = RentalLineItem.furniture_id " + 
+                "JOIN Furniture ON Furniture.furniture_id = RentalLineItem.furniture_id " +
                 "WHERE rental_transaction_id = @rentalTransactionID"
             ;
 
@@ -164,7 +164,7 @@ namespace Employees.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                       
+
 
                         while (reader.Read())
                         {
@@ -172,7 +172,7 @@ namespace Employees.DAL
                             RentalTransaction transaction = new RentalTransaction();
 
                             transaction.TransactionID = (int)reader["transaction_id"];
-                            transaction.MemberId = (int)reader["member_id"]; 
+                            transaction.MemberId = (int)reader["member_id"];
                             transaction.EmployeeId = (int)reader["employee_id"];
                             transaction.EmployeeName = reader["employee_name"].ToString();
                             transaction.TransactionDate = (DateTime)reader["transaction_date"];
@@ -204,7 +204,7 @@ namespace Employees.DAL
             RentalTransaction transaction = new RentalTransaction();
 
             string selectStatement =
-                "SELECT transaction_id " +  
+                "SELECT transaction_id " +
                 "FROM RentalTransaction " +
                 "WHERE member_id = @memberID"
             ;
@@ -220,7 +220,7 @@ namespace Employees.DAL
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
                         while (reader.Read())
-                        {                          
+                        {
                             transaction.TransactionID = (int)reader["transaction_id"];
                         }
                     }
@@ -245,7 +245,7 @@ namespace Employees.DAL
                 // to Command object for a pending local transaction
                 command.Connection = connection;
                 command.Transaction = transaction;
-    
+
                 try
                 {
                     //Create a return transaction and get its ID
@@ -281,7 +281,7 @@ namespace Employees.DAL
                     command.ExecuteNonQuery();
                     // Attempt to commit the transaction.
                     transaction.Commit();
-                    return [returnTxnId,txnTotalChange];
+                    return [returnTxnId, txnTotalChange];
                 }
                 catch (Exception ex)
                 {
@@ -301,7 +301,7 @@ namespace Employees.DAL
                         Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
                         Console.WriteLine("  Message: {0}", ex2.Message);
                     }
-                    return [0,0];
+                    return [0, 0];
                 }
             }
         }
@@ -311,17 +311,17 @@ namespace Employees.DAL
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
         /// <returns>List of rental transactions</returns>
-        public List<ReturnLineItem> GetMemberReturns(int memberID)
+        public List<ReturnTransaction> GetMemberReturns(int memberID)
         {
 
-            List<ReturnLineItem> ReturnsList = new List<ReturnLineItem>();
+            List<ReturnTransaction> ReturnsList = new List<ReturnTransaction>();
 
             string selectStatement =
                 "SELECT r.return_transaction_id, r.transaction_date, r.total_amount, r.member_id, " +
                         "li.line_item_id, li.quantity - ISNULL(ri.return_quantity,0) as quantity, f.furniture_id as furniture_id,f.name as furniture_name, " +
                         "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id " +
-                "FROM RentalTransaction r " +
-                "JOIN RentalLineItem li " +
+                "FROM ReturnTransaction r " +
+                "JOIN ReturnLineItem li " +
                 "ON r.return_transaction_id = li.rental_return_transaction_id " +
                 "LEFT JOIN (SELECT line_item_id, SUM(quantity) as return_quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = li.line_item_id " +
                 "JOIN StoreMember m " +
@@ -348,19 +348,21 @@ namespace Employees.DAL
                         while (reader.Read())
                         {
 
-                            ReturnLineItem returnItm = new ReturnLineItem();
+                            ReturnTransaction returnTransaction = new ReturnTransaction();
 
-                            returnItm.ReturnTransactionID = (int)reader["return_transaction_id"];
-                            returnItm.MemberId = (int)reader["member_id"];
-                            returnItm.EmployeeId = (int)reader["employee_id"];
-                            returnItm.EmployeeName = reader["employee_name"].ToString();
-                            returnItm.TransactionDate = (DateTime)reader["transaction_date"];
-                            returnItm.LineItemID = (int)reader["line_item_id"];
-                            returnItm.FurnitureID = (int)reader["furniture_id"];
-                            returnItm.FurnitureName = reader["furniture_name"].ToString();
-                            returnItm.Quantity = (int)reader["quantity"];
+                            returnTransaction.ReturnTransactionID = (int)reader["return_transaction_id"];
+                            returnTransaction.MemberId = (int)reader["member_id"];
+                            returnTransaction.EmployeeId = (int)reader["employee_id"];
+                            returnTransaction.EmployeeName = reader["employee_name"].ToString();
+                            returnTransaction.TransactionDate = (DateTime)reader["transaction_date"];
+                            returnTransaction.LineItemID = (int)reader["line_item_id"];
+                            returnTransaction.FurnitureID = (int)reader["furniture_id"];
+                            returnTransaction.FurnitureName = reader["furniture_name"].ToString();
+                            returnTransaction.Quantity = (int)reader["quantity"];
+                            returnTransaction.FineOrRefund = (decimal)reader["total_amount"];
+                            returnTransaction.ReturnDate = (DateTime)reader["transaction_date"];
 
-                            ReturnsList.Add(returnItm);
+                            ReturnsList.Add(returnTransaction);
 
                         }
                     }
@@ -370,7 +372,78 @@ namespace Employees.DAL
 
         }
 
+        /// <summary>
+        /// Gets return line items for return history
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>return line items list</returns>
+        public List<ReturnLineItem> GetReturnLineItems(int returnTransactionID)
+        {
+            List<ReturnLineItem> ReturnLineItemsList = new List<ReturnLineItem>();
+
+            string selectStatement =
+                "SELECT line_item_id, name , ReturnLineItem.furniture_id, quantity, subtotal " +
+                "FROM ReturnLineItem " +
+                "JOIN Furniture ON Furniture.furniture_id = ReturnLineItem.furniture_id " +
+                "WHERE return_transaction_id = @returnTransactionID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@returnTransactionID", returnTransactionID));
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ReturnLineItem returnLineItem = new ReturnLineItem();
+                            returnLineItem.LineItemID = (int)reader["line_item_id"];
+                            returnLineItem.Quantity = (int)reader["quantity"];
+                            returnLineItem.ReturnTransactionID = returnTransactionID;
+                            ReturnLineItemsList.Add(returnLineItem);
+                        }
+                    }
+                }
+            }
+            return ReturnLineItemsList;
+        }
+
+        /// <summary>
+        /// Create a rental transaction
+        /// </summary>
+        /// <return>
+        /// created transaction id
+        /// </return>
+        public int CreateReturnTransactionID(ReturnTransaction returnTransaction)
+        {
+            string insertCommand = $"INSERT INTO [dbo].[ReturnTransaction] VALUES (GETDATE(),@member_id,@employee_id,@fine_or_refund,@return_date)";
+            string retrieveCommand = "SELECT SCOPE_IDENTITY();";
+            string combinedQuery = $"{insertCommand};{retrieveCommand}";
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(combinedQuery, connection))
+                {
+                  
+                    command.Parameters.Add("@fine_or_refund", System.Data.SqlDbType.Decimal);
+                    command.Parameters.Add("@return_date", System.Data.SqlDbType.DateTime);
+
+                    command.Parameters["@fine_or_refund"].Value = returnTransaction.FineOrRefund;
+                    command.Parameters["@return_date"].Value = returnTransaction.ReturnDate;
+
+                    return int.Parse(command.ExecuteScalar().ToString());
+                }
+
+            }
+
+        }
+
+
     }
-
-
 }

@@ -1,8 +1,10 @@
 ﻿
+using cs6232_g4.Controller;
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
 using System.Windows.Forms;
+using System.Linq;
 
 /// <summary>
 /// </summary>
@@ -23,6 +25,8 @@ namespace cs6232_g4.View
         private BindingSource bindingSource1;
         private RentalLineItem selectedLineItem;
         private List<RentalLineItem> rentalLineItemList;
+        private ReturnTransaction returnTransaction;
+        private readonly LoginController _loginController;
 
         public ViewMbrTransactionHistoryForm(int mbrID, string memberName)
         {
@@ -35,6 +39,7 @@ namespace cs6232_g4.View
             this.MemberName = memberName;
             bindingSource1 = new BindingSource();
             this.infoMessageLabel.ForeColor = Color.Red;
+            this.returnTransaction = new ReturnTransaction();   
         }
 
         private void ViewMbrTransactionHistoryForm_Load(object sender, EventArgs e)
@@ -236,6 +241,23 @@ namespace cs6232_g4.View
             + lineItemsInfo;
             MessageBox.Show(receipt, "Rental Receipt");
             this.ResetFields();
+        }
+
+        /// <summary>
+        /// creates the return transaction in the database 
+        /// </summary>
+        private void CreateReturnTransaction()
+        {
+            try
+            {
+                this.returnTransaction.EmployeeId = this._loginController.GetCurrentLogin().EmployeeId;
+                this.returnTransaction.MemberId = this.MemberID;
+                this.returnTransaction.ReturnTransactionID = this._transactionController.CreateReturnTransactionID(this.returnTransaction);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Failed to create return transaction" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void ResetFields()

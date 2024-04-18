@@ -13,19 +13,17 @@ namespace cs6232_g4.View
         /// 
 
         private readonly TransactionController _transactionController;
-        private List<ReturnLineItem> returns;
+        private List<ReturnTransaction> returns;
         private int MemberID;
         private string MemberName;
         private BindingSource transactionDALBindingSource;
-        private RentalLineItem selectedLineItem;
-        private List<RentalLineItem> rentalLineItemList;
+        private List<ReturnLineItem> returnLineItemList;
         public ViewReturnHistoryForm(int mbrID, string mbrName)
         {
             InitializeComponent();
             _transactionController = new TransactionController();
-            returns = new List<ReturnLineItem>();
-            this.selectedLineItem = new RentalLineItem();
-            this.rentalLineItemList = new List<RentalLineItem>();
+            returns = new List<ReturnTransaction>();
+            this.returnLineItemList = new List<ReturnLineItem>();
             this.MemberID = mbrID;
             this.MemberName = mbrName;
             transactionDALBindingSource = new BindingSource();
