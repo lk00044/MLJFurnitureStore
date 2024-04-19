@@ -286,7 +286,7 @@ namespace Employees.DAL
                     command.ExecuteNonQuery();
                     // Attempt to commit the transaction.
                     transaction.Commit();
-                    return [returnTxnId, txnTotalChange];
+                    return new List<double> { returnTxnId, txnTotalChange };
                 }
                 catch (Exception ex)
                 {
@@ -306,7 +306,7 @@ namespace Employees.DAL
                         Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
                         Console.WriteLine("  Message: {0}", ex2.Message);
                     }
-                    return [0, 0];
+                    return new List<double> { 0, 0 };
                 }
             }
         }
