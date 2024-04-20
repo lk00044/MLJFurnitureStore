@@ -1,7 +1,9 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
 using Members.Controller;
+using System.Data.Common;
 using System.Data.SqlClient;
+using System.Transactions;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 
@@ -286,7 +288,7 @@ namespace Employees.DAL
                     command.ExecuteNonQuery();
                     // Attempt to commit the transaction.
                     transaction.Commit();
-                    return [returnTxnId, txnTotalChange];
+                    return new List<double> { returnTxnId, txnTotalChange };
                 }
                 catch (Exception ex)
                 {
@@ -306,7 +308,7 @@ namespace Employees.DAL
                         Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
                         Console.WriteLine("  Message: {0}", ex2.Message);
                     }
-                    return [0, 0];
+                    return new List<double> { 0, 0 };
                 }
             }
         }
@@ -323,14 +325,17 @@ namespace Employees.DAL
 
             string selectStatement =
                 "SELECT r.return_transaction_id, r.fine_or_refund, r.return_date, " +
-                "rl.line_item_id, rl.quantity - ISNULL(ri.quantity, 0) as quantity, " +
-                "f.furniture_id, f.name as furniture_name " +
+                "rl.line_item_id, rl.quantity, " +
+                "f.furniture_id, f.name as furniture_name, " +
+                "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id, " +
+                "rt.member_id, rt.transaction_date " +
                 "FROM ReturnTransaction r " +
-                "JOIN ReturnLineItem rl ON r.return_transaction_id = rl.return_transaction_id " + // Join with ReturnLineItem to access line_item_id
-                "JOIN RentalLineItem rr ON rl.line_item_id = rr.line_item_id " + // Join with RentalLineItem to access furniture_id
-                "JOIN RentalTransaction rt ON rr.rental_transaction_id = rt.transaction_id " + // Join with RentalTransaction using transaction_id
+                "JOIN ReturnLineItem rl ON r.return_transaction_id = rl.return_transaction_id " +
+                "JOIN RentalLineItem rr ON rl.line_item_id = rr.line_item_id " +
+                "JOIN RentalTransaction rt ON rr.rental_transaction_id = rt.transaction_id " +
                 "LEFT JOIN (SELECT line_item_id, SUM(quantity) as quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = rl.line_item_id " +
-                "JOIN Furniture f ON rr.furniture_id = f.furniture_id " + // Join with Furniture to access furniture details
+                "JOIN Furniture f ON rr.furniture_id = f.furniture_id " +
+                "JOIN Employee e ON rt.employee_id = e.employee_id " +
                 "WHERE rt.member_id = @memberID";
 
 
@@ -351,6 +356,10 @@ namespace Employees.DAL
 
                             returnTransaction.ReturnTransactionID = (int)reader["return_transaction_id"];
                             returnTransaction.FineOrRefund = (decimal)reader["fine_or_refund"];
+                            returnTransaction.MemberId = (int)reader["member_id"];
+                            returnTransaction.EmployeeId = (int)reader["employee_id"];
+                            returnTransaction.EmployeeName = reader["employee_name"].ToString();
+                            returnTransaction.TransactionDate = (DateTime)reader["transaction_date"];
                             returnTransaction.ReturnDate = (DateTime)reader["return_date"];
                             returnTransaction.LineItemID = (int)reader["line_item_id"];
                             returnTransaction.FurnitureID = (int)reader["furniture_id"];

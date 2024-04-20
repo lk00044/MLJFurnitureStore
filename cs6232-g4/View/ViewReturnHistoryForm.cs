@@ -16,6 +16,7 @@ namespace cs6232_g4.View
         private List<ReturnTransaction> returns;
         private int MemberID;
         private string MemberName;
+        private ReturnLineItem selectedLineItem;
         private BindingSource transactionDALBindingSource;
         private List<ReturnLineItem> returnLineItemList;
         public ViewReturnHistoryForm(int mbrID, string mbrName)
@@ -26,6 +27,7 @@ namespace cs6232_g4.View
             this.returnLineItemList = new List<ReturnLineItem>();
             this.MemberID = mbrID;
             this.MemberName = mbrName;
+            this.selectedLineItem = new ReturnLineItem();
             transactionDALBindingSource = new BindingSource();
         }
 
@@ -44,32 +46,13 @@ namespace cs6232_g4.View
                 this.returns = this._transactionController.GetMemberReturns(this.MemberID);
                 this.transactionDALBindingSource.DataSource = this.returns;
                 this.ReturnsDataGridView.DataSource = this.returns;
-                this.SetupDataGrid();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
 
-        private void SetupDataGrid()
-        {
-
-            this.ReturnsDataGridView.AutoGenerateColumns = false;
-            this.ReturnsDataGridView.AutoSize = true;
-            this.ReturnsDataGridView.Columns[0].HeaderText = "Return Transaction ID";
-            this.ReturnsDataGridView.Columns[1].HeaderText = "Member ID";
-            this.ReturnsDataGridView.Columns[2].HeaderText = "Employee ID";
-            this.ReturnsDataGridView.Columns[3].HeaderText = "Employee Name";
-            this.ReturnsDataGridView.Columns[4].HeaderText = "Line Item ID";
-            this.ReturnsDataGridView.Columns[5].HeaderText = "Furniture ID";
-            this.ReturnsDataGridView.Columns[6].HeaderText = "Furniture Name";
-            this.ReturnsDataGridView.Columns[7].HeaderText = "Fine or Refund";
-            this.ReturnsDataGridView.Columns[8].HeaderText = "Return Date";
-            this.ReturnsDataGridView.Columns[8].DefaultCellStyle.Format = "MM/dd/yyyy";
-
-        }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {

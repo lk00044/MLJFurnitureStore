@@ -124,5 +124,6 @@
         private Label MemberNameLabel;
         private Label MemberIDLabel;
         private Label infoMessageLabel;
+
     }
 }
