@@ -77,48 +77,5 @@ namespace cs6232_g4.DAL
             }
             return reportData;
         }
-
-        /// <summary>
-        /// 5) the total number of all the furniture rental transactions(occurred) 
-        ///    during the specified period, 
-        /// </summary>
-        /// <param name="StartDate">The start date.</param>
-        /// <param name="EndDate">The end date.</param>
-        /// <returns>total number of transactions between dates inclusively</returns>
-        public int getTotalOverallTransactions(DateTime StartDate, DateTime EndDate)
-        {
-            int totalOverallTransactions = 0;
-
-            string selectStatement =
-                "SELECT count(rt.transaction_id) as total, li.furniture_id " +
-                "FROM RentalTransaction rt " +
-                "INNER JOIN RentalLineItem li " +
-                "ON rt.transaction_id = li.rental_transaction_id " +
-                "WHERE rt.transaction_date between @StartDate and @EndDate " +
-                "GROUPBY li.furniture_id "
-            ;
-
-            using (SqlConnection connection = DBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    selectCommand.Parameters.Add(new SqlParameter("@StartDate", StartDate));
-                    selectCommand.Parameters.Add(new SqlParameter("@EndDate", EndDate));
-
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            totalOverallTransactions = (int)reader["total"];
-                        }
-                    }
-                }
-            }
-
-            return totalOverallTransactions;
-
-        }
     }
 }
