@@ -2,8 +2,8 @@
 using cs6232_g4.Model;
 
 /// <summary>
-/// 
-/// 
+/// Handles the view for the view tab
+/// Programmer: Leslie
 /// </summary>
 /// 
 namespace cs6232_g4.UserControls
