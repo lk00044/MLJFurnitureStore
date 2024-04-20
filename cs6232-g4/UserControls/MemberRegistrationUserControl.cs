@@ -64,7 +64,8 @@ namespace cs6232_g4.UserControls
                 if (!ValidateData()) return;
                 if (this._memberController.RegisterStoreMember(newMember) > 0)
                 {
-                    MessageBox.Show("Customer registered successfully!");
+                    //MessageBox.Show("Customer registered successfully!");
+                    this.showNewMemberNumber();
                     this.ResetFields();
                 }
                 else
@@ -381,6 +382,23 @@ namespace cs6232_g4.UserControls
             this.phoneErrorLabel.Text = string.Empty;
             this.dobErrorLabel.Text = string.Empty;
             this.regFeedbackLabel.Text = string.Empty;
+        }
+
+        private void showNewMemberNumber()
+        {
+            List<Member> memberList = new List<Member>();
+            memberList = this._memberController.GetMemberByName(newMember.FirstName.Trim(), newMember.LastName.Trim());
+            
+            if (memberList.Count > 1 )
+            {
+                MessageBox.Show("There is another member with this name. To update this member, go to the Member Transactions tab and search by name. ");
+            }
+            else
+            {
+                Member newMember = memberList[0];
+                MessageBox.Show("Member registered successfully. \nMember ID: " + newMember.MemberID.ToString());
+            }         
+
         }
 
     }

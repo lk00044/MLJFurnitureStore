@@ -1,12 +1,10 @@
 ﻿
-using cs6232_g4.Helper;
 using cs6232_g4.Model;
-using Furnitures.Model;
 using Members.Controller;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 /// <summary>
+/// Handles the interaction between the view and the data layer to 
+/// show a member's transactions
 /// </summary>
 
 namespace cs6232_g4.View
@@ -26,6 +24,11 @@ namespace cs6232_g4.View
         private RentalLineItem selectedLineItem;
         private List<RentalLineItem> rentalLineItemList;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
+        /// </summary>
+        /// <param name="mbrID">The MBR identifier.</param>
+        /// <param name="memberName">Name of the member.</param>
         public ViewMbrTransactionHistoryForm(int mbrID, string memberName)
         {
             InitializeComponent();
@@ -68,7 +71,6 @@ namespace cs6232_g4.View
 
         private void SetupDataGrid()
         {
-
             this.MemberTransactionsDataGridView.AutoGenerateColumns = false;
             this.MemberTransactionsDataGridView.AutoSize = true;
             this.MemberTransactionsDataGridView.Columns[0].HeaderText = "Transaction ID";
@@ -100,6 +102,7 @@ namespace cs6232_g4.View
         {
 
         }
+
         /// <summary>
         /// checks whether a row is selected 
         /// </summary>
@@ -240,6 +243,9 @@ namespace cs6232_g4.View
             this.ResetFields();
         }
 
+        /// <summary>
+        /// Resets the fields.
+        /// </summary>
         public void ResetFields()
         {
             this.quantityTextBox.Text = string.Empty;
@@ -262,8 +268,8 @@ namespace cs6232_g4.View
             }
         }
           
-        }
     }
+}
 
 
 

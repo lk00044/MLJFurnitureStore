@@ -17,24 +17,25 @@ using Members.Model;
 
 namespace cs6232_g4.UserControls
 {
+    /// <summary>
+    /// Creates the User Control for the app
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class SearchForMemberUserControl : UserControl
     {
 
-        private string MbrFName;
-        private string MbrLName;
-        private int MbrId;
-        private string MbrPhoneNum;
         private List<Member> MemberList;
         private Member SelectedMember;
         private int SelectedMemberId;
         private List<Member> searchList;
-        private int MbrID;
         private string MemberName;
-
+        private int MbrId;
         private readonly MembersController _memberController;
         private readonly TransactionController _transactionController;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchForMemberUserControl"/> class.
+        /// </summary>
         public SearchForMemberUserControl()
         {
             InitializeComponent();
@@ -44,11 +45,7 @@ namespace cs6232_g4.UserControls
             SelectedMember = new Member();
             MbrId = 0;
             SelectedMemberId = 0;
-            MbrFName = string.Empty;
-            MbrLName = string.Empty;
-            MbrPhoneNum = string.Empty;
             this.MemberName = string.Empty;
-            MbrID = 0;
             this.MbrFNameTextBox.Select();
         }
 
@@ -57,6 +54,11 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private void FindMemberButton_Click(object sender, EventArgs e)
         {
+            string MbrFName = string.Empty; 
+            string MbrLName = string.Empty;
+            string MbrPhoneNum = string.Empty;
+            int MbrId = 0;
+
             try
             {
                 this.ErrorLabel.Text = string.Empty;
@@ -95,7 +97,7 @@ namespace cs6232_g4.UserControls
                 {
                     if (Int64.TryParse(this.MbrPhoneNumTextBox.Text, out _))
                     {
-                        this.MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
+                        MbrPhoneNum = this.MbrPhoneNumTextBox.Text;
                         MemberList = this._memberController.GetMemberByPhone(MbrPhoneNum.Trim());
 
                         if (MemberList.Count > 0)
@@ -124,8 +126,8 @@ namespace cs6232_g4.UserControls
                 }
                 else if (this.MbrFNameTextBox.Text != "" && this.MbrLNameTextBox.Text != "")
                 {
-                    this.MbrLName = this.MbrLNameTextBox.Text;
-                    this.MbrFName = this.MbrFNameTextBox.Text;
+                    MbrLName = this.MbrLNameTextBox.Text;
+                    MbrFName = this.MbrFNameTextBox.Text;
 
                     MemberList = this._memberController.GetMemberByName(MbrFName.Trim(), MbrLName.Trim());
 
@@ -220,6 +222,7 @@ namespace cs6232_g4.UserControls
         {
             this.MembersDataGridView.DataSource = null;
             this.MembersDataGridView.DataSource = MatchingMembers;
+            this.MembersDataGridView.Columns["MemberID"].Visible = false;
             this.MembersDataGridView.ClearSelection();
         }
 
@@ -271,6 +274,8 @@ namespace cs6232_g4.UserControls
 
         private void MembersDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int MbrID = 0;
+
             this.ErrorLabel.Text = "";
 
             if (MembersDataGridView.SelectedRows.Count > 1)
