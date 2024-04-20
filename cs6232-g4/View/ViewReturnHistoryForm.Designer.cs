@@ -35,18 +35,9 @@
             MemberNameLabel = new Label();
             TransactionDALBindingSource = new BindingSource(components);
             infoMessageLabel = new Label();
-            transactionDALBindingSource1 = new BindingSource(components);
-            LineItemID = new DataGridViewTextBoxColumn();
-            ReturnTransactionID = new DataGridViewTextBoxColumn();
-            UserID = new DataGridViewTextBoxColumn();
-            FurnitureID = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            FineOrRefund = new DataGridViewTextBoxColumn();
-            ReturnDate = new DataGridViewTextBoxColumn();
             ReturnHistLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)TransactionDALBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // ReturnHistLayoutPanel
@@ -79,7 +70,6 @@
             // ReturnsDataGridView
             // 
             ReturnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReturnsDataGridView.Columns.AddRange(new DataGridViewColumn[] { LineItemID, ReturnTransactionID, UserID, FurnitureID, Quantity, FineOrRefund, ReturnDate });
             ReturnHistLayoutPanel.SetColumnSpan(ReturnsDataGridView, 2);
             ReturnsDataGridView.Location = new Point(3, 83);
             ReturnsDataGridView.Name = "ReturnsDataGridView";
@@ -109,66 +99,6 @@
             infoMessageLabel.Size = new Size(0, 15);
             infoMessageLabel.TabIndex = 37;
             // 
-            // transactionDALBindingSource1
-            // 
-            transactionDALBindingSource1.DataSource = typeof(Employees.DAL.TransactionDAL);
-            // 
-            // LineItemID
-            // 
-            LineItemID.DataPropertyName = "line_item_id";
-            LineItemID.HeaderText = "Line Item ID";
-            LineItemID.MinimumWidth = 6;
-            LineItemID.Name = "LineItemID";
-            LineItemID.Width = 125;
-            // 
-            // ReturnTransactionID
-            // 
-            ReturnTransactionID.DataPropertyName = "return_transaction_id";
-            ReturnTransactionID.HeaderText = "Return Transaction ID";
-            ReturnTransactionID.MinimumWidth = 6;
-            ReturnTransactionID.Name = "ReturnTransactionID";
-            ReturnTransactionID.Width = 125;
-            // 
-            // UserID
-            // 
-            UserID.DataPropertyName = "member_id";
-            UserID.HeaderText = "Member ID";
-            UserID.MinimumWidth = 6;
-            UserID.Name = "UserID";
-            UserID.Width = 125;
-            // 
-            // FurnitureID
-            // 
-            FurnitureID.DataPropertyName = "furniture_id";
-            FurnitureID.HeaderText = "Furniture ID";
-            FurnitureID.MinimumWidth = 6;
-            FurnitureID.Name = "FurnitureID";
-            FurnitureID.Width = 125;
-            // 
-            // Quantity
-            // 
-            Quantity.DataPropertyName = "quantity";
-            Quantity.HeaderText = "Quantity";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.Width = 125;
-            // 
-            // FineOrRefund
-            // 
-            FineOrRefund.DataPropertyName = "fine_or_refund";
-            FineOrRefund.HeaderText = "Fine or Refund";
-            FineOrRefund.MinimumWidth = 6;
-            FineOrRefund.Name = "FineOrRefund";
-            FineOrRefund.Width = 125;
-            // 
-            // ReturnDate
-            // 
-            ReturnDate.DataPropertyName = "return_date";
-            ReturnDate.HeaderText = "Return Date";
-            ReturnDate.MinimumWidth = 6;
-            ReturnDate.Name = "ReturnDate";
-            ReturnDate.Width = 125;
-            // 
             // ViewReturnHistoryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -182,7 +112,6 @@
             ReturnHistLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ReturnsDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)TransactionDALBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -195,13 +124,6 @@
         private Label MemberNameLabel;
         private Label MemberIDLabel;
         private Label infoMessageLabel;
-        private BindingSource transactionDALBindingSource1;
-        private DataGridViewTextBoxColumn LineItemID;
-        private DataGridViewTextBoxColumn ReturnTransactionID;
-        private DataGridViewTextBoxColumn UserID;
-        private DataGridViewTextBoxColumn FurnitureID;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn FineOrRefund;
-        private DataGridViewTextBoxColumn ReturnDate;
+
     }
 }
