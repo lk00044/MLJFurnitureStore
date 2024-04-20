@@ -117,7 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Select a transaction by clicking on it. 
+Click the "Add to Cart" button to move the item to the return cart.
+Enter the quantity to return. 
+Click "Submit" to finish the return. 
+
+Remove Button: Will remove the item from the return cart. 
+Update Button: Will allow you to change the item and quantity. 
+</value>
+  </data>
 </root>

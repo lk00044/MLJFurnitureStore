@@ -117,7 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="navigationLabel.Text" xml:space="preserve">
+    <value>Tab 1: Member Registration
+  - New member registration
+
+Tab 2: Member Transactions
+  - Update a member's information
+  -  View a member's transaction history
+
+Tab 3: Rental Transactions
+  - Create rental transactions
+
+Tab 4: Admin Report
+  - For administrator access only</value>
+  </data>
 </root>

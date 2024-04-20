@@ -46,10 +46,14 @@
             infoMessageLabel = new Label();
             button2 = new Button();
             button3 = new Button();
+            label4 = new Label();
+            menuStrip1 = new MenuStrip();
+            returnInstructionsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource).BeginInit();
             TransHistTableLayoutPanel.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // MemberIDLabel
@@ -57,7 +61,7 @@
             MemberIDLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             MemberIDLabel.Location = new Point(3, 0);
             MemberIDLabel.Name = "MemberIDLabel";
-            MemberIDLabel.Size = new Size(181, 19);
+            MemberIDLabel.Size = new Size(207, 25);
             MemberIDLabel.TabIndex = 21;
             MemberIDLabel.Text = "Member ID: ";
             // 
@@ -69,13 +73,12 @@
             MemberTransactionsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             TransHistTableLayoutPanel.SetColumnSpan(MemberTransactionsDataGridView, 2);
             MemberTransactionsDataGridView.Dock = DockStyle.Fill;
-            MemberTransactionsDataGridView.Location = new Point(3, 69);
-            MemberTransactionsDataGridView.Margin = new Padding(3, 2, 3, 2);
+            MemberTransactionsDataGridView.Location = new Point(3, 78);
             MemberTransactionsDataGridView.Name = "MemberTransactionsDataGridView";
             MemberTransactionsDataGridView.ReadOnly = true;
             MemberTransactionsDataGridView.RowHeadersWidth = 51;
             MemberTransactionsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MemberTransactionsDataGridView.Size = new Size(368, 204);
+            MemberTransactionsDataGridView.Size = new Size(421, 286);
             MemberTransactionsDataGridView.TabIndex = 22;
             MemberTransactionsDataGridView.CellClick += MemberTransactionsDataGrid_CellClick;
             // 
@@ -86,9 +89,9 @@
             // MemberNameLabel
             // 
             MemberNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            MemberNameLabel.Location = new Point(3, 29);
+            MemberNameLabel.Location = new Point(3, 40);
             MemberNameLabel.Name = "MemberNameLabel";
-            MemberNameLabel.Size = new Size(181, 22);
+            MemberNameLabel.Size = new Size(207, 29);
             MemberNameLabel.TabIndex = 24;
             MemberNameLabel.Text = "Member Name: ";
             MemberNameLabel.Click += MemberNameLabel_Click;
@@ -105,41 +108,41 @@
             TransHistTableLayoutPanel.Controls.Add(MemberIDLabel, 0, 0);
             TransHistTableLayoutPanel.Controls.Add(MemberTransactionsDataGridView, 0, 2);
             TransHistTableLayoutPanel.Controls.Add(MemberNameLabel, 0, 1);
-            TransHistTableLayoutPanel.Location = new Point(12, 42);
-            TransHistTableLayoutPanel.Margin = new Padding(3, 2, 3, 2);
+            TransHistTableLayoutPanel.Location = new Point(20, 104);
             TransHistTableLayoutPanel.Name = "TransHistTableLayoutPanel";
             TransHistTableLayoutPanel.RowCount = 3;
-            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 42.69663F));
-            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 57.30337F));
-            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 207F));
-            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TransHistTableLayoutPanel.Size = new Size(374, 275);
+            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 53.3333321F));
+            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 46.6666679F));
+            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 291F));
+            TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            TransHistTableLayoutPanel.Size = new Size(427, 367);
             TransHistTableLayoutPanel.TabIndex = 25;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(468, 2);
+            label1.Location = new Point(630, 76);
             label1.Name = "label1";
-            label1.Size = new Size(146, 21);
+            label1.Size = new Size(180, 28);
             label1.TabIndex = 26;
             label1.Text = "Return Transaction";
             // 
             // quantityLabel
             // 
             quantityLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            quantityLabel.Location = new Point(450, 42);
+            quantityLabel.Location = new Point(598, 130);
             quantityLabel.Name = "quantityLabel";
-            quantityLabel.Size = new Size(89, 19);
+            quantityLabel.Size = new Size(102, 25);
             quantityLabel.TabIndex = 28;
             quantityLabel.Text = "Quantity:";
             // 
             // quantityTextBox
             // 
-            quantityTextBox.Location = new Point(545, 42);
+            quantityTextBox.Location = new Point(738, 124);
+            quantityTextBox.Margin = new Padding(3, 4, 3, 4);
             quantityTextBox.Name = "quantityTextBox";
-            quantityTextBox.Size = new Size(100, 23);
+            quantityTextBox.Size = new Size(114, 27);
             quantityTextBox.TabIndex = 29;
             // 
             // label2
@@ -147,17 +150,18 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 7F);
             label2.ForeColor = SystemColors.MenuHighlight;
-            label2.Location = new Point(452, 23);
+            label2.Location = new Point(617, 104);
             label2.Name = "label2";
-            label2.Size = new Size(193, 12);
+            label2.Size = new Size(219, 15);
             label2.TabIndex = 30;
             label2.Text = "please select item and quantity to return";
             // 
             // cartListView
             // 
-            cartListView.Location = new Point(518, 104);
+            cartListView.Location = new Point(598, 187);
+            cartListView.Margin = new Padding(3, 4, 3, 4);
             cartListView.Name = "cartListView";
-            cartListView.Size = new Size(161, 184);
+            cartListView.Size = new Size(254, 244);
             cartListView.TabIndex = 32;
             cartListView.UseCompatibleStateImageBehavior = false;
             cartListView.View = System.Windows.Forms.View.SmallIcon;
@@ -166,18 +170,19 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic);
-            label3.Location = new Point(545, 80);
+            label3.Location = new Point(673, 155);
             label3.Name = "label3";
-            label3.Size = new Size(93, 21);
+            label3.Size = new Size(117, 28);
             label3.TabIndex = 31;
             label3.Text = "Return Cart";
             // 
             // submitOrderButton
             // 
             submitOrderButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            submitOrderButton.Location = new Point(549, 294);
+            submitOrderButton.Location = new Point(673, 439);
+            submitOrderButton.Margin = new Padding(3, 4, 3, 4);
             submitOrderButton.Name = "submitOrderButton";
-            submitOrderButton.Size = new Size(96, 23);
+            submitOrderButton.Size = new Size(110, 31);
             submitOrderButton.TabIndex = 34;
             submitOrderButton.Text = "Submit Return";
             submitOrderButton.UseVisualStyleBackColor = true;
@@ -186,9 +191,10 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button1.Location = new Point(405, 111);
+            button1.Location = new Point(469, 196);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(96, 23);
+            button1.Size = new Size(110, 31);
             button1.TabIndex = 35;
             button1.Text = "Add to Cart";
             button1.UseVisualStyleBackColor = true;
@@ -198,17 +204,18 @@
             // 
             infoMessageLabel.AutoSize = true;
             infoMessageLabel.Font = new Font("Segoe UI Semibold", 7F);
-            infoMessageLabel.Location = new Point(58, 9);
+            infoMessageLabel.Location = new Point(72, 60);
             infoMessageLabel.Name = "infoMessageLabel";
-            infoMessageLabel.Size = new Size(0, 12);
+            infoMessageLabel.Size = new Size(0, 15);
             infoMessageLabel.TabIndex = 36;
             // 
             // button2
             // 
             button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button2.Location = new Point(405, 140);
+            button2.Location = new Point(469, 235);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(96, 23);
+            button2.Size = new Size(110, 31);
             button2.TabIndex = 37;
             button2.Text = "Update ";
             button2.UseVisualStyleBackColor = true;
@@ -217,20 +224,49 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button3.Location = new Point(405, 169);
+            button3.Location = new Point(469, 273);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(96, 23);
+            button3.Size = new Size(110, 31);
             button3.TabIndex = 38;
             button3.Text = "Remove";
             button3.UseVisualStyleBackColor = true;
             button3.Click += RemoveButton_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label4.Location = new Point(23, 60);
+            label4.Name = "label4";
+            label4.Size = new Size(252, 28);
+            label4.TabIndex = 39;
+            label4.Text = "Return Transaction History";
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { returnInstructionsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(880, 28);
+            menuStrip1.TabIndex = 41;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // returnInstructionsToolStripMenuItem
+            // 
+            returnInstructionsToolStripMenuItem.Name = "returnInstructionsToolStripMenuItem";
+            returnInstructionsToolStripMenuItem.Size = new Size(145, 24);
+            returnInstructionsToolStripMenuItem.Text = "Return Instructions";
+            returnInstructionsToolStripMenuItem.Click += returnInstructionsToolStripMenuItem_Click;
+            // 
             // ViewMbrTransactionHistoryForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(770, 329);
+            ClientSize = new Size(880, 508);
+            Controls.Add(label4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(infoMessageLabel);
@@ -243,7 +279,8 @@
             Controls.Add(quantityLabel);
             Controls.Add(label1);
             Controls.Add(TransHistTableLayoutPanel);
-            Margin = new Padding(3, 2, 3, 2);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "ViewMbrTransactionHistoryForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Member Transaction History";
@@ -252,6 +289,8 @@
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource).EndInit();
             TransHistTableLayoutPanel.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +314,8 @@
         private Label infoMessageLabel;
         private Button button2;
         private Button button3;
+        private Label label4;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem returnInstructionsToolStripMenuItem;
     }
 }

@@ -1,8 +1,10 @@
 ﻿
+using cs6232_g4.Helper;
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 /// <summary>
 /// </summary>
@@ -202,8 +204,8 @@ namespace cs6232_g4.View
 
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to submit?" , "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure you want to submit?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
                 try
                 {
@@ -215,7 +217,7 @@ namespace cs6232_g4.View
                     this.infoMessageLabel.Text = "failed to return items please try again later.";
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -246,7 +248,22 @@ namespace cs6232_g4.View
             this.rentalLineItemList.Clear();
             this.ShowTransactions();
         }
+
+        private void returnInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form instructionsForm = new ReturnInstructionsForm())
+            {
+                DialogResult result = instructionsForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    this.Show();
+                }
+            }
+        }
+          
+        }
     }
-}
+
 
 

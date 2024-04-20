@@ -44,6 +44,8 @@
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
+            informationLabel = new Label();
+            ReturnLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
@@ -121,7 +123,7 @@
             tableLayoutPanel1.Controls.Add(MbrLNameTextBox, 1, 3);
             tableLayoutPanel1.Controls.Add(ErrorLabel, 2, 1);
             tableLayoutPanel1.Controls.Add(MatchingMembersLabel, 0, 7);
-            tableLayoutPanel1.Location = new Point(14, 51);
+            tableLayoutPanel1.Location = new Point(17, 148);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 9;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
@@ -131,9 +133,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 9F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel1.Size = new Size(837, 566);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanel1.Size = new Size(837, 452);
             tableLayoutPanel1.TabIndex = 10;
             // 
             // MembersDataGridView
@@ -142,12 +144,12 @@
             MembersDataGridView.AllowUserToDeleteRows = false;
             MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
-            MembersDataGridView.Location = new Point(3, 243);
+            MembersDataGridView.Location = new Point(3, 253);
             MembersDataGridView.Name = "MembersDataGridView";
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(832, 314);
+            MembersDataGridView.Size = new Size(832, 196);
             MembersDataGridView.TabIndex = 14;
             MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
@@ -224,20 +226,40 @@
             // 
             SearchInstructionsLabel.AutoSize = true;
             SearchInstructionsLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            SearchInstructionsLabel.Location = new Point(13, 13);
+            SearchInstructionsLabel.Location = new Point(20, 109);
             SearchInstructionsLabel.Name = "SearchInstructionsLabel";
             SearchInstructionsLabel.Size = new Size(612, 25);
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
+            // informationLabel
+            // 
+            informationLabel.Location = new Point(20, 59);
+            informationLabel.Name = "informationLabel";
+            informationLabel.Size = new Size(837, 27);
+            informationLabel.TabIndex = 12;
+            informationLabel.Text = "   Search for and then select the member. The Transactions Window opens. From there, you can do a member return.\r\n";
+            // 
+            // ReturnLabel
+            // 
+            ReturnLabel.AutoSize = true;
+            ReturnLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            ReturnLabel.Location = new Point(20, 29);
+            ReturnLabel.Name = "ReturnLabel";
+            ReturnLabel.Size = new Size(136, 25);
+            ReturnLabel.TabIndex = 13;
+            ReturnLabel.Text = "Member Return";
+            // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ReturnLabel);
+            Controls.Add(informationLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
             Name = "SearchForMemberUserControl";
-            Size = new Size(877, 639);
+            Size = new Size(877, 620);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).EndInit();
@@ -262,5 +284,7 @@
         private DataGridView MembersDataGridView;
         private Button UpdateMbrButton;
         private Button ViewTransactionsButton;
+        private Label informationLabel;
+        private Label ReturnLabel;
     }
 }

@@ -23,7 +23,7 @@ namespace cs6232_g4.UserControls
         public AdminReportUserControl()
         {
             InitializeComponent();
-           // Start = DateTime.Now;
+            //Start = DateTime.Now;
            // End = DateTime.Now;
             Current = DateTime.Now;
             ReportData = new List<AdminReport>();

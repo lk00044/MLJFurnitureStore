@@ -1,4 +1,7 @@
-﻿/// <summary>
+﻿
+using cs6232_g4.View;
+
+/// <summary>
 /// Dashboard for the Rent Me Furniture Co.
 /// Author:         Leslie Keller
 /// Modified by:    Jonathan
@@ -56,7 +59,7 @@ namespace cs6232_g4
                 this.memberRegistrationUserControl.ResetFields();
                 this.memberRegistrationUserControl.ClearAllErrors();
             }
-            if(this.MainDBTabControl.SelectedIndex == 1)
+            if (this.MainDBTabControl.SelectedIndex == 1)
             {
                 this.search4Member.ClearTextBoxes();
                 this.search4Member.ClearGrid();
@@ -88,9 +91,9 @@ namespace cs6232_g4
                 return true;
             }
             else
-            { 
-                return false; 
-            }            
+            {
+                return false;
+            }
         }
 
 
@@ -104,5 +107,22 @@ namespace cs6232_g4
             this.Close();
         }
 
+        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form indexForm = new IndexForm())
+            {
+                DialogResult result = indexForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    this.Show();
+                }
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
