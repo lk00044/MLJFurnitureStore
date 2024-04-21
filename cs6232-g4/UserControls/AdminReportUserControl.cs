@@ -79,8 +79,8 @@ namespace cs6232_g4.UserControls
             this.ReportDataGridView.Columns[3].HeaderText = "Total Qualifying ";
             this.ReportDataGridView.Columns[4].HeaderText = "Total Transactions";
             this.ReportDataGridView.Columns[5].HeaderText = "Pct. Qualifying";
-            this.ReportDataGridView.Columns[6].HeaderText = "Pct. Ages 18 - 29";
-            this.ReportDataGridView.Columns[7].HeaderText = "Pct. Ages Over 29 ";
+            this.ReportDataGridView.Columns[6].HeaderText = "Pct. Qualifying Ages 18 - 29";
+            this.ReportDataGridView.Columns[7].HeaderText = "Pct. Qualifying Ages Over 29 ";
         }
 
 
