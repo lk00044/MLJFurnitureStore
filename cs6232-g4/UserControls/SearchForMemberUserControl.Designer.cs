@@ -150,6 +150,7 @@
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             MembersDataGridView.Size = new Size(832, 236);
             MembersDataGridView.TabIndex = 18;
+            MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
             // ViewTransactionsButton
             // 

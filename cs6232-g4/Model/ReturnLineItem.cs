@@ -9,5 +9,6 @@
         public int LineItemID { get; set; }
         public int ReturnTransactionID { get; set; }
         public int Quantity { get; set; }
+
     }
 }

@@ -29,9 +29,6 @@
         public decimal LineItemSubTotal { get; set; }
 
         public decimal TotalAmount { get; set; }
-
-        
-
        
     }
 }

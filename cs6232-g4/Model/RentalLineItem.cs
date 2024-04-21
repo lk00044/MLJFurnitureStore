@@ -15,5 +15,6 @@
         public decimal Subtotal { get; set; }
 
         public DateTime DueDate { get; set; }
+
     }
 }
