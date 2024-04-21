@@ -30,12 +30,12 @@ BEGIN TRY
 		 	count(li.rental_transaction_id) as total_transactions,
 			count(rt.transaction_id) as total_qualifying_trans,
 			(count(rt.transaction_id)  / count(li.rental_transaction_id))*100 as pct_qualifying_transactions,
-			round((COUNT(IIF(DATEDIFF(year, rt.transaction_date, mbr.date_of_birth) > 17 and 
-				DATEDIFF(year, rt.transaction_date, mbr.date_of_birth) < 30, mbr.member_id, NULL))
-				/ count(mbr.member_id)), 2) * 100 as pct_18_to_29,
-			round((COUNT(IIF(DATEDIFF(year, rt.transaction_date, mbr.date_of_birth) < 18 or 
-				DATEDIFF(year, rt.transaction_date, mbr.date_of_birth) > 29, mbr.member_id, NULL))
-				/ count(mbr.member_id)), 2) * 100 as pct_over_age_range
+			round((COUNT(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 17 and 
+			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 30, mbr.member_id, NULL))
+			/ count(mbr.member_id)), 2) * 100 as pct_18_to_29,
+			round((COUNT(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 18 and 
+			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 29, mbr.member_id, NULL))
+			/ count(mbr.member_id)), 2) * 100
 
 			FROM dbo.Furniture f
 			INNER JOIN dbo.RentalLineItem li
