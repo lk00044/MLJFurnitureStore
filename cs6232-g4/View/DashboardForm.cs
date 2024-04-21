@@ -11,6 +11,11 @@ using cs6232_g4.View;
 /// Modified Date:  27 Mar 2024
 /// Modification:   Updated to show name and id on form
 ///                 Updated to add logout link
+/// Modified by:    Leslie
+/// Modified Date:  18 April 2024
+/// Modification:   Checking login for access to admin report
+///                 Added menu with app navigation and exit
+///                
 /// </summary>
 
 namespace cs6232_g4
@@ -69,6 +74,7 @@ namespace cs6232_g4
             {
                 this.rentFurnitureUserControl.ResetFields();
             }
+            //checks to see if admin is logged in for access to report - Leslie
             if (this.MainDBTabControl.SelectedIndex == 3)
             {
                 if (this.verifyAdminLogin())

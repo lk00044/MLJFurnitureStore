@@ -48,6 +48,7 @@
             label3 = new Label();
             infoMessageLabel = new Label();
             RemoveButton = new Button();
+            noticeLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)availableFurnitureGridView).BeginInit();
             SuspendLayout();
             // 
@@ -57,9 +58,9 @@
             availableFurnitureLabel.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold | FontStyle.Italic);
             availableFurnitureLabel.Location = new Point(3, 357);
             availableFurnitureLabel.Name = "availableFurnitureLabel";
-            availableFurnitureLabel.Size = new Size(231, 35);
+            availableFurnitureLabel.Size = new Size(233, 35);
             availableFurnitureLabel.TabIndex = 0;
-            availableFurnitureLabel.Text = "Available Furniture";
+            availableFurnitureLabel.Text = "Furniture Inventory";
             // 
             // label1
             // 
@@ -259,10 +260,20 @@
             RemoveButton.UseVisualStyleBackColor = false;
             RemoveButton.Click += RemoveButton_Click;
             // 
+            // noticeLabel
+            // 
+            noticeLabel.AutoSize = true;
+            noticeLabel.Location = new Point(531, 373);
+            noticeLabel.Name = "noticeLabel";
+            noticeLabel.Size = new Size(314, 20);
+            noticeLabel.TabIndex = 38;
+            noticeLabel.Text = "Inventory includes items currently out of stock.";
+            // 
             // RentFurnitureUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(noticeLabel);
             Controls.Add(RemoveButton);
             Controls.Add(infoMessageLabel);
             Controls.Add(dueDatePicker);
@@ -314,5 +325,6 @@
         private Label label3;
         private Label infoMessageLabel;
         private Button RemoveButton;
+        private Label noticeLabel;
     }
 }

@@ -84,7 +84,7 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.Columns[6].DefaultCellStyle.Format = "MM/dd/yyyy";
             this.MemberTransactionsDataGridView.Columns[7].HeaderText = "Furniture ID";
             this.MemberTransactionsDataGridView.Columns[8].HeaderText = "Furniture Name";
-            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Remaining Quantity";
+            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Quantity";
             this.MemberTransactionsDataGridView.Columns[10].HeaderText = "SubTotal";
             this.MemberTransactionsDataGridView.Columns[10].DefaultCellStyle.Format = "c";
             this.MemberTransactionsDataGridView.Columns[11].HeaderText = "Transaction Total";
@@ -96,11 +96,6 @@ namespace cs6232_g4.View
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void MemberNameLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -139,6 +134,7 @@ namespace cs6232_g4.View
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
             if (!IsValidInput(false)) return;
+
             this.selectedLineItem.Quantity = int.Parse(this.quantityTextBox.Text);
             ListViewItem listViewItem = new ListViewItem(this.selectedLineItem.Name);
             this.cartListView.Items.Add(listViewItem);
@@ -224,7 +220,7 @@ namespace cs6232_g4.View
         }
 
         /// <summary>
-        /// helper constuctrs a receipt 
+        /// helper constructs a receipt 
         /// </summary>
         private void CreateReceipt(double returnTxnId, double refund_or_fine)
         {

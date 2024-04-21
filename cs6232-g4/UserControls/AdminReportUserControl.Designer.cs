@@ -35,12 +35,12 @@
             SelectStartDatelabel = new Label();
             GetReportButton = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            InfoLabel = new Label();
             StartDateTimePicker = new DateTimePicker();
             ReportDataGridView = new DataGridView();
             EndDateTimePicker = new DateTimePicker();
             StartDateErrorLabel = new Label();
             EndDateErrorLabel = new Label();
+            InfoLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportDataGridView).BeginInit();
             SuspendLayout();
@@ -91,7 +91,6 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 196F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 310F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 332F));
-            tableLayoutPanel1.Controls.Add(InfoLabel, 2, 3);
             tableLayoutPanel1.Controls.Add(GetReportButton, 2, 0);
             tableLayoutPanel1.Controls.Add(SelectStartDatelabel, 0, 0);
             tableLayoutPanel1.Controls.Add(StartDateTimePicker, 1, 0);
@@ -100,9 +99,10 @@
             tableLayoutPanel1.Controls.Add(EndDateTimePicker, 1, 2);
             tableLayoutPanel1.Controls.Add(StartDateErrorLabel, 1, 1);
             tableLayoutPanel1.Controls.Add(EndDateErrorLabel, 1, 3);
+            tableLayoutPanel1.Controls.Add(InfoLabel, 2, 2);
             tableLayoutPanel1.Location = new Point(13, 53);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
+            tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
@@ -112,16 +112,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(837, 565);
             tableLayoutPanel1.TabIndex = 12;
-            // 
-            // InfoLabel
-            // 
-            InfoLabel.Font = new Font("Segoe UI", 11F);
-            InfoLabel.ForeColor = Color.Red;
-            InfoLabel.Location = new Point(509, 107);
-            InfoLabel.Name = "InfoLabel";
-            InfoLabel.Size = new Size(326, 31);
-            InfoLabel.TabIndex = 38;
-            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // StartDateTimePicker
             // 
@@ -135,6 +125,7 @@
             // 
             ReportDataGridView.AllowUserToAddRows = false;
             ReportDataGridView.AllowUserToDeleteRows = false;
+            ReportDataGridView.AllowUserToOrderColumns = true;
             ReportDataGridView.AllowUserToResizeRows = false;
             ReportDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -160,6 +151,7 @@
             ReportDataGridView.Name = "ReportDataGridView";
             ReportDataGridView.ReadOnly = true;
             ReportDataGridView.RowHeadersWidth = 51;
+            tableLayoutPanel1.SetRowSpan(ReportDataGridView, 2);
             ReportDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             ReportDataGridView.Size = new Size(832, 406);
             ReportDataGridView.TabIndex = 17;
@@ -185,6 +177,17 @@
             EndDateErrorLabel.Name = "EndDateErrorLabel";
             EndDateErrorLabel.Size = new Size(304, 31);
             EndDateErrorLabel.TabIndex = 19;
+            // 
+            // InfoLabel
+            // 
+            InfoLabel.Font = new Font("Segoe UI", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            InfoLabel.ForeColor = Color.Red;
+            InfoLabel.Location = new Point(509, 71);
+            InfoLabel.Name = "InfoLabel";
+            tableLayoutPanel1.SetRowSpan(InfoLabel, 2);
+            InfoLabel.Size = new Size(326, 67);
+            InfoLabel.TabIndex = 38;
+            InfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // AdminReportUserControl
             // 

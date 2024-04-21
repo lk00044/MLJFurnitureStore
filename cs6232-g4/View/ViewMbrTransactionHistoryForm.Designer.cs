@@ -35,18 +35,18 @@
             MemberNameLabel = new Label();
             transactionDALBindingSource = new BindingSource(components);
             TransHistTableLayoutPanel = new TableLayoutPanel();
-            label1 = new Label();
+            ReturnTitleLlabel = new Label();
             quantityLabel = new Label();
             quantityTextBox = new TextBox();
-            label2 = new Label();
+            ReturnMessageLlabel = new Label();
             cartListView = new ListView();
-            label3 = new Label();
+            ReturnCartTitleLabel = new Label();
             submitOrderButton = new Button();
-            button1 = new Button();
+            AddToCartButton = new Button();
             infoMessageLabel = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            label4 = new Label();
+            UpdateButton = new Button();
+            RemoveButton = new Button();
+            DataGridTitleLabel = new Label();
             menuStrip1 = new MenuStrip();
             returnInstructionsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).BeginInit();
@@ -94,7 +94,6 @@
             MemberNameLabel.Size = new Size(207, 29);
             MemberNameLabel.TabIndex = 24;
             MemberNameLabel.Text = "Member Name: ";
-            MemberNameLabel.Click += MemberNameLabel_Click;
             // 
             // transactionDALBindingSource
             // 
@@ -108,7 +107,7 @@
             TransHistTableLayoutPanel.Controls.Add(MemberIDLabel, 0, 0);
             TransHistTableLayoutPanel.Controls.Add(MemberTransactionsDataGridView, 0, 2);
             TransHistTableLayoutPanel.Controls.Add(MemberNameLabel, 0, 1);
-            TransHistTableLayoutPanel.Location = new Point(20, 104);
+            TransHistTableLayoutPanel.Location = new Point(20, 154);
             TransHistTableLayoutPanel.Name = "TransHistTableLayoutPanel";
             TransHistTableLayoutPanel.RowCount = 3;
             TransHistTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 53.3333321F));
@@ -118,20 +117,20 @@
             TransHistTableLayoutPanel.Size = new Size(427, 367);
             TransHistTableLayoutPanel.TabIndex = 25;
             // 
-            // label1
+            // ReturnTitleLlabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(630, 76);
-            label1.Name = "label1";
-            label1.Size = new Size(180, 28);
-            label1.TabIndex = 26;
-            label1.Text = "Return Transaction";
+            ReturnTitleLlabel.AutoSize = true;
+            ReturnTitleLlabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            ReturnTitleLlabel.Location = new Point(641, 91);
+            ReturnTitleLlabel.Name = "ReturnTitleLlabel";
+            ReturnTitleLlabel.Size = new Size(180, 28);
+            ReturnTitleLlabel.TabIndex = 26;
+            ReturnTitleLlabel.Text = "Return Transaction";
             // 
             // quantityLabel
             // 
             quantityLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            quantityLabel.Location = new Point(598, 130);
+            quantityLabel.Location = new Point(617, 207);
             quantityLabel.Name = "quantityLabel";
             quantityLabel.Size = new Size(102, 25);
             quantityLabel.TabIndex = 28;
@@ -139,26 +138,25 @@
             // 
             // quantityTextBox
             // 
-            quantityTextBox.Location = new Point(738, 124);
+            quantityTextBox.Location = new Point(716, 196);
             quantityTextBox.Margin = new Padding(3, 4, 3, 4);
             quantityTextBox.Name = "quantityTextBox";
             quantityTextBox.Size = new Size(114, 27);
             quantityTextBox.TabIndex = 29;
             // 
-            // label2
+            // ReturnMessageLlabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 7F);
-            label2.ForeColor = SystemColors.MenuHighlight;
-            label2.Location = new Point(617, 104);
-            label2.Name = "label2";
-            label2.Size = new Size(219, 15);
-            label2.TabIndex = 30;
-            label2.Text = "please select item and quantity to return";
+            ReturnMessageLlabel.Font = new Font("Segoe UI Semibold", 7F);
+            ReturnMessageLlabel.ForeColor = Color.Red;
+            ReturnMessageLlabel.Location = new Point(617, 145);
+            ReturnMessageLlabel.Name = "ReturnMessageLlabel";
+            ReturnMessageLlabel.Size = new Size(226, 34);
+            ReturnMessageLlabel.TabIndex = 30;
+            ReturnMessageLlabel.Text = "Please select item and enter quantity to add item to the return cart.";
             // 
             // cartListView
             // 
-            cartListView.Location = new Point(598, 187);
+            cartListView.Location = new Point(598, 273);
             cartListView.Margin = new Padding(3, 4, 3, 4);
             cartListView.Name = "cartListView";
             cartListView.Size = new Size(254, 244);
@@ -166,20 +164,20 @@
             cartListView.UseCompatibleStateImageBehavior = false;
             cartListView.View = System.Windows.Forms.View.SmallIcon;
             // 
-            // label3
+            // ReturnCartTitleLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic);
-            label3.Location = new Point(673, 155);
-            label3.Name = "label3";
-            label3.Size = new Size(117, 28);
-            label3.TabIndex = 31;
-            label3.Text = "Return Cart";
+            ReturnCartTitleLabel.AutoSize = true;
+            ReturnCartTitleLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic);
+            ReturnCartTitleLabel.Location = new Point(664, 241);
+            ReturnCartTitleLabel.Name = "ReturnCartTitleLabel";
+            ReturnCartTitleLabel.Size = new Size(117, 28);
+            ReturnCartTitleLabel.TabIndex = 31;
+            ReturnCartTitleLabel.Text = "Return Cart";
             // 
             // submitOrderButton
             // 
             submitOrderButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            submitOrderButton.Location = new Point(673, 439);
+            submitOrderButton.Location = new Point(664, 548);
             submitOrderButton.Margin = new Padding(3, 4, 3, 4);
             submitOrderButton.Name = "submitOrderButton";
             submitOrderButton.Size = new Size(110, 31);
@@ -188,60 +186,59 @@
             submitOrderButton.UseVisualStyleBackColor = true;
             submitOrderButton.Click += SubmitOrderButton_Click;
             // 
-            // button1
+            // AddToCartButton
             // 
-            button1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button1.Location = new Point(469, 196);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(110, 31);
-            button1.TabIndex = 35;
-            button1.Text = "Add to Cart";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += AddToCartButton_Click;
+            AddToCartButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            AddToCartButton.Location = new Point(469, 287);
+            AddToCartButton.Margin = new Padding(3, 4, 3, 4);
+            AddToCartButton.Name = "AddToCartButton";
+            AddToCartButton.Size = new Size(110, 31);
+            AddToCartButton.TabIndex = 35;
+            AddToCartButton.Text = "Add to Cart";
+            AddToCartButton.UseVisualStyleBackColor = true;
+            AddToCartButton.Click += AddToCartButton_Click;
             // 
             // infoMessageLabel
             // 
-            infoMessageLabel.AutoSize = true;
             infoMessageLabel.Font = new Font("Segoe UI Semibold", 7F);
-            infoMessageLabel.Location = new Point(72, 60);
+            infoMessageLabel.Location = new Point(598, 42);
             infoMessageLabel.Name = "infoMessageLabel";
-            infoMessageLabel.Size = new Size(0, 15);
+            infoMessageLabel.Size = new Size(254, 30);
             infoMessageLabel.TabIndex = 36;
             // 
-            // button2
+            // UpdateButton
             // 
-            button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button2.Location = new Point(469, 235);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(110, 31);
-            button2.TabIndex = 37;
-            button2.Text = "Update ";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += UpdateButton_Click;
+            UpdateButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            UpdateButton.Location = new Point(469, 350);
+            UpdateButton.Margin = new Padding(3, 4, 3, 4);
+            UpdateButton.Name = "UpdateButton";
+            UpdateButton.Size = new Size(110, 31);
+            UpdateButton.TabIndex = 37;
+            UpdateButton.Text = "Update ";
+            UpdateButton.UseVisualStyleBackColor = true;
+            UpdateButton.Click += UpdateButton_Click;
             // 
-            // button3
+            // RemoveButton
             // 
-            button3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
-            button3.Location = new Point(469, 273);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(110, 31);
-            button3.TabIndex = 38;
-            button3.Text = "Remove";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += RemoveButton_Click;
+            RemoveButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic);
+            RemoveButton.Location = new Point(469, 419);
+            RemoveButton.Margin = new Padding(3, 4, 3, 4);
+            RemoveButton.Name = "RemoveButton";
+            RemoveButton.Size = new Size(110, 31);
+            RemoveButton.TabIndex = 38;
+            RemoveButton.Text = "Remove";
+            RemoveButton.UseVisualStyleBackColor = true;
+            RemoveButton.Click += RemoveButton_Click;
             // 
-            // label4
+            // DataGridTitleLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(23, 60);
-            label4.Name = "label4";
-            label4.Size = new Size(252, 28);
-            label4.TabIndex = 39;
-            label4.Text = "Return Transaction History";
+            DataGridTitleLabel.AutoSize = true;
+            DataGridTitleLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            DataGridTitleLabel.Location = new Point(23, 91);
+            DataGridTitleLabel.Name = "DataGridTitleLabel";
+            DataGridTitleLabel.Size = new Size(252, 28);
+            DataGridTitleLabel.TabIndex = 39;
+            DataGridTitleLabel.Text = "Return Transaction History";
             // 
             // menuStrip1
             // 
@@ -249,7 +246,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { returnInstructionsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(880, 28);
+            menuStrip1.Size = new Size(887, 28);
             menuStrip1.TabIndex = 41;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -265,19 +262,19 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(880, 508);
-            Controls.Add(label4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            ClientSize = new Size(887, 604);
+            Controls.Add(DataGridTitleLabel);
+            Controls.Add(RemoveButton);
+            Controls.Add(UpdateButton);
             Controls.Add(infoMessageLabel);
-            Controls.Add(button1);
+            Controls.Add(AddToCartButton);
             Controls.Add(submitOrderButton);
             Controls.Add(cartListView);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(ReturnCartTitleLabel);
+            Controls.Add(ReturnMessageLlabel);
             Controls.Add(quantityTextBox);
             Controls.Add(quantityLabel);
-            Controls.Add(label1);
+            Controls.Add(ReturnTitleLlabel);
             Controls.Add(TransHistTableLayoutPanel);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -303,18 +300,18 @@
         private BindingSource transactionDALBindingSource;
         private BindingSource transactionDALBindingSource1;
         private TableLayoutPanel TransHistTableLayoutPanel;
-        private Label label1;
+        private Label ReturnTitleLlabel;
         private Label quantityLabel;
         private TextBox quantityTextBox;
-        private Label label2;
+        private Label ReturnMessageLlabel;
         private ListView cartListView;
-        private Label label3;
+        private Label ReturnCartTitleLabel;
         private Button submitOrderButton;
-        private Button button1;
+        private Button AddToCartButton;
         private Label infoMessageLabel;
-        private Button button2;
-        private Button button3;
-        private Label label4;
+        private Button UpdateButton;
+        private Button RemoveButton;
+        private Label DataGridTitleLabel;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem returnInstructionsToolStripMenuItem;
     }

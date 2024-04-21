@@ -12,10 +12,11 @@ namespace cs6232_g4.DAL
     {
         public static SqlConnection GetConnection()
         {
-                 string connectionString =
-                   "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cs6232-g4;Integrated Security=True";
+       //     string connectionString =
+         //       "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cs6232-g4;Integrated Security=True";
 
-
+            string connectionString =
+                    "Data Source=CSDBLAB-VM04;Initial Catalog=cs6232-g4;Integrated Security=True";
 
 
             SqlConnection connection = new SqlConnection(connectionString);

@@ -175,7 +175,7 @@
             AdminReportTabPage.Controls.Add(adminReportUserControl1);
             AdminReportTabPage.Location = new Point(4, 35);
             AdminReportTabPage.Name = "AdminReportTabPage";
-            AdminReportTabPage.Size = new Size(192, 61);
+            AdminReportTabPage.Size = new Size(881, 677);
             AdminReportTabPage.TabIndex = 4;
             AdminReportTabPage.Text = "Admin Report";
             AdminReportTabPage.UseVisualStyleBackColor = true;
@@ -185,7 +185,7 @@
             adminReportUserControl1.Dock = DockStyle.Top;
             adminReportUserControl1.Location = new Point(0, 0);
             adminReportUserControl1.Name = "adminReportUserControl1";
-            adminReportUserControl1.Size = new Size(192, 789);
+            adminReportUserControl1.Size = new Size(881, 789);
             adminReportUserControl1.TabIndex = 0;
             // 
             // mainMenuStrip
