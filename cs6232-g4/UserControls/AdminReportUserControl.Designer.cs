@@ -35,13 +35,13 @@
             SelectStartDatelabel = new Label();
             GetReportButton = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            ReportDataGridView = new DataGridView();
             StartDateTimePicker = new DateTimePicker();
             EndDateTimePicker = new DateTimePicker();
             StartDateErrorLabel = new Label();
             EndDateErrorLabel = new Label();
             InfoLabel = new Label();
             DefineQualifyingLabel = new Label();
-            ReportDataGridView = new DataGridView();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ReportDataGridView).BeginInit();
             SuspendLayout();
@@ -78,7 +78,7 @@
             // 
             GetReportButton.FlatStyle = FlatStyle.Popup;
             GetReportButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            GetReportButton.Location = new Point(601, 26);
+            GetReportButton.Location = new Point(586, 26);
             GetReportButton.Name = "GetReportButton";
             GetReportButton.Size = new Size(247, 38);
             GetReportButton.TabIndex = 4;
@@ -112,6 +112,41 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel1.Size = new Size(837, 534);
             tableLayoutPanel1.TabIndex = 12;
+            // 
+            // ReportDataGridView
+            // 
+            ReportDataGridView.AllowUserToAddRows = false;
+            ReportDataGridView.AllowUserToDeleteRows = false;
+            ReportDataGridView.AllowUserToOrderColumns = true;
+            ReportDataGridView.AllowUserToResizeRows = false;
+            ReportDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            ReportDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            ReportDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanel1.SetColumnSpan(ReportDataGridView, 3);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            ReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            ReportDataGridView.Dock = DockStyle.Fill;
+            ReportDataGridView.Location = new Point(3, 140);
+            ReportDataGridView.Name = "ReportDataGridView";
+            ReportDataGridView.ReadOnly = true;
+            ReportDataGridView.RowHeadersWidth = 51;
+            tableLayoutPanel1.SetRowSpan(ReportDataGridView, 2);
+            ReportDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ReportDataGridView.Size = new Size(832, 391);
+            ReportDataGridView.TabIndex = 40;
             // 
             // StartDateTimePicker
             // 
@@ -163,41 +198,6 @@
             DefineQualifyingLabel.Size = new Size(348, 68);
             DefineQualifyingLabel.TabIndex = 39;
             DefineQualifyingLabel.Text = "Report includes furniture with the same furninture ID that was rented out in at least two transactions during the chose dates. ";
-            // 
-            // ReportDataGridView
-            // 
-            ReportDataGridView.AllowUserToAddRows = false;
-            ReportDataGridView.AllowUserToDeleteRows = false;
-            ReportDataGridView.AllowUserToOrderColumns = true;
-            ReportDataGridView.AllowUserToResizeRows = false;
-            ReportDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            ReportDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            ReportDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanel1.SetColumnSpan(ReportDataGridView, 3);
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            ReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            ReportDataGridView.Dock = DockStyle.Fill;
-            ReportDataGridView.Location = new Point(3, 140);
-            ReportDataGridView.Name = "ReportDataGridView";
-            ReportDataGridView.ReadOnly = true;
-            ReportDataGridView.RowHeadersWidth = 51;
-            tableLayoutPanel1.SetRowSpan(ReportDataGridView, 2);
-            ReportDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            ReportDataGridView.Size = new Size(832, 391);
-            ReportDataGridView.TabIndex = 40;
             // 
             // AdminReportUserControl
             // 

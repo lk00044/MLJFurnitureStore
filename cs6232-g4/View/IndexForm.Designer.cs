@@ -59,6 +59,7 @@
             Controls.Add(CloseBbutton);
             Controls.Add(navigationLabel);
             Name = "IndexForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "App Navigation";
             ResumeLayout(false);
         }

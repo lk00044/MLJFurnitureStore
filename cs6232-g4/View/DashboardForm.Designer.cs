@@ -102,7 +102,7 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(192, 61);
+            MbrTransTabPage.Size = new Size(881, 677);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Rental Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(192, 61);
+            Search4MbrTabPage.Size = new Size(881, 677);
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Transactions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(186, 55);
+            search4Member.Size = new Size(875, 671);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage

@@ -90,6 +90,7 @@
             ClientSize = new Size(495, 311);
             Controls.Add(instructionsTableLayoutPanel);
             Name = "ReturnInstructionsForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Return Instructions";
             instructionsTableLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
