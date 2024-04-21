@@ -67,5 +67,15 @@ namespace Members.Controller
         {
             return this._transactionDAL.CreateReturnTransaction(rentalLineItems);
         }
+
+        /// <summary>
+        /// Gets the member return transactions.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>list of return transactions for the member</returns>
+        public List<ReturnTransaction> GetMemberReturns(int memberID)
+        {
+            return this._transactionDAL.GetMemberReturns(memberID);
+        }
     }
 }

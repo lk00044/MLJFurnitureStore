@@ -35,6 +35,7 @@
             MbrFNameTextBox = new TextBox();
             MbrLNameTextBox = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
+            ReturnHistBtn = new Button();
             MembersDataGridView = new DataGridView();
             ViewTransactionsButton = new Button();
             UpdateMbrButton = new Button();
@@ -53,7 +54,7 @@
             // MatchingMembersLabel
             // 
             MatchingMembersLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            MatchingMembersLabel.Location = new Point(3, 171);
+            MatchingMembersLabel.Location = new Point(3, 249);
             MatchingMembersLabel.Name = "MatchingMembersLabel";
             MatchingMembersLabel.Size = new Size(201, 21);
             MatchingMembersLabel.TabIndex = 12;
@@ -109,7 +110,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 248F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 329F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 261F));
-            tableLayoutPanel1.Controls.Add(MembersDataGridView, 0, 6);
+            tableLayoutPanel1.Controls.Add(ReturnHistBtn, 2, 6);
+            tableLayoutPanel1.Controls.Add(MembersDataGridView, 1, 7);
             tableLayoutPanel1.Controls.Add(ViewTransactionsButton, 2, 5);
             tableLayoutPanel1.Controls.Add(FindMemberButton, 2, 0);
             tableLayoutPanel1.Controls.Add(UpdateMbrButton, 2, 4);
@@ -132,9 +134,24 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 86F));
-            tableLayoutPanel1.Size = new Size(837, 452);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(837, 606);
             tableLayoutPanel1.TabIndex = 10;
+            // 
+            // ReturnHistBtn
+            // 
+            ReturnHistBtn.FlatStyle = FlatStyle.Popup;
+            ReturnHistBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            ReturnHistBtn.Location = new Point(580, 213);
+            ReturnHistBtn.Name = "ReturnHistBtn";
+            ReturnHistBtn.Size = new Size(254, 29);
+            ReturnHistBtn.TabIndex = 17;
+            ReturnHistBtn.Text = "View Return History";
+            ReturnHistBtn.UseVisualStyleBackColor = true;
+            ReturnHistBtn.Click += ReturnHistBtn_Click;
             // 
             // MembersDataGridView
             // 
@@ -142,14 +159,13 @@
             MembersDataGridView.AllowUserToDeleteRows = false;
             MembersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanel1.SetColumnSpan(MembersDataGridView, 3);
-            MembersDataGridView.Dock = DockStyle.Fill;
-            MembersDataGridView.Location = new Point(3, 213);
+            MembersDataGridView.Location = new Point(3, 284);
             MembersDataGridView.Name = "MembersDataGridView";
             MembersDataGridView.ReadOnly = true;
             MembersDataGridView.RowHeadersWidth = 51;
             MembersDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            MembersDataGridView.Size = new Size(832, 236);
-            MembersDataGridView.TabIndex = 18;
+            MembersDataGridView.Size = new Size(831, 319);
+            MembersDataGridView.TabIndex = 14;
             MembersDataGridView.CellClick += MembersDataGridView_CellClick;
             // 
             // ViewTransactionsButton
@@ -225,7 +241,7 @@
             // 
             SearchInstructionsLabel.AutoSize = true;
             SearchInstructionsLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            SearchInstructionsLabel.Location = new Point(20, 109);
+            SearchInstructionsLabel.Location = new Point(13, 13);
             SearchInstructionsLabel.Name = "SearchInstructionsLabel";
             SearchInstructionsLabel.Size = new Size(612, 25);
             SearchInstructionsLabel.TabIndex = 11;
@@ -258,7 +274,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
             Name = "SearchForMemberUserControl";
-            Size = new Size(877, 620);
+            Size = new Size(876, 657);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).EndInit();
@@ -285,5 +301,6 @@
         private Label informationLabel;
         private Label ReturnLabel;
         private DataGridView MembersDataGridView;
+        private Button ReturnHistBtn;
     }
 }

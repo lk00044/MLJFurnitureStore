@@ -375,5 +375,35 @@ namespace cs6232_g4.UserControls
                 }
             }
         }
+
+        private void ReturnHistBtn_Click(object sender, EventArgs e)
+        {
+            if (!CheckRowIsSelected())
+            {
+                this.ErrorLabel.Text = "You must select a row first. ";
+            }
+            else if (!this._transactionController.VerifyMemberTransactionavailable(this.SelectedMemberId))
+            {
+                this.ErrorLabel.Text = "No return transactions for this member id.";
+            }
+            else
+            {
+                this.ErrorLabel.Text = string.Empty;
+
+                using (ViewReturnHistoryForm viewReturnHistory = new ViewReturnHistoryForm(this.SelectedMemberId, this.MemberName))
+                {
+                    DialogResult result = viewReturnHistory.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        this.Show();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }

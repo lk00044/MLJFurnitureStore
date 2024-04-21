@@ -1,6 +1,9 @@
 ﻿
+using cs6232_g4.Controller;
 using cs6232_g4.Model;
 using Members.Controller;
+using System.Windows.Forms;
+using System.Linq;
 
 /// <summary>
 /// Handles the interaction between the view and the data layer to 
@@ -23,6 +26,8 @@ namespace cs6232_g4.View
         private BindingSource bindingSource1;
         private RentalLineItem selectedLineItem;
         private List<RentalLineItem> rentalLineItemList;
+        private ReturnTransaction returnTransaction;
+        private readonly LoginController _loginController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
@@ -40,6 +45,7 @@ namespace cs6232_g4.View
             this.MemberName = memberName;
             bindingSource1 = new BindingSource();
             this.infoMessageLabel.ForeColor = Color.Red;
+            this.returnTransaction = new ReturnTransaction();   
         }
 
         private void ViewMbrTransactionHistoryForm_Load(object sender, EventArgs e)
