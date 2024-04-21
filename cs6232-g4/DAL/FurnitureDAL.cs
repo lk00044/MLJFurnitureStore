@@ -10,7 +10,7 @@ namespace Employees.DAL
         /// Gets all furniture
         /// </summary>
         /// <returns>furniture list</returns>
-        public List<Furniture> GetAllFuruniture()
+        public List<Furniture> GetAllFurniture()
         {
             List<Furniture> FurnitureList = new List<Furniture>();
 
@@ -71,6 +71,6 @@ namespace Employees.DAL
 
                 }
             }
-        }
+        }        
     }
 }

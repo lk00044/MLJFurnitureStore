@@ -45,6 +45,8 @@
             EnterMbrPhoneNumLabel = new Label();
             ErrorLabel = new Label();
             SearchInstructionsLabel = new Label();
+            informationLabel = new Label();
+            ReturnLabel = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MembersDataGridView).BeginInit();
             SuspendLayout();
@@ -122,10 +124,10 @@
             tableLayoutPanel1.Controls.Add(MbrFNameTextBox, 1, 2);
             tableLayoutPanel1.Controls.Add(MbrLNameTextBox, 1, 3);
             tableLayoutPanel1.Controls.Add(ErrorLabel, 2, 1);
-            tableLayoutPanel1.Controls.Add(MatchingMembersLabel, 0, 7);
-            tableLayoutPanel1.Location = new Point(14, 51);
+            tableLayoutPanel1.Controls.Add(MatchingMembersLabel, 0, 5);
+            tableLayoutPanel1.Location = new Point(17, 148);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 9;
+            tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
@@ -245,10 +247,30 @@
             SearchInstructionsLabel.TabIndex = 11;
             SearchInstructionsLabel.Text = "Enter Member ID, Member Phone Number or Member First and Last Name.";
             // 
+            // informationLabel
+            // 
+            informationLabel.Location = new Point(20, 59);
+            informationLabel.Name = "informationLabel";
+            informationLabel.Size = new Size(837, 27);
+            informationLabel.TabIndex = 12;
+            informationLabel.Text = "   Search for and then select the member. The Transactions Window opens. From there, you can do a member return.\r\n";
+            // 
+            // ReturnLabel
+            // 
+            ReturnLabel.AutoSize = true;
+            ReturnLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            ReturnLabel.Location = new Point(20, 29);
+            ReturnLabel.Name = "ReturnLabel";
+            ReturnLabel.Size = new Size(136, 25);
+            ReturnLabel.TabIndex = 13;
+            ReturnLabel.Text = "Member Return";
+            // 
             // SearchForMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ReturnLabel);
+            Controls.Add(informationLabel);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(SearchInstructionsLabel);
             Name = "SearchForMemberUserControl";
@@ -274,9 +296,11 @@
         private Label EnterMbrPhoneNumLabel;
         private Label SearchInstructionsLabel;
         private Label ErrorLabel;
-        private DataGridView MembersDataGridView;
         private Button UpdateMbrButton;
         private Button ViewTransactionsButton;
+        private Label informationLabel;
+        private Label ReturnLabel;
+        private DataGridView MembersDataGridView;
         private Button ReturnHistBtn;
     }
 }

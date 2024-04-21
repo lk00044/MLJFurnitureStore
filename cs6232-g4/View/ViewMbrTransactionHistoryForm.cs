@@ -1,12 +1,13 @@
 ﻿
 using cs6232_g4.Controller;
 using cs6232_g4.Model;
-using Furnitures.Model;
 using Members.Controller;
 using System.Windows.Forms;
 using System.Linq;
 
 /// <summary>
+/// Handles the interaction between the view and the data layer to 
+/// show a member's transactions
 /// </summary>
 
 namespace cs6232_g4.View
@@ -28,6 +29,11 @@ namespace cs6232_g4.View
         private ReturnTransaction returnTransaction;
         private readonly LoginController _loginController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
+        /// </summary>
+        /// <param name="mbrID">The MBR identifier.</param>
+        /// <param name="memberName">Name of the member.</param>
         public ViewMbrTransactionHistoryForm(int mbrID, string memberName)
         {
             InitializeComponent();
@@ -71,7 +77,6 @@ namespace cs6232_g4.View
 
         private void SetupDataGrid()
         {
-
             this.MemberTransactionsDataGridView.AutoGenerateColumns = false;
             this.MemberTransactionsDataGridView.AutoSize = true;
             this.MemberTransactionsDataGridView.Columns[0].HeaderText = "Transaction ID";
@@ -85,7 +90,7 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.Columns[6].DefaultCellStyle.Format = "MM/dd/yyyy";
             this.MemberTransactionsDataGridView.Columns[7].HeaderText = "Furniture ID";
             this.MemberTransactionsDataGridView.Columns[8].HeaderText = "Furniture Name";
-            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Remaining Quantity";
+            this.MemberTransactionsDataGridView.Columns[9].HeaderText = "Quantity";
             this.MemberTransactionsDataGridView.Columns[10].HeaderText = "SubTotal";
             this.MemberTransactionsDataGridView.Columns[10].DefaultCellStyle.Format = "c";
             this.MemberTransactionsDataGridView.Columns[11].HeaderText = "Transaction Total";
@@ -99,10 +104,6 @@ namespace cs6232_g4.View
             this.Close();
         }
 
-        private void MemberNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
         /// <summary>
         /// checks whether a row is selected 
         /// </summary>
@@ -139,6 +140,7 @@ namespace cs6232_g4.View
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
             if (!IsValidInput(false)) return;
+
             this.selectedLineItem.Quantity = int.Parse(this.quantityTextBox.Text);
             ListViewItem listViewItem = new ListViewItem(this.selectedLineItem.Name);
             this.cartListView.Items.Add(listViewItem);
@@ -207,8 +209,8 @@ namespace cs6232_g4.View
 
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to submit?" , "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(result == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Are you sure you want to submit?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
                 try
                 {
@@ -220,11 +222,11 @@ namespace cs6232_g4.View
                     this.infoMessageLabel.Text = "failed to return items please try again later.";
                 }
             }
-            
+
         }
 
         /// <summary>
-        /// helper constuctrs a receipt 
+        /// helper constructs a receipt 
         /// </summary>
         private void CreateReceipt(double returnTxnId, double refund_or_fine)
         {
@@ -243,6 +245,9 @@ namespace cs6232_g4.View
             this.ResetFields();
         }
 
+        /// <summary>
+        /// Resets the fields.
+        /// </summary>
         public void ResetFields()
         {
             this.quantityTextBox.Text = string.Empty;
@@ -251,7 +256,22 @@ namespace cs6232_g4.View
             this.rentalLineItemList.Clear();
             this.ShowTransactions();
         }
+
+        private void returnInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Form instructionsForm = new ReturnInstructionsForm())
+            {
+                DialogResult result = instructionsForm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    this.Show();
+                }
+            }
+        }
+          
     }
 }
+
 
 

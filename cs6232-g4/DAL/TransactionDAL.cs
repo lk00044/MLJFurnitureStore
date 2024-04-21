@@ -1,7 +1,5 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
-using Members.Controller;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Transactions;
 using static System.ComponentModel.Design.ObjectSelectorEditor;

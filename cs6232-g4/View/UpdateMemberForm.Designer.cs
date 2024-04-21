@@ -108,7 +108,7 @@ namespace cs6232_g4.View
             // 
             GenderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             GenderComboBox.FormattingEnabled = true;
-            GenderComboBox.Items.AddRange(new object[] { "Female", "Male ", "Transgender", "Non-binary/non-conforming", "Prefer not to respond" });
+            GenderComboBox.Items.AddRange(new object[] { "Female", "Male", "Transgender", "Non-binary/non-conforming", "Prefer not to respond" });
             GenderComboBox.Location = new Point(138, 67);
             GenderComboBox.Name = "GenderComboBox";
             GenderComboBox.Size = new Size(252, 28);
@@ -475,7 +475,7 @@ namespace cs6232_g4.View
         #endregion
 
         //  private UserControls.EditMemberInfoUserControl editMemberInfoUserControl;
-        private UserControls.UpdateMemberInfoUserControl updateMemberInfoUserControl11;
+        private UserControls.UpdateMemberInfoUserControl updateMemberInfoUserControl;
         private Label fnameErrorLabel;
         private Label NewFNameLabel;
         private TextBox MbrNewLNameTextBox;

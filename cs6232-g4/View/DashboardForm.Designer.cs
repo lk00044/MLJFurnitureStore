@@ -40,16 +40,24 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
+            AdminReportTabPage = new TabPage();
+            adminReportUserControl1 = new UserControls.AdminReportUserControl();
+            mainMenuStrip = new MenuStrip();
+            menuToolStripMenuItem = new ToolStripMenuItem();
+            indexToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             MbrTransTabPage.SuspendLayout();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
+            AdminReportTabPage.SuspendLayout();
+            mainMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // UserNameLabel
             // 
             UserNameLabel.AutoSize = true;
-            UserNameLabel.Location = new Point(615, 9);
+            UserNameLabel.Location = new Point(617, 28);
             UserNameLabel.Name = "UserNameLabel";
             UserNameLabel.Size = new Size(81, 20);
             UserNameLabel.TabIndex = 1;
@@ -58,7 +66,7 @@
             // NameLabel
             // 
             NameLabel.AutoSize = true;
-            NameLabel.Location = new Point(406, 9);
+            NameLabel.Location = new Point(400, 28);
             NameLabel.Name = "NameLabel";
             NameLabel.Size = new Size(52, 20);
             NameLabel.TabIndex = 2;
@@ -66,14 +74,14 @@
             // 
             // DisplayNameLabel
             // 
-            DisplayNameLabel.Location = new Point(457, 9);
+            DisplayNameLabel.Location = new Point(458, 28);
             DisplayNameLabel.Name = "DisplayNameLabel";
             DisplayNameLabel.Size = new Size(160, 25);
             DisplayNameLabel.TabIndex = 3;
             // 
             // DisplayUserNameLabel
             // 
-            DisplayUserNameLabel.Location = new Point(704, 9);
+            DisplayUserNameLabel.Location = new Point(704, 28);
             DisplayUserNameLabel.Name = "DisplayUserNameLabel";
             DisplayUserNameLabel.Size = new Size(88, 25);
             DisplayUserNameLabel.TabIndex = 4;
@@ -96,7 +104,7 @@
             MbrTransTabPage.Name = "MbrTransTabPage";
             MbrTransTabPage.Size = new Size(881, 677);
             MbrTransTabPage.TabIndex = 3;
-            MbrTransTabPage.Text = "Member Transactions";
+            MbrTransTabPage.Text = "Rental Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
             // 
             // rentFurnitureUserControl
@@ -116,7 +124,7 @@
             Search4MbrTabPage.Padding = new Padding(3);
             Search4MbrTabPage.Size = new Size(881, 677);
             Search4MbrTabPage.TabIndex = 1;
-            Search4MbrTabPage.Text = "Member Functions";
+            Search4MbrTabPage.Text = "Member Transactions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
             // 
             // search4Member
@@ -152,6 +160,7 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
+            MainDBTabControl.Controls.Add(AdminReportTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
             MainDBTabControl.Name = "MainDBTabControl";
@@ -160,6 +169,55 @@
             MainDBTabControl.Size = new Size(889, 716);
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
+            // 
+            // AdminReportTabPage
+            // 
+            AdminReportTabPage.Controls.Add(adminReportUserControl1);
+            AdminReportTabPage.Location = new Point(4, 35);
+            AdminReportTabPage.Name = "AdminReportTabPage";
+            AdminReportTabPage.Size = new Size(881, 677);
+            AdminReportTabPage.TabIndex = 4;
+            AdminReportTabPage.Text = "Admin Report";
+            AdminReportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adminReportUserControl1
+            // 
+            adminReportUserControl1.Dock = DockStyle.Top;
+            adminReportUserControl1.Location = new Point(0, 0);
+            adminReportUserControl1.Name = "adminReportUserControl1";
+            adminReportUserControl1.Size = new Size(881, 789);
+            adminReportUserControl1.TabIndex = 0;
+            // 
+            // mainMenuStrip
+            // 
+            mainMenuStrip.ImageScalingSize = new Size(20, 20);
+            mainMenuStrip.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
+            mainMenuStrip.Location = new Point(0, 0);
+            mainMenuStrip.Name = "mainMenuStrip";
+            mainMenuStrip.Size = new Size(889, 28);
+            mainMenuStrip.TabIndex = 7;
+            mainMenuStrip.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { indexToolStripMenuItem, exitToolStripMenuItem });
+            menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            menuToolStripMenuItem.Size = new Size(60, 24);
+            menuToolStripMenuItem.Text = "Menu";
+            // 
+            // indexToolStripMenuItem
+            // 
+            indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            indexToolStripMenuItem.Size = new Size(124, 26);
+            indexToolStripMenuItem.Text = "Help";
+            indexToolStripMenuItem.Click += indexToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(124, 26);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // DashboardForm
             // 
@@ -172,6 +230,8 @@
             Controls.Add(DisplayNameLabel);
             Controls.Add(NameLabel);
             Controls.Add(UserNameLabel);
+            Controls.Add(mainMenuStrip);
+            MainMenuStrip = mainMenuStrip;
             Name = "DashboardForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Rent Me Furniture Rentals";
@@ -180,6 +240,9 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
+            AdminReportTabPage.ResumeLayout(false);
+            mainMenuStrip.ResumeLayout(false);
+            mainMenuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +260,11 @@
         private TabPage RegMbrTabPage;
         private UserControls.MemberRegistrationUserControl memberRegistrationUserControl;
         private TabControl MainDBTabControl;
+        private TabPage AdminReportTabPage;
+        private UserControls.AdminReportUserControl adminReportUserControl1;
+        private MenuStrip mainMenuStrip;
+        private ToolStripMenuItem menuToolStripMenuItem;
+        private ToolStripMenuItem indexToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }

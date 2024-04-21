@@ -67,38 +67,40 @@ namespace cs6232_g4.View
             this.StateComboBox.Text = this.memberToUpdate.State;
             this.NewZipTextBox.Text = this.memberToUpdate.ZipCode.ToString();
             this.dobDateTimePicker.Value = (DateTime)this.memberToUpdate.DateOfBirth;
-            this.SetOrigGender();           
+            this.GenderComboBox.Text = this.SetOrigGender();           
+            this.MemberIDLabel.Text = "Member ID: " + this._memberID.ToString();    
 
         }
 
-        private void SetOrigGender()
+        private string SetOrigGender()
         {
             char gender = this.memberToUpdate.Gender;
 
-            if (gender.Equals('M'))
+            if (gender == 'M')
             {
-                this.GenderComboBox.Text = "Male";
+                return "Male";
             }
             else if (gender == 'F')
             {
-                this.GenderComboBox.Text = "Female";
+                return "Female";
             }
             else if (gender == 'T')
             {
-                this.GenderComboBox.Text = "Transgender";
+                return "Transgender";
             }
             else if (gender == 'N')
             {
-                this.GenderComboBox.Text = "Non-binary/non-conforming";
+                return "Non-binary/non-conforming";
             }
             else if (gender == 'P')
             {
-                this.GenderComboBox.Text = "Prefer not to respond";
+                return "Prefer not to respond";
             }
-            else if (gender == 'O')
+            else
             {
-                this.GenderComboBox.Text = "Prefer not to respond";
+                return "Prefer not to respond";
             }
+
         }
 
         private void UpdateMemberButton_Click(object sender, EventArgs e)
@@ -123,7 +125,7 @@ namespace cs6232_g4.View
                 }
                 else
                 {
-                    this.InfoLabel.Text = "Failed to register customer.";
+                    this.InfoLabel.Text = "Failed to update member.";
                     this.InfoLabel.ForeColor = Color.Red;
                 }
             }

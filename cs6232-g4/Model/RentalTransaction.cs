@@ -19,7 +19,9 @@
         public int LineItemId { get; set; }
 
         public DateTime DueDate { get; set; }
+
         public int FurnitureID { get; set; }
+
         public string FurnitureName { get; set; }
 
         public int LineItemQty { get; set; }
@@ -27,9 +29,6 @@
         public decimal LineItemSubTotal { get; set; }
 
         public decimal TotalAmount { get; set; }
-
-        
-
        
     }
 }

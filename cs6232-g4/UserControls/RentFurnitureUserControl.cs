@@ -5,6 +5,10 @@ using Members.Controller;
 
 namespace cs6232_g4.UserControls
 {
+    /// <summary>
+    /// Creates the view to interact between the data layer and the user
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RentFurnitureUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
@@ -13,6 +17,10 @@ namespace cs6232_g4.UserControls
         private readonly TransactionController _transactionController;
         private RentalTransaction rentalTransaction;
         private List<Furniture> furnitureList;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
+        /// </summary>
         public RentFurnitureUserControl()
         {
             InitializeComponent();
@@ -25,6 +33,7 @@ namespace cs6232_g4.UserControls
             this.infoMessageLabel.Text = string.Empty;
             this.dueDatePicker.MinDate = DateTime.Today.AddDays(1);
         }
+
         private void RentFurnitureUserControl_Load(object sender, EventArgs e)
         {
             this.PopulateAvailableFurniture();
@@ -60,8 +69,18 @@ namespace cs6232_g4.UserControls
                 listViewItem.SubItems.Add("$" + addedFurniture.DailyRentalRate.ToString());
                 listViewItem.SubItems.Add("$" + "0.00");
                 this.UpdateCostValues();
-
+                this.ClearTextBoxes();
             }
+        }
+
+        /// <summary>
+        /// Clears the text boxes.
+        /// Added: Leslie
+        /// </summary>
+        private void ClearTextBoxes()
+        {
+            this.quantityTextBox.Text = string.Empty;
+            this.furnitureIdTextBox.Text = string.Empty;
         }
 
         /// <summary>
@@ -118,7 +137,7 @@ namespace cs6232_g4.UserControls
                 this.CreateLineItems();
                 this.CreateReceipt();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
                 MessageBox.Show("Failed to submit order" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -304,6 +323,24 @@ namespace cs6232_g4.UserControls
             this.infoMessageLabel.Text = string.Empty;
             this.cartListView.Items.Clear();
             this.totalCostValue.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the RemoveButton control.
+        /// Added: Leslie
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            if (this.cartListView.SelectedItems.Count == 1)
+            {
+                ListViewItem listViewItem = this.cartListView.SelectedItems[0];
+                this.cartListView.Items.Remove(listViewItem);
+                this.UpdateCostValues();
+                this.PopulateAvailableFurniture();             
+            }
+            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Members.Controller
         /// </summary>
         public List<Furniture> GetAllFurniture()
         {
-            return this._furnitureDAL.GetAllFuruniture();
+            return this._furnitureDAL.GetAllFurniture();
         }
 
         /// <summary>
