@@ -13,6 +13,9 @@ using Members.Model;
 ///                 Added data validation and error checking
 /// Modified by:    Leslie
 /// Modified on:    29 March 2024
+/// Modification:   updated showing memberID
+/// Modified by:    Leslie
+/// Modified on:    19 April 2024
 /// </summary>
 
 namespace cs6232_g4.UserControls

@@ -81,15 +81,11 @@ namespace cs6232_g4.UserControls
         {
             char gender = MemberList[0].Gender;
 
-            if (string.IsNullOrEmpty(gender.ToString()))  
-            {
-                return "Prefer not to respond";
-            }
-            else if (gender.Equals('M'))
+            if (gender == 'M')
             {
                 return "Male";
             }
-            else if (gender.Equals('F'))
+            else if (gender == 'F')
             {
                 return "Female";
             }
