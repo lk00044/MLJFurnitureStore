@@ -26,8 +26,6 @@ namespace cs6232_g4.View
         private BindingSource bindingSource1;
         private RentalLineItem selectedLineItem;
         private List<RentalLineItem> rentalLineItemList;
-        private ReturnTransaction returnTransaction;
-        private readonly LoginController _loginController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
@@ -44,8 +42,7 @@ namespace cs6232_g4.View
             this.MemberID = mbrID;
             this.MemberName = memberName;
             bindingSource1 = new BindingSource();
-            this.infoMessageLabel.ForeColor = Color.Red;
-            this.returnTransaction = new ReturnTransaction();   
+            this.infoMessageLabel.ForeColor = Color.Red; 
         }
 
         /// <summary>
@@ -232,7 +229,6 @@ namespace cs6232_g4.View
                     this.infoMessageLabel.Text = "failed to return items please try again later.";
                 }
             }
-
         }
 
         /// <summary>
@@ -264,8 +260,7 @@ namespace cs6232_g4.View
             this.infoMessageLabel.Text = string.Empty;
             this.cartListView.Items.Clear();
             this.rentalLineItemList.Clear();
-            this.ShowTransactions();
-            
+            this.ShowTransactions();            
         }
 
         /// <summary>

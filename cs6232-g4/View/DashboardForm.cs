@@ -77,6 +77,7 @@ namespace cs6232_g4
             //checks to see if admin is logged in for access to report - Leslie
             if (this.MainDBTabControl.SelectedIndex == 3)
             {
+                  this.adminReportUserControl1.ClearGrid();
                 if (this.VerifyAdminLogin())
                 {
                     this.AdminReportTabPage.Enabled = true;

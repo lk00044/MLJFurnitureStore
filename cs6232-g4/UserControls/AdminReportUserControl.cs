@@ -23,8 +23,6 @@ namespace cs6232_g4.UserControls
         public AdminReportUserControl()
         {
             InitializeComponent();
-            //Start = DateTime.Now;
-           // End = DateTime.Now;
             Current = DateTime.Now;
             ReportData = new List<AdminReport>();
             _adminReportController = new AdminReportController();
@@ -49,7 +47,6 @@ namespace cs6232_g4.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
         }
 
         /// <summary>
@@ -57,7 +54,6 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private void DisplayReport()
         {
-
             this.ReportDataGridView.DataSource = null;
             this.ReportData = this._adminReportController.GetAdminReportData(this.Start, this.End);
             this.ReportDataGridView.DataSource = this.ReportData;
@@ -103,6 +99,14 @@ namespace cs6232_g4.UserControls
         private void EndDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             this.End = this.EndDateTimePicker.Value.Date;
+        }
+
+        /// <summary>
+        /// Clears the grid.
+        /// </summary>
+        public void ClearGrid()
+        {
+            this.ReportDataGridView.DataSource = null;
         }
     }
 }
