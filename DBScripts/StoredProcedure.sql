@@ -1,6 +1,6 @@
 USE [cs6232-g4]
 GO
-/****** Object:  StoredProcedure [dbo].[GetAdminReport]    Script Date: 4/18/2024 2:58:14 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetAdminReport]    Script Date: 4/21/2024 8:45:39 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -13,6 +13,7 @@ GO
 --				during the specified period for furniture with the same furnintureID
 --				that was rented out in at least two transactions.
 -- =============================================
+
 CREATE PROCEDURE [dbo].[GetAdminReport] 
 	-- Add the parameters for the stored procedure here
 	@StartDate DateTime = null, 
@@ -26,15 +27,13 @@ BEGIN TRY
 	SET NOCOUNT ON; 
 
 	SELECT  f.furniture_id as furniture_id, f.name, f.category_name,
-		 	count(distinct li.rental_transaction_id) as total_transactions,
-			count(rt.transaction_id) as total_qualifying_trans, 
-			(count(rt.transaction_id) / count(distinct li.rental_transaction_id) * 100) as pct_qualifying_transactions,
-			round((COUNT(IIF(DATEDIFF(year, rt.transaction_id, mbr.date_of_birth) > 17 and 
-				DATEDIFF(year, rt.transaction_id, mbr.date_of_birth) < 30, mbr.member_id, NULL))
-				/ count(mbr.member_id)), 2) * 100 as pct_18_to_29,
-			round((COUNT(IIF(DATEDIFF(year, rt.transaction_id, mbr.date_of_birth) < 18 or 
-				DATEDIFF(year, rt.transaction_id, mbr.date_of_birth) > 29, mbr.member_id, NULL))
-				/ count(mbr.member_id)), 2) * 100 as pct_over_age_range
+		 	count(li.rental_transaction_id) as total_transactions,
+			count(rt.transaction_id) as total_qualifying_trans,
+			(count(rt.transaction_id)  / count(li.rental_transaction_id))*100 as pct_qualifying_transactions,
+			(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 29 and  
+			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) >17, 1, 0)) * 100)/ count(mbr.member_id) as pct_18_to_29,
+			(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 29 or 
+			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 18, 1, 0)) * 100)/ count(mbr.member_id) as pct_over_age_range
 
 			FROM dbo.Furniture f
 			INNER JOIN dbo.RentalLineItem li
