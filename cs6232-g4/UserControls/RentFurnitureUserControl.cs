@@ -99,7 +99,16 @@ namespace cs6232_g4.UserControls
                 }
                 else
                 {
-                    listViewItem.SubItems[2].Text = this.quantityTextBox.Text;
+                    // added so it won't change quantity for whatever is in the list - must be the same furniture id - Leslie
+                    if (addedFurniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text))
+                    {
+                        listViewItem.SubItems[2].Text = this.quantityTextBox.Text;
+                    }
+                    else
+                    {
+                        this.infoMessageLabel.Text = "You can only update furniture with the same Furniture ID. ";
+                    }
+                    
                 }
                 this.UpdateCostValues();
             }
@@ -272,6 +281,9 @@ namespace cs6232_g4.UserControls
         /// </summary>
         private bool IsValidItemInput(bool isUpdate)
         {
+
+            string furnitureId = this.furnitureIdTextBox.Text;
+
             this.infoMessageLabel.ForeColor = Color.Red;
             if (this.furnitureIdTextBox.Text == string.Empty)
             {
@@ -283,12 +295,17 @@ namespace cs6232_g4.UserControls
                 this.infoMessageLabel.Text = "Unable to find furniture with given id";
                 return false;
             }
-            if (!isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) != null)
+
+            // Updated as it will find a match for the number if it's the id or the qty. Leslie
+            // Orig: if (isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) == null)
+
+            if (!isUpdate && isItemInCart(furnitureId))
             {
                 this.infoMessageLabel.Text = "Item is already added in cart";
                 return false;
             }
-            if (isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) == null)
+
+             if (isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) == null)
             {
                 this.infoMessageLabel.Text = "Cannot update item before it's added to cart";
                 return false;
@@ -306,6 +323,22 @@ namespace cs6232_g4.UserControls
             this.infoMessageLabel.Text = "";
             return true;
         }
+
+        // Checks to see if item already in cart
+        private bool isItemInCart(string furnitureID)
+        {
+            int i = 0;
+            while (i < cartListView.Items.Count)
+            {
+                if (furnitureID.Equals(cartListView.Items[i].SubItems[0].Text.ToString()))
+                {
+                    return true;
+                }
+                i++;
+            }
+            return false;
+        }
+
 
         private void ResetOrderButton_Click(object sender, EventArgs e)
         {
