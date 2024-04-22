@@ -4,7 +4,7 @@ using Members.Controller;
 /// <summary>
 /// Handles the interaction between the view and the data layer to 
 /// show a member's transactions
-/// </summary>
+/// </summary> 
 
 namespace cs6232_g4.View
 {
