@@ -376,6 +376,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        ///  show return form
+        /// </summary>
         private void ReturnHistBtn_Click(object sender, EventArgs e)
         {
             if (!CheckRowIsSelected())

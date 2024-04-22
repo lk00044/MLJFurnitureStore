@@ -323,6 +323,7 @@ namespace cs6232_g4.UserControls
             this.infoMessageLabel.Text = string.Empty;
             this.cartListView.Items.Clear();
             this.totalCostValue.Text = string.Empty;
+            this.PopulateAvailableFurniture();
         }
 
         /// <summary>

@@ -65,7 +65,7 @@ namespace cs6232_g4.UserControls
                 if (this._memberController.RegisterStoreMember(newMember) > 0)
                 {
                     //MessageBox.Show("Customer registered successfully!");
-                    this.showNewMemberNumber();
+                    this.ShowNewMemberNumber();
                     this.ResetFields();
                 }
                 else
@@ -384,7 +384,10 @@ namespace cs6232_g4.UserControls
             this.regFeedbackLabel.Text = string.Empty;
         }
 
-        private void showNewMemberNumber()
+        /// <summary>
+        ///  get duplicate member
+        /// </summary>
+        private void ShowNewMemberNumber()
         {
             List<Member> memberList = new List<Member>();
             memberList = this._memberController.GetMemberByName(newMember.FirstName.Trim(), newMember.LastName.Trim());

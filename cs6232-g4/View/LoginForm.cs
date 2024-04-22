@@ -97,17 +97,18 @@ namespace cs6232_g4.View
             }
         }
 
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
+        /// <summary>
+        ///  resets username
+        /// </summary>
         private void TextUsername_Click(object sender, EventArgs e)
         {
             this.UserNameErrorlabel.Text = "";
             this.PasswordErrorLabel.Text = "";
         }
 
+        /// <summary>
+        ///  rests password
+        /// </summary>
         private void TextPassword_Click(object sender, EventArgs e)
         {
             this.PasswordErrorLabel.Text = "";

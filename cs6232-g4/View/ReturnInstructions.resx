@@ -119,12 +119,17 @@
   </resheader>
   <data name="label1.Text" xml:space="preserve">
     <value>Select a transaction by clicking on it. 
+
 Enter the quantity to return. 
-Click the "Add to Cart" button to move the item to the return cart.
+
+Click the "Add to Cart" button to move the item to the return cart. You must select item to add
+
 Click "Submit" to finish the return. 
 
-Remove Button: Will remove the item from the return cart. 
+Remove Button: Will remove the item from the return cart. You must select item from main list to remove
+
 Update Button: Will allow you to change the item and quantity. 
+
 </value>
   </data>
 </root>

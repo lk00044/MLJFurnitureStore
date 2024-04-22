@@ -32,6 +32,9 @@ namespace cs6232_g4.View
         string enteredState;
 
 
+        /// <summary>
+        ///  initializes the form with member info
+        /// </summary>
         public UpdateMemberForm(int memberID)
         {
             InitializeComponent();
@@ -52,7 +55,9 @@ namespace cs6232_g4.View
             this.PopulateUpdateFields();
         }
 
-        //enter data into textboxes
+        /// <summary>
+        ///  populate the fields in form
+        /// </summary>
         private void PopulateUpdateFields()
         {
             this.MemberList = this._memberController.GetMemberByID(this._memberID);
@@ -72,6 +77,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        ///  set gender
+        /// </summary>
         private string SetOrigGender()
         {
             char gender = this.memberToUpdate.Gender;
@@ -103,6 +111,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        ///  submit update request 
+        /// </summary>
         private void UpdateMemberButton_Click(object sender, EventArgs e)
         {
             try
@@ -359,6 +370,9 @@ namespace cs6232_g4.View
             this.dobDateTimePicker.Value = DateTime.Parse("2002-01-01");
         }
 
+        /// <summary>
+        ///  resets all labels
+        /// </summary>
         private void ResetErrorLabels()
         {
             this.InfoLabel.Text = string.Empty;
@@ -373,6 +387,9 @@ namespace cs6232_g4.View
             this.dobErrorLabel.Text = string.Empty;
         }
 
+        /// <summary>
+        ///  resets form
+        /// </summary>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.ResetFields();

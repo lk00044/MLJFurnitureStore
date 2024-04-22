@@ -1,9 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
 using System.Data.SqlClient;
-using System.Transactions;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-
 
 /// <summary>
 /// Data access layer to handle interaction between view and database

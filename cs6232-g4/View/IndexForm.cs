@@ -11,6 +11,9 @@ namespace cs6232_g4.View
             InitializeComponent();
         }
 
+        /// <summary>
+        ///  closes form
+        /// </summary>
         private void CloseBbutton_Click(object sender, EventArgs e)
         {
             this.Close();

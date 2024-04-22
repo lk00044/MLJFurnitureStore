@@ -210,14 +210,14 @@
             indexToolStripMenuItem.Name = "indexToolStripMenuItem";
             indexToolStripMenuItem.Size = new Size(124, 26);
             indexToolStripMenuItem.Text = "Help";
-            indexToolStripMenuItem.Click += indexToolStripMenuItem_Click;
+            indexToolStripMenuItem.Click += IndexToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(124, 26);
             exitToolStripMenuItem.Text = "Exit";
-            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
             // 
             // DashboardForm
             // 

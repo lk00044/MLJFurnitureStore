@@ -48,7 +48,7 @@ namespace cs6232_g4
             this.DisplayNameLabel.Text = userName;
             this.AdminReportTabPage.Enabled = false;
 
-            if (this.verifyAdminLogin())
+            if (this.VerifyAdminLogin())
             {
                 this.AdminReportTabPage.Enabled = true;
             }
@@ -77,7 +77,7 @@ namespace cs6232_g4
             //checks to see if admin is logged in for access to report - Leslie
             if (this.MainDBTabControl.SelectedIndex == 3)
             {
-                if (this.verifyAdminLogin())
+                if (this.VerifyAdminLogin())
                 {
                     this.AdminReportTabPage.Enabled = true;
                 }
@@ -90,7 +90,10 @@ namespace cs6232_g4
             }
         }
 
-        private bool verifyAdminLogin()
+        /// <summary>
+        ///  verifies admin is logged in
+        /// </summary>
+        private bool VerifyAdminLogin()
         {
             if (this.userID.ToLower().Equals("admin"))
             {
@@ -113,7 +116,10 @@ namespace cs6232_g4
             this.Close();
         }
 
-        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  show the index form
+        /// </summary>
+        private void IndexToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (Form indexForm = new IndexForm())
             {
@@ -126,7 +132,10 @@ namespace cs6232_g4
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  closes form
+        /// </summary>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }

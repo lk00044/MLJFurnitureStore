@@ -19,6 +19,7 @@ namespace cs6232_g4.View
         private ReturnLineItem selectedLineItem;
         private BindingSource transactionDALBindingSource;
         private List<ReturnLineItem> returnLineItemList;
+
         public ViewReturnHistoryForm(int mbrID, string mbrName)
         {
             InitializeComponent();
@@ -31,6 +32,9 @@ namespace cs6232_g4.View
             transactionDALBindingSource = new BindingSource();
         }
 
+        /// <summary>
+        ///  loads the grid
+        /// </summary>
         private void ViewReturnHistory_Load(object sender, EventArgs e)
         {
             this.MemberIDLabel.Text = "Member ID: " + this.MemberID.ToString();
@@ -39,6 +43,9 @@ namespace cs6232_g4.View
             this.ReturnsDataGridView.ClearSelection(); 
         }
 
+        /// <summary>
+        ///  shows all returns by member
+        /// </summary>
         private void ShowReturns()
         {
             try
@@ -53,17 +60,5 @@ namespace cs6232_g4.View
             }
         }
 
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        public void ResetFields()
-        {
-            this.infoMessageLabel.Text = string.Empty;
-            this.returnLineItemList.Clear();
-            this.ShowReturns();
-        }
     }
 }

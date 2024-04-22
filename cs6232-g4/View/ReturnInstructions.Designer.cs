@@ -43,14 +43,15 @@
             instructionsTableLayoutPanel.Controls.Add(instructionsHeaderLabel, 0, 0);
             instructionsTableLayoutPanel.Controls.Add(label1, 0, 1);
             instructionsTableLayoutPanel.Controls.Add(CloseButton, 0, 2);
-            instructionsTableLayoutPanel.Location = new Point(21, 24);
+            instructionsTableLayoutPanel.Location = new Point(18, 18);
+            instructionsTableLayoutPanel.Margin = new Padding(3, 2, 3, 2);
             instructionsTableLayoutPanel.Name = "instructionsTableLayoutPanel";
-            instructionsTableLayoutPanel.Padding = new Padding(3);
+            instructionsTableLayoutPanel.Padding = new Padding(3, 2, 3, 2);
             instructionsTableLayoutPanel.RowCount = 3;
             instructionsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15.8653851F));
             instructionsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 84.13461F));
-            instructionsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            instructionsTableLayoutPanel.Size = new Size(453, 265);
+            instructionsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            instructionsTableLayoutPanel.Size = new Size(499, 327);
             instructionsTableLayoutPanel.TabIndex = 0;
             // 
             // instructionsHeaderLabel
@@ -58,26 +59,27 @@
             instructionsHeaderLabel.BackColor = SystemColors.ControlLight;
             instructionsHeaderLabel.Dock = DockStyle.Fill;
             instructionsHeaderLabel.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            instructionsHeaderLabel.Location = new Point(6, 3);
+            instructionsHeaderLabel.Location = new Point(6, 2);
             instructionsHeaderLabel.Name = "instructionsHeaderLabel";
-            instructionsHeaderLabel.Size = new Size(441, 33);
+            instructionsHeaderLabel.Size = new Size(487, 45);
             instructionsHeaderLabel.TabIndex = 1;
-            instructionsHeaderLabel.Text = "Rental Instructions";
+            instructionsHeaderLabel.Text = "Return Instructions";
             // 
             // label1
             // 
-            label1.Location = new Point(6, 36);
+            label1.Location = new Point(6, 47);
             label1.Name = "label1";
-            label1.Size = new Size(441, 165);
+            label1.Size = new Size(487, 239);
             label1.TabIndex = 41;
             label1.Text = resources.GetString("label1.Text");
             // 
             // CloseButton
             // 
             CloseButton.Anchor = AnchorStyles.Right;
-            CloseButton.Location = new Point(312, 219);
+            CloseButton.Location = new Point(375, 292);
+            CloseButton.Margin = new Padding(3, 2, 3, 2);
             CloseButton.Name = "CloseButton";
-            CloseButton.Size = new Size(135, 34);
+            CloseButton.Size = new Size(118, 26);
             CloseButton.TabIndex = 1;
             CloseButton.Text = "Close";
             CloseButton.UseVisualStyleBackColor = true;
@@ -85,10 +87,11 @@
             // 
             // ReturnInstructionsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(495, 311);
+            ClientSize = new Size(529, 365);
             Controls.Add(instructionsTableLayoutPanel);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ReturnInstructionsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Return Instructions";

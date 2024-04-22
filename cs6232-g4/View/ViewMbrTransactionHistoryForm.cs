@@ -48,6 +48,9 @@ namespace cs6232_g4.View
             this.returnTransaction = new ReturnTransaction();   
         }
 
+        /// <summary>
+        ///  loads history
+        /// </summary>
         private void ViewMbrTransactionHistoryForm_Load(object sender, EventArgs e)
         {
             this.MemberIDLabel.Text = "Member ID: " + this.MemberID.ToString();
@@ -59,6 +62,9 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.ClearSelection();
         }
 
+        /// <summary>
+        ///  displays member transactions
+        /// </summary>
         private void ShowTransactions()
         {
             try
@@ -75,6 +81,9 @@ namespace cs6232_g4.View
 
         }
 
+        /// <summary>
+        ///  setup grid 
+        /// </summary>
         private void SetupDataGrid()
         {
             this.MemberTransactionsDataGridView.AutoGenerateColumns = false;
@@ -98,23 +107,9 @@ namespace cs6232_g4.View
 
         }
 
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         /// <summary>
-        /// checks whether a row is selected 
+        ///  initializes grid
         /// </summary>
-        private bool CheckRowIsSelected()
-        {
-            if (this.MemberTransactionsDataGridView.SelectedRows.Count == 0)
-            {
-                return false;
-            }
-            return true;
-        }
         private void MemberTransactionsDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.infoMessageLabel.Text = "";
@@ -137,6 +132,9 @@ namespace cs6232_g4.View
             }
         }
 
+        /// <summary>
+        ///  add item to cart
+        /// </summary>
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
             if (!IsValidInput(false)) return;
@@ -150,6 +148,9 @@ namespace cs6232_g4.View
             this.MemberTransactionsDataGridView.ClearSelection();
         }
 
+        /// <summary>
+        ///  updates quantity of added item
+        /// </summary>
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             if (!IsValidInput(true)) return;
@@ -166,6 +167,9 @@ namespace cs6232_g4.View
             }
         }
 
+        /// <summary>
+        ///  remove an item from cart
+        /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             RentalLineItem updatedItem = this.rentalLineItemList.Find(item => item.FurnitureId == this.selectedLineItem.FurnitureId);
@@ -181,6 +185,9 @@ namespace cs6232_g4.View
             }
         }
 
+        /// <summary>
+        ///  verifies that an inpit is valid
+        /// </summary>
         private bool IsValidInput(bool isUpdate)
         {
             this.infoMessageLabel.Text = string.Empty;
@@ -207,6 +214,9 @@ namespace cs6232_g4.View
             return true;
         }
 
+        /// <summary>
+        ///  submits return
+        /// </summary>
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to submit?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -241,7 +251,7 @@ namespace cs6232_g4.View
             + "Fine or refund: " + refund_or_fine.ToString("F") + "\n"
             + "Items Info: \n"
             + lineItemsInfo;
-            MessageBox.Show(receipt, "Rental Receipt");
+            MessageBox.Show(receipt, "Return Receipt");
             this.ResetFields();
         }
 
@@ -255,9 +265,13 @@ namespace cs6232_g4.View
             this.cartListView.Items.Clear();
             this.rentalLineItemList.Clear();
             this.ShowTransactions();
+            
         }
 
-        private void returnInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        ///  shows instructions for return
+        /// </summary>
+        private void ReturnInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (Form instructionsForm = new ReturnInstructionsForm())
             {

@@ -85,14 +85,6 @@ namespace cs6232_g4.UserControls
 
 
         /// <summary>
-        /// Clears the grid.
-        /// </summary>
-        public void ClearGrid()
-        {
-            this.ReportDataGridView.Columns.Clear();
-        }
-
-        /// <summary>
         /// Handles the ValueChanged event of the StartDateTimePicker control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>

@@ -16,19 +16,6 @@ namespace cs6232_g4.UserControls
         private int _memberID;
         private string SelectedGender;
 
-        public UpdateMemberInfoUserControl(int memberID)
-        {
-            InitializeComponent();
-            this._memberController = new MembersController();
-            MemberList = new List<Member>();
-            this._memberID = memberID;
-            this.InfoLabel.Text = string.Empty;
-            this.SelectedGender = string.Empty;
-            this.InfoLabel.ForeColor = Color.Red;
-            this.MbrNewFNameTextBox.Select();
-            this.PopulateUpdateFields();
-        }
-
         /// <summary>
         /// pipulates the fields 
         /// </summary>
@@ -77,6 +64,9 @@ namespace cs6232_g4.UserControls
             }
         }
 
+        /// <summary>
+        ///  display gender
+        /// </summary>
         private string GetGenderDisplay()
         {
             char gender = MemberList[0].Gender;
@@ -107,6 +97,9 @@ namespace cs6232_g4.UserControls
             }
 
         }
+        /// <summary>
+        ///  retrieve gender
+        /// </summary>
 
         private char GetGenderDB()
         {

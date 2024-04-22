@@ -255,7 +255,7 @@
             returnInstructionsToolStripMenuItem.Name = "returnInstructionsToolStripMenuItem";
             returnInstructionsToolStripMenuItem.Size = new Size(145, 24);
             returnInstructionsToolStripMenuItem.Text = "Return Instructions";
-            returnInstructionsToolStripMenuItem.Click += returnInstructionsToolStripMenuItem_Click;
+            returnInstructionsToolStripMenuItem.Click += ReturnInstructionsToolStripMenuItem_Click;
             // 
             // ViewMbrTransactionHistoryForm
             // 
