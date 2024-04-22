@@ -298,7 +298,6 @@ namespace cs6232_g4.UserControls
 
             // Updated as it will find a match for the number if it's the id or the qty. Leslie
             // Orig: if (isUpdate && this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text) == null)
-
             if (!isUpdate && isItemInCart(furnitureId))
             {
                 this.infoMessageLabel.Text = "Item is already added in cart";

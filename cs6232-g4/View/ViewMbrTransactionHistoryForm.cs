@@ -1,9 +1,5 @@
-﻿
-using cs6232_g4.Controller;
-using cs6232_g4.Model;
+﻿using cs6232_g4.Model;
 using Members.Controller;
-using System.Windows.Forms;
-using System.Linq;
 
 /// <summary>
 /// Handles the interaction between the view and the data layer to 
@@ -18,8 +14,8 @@ namespace cs6232_g4.View
         /// Initializes a new instance of the <see cref="ViewMbrTransactionHistoryForm"/> class.
         /// </summary>
 
-
         private readonly TransactionController _transactionController;
+        private readonly FurnitureController _furnitureController;
         private List<RentalTransaction> rentalTransactions;
         private int MemberID;
         private string MemberName;
@@ -36,13 +32,14 @@ namespace cs6232_g4.View
         {
             InitializeComponent();
             _transactionController = new TransactionController();
+            _furnitureController = new FurnitureController();
             rentalTransactions = new List<RentalTransaction>();
             this.selectedLineItem = new RentalLineItem();
             this.rentalLineItemList = new List<RentalLineItem>();
             this.MemberID = mbrID;
             this.MemberName = memberName;
             bindingSource1 = new BindingSource();
-            this.infoMessageLabel.ForeColor = Color.Red; 
+            this.infoMessageLabel.ForeColor = Color.Red;
         }
 
         /// <summary>
@@ -166,24 +163,50 @@ namespace cs6232_g4.View
 
         /// <summary>
         ///  remove an item from cart
+        ///  updated LK
         /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            RentalLineItem updatedItem = this.rentalLineItemList.Find(item => item.FurnitureId == this.selectedLineItem.FurnitureId);
-            if (updatedItem != null)
+            string furnitureName = this.cartListView.Items[0].SubItems[0].Text;
+
+            if (string.IsNullOrEmpty(furnitureName))
             {
-                ListViewItem listViewItem = this.cartListView.FindItemWithText(updatedItem.Name);
-                this.cartListView.Items.Remove(listViewItem);
-                this.rentalLineItemList.Remove(updatedItem);
+                this.infoMessageLabel.Text = "Nothing selected";
             }
             else
             {
-                this.infoMessageLabel.Text = "cannot remove an item not in cart";
+                int indexPos = this.GetIndexOfItemInCart(furnitureName);
+                if (indexPos > -1)
+                {
+                    this.cartListView.Items.RemoveAt(indexPos);
+                    this.rentalLineItemList.RemoveAt(indexPos);
+                }
+                else
+                {
+                    this.infoMessageLabel.Text = "Furniture name not found. Item cannot be removed";
+                }
             }
         }
 
+        // Checks to see if item is in cart and returns the index position if it is
+        // Added LK
+        private int GetIndexOfItemInCart(string furnitureName)
+        {
+            int i = 0;
+            while (i < cartListView.Items.Count)
+            {
+                if (furnitureName.Equals(cartListView.Items[i].SubItems[0].Text.ToString()))
+                {
+                    return i;
+                }
+                i++;
+            }
+            return -1;
+        }
+
+
         /// <summary>
-        ///  verifies that an inpit is valid
+        ///  verifies that an input is valid
         /// </summary>
         private bool IsValidInput(bool isUpdate)
         {
@@ -260,13 +283,10 @@ namespace cs6232_g4.View
             this.infoMessageLabel.Text = string.Empty;
             this.cartListView.Items.Clear();
             this.rentalLineItemList.Clear();
-            this.ShowTransactions();            
+            this.ShowTransactions();
         }
 
-        /// <summary>
-        ///  shows instructions for return
-        /// </summary>
-        private void ReturnInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void returnInstructionsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             using (Form instructionsForm = new ReturnInstructionsForm())
             {
@@ -278,7 +298,11 @@ namespace cs6232_g4.View
                 }
             }
         }
-          
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 

@@ -49,6 +49,8 @@
             DataGridTitleLabel = new Label();
             menuStrip1 = new MenuStrip();
             returnInstructionsToolStripMenuItem = new ToolStripMenuItem();
+            returnInstructionsToolStripMenuItem1 = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)MemberTransactionsDataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)transactionDALBindingSource).BeginInit();
@@ -252,10 +254,24 @@
             // 
             // returnInstructionsToolStripMenuItem
             // 
+            returnInstructionsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { returnInstructionsToolStripMenuItem1, exitToolStripMenuItem });
             returnInstructionsToolStripMenuItem.Name = "returnInstructionsToolStripMenuItem";
-            returnInstructionsToolStripMenuItem.Size = new Size(145, 24);
-            returnInstructionsToolStripMenuItem.Text = "Return Instructions";
-            returnInstructionsToolStripMenuItem.Click += ReturnInstructionsToolStripMenuItem_Click;
+            returnInstructionsToolStripMenuItem.Size = new Size(60, 24);
+            returnInstructionsToolStripMenuItem.Text = "Menu";
+            // 
+            // returnInstructionsToolStripMenuItem1
+            // 
+            returnInstructionsToolStripMenuItem1.Name = "returnInstructionsToolStripMenuItem1";
+            returnInstructionsToolStripMenuItem1.Size = new Size(224, 26);
+            returnInstructionsToolStripMenuItem1.Text = "Return Instructions";
+            returnInstructionsToolStripMenuItem1.Click += returnInstructionsToolStripMenuItem1_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(224, 26);
+            exitToolStripMenuItem.Text = "Exit";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // ViewMbrTransactionHistoryForm
             // 
@@ -314,5 +330,7 @@
         private Label DataGridTitleLabel;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem returnInstructionsToolStripMenuItem;
+        private ToolStripMenuItem returnInstructionsToolStripMenuItem1;
+        private ToolStripMenuItem exitToolStripMenuItem;
     }
 }
