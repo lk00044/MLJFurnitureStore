@@ -1,10 +1,12 @@
 ﻿using cs6232_g4.Model;
-using Furnitures.Model;
 using Members.Controller;
-using System.Windows.Forms;
 
 namespace cs6232_g4.View
 {
+    /// <summary>
+    /// Interacts between the user and the data layer to show the return history
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ViewReturnHistoryForm : Form
     {
         /// <summary>
@@ -16,19 +18,15 @@ namespace cs6232_g4.View
         private List<ReturnTransaction> returns;
         private int MemberID;
         private string MemberName;
-        private ReturnLineItem selectedLineItem;
         private BindingSource transactionDALBindingSource;
-        private List<ReturnLineItem> returnLineItemList;
 
         public ViewReturnHistoryForm(int mbrID, string mbrName)
         {
             InitializeComponent();
             _transactionController = new TransactionController();
             returns = new List<ReturnTransaction>();
-            this.returnLineItemList = new List<ReturnLineItem>();
             this.MemberID = mbrID;
             this.MemberName = mbrName;
-            this.selectedLineItem = new ReturnLineItem();
             transactionDALBindingSource = new BindingSource();
         }
 
