@@ -47,7 +47,7 @@ BEGIN TRY
 
 			WHERE rt.transaction_date between @StartDate and @EndDate
 			group by f.furniture_id, f.name, f.category_name
-			having count(rt.transaction_id)  > 2
+			having count(rt.transaction_id)  >= 2
 			order by total_qualifying_trans desc, furniture_ID desc
 
 END TRY
