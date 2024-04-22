@@ -63,9 +63,9 @@
             // 
             FindMemberButton.FlatStyle = FlatStyle.Popup;
             FindMemberButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            FindMemberButton.Location = new Point(580, 3);
+            FindMemberButton.Location = new Point(542, 3);
             FindMemberButton.Name = "FindMemberButton";
-            FindMemberButton.Size = new Size(254, 29);
+            FindMemberButton.Size = new Size(287, 29);
             FindMemberButton.TabIndex = 4;
             FindMemberButton.Text = "Find Member";
             FindMemberButton.UseVisualStyleBackColor = true;
@@ -107,8 +107,8 @@
             // 
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 248F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 329F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 261F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 291F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 299F));
             tableLayoutPanel1.Controls.Add(ReturnHistBtn, 2, 6);
             tableLayoutPanel1.Controls.Add(MembersDataGridView, 1, 7);
             tableLayoutPanel1.Controls.Add(ViewTransactionsButton, 2, 5);
@@ -144,9 +144,9 @@
             // 
             ReturnHistBtn.FlatStyle = FlatStyle.Popup;
             ReturnHistBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            ReturnHistBtn.Location = new Point(580, 213);
+            ReturnHistBtn.Location = new Point(542, 213);
             ReturnHistBtn.Name = "ReturnHistBtn";
-            ReturnHistBtn.Size = new Size(254, 29);
+            ReturnHistBtn.Size = new Size(287, 29);
             ReturnHistBtn.TabIndex = 17;
             ReturnHistBtn.Text = "View Return History";
             ReturnHistBtn.UseVisualStyleBackColor = true;
@@ -172,11 +172,11 @@
             // 
             ViewTransactionsButton.FlatStyle = FlatStyle.Popup;
             ViewTransactionsButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            ViewTransactionsButton.Location = new Point(580, 174);
+            ViewTransactionsButton.Location = new Point(542, 174);
             ViewTransactionsButton.Name = "ViewTransactionsButton";
-            ViewTransactionsButton.Size = new Size(254, 29);
+            ViewTransactionsButton.Size = new Size(287, 29);
             ViewTransactionsButton.TabIndex = 16;
-            ViewTransactionsButton.Text = "View Member Transactions";
+            ViewTransactionsButton.Text = "View Transactions and Do Returns";
             ViewTransactionsButton.UseVisualStyleBackColor = true;
             ViewTransactionsButton.Click += ViewTransactionsButton_Click;
             // 
@@ -184,9 +184,9 @@
             // 
             UpdateMbrButton.FlatStyle = FlatStyle.Popup;
             UpdateMbrButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            UpdateMbrButton.Location = new Point(580, 138);
+            UpdateMbrButton.Location = new Point(542, 138);
             UpdateMbrButton.Name = "UpdateMbrButton";
-            UpdateMbrButton.Size = new Size(254, 29);
+            UpdateMbrButton.Size = new Size(287, 29);
             UpdateMbrButton.TabIndex = 15;
             UpdateMbrButton.Text = "Update Selected Member";
             UpdateMbrButton.UseVisualStyleBackColor = true;
@@ -231,10 +231,10 @@
             // ErrorLabel
             // 
             ErrorLabel.ForeColor = Color.Red;
-            ErrorLabel.Location = new Point(580, 35);
+            ErrorLabel.Location = new Point(542, 35);
             ErrorLabel.Name = "ErrorLabel";
             tableLayoutPanel1.SetRowSpan(ErrorLabel, 3);
-            ErrorLabel.Size = new Size(254, 91);
+            ErrorLabel.Size = new Size(287, 91);
             ErrorLabel.TabIndex = 5;
             // 
             // SearchInstructionsLabel
