@@ -27,35 +27,32 @@ BEGIN TRY
 	SET NOCOUNT ON; 
 
 	SELECT  f.furniture_id as furniture_id, f.name, f.category_name,
-		 	count(li.rental_transaction_id) as total_transactions,
-			count(rt.transaction_id) as total_qualifying_trans,
-			(count(rt.transaction_id)  / count(li.rental_transaction_id))*100 as pct_qualifying_transactions,
-			round((COUNT(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 17 and 
-			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 30, mbr.member_id, NULL))
-			/ count(mbr.member_id)), 2) * 100 as pct_18_to_29,
-			round((COUNT(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 18 and 
-			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 29, mbr.member_id, NULL))
-			/ count(mbr.member_id)), 2) * 100
+		count(li.rental_transaction_id) as total_transactions,
+		count(rt.transaction_id) as total_qualifying_trans,
+		(count(rt.transaction_id)  / count(li.rental_transaction_id))*100 as pct_qualifying_transactions,
+		(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 29 and  
+		DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) >17, 1, 0)) * 100)/ count(mbr.member_id) as pct_18_to_29,
+		(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 29 or 
+		DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 18, 1, 0)) * 100)/ count(mbr.member_id) as pct_out_of_range
 
-			FROM dbo.Furniture f
-			INNER JOIN dbo.RentalLineItem li
-			ON f.furniture_id = li.furniture_id
+		FROM dbo.Furniture f
+		INNER JOIN dbo.RentalLineItem li
+		ON f.furniture_id = li.furniture_id
 
-			INNER JOIN dbo.RentalTransaction rt
-            		ON rt.transaction_id = li.rental_transaction_id
+		INNER JOIN dbo.RentalTransaction rt
+           	ON rt.transaction_id = li.rental_transaction_id
 			
-			INNER JOIN dbo.StoreMember mbr
-            		ON rt.member_id = mbr.member_id
+		INNER JOIN dbo.StoreMember mbr
+            	ON rt.member_id = mbr.member_id
 
-			WHERE rt.transaction_date between @StartDate and @EndDate
-			group by f.furniture_id, f.name, f.category_name
-			having count(rt.transaction_id)  > 2
-			order by total_qualifying_trans desc, furniture_ID desc
+		WHERE rt.transaction_date between '02-01-2024' and '05-01-2024'
+		group by f.furniture_id, f.name, f.category_name
+		having count(rt.transaction_id)  > 2
+		order by total_qualifying_trans desc, furniture_ID desc
 
 END TRY
 
 -- Error Checking
-
 BEGIN CATCH
 
 	SELECT  
