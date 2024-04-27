@@ -12,6 +12,15 @@ namespace Members.Controller
             _transactionDAL = new TransactionDAL();
         }
 
+        /// <summary>
+        /// get rental transaction time by ID.
+        /// </summary>
+        /// <param name="rentalTransactionID">the transaction id.</param>
+        /// <returns>rental transaction date</returns>
+        public DateTime GetRentalTransactionDateByID(int rentalTransactionID)
+        {
+            return this._transactionDAL.GetRentalTransactionDateByID(rentalTransactionID);
+        }
 
         /// <summary>
         /// Create a rental transaction
@@ -19,18 +28,9 @@ namespace Members.Controller
         /// <return>
         /// created transaction id
         /// </return>
-        public int CreateRentalTransaction(RentalTransaction transaction)
+        public int CreateRentalTransaction(RentalTransaction transaction, List<RentalLineItem> lineItems)
         {
-            return this._transactionDAL.CreateRentalTransaction(transaction);
-        }
-
-        /// <summary>
-        /// Create rental line item
-        /// </summary>
-        /// <param name="lineItem"/>
-        public void CreateRentalLineItem(RentalLineItem lineItem)
-        {
-            this._transactionDAL.CreateRentalLineItem(lineItem);
+            return this._transactionDAL.CreateRentalTransaction(transaction,lineItems);
         }
 
         /// <summary>

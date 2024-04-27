@@ -245,7 +245,7 @@ namespace cs6232_g4.View
             string lineItemsInfo = "";
             foreach (RentalLineItem lineItem in this.rentalLineItemList)
             {
-                lineItemsInfo += "    Rental Txn ID: " + lineItem.RentalTransactionId + ", Item ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + "\n";
+                lineItemsInfo += "    Rental Txn ID: " + lineItem.RentalTransactionId + ", Line Item ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Due Date: " + lineItem.DueDate.ToString("MM/dd/yyyy") + ", Return Date: " + DateTime.Today.ToString("MM/dd/yyyy") + ", Rental Date: " + this._transactionController.GetRentalTransactionDateByID(lineItem.RentalTransactionId).ToString("MM/dd/yyyy") + "\n";
             }
             string receipt = "Return Transaction ID: " + returnTxnId + "\n"
             + "Fine or refund: " + refund_or_fine.ToString("F") + "\n"
