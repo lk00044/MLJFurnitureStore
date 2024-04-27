@@ -12,6 +12,15 @@ namespace Members.Controller
             _transactionDAL = new TransactionDAL();
         }
 
+        /// <summary>
+        /// get rental transaction time by ID.
+        /// </summary>
+        /// <param name="rentalTransactionID">the transaction id.</param>
+        /// <returns>rental transaction date</returns>
+        public DateTime GetRentalTransactionDateByID(int rentalTransactionID)
+        {
+            return this._transactionDAL.GetRentalTransactionDateByID(rentalTransactionID);
+        }
 
         /// <summary>
         /// Create a rental transaction

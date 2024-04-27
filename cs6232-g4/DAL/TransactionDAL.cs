@@ -258,6 +258,32 @@ namespace Employees.DAL
             return transaction.TransactionID != 0;
         }
 
+
+        /// <summary>
+        /// get rental transaction time by ID.
+        /// </summary>
+        /// <param name="rentalTransactionID">the transaction id.</param>
+        /// <returns>rental transaction date</returns>
+        public DateTime GetRentalTransactionDateByID(int rentalTransactionID)
+        {
+            string selectStatement =
+                "SELECT transaction_date " +
+                "FROM RentalTransaction " +
+                "WHERE transaction_id = @rentalTransactionID"
+            ;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add(new SqlParameter("@rentalTransactionID", rentalTransactionID));
+                    return (DateTime)selectCommand.ExecuteScalar();
+                }
+            }
+        }
+
         public List<double> CreateReturnTransaction(List<RentalLineItem> lineItems)
         {
             using (SqlConnection connection = DBConnection.GetConnection())

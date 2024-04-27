@@ -130,16 +130,21 @@ namespace cs6232_g4.UserControls
         private void SubmitOrderButton_Click(object sender, EventArgs e)
         {
             if (!this.IsTransactionInputsValid()) return;
-            try
+            DialogResult result = MessageBox.Show("Are you sure you want to submit?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-                this.CreateRentalTransaction();
-                this.PopulateAvailableFurniture();
-                this.CreateReceipt();
+                try
+                {
+                    this.CreateRentalTransaction();
+                    this.PopulateAvailableFurniture();
+                    this.CreateReceipt();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("Failed to submit order" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception error)
-            {
-                MessageBox.Show("Failed to submit order" + Environment.NewLine + error.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
 
@@ -200,7 +205,7 @@ namespace cs6232_g4.UserControls
             string lineItemsInfo = "";
             foreach (RentalLineItem lineItem in this._transactionController.GetRentalLineItems(this.rentalTransaction.TransactionID))
             {
-                lineItemsInfo += "    ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: $" + lineItem.Subtotal + "\n";
+                lineItemsInfo += "   Line Item ID: " + lineItem.LineItemId + ", Name: " + lineItem.Name + ", Subtotal: $" + lineItem.Subtotal + "\n";
             }
             string receipt = "Rental Transaction ID: " + this.rentalTransaction.TransactionID + "\n"
             + "Due Date: " + this.rentalTransaction.DueDate.ToString("MM/dd/yyyy") + "\n"
