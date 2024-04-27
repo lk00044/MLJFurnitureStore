@@ -1,5 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
+using Furnitures.Model;
 using System.Data.SqlClient;
 
 /// <summary>
@@ -27,61 +28,87 @@ namespace Employees.DAL
         /// <return>
         /// created transaction id
         /// </return>
-        public int CreateRentalTransaction(RentalTransaction transaction)
+        
+        public int CreateRentalTransaction(RentalTransaction rentalTransaction, List<RentalLineItem> lineItems)
         {
-            string insertCommand = $"INSERT INTO [dbo].[RentalTransaction] VALUES (GETDATE(),@member_id,@employee_id,@total_amount,@due_date)";
-            string retrieveCommand = "SELECT SCOPE_IDENTITY();";
-            string combinedQuery = $"{insertCommand};{retrieveCommand}";
-
             using (SqlConnection connection = DBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand(combinedQuery, connection))
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+
+                // Start a local transaction.
+                transaction = connection.BeginTransaction();
+
+                // Must assign both transaction object and connection
+                // to Command object for a pending local transaction
+                command.Connection = connection;
+                command.Transaction = transaction;
+                try
                 {
+                    string insertCommand = $"INSERT INTO [dbo].[RentalTransaction] VALUES (GETDATE(),@member_id,@employee_id,@total_amount,@due_date)";
+                    string retrieveCommand = "SELECT SCOPE_IDENTITY();";
+                    string combinedQuery = $"{insertCommand};{retrieveCommand}";
+                    command.CommandText = combinedQuery;
+
+                    //Create rental transaction
                     command.Parameters.Add("@member_id", System.Data.SqlDbType.Int);
                     command.Parameters.Add("@employee_id", System.Data.SqlDbType.Int);
                     command.Parameters.Add("@total_amount", System.Data.SqlDbType.Decimal);
                     command.Parameters.Add("@due_date", System.Data.SqlDbType.DateTime);
 
-                    command.Parameters["@member_id"].Value = transaction.MemberId;
-                    command.Parameters["@employee_id"].Value = transaction.EmployeeId;
-                    command.Parameters["@total_amount"].Value = transaction.TotalAmount;
-                    command.Parameters["@due_date"].Value = transaction.DueDate;
+                    command.Parameters["@member_id"].Value = rentalTransaction.MemberId;
+                    command.Parameters["@employee_id"].Value = rentalTransaction.EmployeeId;
+                    command.Parameters["@total_amount"].Value = rentalTransaction.TotalAmount;
+                    command.Parameters["@due_date"].Value = rentalTransaction.DueDate;
 
-                    return int.Parse(command.ExecuteScalar().ToString());
+                    int rentalTxnId = int.Parse(command.ExecuteScalar().ToString());
+
+                    foreach(RentalLineItem lineItem in lineItems)
+                    {
+                        //Create line items
+                        command.CommandText = $"INSERT INTO [dbo].[RentalLineItem] VALUES (@rental_transaction_id,@furniture_id,@quantity,@subtotal);";
+                        command.Parameters.Add("@rental_transaction_id", System.Data.SqlDbType.Int);
+                        command.Parameters.Add("@furniture_id", System.Data.SqlDbType.Int);
+                        command.Parameters.Add("@quantity", System.Data.SqlDbType.Int);
+                        command.Parameters.Add("@subtotal", System.Data.SqlDbType.Decimal);
+
+                        command.Parameters["@rental_transaction_id"].Value = rentalTxnId;
+                        command.Parameters["@furniture_id"].Value = lineItem.FurnitureId;
+                        command.Parameters["@quantity"].Value = lineItem.Quantity;
+                        command.Parameters["@subtotal"].Value = lineItem.Subtotal;
+
+                        command.ExecuteNonQuery();
+
+                        //Update rented furniture quantity
+                        command.CommandText = $"UPDATE [dbo].[Furniture] SET instock_quantity=instock_quantity-@quantity WHERE furniture_id=@furniture_id";
+                        command.ExecuteNonQuery();
+
+                        command.Parameters.Clear();
+                    }
+                    transaction.Commit();
+                    return rentalTxnId;
                 }
-
-            }
-
-
-        }
-
-        /// <summary>
-        /// Create rental line item
-        /// </summary>
-        /// <param name="lineItem"/>
-        public void CreateRentalLineItem(RentalLineItem lineItem)
-        {
-            string insert = $"INSERT INTO [dbo].[RentalLineItem] VALUES (@rental_transaction_id,@furniture_id,@quantity,@subtotal);";
-
-            using (SqlConnection connection = DBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand insert_command = new SqlCommand(insert, connection))
+                catch (Exception ex)
                 {
-                    insert_command.Parameters.Add("@rental_transaction_id", System.Data.SqlDbType.Int);
-                    insert_command.Parameters.Add("@furniture_id", System.Data.SqlDbType.Int);
-                    insert_command.Parameters.Add("@quantity", System.Data.SqlDbType.Int);
-                    insert_command.Parameters.Add("@subtotal", System.Data.SqlDbType.Decimal);
+                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                    Console.WriteLine("  Message: {0}", ex.Message);
 
-                    insert_command.Parameters["@rental_transaction_id"].Value = lineItem.RentalTransactionId;
-                    insert_command.Parameters["@furniture_id"].Value = lineItem.FurnitureId;
-                    insert_command.Parameters["@quantity"].Value = lineItem.Quantity;
-                    insert_command.Parameters["@subtotal"].Value = lineItem.Subtotal;
-
-                    insert_command.ExecuteNonQuery();
+                    // Attempt to roll back the transaction.
+                    try
+                    {
+                        transaction.Rollback();
+                    }
+                    catch (Exception ex2)
+                    {
+                        // This catch block will handle any errors that may have occurred
+                        // on the server that would cause the rollback to fail, such as
+                        // a closed connection.
+                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                        Console.WriteLine("  Message: {0}", ex2.Message);
+                    }
+                    return 0;
                 }
             }
         }

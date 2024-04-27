@@ -133,8 +133,7 @@ namespace cs6232_g4.UserControls
             try
             {
                 this.CreateRentalTransaction();
-                this.UpdateAvailableFurnitureQuantity();
-                this.CreateLineItems();
+                this.PopulateAvailableFurniture();
                 this.CreateReceipt();
             }
             catch (Exception error)
@@ -143,23 +142,6 @@ namespace cs6232_g4.UserControls
             }
         }
 
-        /// <summary>
-        /// updates the quantity of the furniture when submit an order 
-        /// </summary>
-        private void UpdateAvailableFurnitureQuantity()
-        {
-            foreach (ListViewItem item in this.cartListView.Items)
-            {
-                int id = int.Parse(item.SubItems[0].Text);
-                int quantity = int.Parse(item.SubItems[2].Text);
-                if (this._furnitureController.UpdateFurniture(id, quantity) == 0)
-                {
-                    MessageBox.Show("Failed to update furniture" + Environment.NewLine + "Failed to update quantity for FurnitureId= " + id, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                };
-            }
-            this.PopulateAvailableFurniture();
-        }
 
         /// <summary>
         /// creates the rental transaction in the database 
@@ -172,7 +154,7 @@ namespace cs6232_g4.UserControls
                 this.rentalTransaction.MemberId = int.Parse(this.memberIdTextBox.Text);
                 this.rentalTransaction.DueDate = DateTime.Parse(this.dueDatePicker.Text);
                 this.rentalTransaction.TotalAmount = decimal.Parse(this.totalCostValue.Text.Trim('$'));
-                this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction);
+                this.rentalTransaction.TransactionID = this._transactionController.CreateRentalTransaction(this.rentalTransaction,this.CreateLineItems());
             }
             catch (Exception error)
             {
@@ -183,9 +165,9 @@ namespace cs6232_g4.UserControls
         /// <summary>
         /// creates the lines items in the database 
         /// </summary>
-        private void CreateLineItems()
+        private List<RentalLineItem> CreateLineItems()
         {
-
+            List<RentalLineItem> lineItems = new List<RentalLineItem>();
             foreach (ListViewItem item in this.cartListView.Items)
             {
                 RentalLineItem lineItem = new RentalLineItem();
@@ -193,8 +175,9 @@ namespace cs6232_g4.UserControls
                 lineItem.FurnitureId = int.Parse(item.SubItems[0].Text);
                 lineItem.Quantity = int.Parse(item.SubItems[2].Text);
                 lineItem.Subtotal = decimal.Parse(item.SubItems[4].Text.Trim('$'));
-                this._transactionController.CreateRentalLineItem(lineItem);
+                lineItems.Add(lineItem);   
             }
+            return lineItems;
         }
 
         /// <summary>

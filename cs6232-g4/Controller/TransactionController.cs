@@ -19,18 +19,9 @@ namespace Members.Controller
         /// <return>
         /// created transaction id
         /// </return>
-        public int CreateRentalTransaction(RentalTransaction transaction)
+        public int CreateRentalTransaction(RentalTransaction transaction, List<RentalLineItem> lineItems)
         {
-            return this._transactionDAL.CreateRentalTransaction(transaction);
-        }
-
-        /// <summary>
-        /// Create rental line item
-        /// </summary>
-        /// <param name="lineItem"/>
-        public void CreateRentalLineItem(RentalLineItem lineItem)
-        {
-            this._transactionDAL.CreateRentalLineItem(lineItem);
+            return this._transactionDAL.CreateRentalTransaction(transaction,lineItems);
         }
 
         /// <summary>
