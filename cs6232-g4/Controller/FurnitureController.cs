@@ -66,7 +66,7 @@ namespace Furnitures.Controller
             return this._furnitureDAL.GetFurnitureByCategory(category);
         }
 
-        public List<Furniture> GetFurnitureByID(string ID)
+        public List<Furniture> GetFurnitureByID(int ID)
         {
             return this._furnitureDAL.GetFurnitureByID(ID);
         }

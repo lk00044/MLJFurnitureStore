@@ -1,7 +1,4 @@
-﻿using Furnitures.Model;
-using System.ComponentModel;
-
-namespace cs6232_g4.UserControls
+﻿namespace cs6232_g4.UserControls
 {
     partial class SearchFurnitureUserControl : UserControl
     {

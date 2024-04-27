@@ -64,7 +64,7 @@ namespace Furnitures.DAL
             List<Furniture> FurnitureList = new List<Furniture>();
 
             string selectStatement =
-                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name FROM Furniture" +
+                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
                 "FROM Furniture " +
                 "WHERE category_name = @Category"
             ;
@@ -104,12 +104,12 @@ namespace Furnitures.DAL
         /// </summary>
         /// <param name="ID"></param>
         /// <returns> member list </returns>
-        public List<Furniture> GetFurnitureByID(string ID)
+        public List<Furniture> GetFurnitureByID(int ID)
         {
             List<Furniture> FurnitureList = new List<Furniture>();
 
             string selectStatement =
-                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name FROM Furniture" +
+                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
                 "FROM Furniture " +
                 "WHERE furniture_id = @ID"
             ;
@@ -154,7 +154,7 @@ namespace Furnitures.DAL
             List<Furniture> FurnitureList = new List<Furniture>();
 
             string selectStatement =
-                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name FROM Furniture" +
+                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
                 "FROM Furniture " +
                 "WHERE style_name = @Style"
             ;
