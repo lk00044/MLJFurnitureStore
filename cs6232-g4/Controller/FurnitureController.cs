@@ -24,7 +24,7 @@ namespace Furnitures.Controller
         /// </summary>
         public List<Furniture> GetAllFurniture()
         {
-            return this._furnitureDAL.GetAllFuruniture();
+            return this._furnitureDAL.GetAllFurniture();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Furnitures.Controller
             return this._furnitureDAL.GetFurnitureByID(ID);
         }
 
-        internal List<Furniture> GetFurnituryByStyle(string style)
+        public List<Furniture> GetFurnitureByStyle(string style)
         {
             return this._furnitureDAL.GetFurnitureByStyle(style);
         }

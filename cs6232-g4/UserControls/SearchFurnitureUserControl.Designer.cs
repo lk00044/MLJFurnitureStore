@@ -196,7 +196,6 @@
             // 
             CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryComboBox.FormattingEnabled = true;
-            CategoryComboBox.Items.AddRange(new object[] { "LRChair", "DRChair", "Sofa", "DiningSet" });
             CategoryComboBox.Location = new Point(295, 81);
             CategoryComboBox.Name = "CategoryComboBox";
             CategoryComboBox.Size = new Size(215, 28);
@@ -216,7 +215,6 @@
             // 
             StyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StyleComboBox.FormattingEnabled = true;
-            StyleComboBox.Items.AddRange(new object[] { "MidCentury Modern", "Modern", "Traditional", "Contemporary" });
             StyleComboBox.Location = new Point(295, 122);
             StyleComboBox.Name = "StyleComboBox";
             StyleComboBox.Size = new Size(215, 28);

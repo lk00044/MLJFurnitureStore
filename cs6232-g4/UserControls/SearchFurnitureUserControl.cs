@@ -16,6 +16,9 @@ namespace cs6232_g4.UserControls
             this._furnitureController = new FurnitureController();
             this._furniture = new List<Furniture>();
             this._bindingSource = new BindingSource();
+            LoadFurnitureIDs();
+            LoadFurnitureCategories();
+            LoadFurnitureStyles();
 
         }
 
@@ -58,39 +61,55 @@ namespace cs6232_g4.UserControls
         }
 
         private void LoadFurnitureIDs()
-        {
-            this.FurnitureComboBox.Items.Clear();
 
-            List<int> ids = new List<int>();
-            ids = this._furnitureController.GetAllFurnitureIDs();
-            foreach (int id in ids)
+        {
+            try
             {
-                this.FurnitureComboBox.Items.Add(id);
+                List<int> ids = this._furnitureController.GetAllFurnitureIDs();
+                this.FurnitureComboBox.Items.Clear();
+                foreach (int id in ids)
+                {
+                    this.FurnitureComboBox.Items.Add(id);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            
         }
 
         private void LoadFurnitureCategories()
         {
-            this.CategoryComboBox.Items.Clear();
-
-            List<string> categories = new List<string>();
-            categories = this._furnitureController.GetAllFurnitureCategories();
-            foreach (string category in categories)
+            try
             {
-                this.CategoryComboBox.Items.Add(category);
+                List<string> categories = this._furnitureController.GetAllFurnitureCategories();
+                categories.Insert(0, "");
+                CategoryComboBox.DataSource = categories;
+                CategoryComboBox.DisplayMember = "Category";
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
+
         }
 
         private void LoadFurnitureStyles()
         {
-            this.StyleComboBox.Items.Clear();
-
-            List<string> styles = new List<string>();
-            styles = this._furnitureController.GetAllFurnitureStyles();
-            foreach (string style in styles)
+            try
             {
-                this.StyleComboBox.Items.Add(style);
+                List<string> styles = this._furnitureController.GetAllFurnitureStyles();
+                styles.Insert(0, "");
+                StyleComboBox.DataSource = styles;
+                StyleComboBox.DisplayMember = "Style";
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+
         }
 
         private void SetupGrid()
@@ -195,7 +214,7 @@ namespace cs6232_g4.UserControls
 
                 if (!string.IsNullOrEmpty(selected))
                 {
-                    this._furniture = this._furnitureController.GetFurnituryByStyle(selected);
+                    this._furniture = this._furnitureController.GetFurnitureByStyle(selected);
                     this.ShowFurniture();
                     this.resetComboBoxes();
                 }
@@ -218,55 +237,62 @@ namespace cs6232_g4.UserControls
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            string ID = FurnitureComboBox.Text;
+            int ID;
+            if (!int.TryParse(FurnitureComboBox.Text, out ID))
+            {
+                // Handle invalid input, such as displaying an error message
+                MessageBox.Show("Invalid ID. Please select a valid integer.");
+                return;
+            }
             string category = CategoryComboBox.Text;
             string style = StyleComboBox.Text;
 
-            try
+            if (ID == 0 && string.IsNullOrEmpty(category) && string.IsNullOrEmpty(style))
             {
-
-                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
-                {
-                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                _furniture = _furnitureController.GetFurnitureByID(ID);
-
-                if (_furniture.Count == 0)
-                {
-                    MessageBox.Show("No furniture matching that furniture ID found");
-                }
-
-                else if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
-                {
-                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                _furniture = _furnitureController.GetFurnitureByCategory(category);
-
-                if (_furniture.Count == 0)
-                {
-                    MessageBox.Show("No furniture matching that category found");
-                }
-
-                else if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(category) || string.IsNullOrEmpty(style))
-                {
-                    MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                _furniture = _furnitureController.GetFurnituryByStyle(style);
-                if (_furniture.Count == 0)
-                {
-                    MessageBox.Show("No furniture matching that style found");
-                }
-
-                SearchFurnitureDataGridView.DataSource = _furniture;
-
-                Furniture();
+                 MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 return;
             }
 
+            try
+            {
+                List<Furniture> searchedFurniture = new List<Furniture>();
+
+                if (ID != 0)
+                {
+                    List<Furniture> furnitureByID = _furnitureController.GetFurnitureByID(ID);
+                    searchedFurniture.AddRange(furnitureByID);
+                    if (furnitureByID.Count == 0)
+                    {
+                        MessageBox.Show("No furniture matching that ID found");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(category))
+                {
+                    List<Furniture> furnitureByCategory = _furnitureController.GetFurnitureByCategory(category);
+                    searchedFurniture.AddRange(furnitureByCategory);
+                    if (furnitureByCategory.Count == 0)
+                    {
+                        MessageBox.Show("No furniture matching that category found");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(style))
+                {
+                    List<Furniture> furnitureByStyle = _furnitureController.GetFurnitureByStyle(style);
+                    searchedFurniture.AddRange(furnitureByStyle);
+                    if (furnitureByStyle.Count == 0)
+                    {
+                        MessageBox.Show("No furniture matching that style found");
+                        return;
+                    }
+                }
+
+                SearchFurnitureDataGridView.DataSource = searchedFurniture;
+                Furniture();
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
