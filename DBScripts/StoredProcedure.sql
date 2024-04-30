@@ -1,6 +1,6 @@
 USE [cs6232-g4]
 GO
-/****** Object:  StoredProcedure [dbo].[GetAdminReport]    Script Date: 4/21/2024 8:45:39 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetAdminReport]    Script Date: 4/22/2024 12:05:25 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -12,9 +12,11 @@ GO
 -- Description:	Purpose: Gets the statistics that show the most popular furniture
 --				during the specified period for furniture with the same furnintureID
 --				that was rented out in at least two transactions.
+-- Updated:		30 April 2024
+-- Modification: Handled the total transactions change to an overall total
 -- =============================================
 
-CREATE PROCEDURE [dbo].[GetAdminReport] 
+ALTER PROCEDURE [dbo].[GetAdminReport] 
 	-- Add the parameters for the stored procedure here
 	@StartDate DateTime = null, 
 	@EndDate DateTime = null
@@ -27,9 +29,9 @@ BEGIN TRY
 	SET NOCOUNT ON; 
 
 	SELECT  f.furniture_id as furniture_id, f.name, f.category_name,
-		 	count(li.rental_transaction_id) as total_transactions,
+		 	sum(li.rental_transaction_id) as total_transactions,
 			count(rt.transaction_id) as total_qualifying_trans,
-			(count(rt.transaction_id)  / count(li.rental_transaction_id))*100 as pct_qualifying_transactions,
+			count(rt.transaction_id)*100/sum(li.rental_transaction_id) as pct_qualifying_transactions,
 			(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) < 29 and  
 			DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) >17, 1, 0)) * 100)/ count(mbr.member_id) as pct_18_to_29,
 			(sum(IIF(DATEDIFF(year, mbr.date_of_birth, rt.transaction_date) > 29 or 
@@ -40,10 +42,10 @@ BEGIN TRY
 			ON f.furniture_id = li.furniture_id
 
 			INNER JOIN dbo.RentalTransaction rt
-            ON rt.transaction_id = li.rental_transaction_id
+            		ON rt.transaction_id = li.rental_transaction_id
 			
 			INNER JOIN dbo.StoreMember mbr
-            ON rt.member_id = mbr.member_id
+            		ON rt.member_id = mbr.member_id
 
 			WHERE rt.transaction_date between @StartDate and @EndDate
 			group by f.furniture_id, f.name, f.category_name
