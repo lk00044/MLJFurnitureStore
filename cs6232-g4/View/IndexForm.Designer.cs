@@ -37,13 +37,13 @@
             // 
             navigationLabel.Location = new Point(12, 12);
             navigationLabel.Name = "navigationLabel";
-            navigationLabel.Size = new Size(289, 261);
+            navigationLabel.Size = new Size(289, 325);
             navigationLabel.TabIndex = 0;
             navigationLabel.Text = resources.GetString("navigationLabel.Text");
             // 
             // CloseBbutton
             // 
-            CloseBbutton.Location = new Point(193, 281);
+            CloseBbutton.Location = new Point(202, 340);
             CloseBbutton.Name = "CloseBbutton";
             CloseBbutton.Size = new Size(94, 29);
             CloseBbutton.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(299, 322);
+            ClientSize = new Size(308, 381);
             Controls.Add(CloseBbutton);
             Controls.Add(navigationLabel);
             Name = "IndexForm";
