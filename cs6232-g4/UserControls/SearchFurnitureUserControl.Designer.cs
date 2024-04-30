@@ -30,13 +30,6 @@
         {
             SearchTableLayoutPanel = new TableLayoutPanel();
             SearchFurnitureDataGridView = new DataGridView();
-            FurnitureIDText = new DataGridViewTextBoxColumn();
-            FurnitureGridText = new DataGridViewTextBoxColumn();
-            CategoryGridText = new DataGridViewTextBoxColumn();
-            StyleGridText = new DataGridViewTextBoxColumn();
-            QuantityGridText = new DataGridViewTextBoxColumn();
-            InfoGridText = new DataGridViewTextBoxColumn();
-            AvailableGridText = new DataGridViewTextBoxColumn();
             SearchLabel = new Label();
             FurnitureIDLabel = new Label();
             FurnitureComboBox = new ComboBox();
@@ -91,7 +84,6 @@
             SearchFurnitureDataGridView.AllowUserToResizeColumns = false;
             SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             SearchFurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SearchFurnitureDataGridView.Columns.AddRange(new DataGridViewColumn[] { FurnitureIDText, FurnitureGridText, CategoryGridText, StyleGridText, QuantityGridText, InfoGridText, AvailableGridText });
             SearchTableLayoutPanel.SetColumnSpan(SearchFurnitureDataGridView, 3);
             SearchFurnitureDataGridView.Dock = DockStyle.Fill;
             SearchFurnitureDataGridView.Location = new Point(4, 298);
@@ -104,55 +96,6 @@
             SearchFurnitureDataGridView.Size = new Size(900, 232);
             SearchFurnitureDataGridView.TabIndex = 2;
             SearchFurnitureDataGridView.CellClick += SearchFurnitureDataGridView_CellClick;
-            // 
-            // FurnitureIDText
-            // 
-            FurnitureIDText.HeaderText = "Furniture ID";
-            FurnitureIDText.MinimumWidth = 6;
-            FurnitureIDText.Name = "FurnitureIDText";
-            FurnitureIDText.ReadOnly = true;
-            // 
-            // FurnitureGridText
-            // 
-            FurnitureGridText.HeaderText = "Furniture";
-            FurnitureGridText.MinimumWidth = 6;
-            FurnitureGridText.Name = "FurnitureGridText";
-            FurnitureGridText.ReadOnly = true;
-            // 
-            // CategoryGridText
-            // 
-            CategoryGridText.HeaderText = "Category";
-            CategoryGridText.MinimumWidth = 6;
-            CategoryGridText.Name = "CategoryGridText";
-            CategoryGridText.ReadOnly = true;
-            // 
-            // StyleGridText
-            // 
-            StyleGridText.HeaderText = "Style";
-            StyleGridText.MinimumWidth = 6;
-            StyleGridText.Name = "StyleGridText";
-            StyleGridText.ReadOnly = true;
-            // 
-            // QuantityGridText
-            // 
-            QuantityGridText.HeaderText = "Quantity";
-            QuantityGridText.MinimumWidth = 6;
-            QuantityGridText.Name = "QuantityGridText";
-            QuantityGridText.ReadOnly = true;
-            // 
-            // InfoGridText
-            // 
-            InfoGridText.HeaderText = "Info/Description";
-            InfoGridText.MinimumWidth = 6;
-            InfoGridText.Name = "InfoGridText";
-            InfoGridText.ReadOnly = true;
-            // 
-            // AvailableGridText
-            // 
-            AvailableGridText.HeaderText = "Availability";
-            AvailableGridText.MinimumWidth = 6;
-            AvailableGridText.Name = "AvailableGridText";
-            AvailableGridText.ReadOnly = true;
             // 
             // SearchLabel
             // 
@@ -175,6 +118,7 @@
             FurnitureIDLabel.Text = "Furniture ID:";
             // 
             // FurnitureComboBox
+            // 
             FurnitureComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             FurnitureComboBox.FormattingEnabled = true;
             FurnitureComboBox.Location = new Point(295, 39);
@@ -277,12 +221,5 @@
         private ComboBox StyleComboBox;
         private Button SearchBtn;
         private Button CancelBtn;
-        private DataGridViewTextBoxColumn FurnitureIDText;
-        private DataGridViewTextBoxColumn FurnitureGridText;
-        private DataGridViewTextBoxColumn CategoryGridText;
-        private DataGridViewTextBoxColumn StyleGridText;
-        private DataGridViewTextBoxColumn QuantityGridText;
-        private DataGridViewTextBoxColumn InfoGridText;
-        private DataGridViewTextBoxColumn AvailableGridText;
     }
 }

@@ -75,5 +75,35 @@ namespace Furnitures.Controller
         {
             return this._furnitureDAL.GetFurnitureByStyle(style);
         }
+
+        /// <summary>
+        /// Method to search for furniture based on ID, category, and style
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="category"></param>
+        /// <param name="style"></param>
+        /// <returns></returns>
+        public List<Furniture> SearchFurniture(int id, string category, string style)
+        {
+            // Initialize a list to store the search results
+            List<Furniture> searchResults = new List<Furniture>();
+
+            if (id != 0)
+            {
+                searchResults.AddRange(GetFurnitureByID(id));
+            }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                searchResults.AddRange(GetFurnitureByCategory(category));
+            }
+
+            if (!string.IsNullOrEmpty(style))
+            {
+                searchResults.AddRange(GetFurnitureByStyle(style));
+            }
+
+            return searchResults;
+        }
     }
 }

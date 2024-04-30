@@ -1,5 +1,4 @@
-﻿using Employees.Controller;
-using Furnitures.Controller;
+﻿using Furnitures.Controller;
 using Furnitures.Model;
 
 namespace cs6232_g4.UserControls
@@ -16,10 +15,11 @@ namespace cs6232_g4.UserControls
             this._furnitureController = new FurnitureController();
             this._furniture = new List<Furniture>();
             this._bindingSource = new BindingSource();
+
             LoadFurnitureIDs();
             LoadFurnitureCategories();
-            LoadFurnitureStyles();
-
+            LoadFurnitureStyles();  
+            
         }
 
         private void Clear()
@@ -35,23 +35,29 @@ namespace cs6232_g4.UserControls
             this.LoadFurnitureCategories();
             this.LoadFurnitureIDs();
             this.LoadFurnitureStyles();
+            this.RefreshDataGridView();
         }
 
+        /// <summary>
+        /// Refreshes the data grid view.
+        /// </summary>
+        public void RefreshDataGridView()
+        {
+            RefreshDataGridView(this._furnitureController.GetAllFurniture());
+        }
+        private void RefreshDataGridView(List<Furniture> furniture)
+        {
+            _furniture = furniture;
+            SearchFurnitureDataGridView.DataSource = null;
+            SearchFurnitureDataGridView.DataSource = _furniture;
+            SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
         private void SearchFurnitureDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 SearchFurnitureDataGridView.Rows[e.RowIndex].Selected = true;
-            }
-        }
 
-        private void Furniture()
-        {
-            SearchFurnitureDataGridView.DataSource = _furniture;
-
-            if (SearchFurnitureDataGridView.Rows.Count > 0)
-            {
-                SearchFurnitureDataGridView.Rows[0].Selected = true;
             }
         }
 
@@ -112,26 +118,6 @@ namespace cs6232_g4.UserControls
 
         }
 
-        private void SetupGrid()
-        {
-
-            this.SearchFurnitureDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            this.SearchFurnitureDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SearchFurnitureDataGridView.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            this.SearchFurnitureDataGridView.Columns[5].Width = 150;
-            this.SearchFurnitureDataGridView.AutoGenerateColumns = false;
-            this.SearchFurnitureDataGridView.AutoSize = true;
-
-            this.SearchFurnitureDataGridView.Columns[0].HeaderText = "ID";
-            this.SearchFurnitureDataGridView.Columns[1].HeaderText = "Name";
-            this.SearchFurnitureDataGridView.Columns[2].HeaderText = "Description";
-            this.SearchFurnitureDataGridView.Columns[3].HeaderText = "Category";
-            this.SearchFurnitureDataGridView.Columns[4].HeaderText = "Style";
-            this.SearchFurnitureDataGridView.Columns[5].HeaderText = "Total Quantity";
-            this.SearchFurnitureDataGridView.Columns[6].HeaderText = "In Stock";
-            this.SearchFurnitureDataGridView.Columns[7].HeaderText = "Daily Rate";
-            this.SearchFurnitureDataGridView.Columns[7].DefaultCellStyle.Format = "c";
-        }
 
         /// <summary>
         /// Shows the furniture.
@@ -151,77 +137,38 @@ namespace cs6232_g4.UserControls
             }
         }
 
-        /// <summary>
-        /// Handles the SelectionChangeCommitted event of the FurnitureComboBox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void furnitureComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        private void SetupGrid()
         {
-            try
+            foreach (DataGridViewColumn column in SearchFurnitureDataGridView.Columns)
             {
-                string selected = this.FurnitureComboBox.SelectedItem.ToString();
-
-                if (!string.IsNullOrEmpty(selected))
+                switch (column.Name)
                 {
-                    int idSelected = Int32.Parse(selected);
-                    this._furniture = this._furnitureController.GetFurnitureByID(idSelected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
+                    case "FurnitureIDText":
+                        column.HeaderText = "ID";
+                        break;
+                    case "FurnitureGridText":
+                        column.HeaderText = "Name";
+                        break;
+                    case "CategoryGridText":
+                        column.HeaderText = "Category";
+                        break;
+                    case "StyleGridText":
+                        column.HeaderText = "Style";
+                        break;
+                    case "QuantityGridText":
+                        column.HeaderText = "Total Quantity";
+                        column.Width = 150;
+                        break;
+                    case "InfoGridText":
+                        column.HeaderText = "Description";
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                        break;
+                    case "AvailableGridText":
+                        column.HeaderText = "In Stock";
+                        break;
+                    default:
+                        break;
                 }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
-
-        /// <summary>
-        /// Handles the SelectionChangeCommitted event of the CategoryComboBox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void categoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            try
-            {
-                string selected = this.CategoryComboBox.SelectedItem.ToString();
-
-                if (!string.IsNullOrEmpty(selected))
-                {
-                    this._furniture = this._furnitureController.GetFurnitureByCategory(selected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
-
-        /// <summary>
-        /// Handles the SelectionChangeCommitted event of the StyleComboBox control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void styleComboBox_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            try
-            {
-                string selected = this.StyleComboBox.SelectedItem.ToString();
-
-                if (!string.IsNullOrEmpty(selected))
-                {
-                    this._furniture = this._furnitureController.GetFurnitureByStyle(selected);
-                    this.ShowFurniture();
-                    this.resetComboBoxes();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
 
@@ -238,66 +185,29 @@ namespace cs6232_g4.UserControls
         private void SearchButton_Click(object sender, EventArgs e)
         {
             int ID;
-            if (!int.TryParse(FurnitureComboBox.Text, out ID))
-            {
-                // Handle invalid input, such as displaying an error message
-                MessageBox.Show("Invalid ID. Please select a valid integer.");
-                return;
-            }
+            int.TryParse(FurnitureComboBox.Text, out ID);
             string category = CategoryComboBox.Text;
             string style = StyleComboBox.Text;
 
-            if (ID == 0 && string.IsNullOrEmpty(category) && string.IsNullOrEmpty(style))
-            {
-                 MessageBox.Show("Please select furniture ID, category, or style to search", "Furniture ID OR Category OR Style", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 return;
-            }
-
             try
             {
-                List<Furniture> searchedFurniture = new List<Furniture>();
+                List<Furniture> searchedFurniture = _furnitureController.SearchFurniture(ID, category, style);
 
-                if (ID != 0)
+                if (searchedFurniture.Count == 0)
                 {
-                    List<Furniture> furnitureByID = _furnitureController.GetFurnitureByID(ID);
-                    searchedFurniture.AddRange(furnitureByID);
-                    if (furnitureByID.Count == 0)
-                    {
-                        MessageBox.Show("No furniture matching that ID found");
-                        return;
-                    }
+                    MessageBox.Show("No furniture matching the search criteria found", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                if (!string.IsNullOrEmpty(category))
+                else
                 {
-                    List<Furniture> furnitureByCategory = _furnitureController.GetFurnitureByCategory(category);
-                    searchedFurniture.AddRange(furnitureByCategory);
-                    if (furnitureByCategory.Count == 0)
-                    {
-                        MessageBox.Show("No furniture matching that category found");
-                        return;
-                    }
+                    RefreshDataGridView(searchedFurniture);
                 }
-
-                if (!string.IsNullOrEmpty(style))
-                {
-                    List<Furniture> furnitureByStyle = _furnitureController.GetFurnitureByStyle(style);
-                    searchedFurniture.AddRange(furnitureByStyle);
-                    if (furnitureByStyle.Count == 0)
-                    {
-                        MessageBox.Show("No furniture matching that style found");
-                        return;
-                    }
-                }
-
-                SearchFurnitureDataGridView.DataSource = searchedFurniture;
-                Furniture();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
 
     }
 }

@@ -22,8 +22,8 @@ namespace Furnitures.DAL
             List<Furniture> FurnitureList = new List<Furniture>();
 
             string selectStatement =
-                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name" +
-                "FROM Furniture" +
+                "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
+                "FROM Furniture " +
                 "Where furniture_id = @furnitureID";
 
             using (SqlConnection connection = DBConnection.GetConnection())
