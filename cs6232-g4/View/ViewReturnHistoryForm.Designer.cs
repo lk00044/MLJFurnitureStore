@@ -48,7 +48,7 @@
             ReturnHistLayoutPanel.Controls.Add(MemberIDLabel, 0, 0);
             ReturnHistLayoutPanel.Controls.Add(ReturnsDataGridView, 0, 2);
             ReturnHistLayoutPanel.Controls.Add(MemberNameLabel, 0, 1);
-            ReturnHistLayoutPanel.Location = new Point(14, 56);
+            ReturnHistLayoutPanel.Location = new Point(12, 22);
             ReturnHistLayoutPanel.Name = "ReturnHistLayoutPanel";
             ReturnHistLayoutPanel.RowCount = 3;
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 34.83146F));
@@ -71,6 +71,7 @@
             // 
             ReturnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ReturnHistLayoutPanel.SetColumnSpan(ReturnsDataGridView, 2);
+            ReturnsDataGridView.Dock = DockStyle.Fill;
             ReturnsDataGridView.Location = new Point(3, 83);
             ReturnsDataGridView.Name = "ReturnsDataGridView";
             ReturnsDataGridView.RowHeadersWidth = 51;
@@ -103,10 +104,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(691, 510);
+            ClientSize = new Size(456, 456);
             Controls.Add(infoMessageLabel);
             Controls.Add(ReturnHistLayoutPanel);
             Name = "ViewReturnHistoryForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Return History";
             Load += ViewReturnHistory_Load;
             ReturnHistLayoutPanel.ResumeLayout(false);

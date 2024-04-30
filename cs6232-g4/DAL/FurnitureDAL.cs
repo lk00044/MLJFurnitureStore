@@ -1,5 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using Furnitures.Model;
+using Microsoft.VisualBasic.ApplicationServices;
 using System.Data.SqlClient;
 
 namespace Employees.DAL
@@ -44,6 +45,7 @@ namespace Employees.DAL
             }
             return FurnitureList;
         }
+
 
         /// <summary>
         /// update furniture by ID
