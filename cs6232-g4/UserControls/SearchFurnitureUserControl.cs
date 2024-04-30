@@ -63,7 +63,7 @@ namespace cs6232_g4.UserControls
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            Clear();
+            this.resetComboBoxes();
         }
 
         private void LoadFurnitureIDs()

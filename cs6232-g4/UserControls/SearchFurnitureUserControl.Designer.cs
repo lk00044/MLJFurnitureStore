@@ -184,6 +184,7 @@
             CancelBtn.TabIndex = 12;
             CancelBtn.Text = "Cancel";
             CancelBtn.UseVisualStyleBackColor = true;
+            CancelBtn.Click += CancelBtn_Click;
             // 
             // FurnitureInfoLabel
             // 
