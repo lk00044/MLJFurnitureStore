@@ -372,11 +372,12 @@ namespace Employees.DAL
             List<ReturnTransaction> ReturnsList = new List<ReturnTransaction>();
 
             string selectStatement =
-                "SELECT r.return_transaction_id, r.fine_or_refund, r.return_date, " +
-                "rl.line_item_id, rl.quantity, " +
+                "SELECT r.return_transaction_id, r.fine_or_refund, rt.member_id, " +
+                "e.employee_id, concat(e.fname, ' ' , e.lname) as employee_name, " +
+                "rt.transaction_date, r.return_date, " +
+                "rl.line_item_id, " +
                 "f.furniture_id, f.name as furniture_name, " +
-                "concat(e.fname, ' ' , e.lname) as employee_name, e.employee_id, " +
-                "rt.member_id, rt.transaction_date " +
+                "rl.quantity " +
                 "FROM ReturnTransaction r " +
                 "JOIN ReturnLineItem rl ON r.return_transaction_id = rl.return_transaction_id " +
                 "JOIN RentalLineItem rr ON rl.line_item_id = rr.line_item_id " +
@@ -384,7 +385,8 @@ namespace Employees.DAL
                 "LEFT JOIN (SELECT line_item_id, SUM(quantity) as quantity FROM ReturnLineItem GROUP BY line_item_id) ri ON ri.line_item_id = rl.line_item_id " +
                 "JOIN Furniture f ON rr.furniture_id = f.furniture_id " +
                 "JOIN Employee e ON rt.employee_id = e.employee_id " +
-                "WHERE rt.member_id = @memberID";
+                "WHERE rt.member_id = @memberID " +
+                "ORDER BY r.return_transaction_id";
 
 
             using (SqlConnection connection = DBConnection.GetConnection())
@@ -397,10 +399,11 @@ namespace Employees.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
+                        ReturnTransaction returnTransaction;
 
                         while (reader.Read())
                         {
-                            ReturnTransaction returnTransaction = new ReturnTransaction();
+                            returnTransaction = new ReturnTransaction();
 
                             returnTransaction.ReturnTransactionID = (int)reader["return_transaction_id"];
                             returnTransaction.FineOrRefund = (decimal)reader["fine_or_refund"];
