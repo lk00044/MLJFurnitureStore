@@ -2,7 +2,6 @@
 using cs6232_g4.Model;
 using Furnitures.Model;
 using Members.Controller;
-using Furnitures.Controller;
 
 namespace cs6232_g4.UserControls
 {
