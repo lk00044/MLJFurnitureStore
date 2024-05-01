@@ -1,6 +1,4 @@
-﻿using cs6232_g4.UserControls;
-
-namespace cs6232_g4
+﻿namespace cs6232_g4
 {
     partial class DashboardForm
     {
@@ -37,19 +35,6 @@ namespace cs6232_g4
             LogOutLinkLabel = new LinkLabel();
             MbrTransTabPage = new TabPage();
             rentFurnitureUserControl = new UserControls.RentFurnitureUserControl();
-            SearchFurnitureTab = new TabPage();
-            searchFurnitureUserControl = new UserControls.SearchFurnitureUserControl();
-            LogOutLinkLabel = new LinkLabel();
-            SearchTableLayoutPanel = new TableLayoutPanel();
-            SearchFurnitureDataGridView = new DataGridView();
-            RentalIDText = new DataGridViewTextBoxColumn();
-            FurnitureGridText = new DataGridViewTextBoxColumn();
-            CategoryGridText = new DataGridViewTextBoxColumn();
-            StyleGridText = new DataGridViewTextBoxColumn();
-            QuantityGridText = new DataGridViewTextBoxColumn();
-            InfoGridText = new DataGridViewTextBoxColumn();
-            AvailableGridText = new DataGridViewTextBoxColumn();
-            SearchLabel = new Label();
             Search4MbrTabPage = new TabPage();
             search4Member = new UserControls.SearchForMemberUserControl();
             RegMbrTabPage = new TabPage();
@@ -62,9 +47,6 @@ namespace cs6232_g4
             indexToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             MbrTransTabPage.SuspendLayout();
-            SearchFurnitureTab.SuspendLayout();
-            SearchTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).BeginInit();
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
@@ -115,106 +97,6 @@ namespace cs6232_g4
             LogOutLinkLabel.Text = "Log Out";
             LogOutLinkLabel.LinkClicked += LogOutLinkLabel_LinkClicked;
             // 
-            // SearchTableLayoutPanel
-            // 
-            SearchTableLayoutPanel.ColumnCount = 3;
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.4276733F));
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.5723267F));
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 303F));
-            SearchTableLayoutPanel.Controls.Add(SearchFurnitureDataGridView, 0, 7);
-            SearchTableLayoutPanel.Location = new Point(0, 0);
-            SearchTableLayoutPanel.Name = "SearchTableLayoutPanel";
-            SearchTableLayoutPanel.RowCount = 8;
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            SearchTableLayoutPanel.Size = new Size(200, 100);
-            SearchTableLayoutPanel.TabIndex = 0;
-            // 
-            // SearchFurnitureDataGridView
-            // 
-            SearchFurnitureDataGridView.AllowUserToAddRows = false;
-            SearchFurnitureDataGridView.AllowUserToDeleteRows = false;
-            SearchFurnitureDataGridView.AllowUserToResizeColumns = false;
-            SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            SearchFurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SearchFurnitureDataGridView.Columns.AddRange(new DataGridViewColumn[] { RentalIDText, FurnitureGridText, CategoryGridText, StyleGridText, QuantityGridText, InfoGridText, AvailableGridText });
-            SearchTableLayoutPanel.SetColumnSpan(SearchFurnitureDataGridView, 3);
-            SearchFurnitureDataGridView.Dock = DockStyle.Fill;
-            SearchFurnitureDataGridView.Location = new Point(4, 144);
-            SearchFurnitureDataGridView.Margin = new Padding(4);
-            SearchFurnitureDataGridView.MultiSelect = false;
-            SearchFurnitureDataGridView.Name = "SearchFurnitureDataGridView";
-            SearchFurnitureDataGridView.ReadOnly = true;
-            SearchFurnitureDataGridView.RowHeadersWidth = 51;
-            SearchFurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            SearchFurnitureDataGridView.Size = new Size(193, 12);
-            SearchFurnitureDataGridView.TabIndex = 2;
-            // 
-            // RentalIDText
-            // 
-            RentalIDText.HeaderText = "Rental ID";
-            RentalIDText.MinimumWidth = 6;
-            RentalIDText.Name = "RentalIDText";
-            RentalIDText.ReadOnly = true;
-            // 
-            // FurnitureGridText
-            // 
-            FurnitureGridText.HeaderText = "Furniture";
-            FurnitureGridText.MinimumWidth = 6;
-            FurnitureGridText.Name = "FurnitureGridText";
-            FurnitureGridText.ReadOnly = true;
-            // 
-            // CategoryGridText
-            // 
-            CategoryGridText.HeaderText = "Category";
-            CategoryGridText.MinimumWidth = 6;
-            CategoryGridText.Name = "CategoryGridText";
-            CategoryGridText.ReadOnly = true;
-            // 
-            // StyleGridText
-            // 
-            StyleGridText.HeaderText = "Style";
-            StyleGridText.MinimumWidth = 6;
-            StyleGridText.Name = "StyleGridText";
-            StyleGridText.ReadOnly = true;
-            // 
-            // QuantityGridText
-            // 
-            QuantityGridText.HeaderText = "Quantity";
-            QuantityGridText.MinimumWidth = 6;
-            QuantityGridText.Name = "QuantityGridText";
-            QuantityGridText.ReadOnly = true;
-            // 
-            // InfoGridText
-            // 
-            InfoGridText.HeaderText = "Info/Description";
-            InfoGridText.MinimumWidth = 6;
-            InfoGridText.Name = "InfoGridText";
-            InfoGridText.ReadOnly = true;
-            // 
-            // AvailableGridText
-            // 
-            AvailableGridText.HeaderText = "Availability";
-            AvailableGridText.MinimumWidth = 6;
-            AvailableGridText.Name = "AvailableGridText";
-            AvailableGridText.ReadOnly = true;
-            // 
-            // SearchLabel
-            // 
-            SearchLabel.AutoSize = true;
-            SearchLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchLabel.Location = new Point(3, 0);
-            SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(1, 1);
-            SearchLabel.TabIndex = 3;
-            SearchLabel.Text = "Search Furniture";
-            // 
             // MbrTransTabPage
             // 
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
@@ -232,27 +114,6 @@ namespace cs6232_g4
             rentFurnitureUserControl.Name = "rentFurnitureUserControl";
             rentFurnitureUserControl.Size = new Size(1011, 891);
             rentFurnitureUserControl.TabIndex = 0;
-            // 
-            // SearchFurnitureTab
-            // 
-            SearchFurnitureTab.Controls.Add(searchFurnitureUserControl);
-            SearchFurnitureTab.Dock = DockStyle.Fill;
-            SearchFurnitureTab.Location = new Point(4, 29);
-            SearchFurnitureTab.Name = "SearchFurnitureTab";
-            SearchFurnitureTab.Padding = new Padding(3);
-            SearchFurnitureTab.Size = new Size(881, 683);
-            SearchFurnitureTab.TabIndex = 4;
-            SearchFurnitureTab.Text = "Furniture Search";
-            SearchFurnitureTab.UseVisualStyleBackColor = true;
-            // 
-            // searchFurnitureUserControl
-            // 
-            searchFurnitureUserControl.Dock = DockStyle.Top;
-            searchFurnitureUserControl.Location = new Point(3, 3);
-            searchFurnitureUserControl.Name = "searchFurnitureUserControl";
-            searchFurnitureUserControl.Size = new Size(875, 677);
-            searchFurnitureUserControl.TabIndex = 1;
-            // 
             // 
             // Search4MbrTabPage
             // 
@@ -299,7 +160,6 @@ namespace cs6232_g4
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
-            MainDBTabControl.Controls.Add(SearchFurnitureTab);
             MainDBTabControl.Controls.Add(AdminReportTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
@@ -377,9 +237,6 @@ namespace cs6232_g4
             Text = "Rent Me Furniture Rentals";
             Load += DashboardForm_Load;
             MbrTransTabPage.ResumeLayout(false);
-            SearchFurnitureTab.ResumeLayout(false);
-            SearchTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).EndInit();
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
@@ -398,18 +255,6 @@ namespace cs6232_g4
         private LinkLabel LogOutLinkLabel;
         private TabPage MbrTransTabPage;
         private UserControls.RentFurnitureUserControl rentFurnitureUserControl;
-        private TabPage SearchFurnitureTab;
-        private UserControls.SearchFurnitureUserControl searchFurnitureUserControl;
-        private TableLayoutPanel SearchTableLayoutPanel;
-        private DataGridView SearchFurnitureDataGridView;
-        private DataGridViewTextBoxColumn RentalIDText;
-        private DataGridViewTextBoxColumn FurnitureGridText;
-        private DataGridViewTextBoxColumn CategoryGridText;
-        private DataGridViewTextBoxColumn StyleGridText;
-        private DataGridViewTextBoxColumn QuantityGridText;
-        private DataGridViewTextBoxColumn InfoGridText;
-        private DataGridViewTextBoxColumn AvailableGridText;
-        private Label SearchLabel;
         private TabPage Search4MbrTabPage;
         private UserControls.SearchForMemberUserControl search4Member;
         private TabPage RegMbrTabPage;
