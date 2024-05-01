@@ -48,14 +48,14 @@
             ReturnHistLayoutPanel.Controls.Add(MemberIDLabel, 0, 0);
             ReturnHistLayoutPanel.Controls.Add(ReturnsDataGridView, 0, 2);
             ReturnHistLayoutPanel.Controls.Add(MemberNameLabel, 0, 1);
-            ReturnHistLayoutPanel.Location = new Point(14, 56);
+            ReturnHistLayoutPanel.Location = new Point(14, 40);
             ReturnHistLayoutPanel.Name = "ReturnHistLayoutPanel";
             ReturnHistLayoutPanel.RowCount = 3;
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 34.83146F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 65.16854F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 333F));
             ReturnHistLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            ReturnHistLayoutPanel.Size = new Size(427, 414);
+            ReturnHistLayoutPanel.Size = new Size(665, 430);
             ReturnHistLayoutPanel.TabIndex = 0;
             // 
             // MemberIDLabel
@@ -71,24 +71,20 @@
             // 
             ReturnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ReturnHistLayoutPanel.SetColumnSpan(ReturnsDataGridView, 2);
-            ReturnsDataGridView.Location = new Point(3, 83);
+            ReturnsDataGridView.Location = new Point(3, 99);
             ReturnsDataGridView.Name = "ReturnsDataGridView";
             ReturnsDataGridView.RowHeadersWidth = 51;
-            ReturnsDataGridView.Size = new Size(421, 328);
+            ReturnsDataGridView.Size = new Size(659, 328);
             ReturnsDataGridView.TabIndex = 1;
             // 
             // MemberNameLabel
             // 
             MemberNameLabel.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            MemberNameLabel.Location = new Point(3, 28);
+            MemberNameLabel.Location = new Point(3, 33);
             MemberNameLabel.Name = "MemberNameLabel";
             MemberNameLabel.Size = new Size(207, 29);
             MemberNameLabel.TabIndex = 25;
             MemberNameLabel.Text = "Member Name: ";
-            // 
-            // TransactionDALBindingSource
-            // 
-            TransactionDALBindingSource.DataSource = typeof(Employees.DAL.TransactionDAL);
             // 
             // infoMessageLabel
             // 

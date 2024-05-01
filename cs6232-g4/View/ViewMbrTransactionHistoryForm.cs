@@ -88,7 +88,7 @@ namespace cs6232_g4.View
         {
             this.MemberTransactionsDataGridView.AutoGenerateColumns = false;
             this.MemberTransactionsDataGridView.AutoSize = true;
-            this.MemberTransactionsDataGridView.Columns[0].HeaderText = "Transaction ID";
+            this.MemberTransactionsDataGridView.Columns[0].HeaderText = "Return Transaction ID";
             this.MemberTransactionsDataGridView.Columns[1].HeaderText = "Transaction Date";
             this.MemberTransactionsDataGridView.Columns[1].DefaultCellStyle.Format = "MM/dd/yyyy";
             this.MemberTransactionsDataGridView.Columns[2].HeaderText = "Member ID";
