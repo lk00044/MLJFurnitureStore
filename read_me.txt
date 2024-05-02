@@ -6,5 +6,4 @@ Username/Password (for employees and admins)
   mikhail01	 1234
 
 Problematic Features: 
- - We haven't merged the Search Furniture feature because because there wasn't enough time to validate. 
-   PR for search furniture: https://github.com/lk00044/MLJFurnitureStore/pull/73
+ - Thurs, 5/2: Still working with LM on the Search Furniture Function. Hopefully it will be merged today or tomorrow before submission. 
