@@ -7,10 +7,9 @@
 /// </summary>
 
 using cs6232_g4.DAL;
-using Furnitures.Model;
 using System.Data.SqlClient;
 
-namespace Furnitures.DAL
+namespace Furniture.DAL
 {
     public class FurnitureDAL
     {
@@ -18,9 +17,9 @@ namespace Furnitures.DAL
         /// Gets all furniture
         /// </summary>
         /// <returns>furniture list</returns>
-        public List<Furniture> GetAllFurniture()
+        public List<Model.Furniture> GetAllFurniture()
         {
-            List<Furniture> FurnitureList = new List<Furniture>();
+            List<Model.Furniture> FurnitureList = new List<Model.Furniture>();
 
             string selectStatement =
                 "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
@@ -37,7 +36,7 @@ namespace Furnitures.DAL
                     {
                         while (reader.Read())
                         {
-                            Furniture furniture = new Furniture();
+                            Model.Furniture furniture = new Model.Furniture();
                             furniture.FurnitureId = (int)reader["furniture_id"];
                             furniture.Name = (string)reader["name"];
                             furniture.Description = (string)reader["description"];
@@ -60,9 +59,9 @@ namespace Furnitures.DAL
         /// </summary>
         /// <param name="Category"></param>
         /// <returns> member list </returns>
-        public List<Furniture> GetFurnitureByCategory(string Category)
+        public List<Model.Furniture> GetFurnitureByCategory(string Category)
         {
-            List<Furniture> FurnitureList = new List<Furniture>();
+            List<Model.Furniture> FurnitureList = new List<Model.Furniture>();
 
             string selectStatement =
                 "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
@@ -82,7 +81,7 @@ namespace Furnitures.DAL
                     {
                         while (reader.Read())
                         {
-                            Furniture furniture = new Furniture();
+                            Model.Furniture furniture = new Model.Furniture();
                             furniture.FurnitureId = (int)reader["furniture_id"];
                             furniture.Name = (string)reader["name"];
                             furniture.Description = (string)reader["description"];
@@ -105,9 +104,9 @@ namespace Furnitures.DAL
         /// </summary>
         /// <param name="ID"></param>
         /// <returns> member list </returns>
-        public List<Furniture> GetFurnitureByID(int ID)
+        public List<Model.Furniture> GetFurnitureByID(int ID)
         {
-            List<Furniture> FurnitureList = new List<Furniture>();
+            List<Model.Furniture> FurnitureList = new List<Model.Furniture>();
 
             string selectStatement =
                 "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
@@ -127,7 +126,7 @@ namespace Furnitures.DAL
                     {
                         while (reader.Read())
                         {
-                            Furniture furniture = new Furniture();
+                            Model.Furniture furniture = new Model.Furniture();
                             furniture.FurnitureId = (int)reader["furniture_id"];
                             furniture.Name = (string)reader["name"];
                             furniture.Description = (string)reader["description"];
@@ -150,9 +149,9 @@ namespace Furnitures.DAL
         /// </summary>
         /// <param name="Style"></param>
         /// <returns> member list </returns>
-        public List<Furniture> GetFurnitureByStyle(string Style)
+        public List<Model.Furniture> GetFurnitureByStyle(string Style)
         {
-            List<Furniture> FurnitureList = new List<Furniture>();
+            List<Model.Furniture> FurnitureList = new List<Model.Furniture>();
 
             string selectStatement =
                 "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
@@ -172,7 +171,7 @@ namespace Furnitures.DAL
                     {
                         while (reader.Read())
                         {
-                            Furniture furniture = new Furniture();
+                            Model.Furniture furniture = new Model.Furniture();
                             furniture.FurnitureId = (int)reader["furniture_id"];
                             furniture.Name = (string)reader["name"];
                             furniture.Description = (string)reader["description"];

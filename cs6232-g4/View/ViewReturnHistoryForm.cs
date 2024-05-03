@@ -1,5 +1,5 @@
 ﻿using cs6232_g4.Model;
-using Furnitures.Model;
+using Furniture.Model;
 using Members.Controller;
 using System.Windows.Forms;
 

@@ -4,7 +4,7 @@
 /// Programmer: LKeller
 /// Date: 08/03/24
 /// </summary>
-namespace Furnitures.Model
+namespace Furniture.Model
 {
     public class Furniture
     {

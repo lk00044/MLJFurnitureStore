@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             SearchTableLayoutPanel = new TableLayoutPanel();
-            SearchFurnitureDataGridView = new DataGridView();
             SearchLabel = new Label();
             FurnitureIDLabel = new Label();
             FurnitureComboBox = new ComboBox();
@@ -40,6 +39,7 @@
             SearchBtn = new Button();
             CancelBtn = new Button();
             FurnitureInfoLabel = new Label();
+            SearchFurnitureDataGridView = new DataGridView();
             SearchTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SearchFurnitureDataGridView).BeginInit();
             SuspendLayout();
@@ -47,10 +47,10 @@
             // SearchTableLayoutPanel
             // 
             SearchTableLayoutPanel.ColumnCount = 3;
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.4276733F));
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.5723267F));
-            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 303F));
-            SearchTableLayoutPanel.Controls.Add(SearchFurnitureDataGridView, 0, 7);
+            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 26.541851F));
+            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.0881042F));
+            SearchTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            SearchTableLayoutPanel.Controls.Add(SearchFurnitureDataGridView, 0, 5);
             SearchTableLayoutPanel.Controls.Add(SearchLabel, 0, 0);
             SearchTableLayoutPanel.Controls.Add(FurnitureIDLabel, 0, 1);
             SearchTableLayoutPanel.Controls.Add(FurnitureComboBox, 1, 1);
@@ -58,44 +58,21 @@
             SearchTableLayoutPanel.Controls.Add(CategoryComboBox, 1, 2);
             SearchTableLayoutPanel.Controls.Add(StyleLabel, 0, 3);
             SearchTableLayoutPanel.Controls.Add(StyleComboBox, 1, 3);
-            SearchTableLayoutPanel.Controls.Add(SearchBtn, 0, 4);
-            SearchTableLayoutPanel.Controls.Add(CancelBtn, 1, 4);
-            SearchTableLayoutPanel.Controls.Add(FurnitureInfoLabel, 0, 5);
+            SearchTableLayoutPanel.Controls.Add(SearchBtn, 2, 1);
+            SearchTableLayoutPanel.Controls.Add(CancelBtn, 2, 3);
+            SearchTableLayoutPanel.Controls.Add(FurnitureInfoLabel, 0, 4);
             SearchTableLayoutPanel.Dock = DockStyle.Fill;
             SearchTableLayoutPanel.Location = new Point(0, 0);
             SearchTableLayoutPanel.Name = "SearchTableLayoutPanel";
-            SearchTableLayoutPanel.RowCount = 9;
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 46.5517235F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 53.4482765F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 91F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 240F));
-            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            SearchTableLayoutPanel.RowCount = 6;
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 6.99815845F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 9.023941F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 9.392265F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 7.5506444F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 4.41988945F));
+            SearchTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 62.6151F));
             SearchTableLayoutPanel.Size = new Size(908, 543);
             SearchTableLayoutPanel.TabIndex = 1;
-            // 
-            // SearchFurnitureDataGridView
-            // 
-            SearchFurnitureDataGridView.AllowUserToAddRows = false;
-            SearchFurnitureDataGridView.AllowUserToDeleteRows = false;
-            SearchFurnitureDataGridView.AllowUserToResizeColumns = false;
-            SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            SearchFurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SearchTableLayoutPanel.SetColumnSpan(SearchFurnitureDataGridView, 3);
-            SearchFurnitureDataGridView.Dock = DockStyle.Fill;
-            SearchFurnitureDataGridView.Location = new Point(4, 298);
-            SearchFurnitureDataGridView.Margin = new Padding(4);
-            SearchFurnitureDataGridView.MultiSelect = false;
-            SearchFurnitureDataGridView.Name = "SearchFurnitureDataGridView";
-            SearchFurnitureDataGridView.ReadOnly = true;
-            SearchFurnitureDataGridView.RowHeadersWidth = 51;
-            SearchFurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            SearchFurnitureDataGridView.Size = new Size(900, 232);
-            SearchFurnitureDataGridView.TabIndex = 2;
-            SearchFurnitureDataGridView.CellClick += SearchFurnitureDataGridView_CellClick;
             // 
             // SearchLabel
             // 
@@ -111,7 +88,7 @@
             // 
             FurnitureIDLabel.AutoSize = true;
             FurnitureIDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FurnitureIDLabel.Location = new Point(3, 36);
+            FurnitureIDLabel.Location = new Point(3, 38);
             FurnitureIDLabel.Name = "FurnitureIDLabel";
             FurnitureIDLabel.Size = new Size(89, 20);
             FurnitureIDLabel.TabIndex = 6;
@@ -121,7 +98,7 @@
             // 
             FurnitureComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             FurnitureComboBox.FormattingEnabled = true;
-            FurnitureComboBox.Location = new Point(295, 39);
+            FurnitureComboBox.Location = new Point(244, 41);
             FurnitureComboBox.Name = "FurnitureComboBox";
             FurnitureComboBox.Size = new Size(215, 28);
             FurnitureComboBox.TabIndex = 5;
@@ -130,7 +107,7 @@
             // 
             CategoryLabel.AutoSize = true;
             CategoryLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CategoryLabel.Location = new Point(3, 78);
+            CategoryLabel.Location = new Point(3, 87);
             CategoryLabel.Name = "CategoryLabel";
             CategoryLabel.Size = new Size(72, 20);
             CategoryLabel.TabIndex = 7;
@@ -140,7 +117,7 @@
             // 
             CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryComboBox.FormattingEnabled = true;
-            CategoryComboBox.Location = new Point(295, 81);
+            CategoryComboBox.Location = new Point(244, 90);
             CategoryComboBox.Name = "CategoryComboBox";
             CategoryComboBox.Size = new Size(215, 28);
             CategoryComboBox.TabIndex = 8;
@@ -149,7 +126,7 @@
             // 
             StyleLabel.AutoSize = true;
             StyleLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            StyleLabel.Location = new Point(3, 119);
+            StyleLabel.Location = new Point(3, 138);
             StyleLabel.Name = "StyleLabel";
             StyleLabel.Size = new Size(44, 20);
             StyleLabel.TabIndex = 9;
@@ -159,7 +136,7 @@
             // 
             StyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StyleComboBox.FormattingEnabled = true;
-            StyleComboBox.Location = new Point(295, 122);
+            StyleComboBox.Location = new Point(244, 141);
             StyleComboBox.Name = "StyleComboBox";
             StyleComboBox.Size = new Size(215, 28);
             StyleComboBox.TabIndex = 10;
@@ -167,7 +144,7 @@
             // SearchBtn
             // 
             SearchBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchBtn.Location = new Point(3, 170);
+            SearchBtn.Location = new Point(608, 41);
             SearchBtn.Name = "SearchBtn";
             SearchBtn.Size = new Size(193, 39);
             SearchBtn.TabIndex = 11;
@@ -178,9 +155,9 @@
             // CancelBtn
             // 
             CancelBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CancelBtn.Location = new Point(295, 170);
+            CancelBtn.Location = new Point(608, 141);
             CancelBtn.Name = "CancelBtn";
-            CancelBtn.Size = new Size(193, 39);
+            CancelBtn.Size = new Size(193, 35);
             CancelBtn.TabIndex = 12;
             CancelBtn.Text = "Cancel";
             CancelBtn.UseVisualStyleBackColor = true;
@@ -190,11 +167,30 @@
             // 
             FurnitureInfoLabel.AutoSize = true;
             FurnitureInfoLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FurnitureInfoLabel.Location = new Point(3, 258);
+            FurnitureInfoLabel.Location = new Point(3, 179);
             FurnitureInfoLabel.Name = "FurnitureInfoLabel";
             FurnitureInfoLabel.Size = new Size(167, 20);
             FurnitureInfoLabel.TabIndex = 4;
             FurnitureInfoLabel.Text = "Furniture Information:";
+            // 
+            // SearchFurnitureDataGridView
+            // 
+            SearchFurnitureDataGridView.AllowUserToAddRows = false;
+            SearchFurnitureDataGridView.AllowUserToDeleteRows = false;
+            SearchFurnitureDataGridView.AllowUserToResizeColumns = false;
+            SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            SearchFurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SearchTableLayoutPanel.SetColumnSpan(SearchFurnitureDataGridView, 3);
+            SearchFurnitureDataGridView.Dock = DockStyle.Fill;
+            SearchFurnitureDataGridView.Location = new Point(4, 207);
+            SearchFurnitureDataGridView.Margin = new Padding(4);
+            SearchFurnitureDataGridView.MultiSelect = false;
+            SearchFurnitureDataGridView.Name = "SearchFurnitureDataGridView";
+            SearchFurnitureDataGridView.ReadOnly = true;
+            SearchFurnitureDataGridView.RowHeadersWidth = 51;
+            SearchFurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            SearchFurnitureDataGridView.Size = new Size(900, 332);
+            SearchFurnitureDataGridView.TabIndex = 13;
             // 
             // SearchFurnitureUserControl
             // 
@@ -211,7 +207,6 @@
 
         #endregion
         private TableLayoutPanel SearchTableLayoutPanel;
-        private DataGridView SearchFurnitureDataGridView;
         private Label SearchLabel;
         private Label FurnitureInfoLabel;
         private ComboBox FurnitureComboBox;
@@ -222,5 +217,6 @@
         private ComboBox StyleComboBox;
         private Button SearchBtn;
         private Button CancelBtn;
+        private DataGridView SearchFurnitureDataGridView;
     }
 }

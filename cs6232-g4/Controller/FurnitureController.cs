@@ -4,11 +4,11 @@
 /// Modified: 1 April 2024
 /// </summary>
 /// 
-using Employees.DAL;
-using Furnitures.DAL;
-using Furnitures.Model;
 
-namespace Furnitures.Controller
+using Furniture.DAL;
+using Furniture.Model;
+
+namespace Furniture.Controller
 {
     public class FurnitureController
     {
@@ -22,7 +22,7 @@ namespace Furnitures.Controller
         /// <summary>
         /// get all furniture
         /// </summary>
-        public List<Furniture> GetAllFurniture()
+        public List<Model.Furniture> GetAllFurniture()
         {
             return this._furnitureDAL.GetAllFurniture();
         }
@@ -61,32 +61,48 @@ namespace Furnitures.Controller
             this._furnitureDAL.UpdateFurniture(furnitureId, rentedQuantity);
         }
 
-        public List<Furniture> GetFurnitureByCategory(string category)
+        /// <summary>
+        /// Gets the furniture by category.
+        /// </summary>
+        /// <param name="category">The category.</param>
+        /// <returns></returns>
+        public List<Model.Furniture> GetFurnitureByCategory(string category)
         {
             return this._furnitureDAL.GetFurnitureByCategory(category);
         }
 
-        public List<Furniture> GetFurnitureByID(int ID)
+        /// <summary>
+        /// Gets the furniture by identifier.
+        /// </summary>
+        /// <param name="ID">The identifier.</param>
+        /// <returns></returns>
+        public List<Model.Furniture> GetFurnitureByID(int ID)
         {
             return this._furnitureDAL.GetFurnitureByID(ID);
         }
 
-        public List<Furniture> GetFurnitureByStyle(string style)
+        /// <summary>
+        /// Gets the furniture by style.
+        /// </summary>
+        /// <param name="style">The style.</param>
+        /// <returns></returns>
+        public List<Model.Furniture> GetFurnitureByStyle(string style)
         {
             return this._furnitureDAL.GetFurnitureByStyle(style);
         }
 
         /// <summary>
         /// Method to search for furniture based on ID, category, and style
+        /// Programmer: LM
         /// </summary>
         /// <param name="id"></param>
         /// <param name="category"></param>
         /// <param name="style"></param>
         /// <returns></returns>
-        public List<Furniture> SearchFurniture(int id, string category, string style)
+        public List<Model.Furniture> SearchFurniture(int id, string category, string style)
         {
             // Initialize a list to store the search results
-            List<Furniture> searchResults = new List<Furniture>();
+            List<Model.Furniture> searchResults = new List<Model.Furniture>();
 
             if (id != 0)
             {

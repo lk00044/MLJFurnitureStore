@@ -1,8 +1,8 @@
 ﻿using cs6232_g4.Controller;
 using cs6232_g4.Model;
-using Furnitures.Model;
+using Furniture.Model;
 using Members.Controller;
-using Furnitures.Controller;
+using Furniture.Controller;
 
 namespace cs6232_g4.UserControls
 {
@@ -17,7 +17,7 @@ namespace cs6232_g4.UserControls
         private readonly MembersController _membersController;
         private readonly TransactionController _transactionController;
         private RentalTransaction rentalTransaction;
-        private List<Furniture> furnitureList;
+        private List<Furniture.Model.Furniture> furnitureList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -28,7 +28,7 @@ namespace cs6232_g4.UserControls
             this._loginController = new LoginController();
             this._furnitureController = new FurnitureController();
             this._transactionController = new TransactionController();
-            this.furnitureList = new List<Furniture>();
+            this.furnitureList = new List<Furniture.Model.Furniture>();
             this._membersController = new MembersController();
             this.rentalTransaction = new RentalTransaction();
             this.infoMessageLabel.Text = string.Empty;
@@ -62,7 +62,7 @@ namespace cs6232_g4.UserControls
         {
             if (IsValidItemInput(false))
             {
-                Furniture addedFurniture = this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text));
+                Furniture.Model.Furniture addedFurniture = this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text));
                 ListViewItem listViewItem = new ListViewItem(addedFurniture.FurnitureId.ToString());
                 this.cartListView.Items.Add(listViewItem);
                 listViewItem.SubItems.Add(addedFurniture.Name);
@@ -92,7 +92,7 @@ namespace cs6232_g4.UserControls
             if (IsValidItemInput(true))
             {
                 this.UpdateCostValues();
-                Furniture addedFurniture = this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text));
+                Furniture.Model.Furniture addedFurniture = this.furnitureList.Find(furniture => furniture.FurnitureId == int.Parse(this.furnitureIdTextBox.Text));
                 ListViewItem listViewItem = this.cartListView.FindItemWithText(this.furnitureIdTextBox.Text);
                 if (this.quantityTextBox.Text == "0")
                 {

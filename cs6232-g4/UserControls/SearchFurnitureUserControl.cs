@@ -1,33 +1,25 @@
-﻿using Furnitures.Controller;
-using Furnitures.Model;
+﻿using Furniture.Controller;
+using Furniture.Model;
 
 namespace cs6232_g4.UserControls
 {
     public partial class SearchFurnitureUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
-        private List<Furniture> _furniture;
+        private List<Furniture.Model.Furniture> _furniture;
         private BindingSource _bindingSource;
 
         public SearchFurnitureUserControl()
         {
             InitializeComponent();
             this._furnitureController = new FurnitureController();
-            this._furniture = new List<Furniture>();
+            this._furniture = new List<Furniture.Model.Furniture>();
             this._bindingSource = new BindingSource();
 
             LoadFurnitureIDs();
             LoadFurnitureCategories();
             LoadFurnitureStyles();  
             
-        }
-
-        private void Clear()
-        {
-            FurnitureComboBox.Text = "";
-            CategoryComboBox.Text = "";
-            StyleComboBox.Text = "";
-
         }
 
         private void FurnitureSearchUserControl_Load(object sender, EventArgs e)
@@ -45,20 +37,12 @@ namespace cs6232_g4.UserControls
         {
             RefreshDataGridView(this._furnitureController.GetAllFurniture());
         }
-        private void RefreshDataGridView(List<Furniture> furniture)
+        private void RefreshDataGridView(List<Furniture.Model.Furniture> furniture)
         {
             _furniture = furniture;
             SearchFurnitureDataGridView.DataSource = null;
             SearchFurnitureDataGridView.DataSource = _furniture;
             SearchFurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-        private void SearchFurnitureDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                SearchFurnitureDataGridView.Rows[e.RowIndex].Selected = true;
-
-            }
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -67,7 +51,6 @@ namespace cs6232_g4.UserControls
         }
 
         private void LoadFurnitureIDs()
-
         {
             try
             {
@@ -191,7 +174,7 @@ namespace cs6232_g4.UserControls
 
             try
             {
-                List<Furniture> searchedFurniture = _furnitureController.SearchFurniture(ID, category, style);
+                List<Furniture.Model.Furniture> searchedFurniture = _furnitureController.SearchFurniture(ID, category, style);
 
                 if (searchedFurniture.Count == 0)
                 {

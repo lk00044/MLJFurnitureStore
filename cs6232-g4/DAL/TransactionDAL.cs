@@ -1,6 +1,6 @@
 ﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
-using Furnitures.Model;
+using Furniture.Model;
 using System.Data.SqlClient;
 
 /// <summary>
