@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// Member Data Access Layer
 /// Group 4
+/// Programmer: Leslie
 /// Programmer: LM Laskey
 /// Modified: 4/5/24
 /// </summary>
@@ -23,8 +24,8 @@ namespace Furnitures.DAL
 
             string selectStatement =
                 "SELECT furniture_id, name, description, daily_rental_rate, instock_quantity, total_quantity, category_name, style_name " +
-                "FROM Furniture " +
-                "Where furniture_id = @furnitureID";
+                "FROM Furniture " 
+                ;
 
             using (SqlConnection connection = DBConnection.GetConnection())
             {
