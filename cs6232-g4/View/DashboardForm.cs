@@ -6,7 +6,7 @@ using cs6232_g4.View;
 /// Author:         Leslie Keller
 /// Modified by:    Jonathan
 /// Modification:   Added MainDBTabControl_SelectedIndexChanged 
-///                 to handle reseting data for registration form
+///                 to handle resetting data for registration form
 /// Modified by:    Leslie
 /// Modified Date:  27 Mar 2024
 /// Modification:   Updated to show name and id on form
