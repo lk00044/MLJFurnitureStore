@@ -40,8 +40,6 @@
             RegMbrTabPage = new TabPage();
             memberRegistrationUserControl = new UserControls.MemberRegistrationUserControl();
             MainDBTabControl = new TabControl();
-            searchFurnitureTabPage = new TabPage();
-            furnitureSearchUserControl1 = new UserControls.FurnitureSearchUserControl();
             AdminReportTabPage = new TabPage();
             adminReportUserControl1 = new UserControls.AdminReportUserControl();
             mainMenuStrip = new MenuStrip();
@@ -52,7 +50,6 @@
             Search4MbrTabPage.SuspendLayout();
             RegMbrTabPage.SuspendLayout();
             MainDBTabControl.SuspendLayout();
-            searchFurnitureTabPage.SuspendLayout();
             AdminReportTabPage.SuspendLayout();
             mainMenuStrip.SuspendLayout();
             SuspendLayout();
@@ -105,7 +102,7 @@
             MbrTransTabPage.Controls.Add(rentFurnitureUserControl);
             MbrTransTabPage.Location = new Point(4, 35);
             MbrTransTabPage.Name = "MbrTransTabPage";
-            MbrTransTabPage.Size = new Size(192, 61);
+            MbrTransTabPage.Size = new Size(881, 677);
             MbrTransTabPage.TabIndex = 3;
             MbrTransTabPage.Text = "Rental Transactions";
             MbrTransTabPage.UseVisualStyleBackColor = true;
@@ -125,7 +122,7 @@
             Search4MbrTabPage.Margin = new Padding(3, 4, 3, 4);
             Search4MbrTabPage.Name = "Search4MbrTabPage";
             Search4MbrTabPage.Padding = new Padding(3);
-            Search4MbrTabPage.Size = new Size(192, 61);
+            Search4MbrTabPage.Size = new Size(881, 677);
             Search4MbrTabPage.TabIndex = 1;
             Search4MbrTabPage.Text = "Member Transactions";
             Search4MbrTabPage.UseVisualStyleBackColor = true;
@@ -136,7 +133,7 @@
             search4Member.Location = new Point(3, 3);
             search4Member.Margin = new Padding(3, 4, 3, 4);
             search4Member.Name = "search4Member";
-            search4Member.Size = new Size(186, 55);
+            search4Member.Size = new Size(875, 671);
             search4Member.TabIndex = 0;
             // 
             // RegMbrTabPage
@@ -163,7 +160,6 @@
             MainDBTabControl.Controls.Add(RegMbrTabPage);
             MainDBTabControl.Controls.Add(Search4MbrTabPage);
             MainDBTabControl.Controls.Add(MbrTransTabPage);
-            MainDBTabControl.Controls.Add(searchFurnitureTabPage);
             MainDBTabControl.Controls.Add(AdminReportTabPage);
             MainDBTabControl.Dock = DockStyle.Bottom;
             MainDBTabControl.Location = new Point(0, 77);
@@ -174,31 +170,12 @@
             MainDBTabControl.TabIndex = 3;
             MainDBTabControl.SelectedIndexChanged += MainDBTabControl_SelectedIndexChanged;
             // 
-            // searchFurnitureTabPage
-            // 
-            searchFurnitureTabPage.Controls.Add(furnitureSearchUserControl1);
-            searchFurnitureTabPage.Location = new Point(4, 35);
-            searchFurnitureTabPage.Name = "searchFurnitureTabPage";
-            searchFurnitureTabPage.Padding = new Padding(3);
-            searchFurnitureTabPage.Size = new Size(881, 677);
-            searchFurnitureTabPage.TabIndex = 5;
-            searchFurnitureTabPage.Text = "Search Furniture";
-            searchFurnitureTabPage.UseVisualStyleBackColor = true;
-            // 
-            // furnitureSearchUserControl1
-            // 
-            furnitureSearchUserControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            furnitureSearchUserControl1.Location = new Point(3, 3);
-            furnitureSearchUserControl1.Name = "furnitureSearchUserControl1";
-            furnitureSearchUserControl1.Size = new Size(875, 671);
-            furnitureSearchUserControl1.TabIndex = 0;
-            // 
             // AdminReportTabPage
             // 
             AdminReportTabPage.Controls.Add(adminReportUserControl1);
             AdminReportTabPage.Location = new Point(4, 35);
             AdminReportTabPage.Name = "AdminReportTabPage";
-            AdminReportTabPage.Size = new Size(192, 61);
+            AdminReportTabPage.Size = new Size(881, 677);
             AdminReportTabPage.TabIndex = 4;
             AdminReportTabPage.Text = "Admin Report";
             AdminReportTabPage.UseVisualStyleBackColor = true;
@@ -208,7 +185,7 @@
             adminReportUserControl1.Dock = DockStyle.Top;
             adminReportUserControl1.Location = new Point(0, 0);
             adminReportUserControl1.Name = "adminReportUserControl1";
-            adminReportUserControl1.Size = new Size(192, 789);
+            adminReportUserControl1.Size = new Size(881, 789);
             adminReportUserControl1.TabIndex = 0;
             // 
             // mainMenuStrip
@@ -263,7 +240,6 @@
             Search4MbrTabPage.ResumeLayout(false);
             RegMbrTabPage.ResumeLayout(false);
             MainDBTabControl.ResumeLayout(false);
-            searchFurnitureTabPage.ResumeLayout(false);
             AdminReportTabPage.ResumeLayout(false);
             mainMenuStrip.ResumeLayout(false);
             mainMenuStrip.PerformLayout();
@@ -290,7 +266,5 @@
         private ToolStripMenuItem menuToolStripMenuItem;
         private ToolStripMenuItem indexToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
-        private TabPage searchFurnitureTabPage;
-        private UserControls.FurnitureSearchUserControl furnitureSearchUserControl1;
     }
 }
