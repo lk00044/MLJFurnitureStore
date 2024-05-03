@@ -103,6 +103,7 @@
             Controls.Add(infoMessageLabel);
             Controls.Add(ReturnHistLayoutPanel);
             Name = "ViewReturnHistoryForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Return History";
             Load += ViewReturnHistory_Load;
             ReturnHistLayoutPanel.ResumeLayout(false);
