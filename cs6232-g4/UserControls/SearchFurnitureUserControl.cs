@@ -6,14 +6,12 @@ namespace cs6232_g4.UserControls
     {
         private readonly FurnitureController _furnitureController;
         private List<Furniture.Model.Furniture> _furniture;
-        private BindingSource _bindingSource;
 
         public SearchFurnitureUserControl()
         {
             InitializeComponent();
             this._furnitureController = new FurnitureController();
             this._furniture = new List<Furniture.Model.Furniture>();
-            this._bindingSource = new BindingSource();
 
             LoadFurnitureIDs();
             LoadFurnitureCategories();
