@@ -1,5 +1,4 @@
 ﻿using Furniture.Controller;
-using Furniture.Model;
 
 namespace cs6232_g4.UserControls
 {
@@ -18,8 +17,7 @@ namespace cs6232_g4.UserControls
 
             LoadFurnitureIDs();
             LoadFurnitureCategories();
-            LoadFurnitureStyles();  
-            
+            LoadFurnitureStyles();              
         }
 
         private void FurnitureSearchUserControl_Load(object sender, EventArgs e)
@@ -65,8 +63,7 @@ namespace cs6232_g4.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            
+            }            
         }
 
         private void LoadFurnitureCategories()
@@ -82,8 +79,6 @@ namespace cs6232_g4.UserControls
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
-
-
         }
 
         private void LoadFurnitureStyles()
@@ -102,46 +97,6 @@ namespace cs6232_g4.UserControls
 
         }
 
-
-        /// <summary>
-        /// Shows the furniture.
-        /// </summary>
- 
-
-        private void SetupGrid()
-        {
-            foreach (DataGridViewColumn column in SearchFurnitureDataGridView.Columns)
-            {
-                switch (column.Name)
-                {
-                    case "FurnitureIDText":
-                        column.HeaderText = "ID";
-                        break;
-                    case "FurnitureGridText":
-                        column.HeaderText = "Name";
-                        break;
-                    case "CategoryGridText":
-                        column.HeaderText = "Category";
-                        break;
-                    case "StyleGridText":
-                        column.HeaderText = "Style";
-                        break;
-                    case "QuantityGridText":
-                        column.HeaderText = "Total Quantity";
-                        column.Width = 150;
-                        break;
-                    case "InfoGridText":
-                        column.HeaderText = "Description";
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                        break;
-                    case "AvailableGridText":
-                        column.HeaderText = "In Stock";
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
 
         /// <summary>
         /// Resets the combo boxes.
