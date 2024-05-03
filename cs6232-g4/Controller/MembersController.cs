@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Handles the interaction between the view and the Member Data Access Layer     
 /// Programmer: LKeller
-/// Date: 11 Mrach 2024
+/// Date: 11 March 2024
 /// </summary>
 /// 
 using Members.Model;
@@ -9,10 +9,16 @@ using Members.DAL;
 
 namespace Members.Controller
 {
+    /// <summary>
+    /// Handle interactin for the Members database
+    /// </summary>
     public class MembersController
     {
         private readonly MembersDAL _memberDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MembersController"/> class.
+        /// </summary>
         public MembersController()
         {
             _memberDAL = new MembersDAL();

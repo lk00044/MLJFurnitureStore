@@ -5,11 +5,17 @@
 /// </summary>
 namespace Employees.Controller
 {
+    /// <summary>
+    /// Creates an intermediary between the view and the database layer
+    /// </summary>
     public class EmployeeController
     {
 
         private EmployeeDAL _employeeDal;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeeController"/> class.
+        /// </summary>
         public EmployeeController()
         {
             _employeeDal = new EmployeeDAL();

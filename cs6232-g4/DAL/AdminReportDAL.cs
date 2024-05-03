@@ -5,37 +5,18 @@ namespace cs6232_g4.DAL
 {
     /// <summary>
     /// Data access for the admin report
+    /// Programmer: Leslie
     /// </summary>
     public class AdminReportDAL
     {
 
         /// <summary>
         /// Purpose: Gets the statistics that show the most popular furniture
-        /// during the specified period for furniture with the same furnintureID
+        /// during the specified period for furniture with the same furnitureID
         /// that was rented out in at least two transactions.
         /// </summary>
         /// <param name="StartDate">The start date.</param>
-        /// <param name="EndDate">The end date.</param>
-        /// Specifications: 
-        /// For each furniture qualified (to qualify, the furniture should be rented 
-        /// in at least two rental transactions during the specified period, inclusive), 
-        /// show: 
-        /// 1) furniture id, 
-        /// 2) furniture category, 
-        /// 3) furniture name, 
-        /// 4) the total number of rental transactions in which the qualified furniture 
-        ///    was rented during the specified period, 
-
-        /// 6) the percentage of the number in 4) over the number in 5), 
-        /// 7) the percentage of members aged 18-29 (at the time when the 
-        ///    furniture was rented) who rented the qualified furniture among all 
-        ///    the people who rented the qualified furniture during the specified period.
-        ///    Note that if the same member rented the same furniture in two rentals, 
-        ///    it’s viewed as two different members.
-        /// 8) The percentage of members outside of the range 18-29 
-        ///    (at the time when the furniture was rented) who rented the qualified 
-        ///    furniture among all the people who rented the qualified furniture during 
-        ///    the specified period.
+        /// <param name="EndDate">The end date.</param>        
 
         public IList<AdminReport> GetAdminReportData(DateTime StartDate, DateTime EndDate)
         {

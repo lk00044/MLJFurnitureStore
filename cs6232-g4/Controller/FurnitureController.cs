@@ -6,7 +6,6 @@
 /// 
 
 using Furniture.DAL;
-using Furniture.Model;
 
 namespace Furniture.Controller
 {
@@ -14,6 +13,9 @@ namespace Furniture.Controller
     {
         private readonly FurnitureDAL _furnitureDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FurnitureController"/> class.
+        /// </summary>
         public FurnitureController()
         {
             _furnitureDAL = new FurnitureDAL();

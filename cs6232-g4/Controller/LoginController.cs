@@ -13,6 +13,9 @@ namespace cs6232_g4.Controller
     {
         private LoginDAL _loginDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginController"/> class.
+        /// </summary>
         public LoginController() {
             _loginDAL = new LoginDAL();
         }

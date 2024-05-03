@@ -3,6 +3,10 @@ using Employees.DAL;
 
 namespace Members.Controller
 {
+
+    /// <summary>
+    /// handles the interaction between the view and the data laber for transactions
+    /// </summary>
     public class TransactionController
     {
         private readonly TransactionDAL _transactionDAL;
@@ -63,6 +67,11 @@ namespace Members.Controller
             return this._transactionDAL.VerifyMemberTransactionavailable(memberID);
         }
 
+        /// <summary>
+        /// Creates the return transaction.
+        /// </summary>
+        /// <param name="rentalLineItems">The rental line items.</param>
+        /// <returns></returns>
         public List<double> CreateReturnTransaction(List<RentalLineItem> rentalLineItems)
         {
             return this._transactionDAL.CreateReturnTransaction(rentalLineItems);

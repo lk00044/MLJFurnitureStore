@@ -1,6 +1,10 @@
-﻿
-using cs6232_g4.DAL;
+﻿using cs6232_g4.DAL;
 using cs6232_g4.Model;
+
+
+/// <summary>
+/// Programmer: Leslie
+/// </summary>
 
 namespace cs6232_g4.Controller
 {
@@ -11,6 +15,9 @@ namespace cs6232_g4.Controller
     {
         private AdminReportDAL _adminReportDAL;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdminReportController"/> class.
+        /// </summary>
         public AdminReportController()
         {
             _adminReportDAL = new AdminReportDAL();
