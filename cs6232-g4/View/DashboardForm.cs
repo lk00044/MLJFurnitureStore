@@ -6,7 +6,7 @@ using cs6232_g4.View;
 /// Author:         Leslie Keller
 /// Modified by:    Jonathan
 /// Modification:   Added MainDBTabControl_SelectedIndexChanged 
-///                 to handle reseting data for registration form
+///                 to handle resetting data for registration form
 /// Modified by:    Leslie
 /// Modified Date:  27 Mar 2024
 /// Modification:   Updated to show name and id on form
@@ -15,6 +15,10 @@ using cs6232_g4.View;
 /// Modified Date:  18 April 2024
 /// Modification:   Checking login for access to admin report
 ///                 Added menu with app navigation and exit
+/// Modified by:    Leslie
+/// Modified Date:  30 April 2024
+/// Modification:   Added a tab for the furniture search (now tab index 3)
+///                 Moved Admin to tab index 4
 ///                
 /// </summary>
 
@@ -74,8 +78,15 @@ namespace cs6232_g4
             {
                 this.rentFurnitureUserControl.ResetFields();
             }
-            //checks to see if admin is logged in for access to report - Leslie
+
+
             if (this.MainDBTabControl.SelectedIndex == 3)
+            {
+                this.furnitureSearchUserControl1.ClearFurnitureGrid();
+            }
+
+            //checks to see if admin is logged in for access to report - Leslie
+            if (this.MainDBTabControl.SelectedIndex == 4)
             {
                 if (this.VerifyAdminLogin())
                 {
