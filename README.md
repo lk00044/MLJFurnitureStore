@@ -1,4 +1,4 @@
-# MLJFurnitureStore
+# MLJFurnitureStore Final Submission
 
 Username/Password (for employees and admins)
   user_id      password
