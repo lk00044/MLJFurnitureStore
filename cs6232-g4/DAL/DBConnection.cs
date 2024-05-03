@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Handles the connection to the database   
 /// Programmer: LKeller
-/// Date: 11 Mrach 2024
+/// Date: 11 March 2024
 /// </summary>
 /// 
 using System.Data.SqlClient;

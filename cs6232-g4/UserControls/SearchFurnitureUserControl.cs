@@ -48,6 +48,7 @@ namespace cs6232_g4.UserControls
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             this.resetComboBoxes();
+            this.SearchFurnitureDataGridView.DataSource = null;
         }
 
         private void LoadFurnitureIDs()
@@ -105,20 +106,7 @@ namespace cs6232_g4.UserControls
         /// <summary>
         /// Shows the furniture.
         /// </summary>
-        private void ShowFurniture()
-        {
-            try
-            {
-                this.SearchFurnitureDataGridView.DataSource = null;
-                this._bindingSource.DataSource = this._furniture;
-                this.SearchFurnitureDataGridView.DataSource = this._furniture;
-                this.SetupGrid();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-        }
+ 
 
         private void SetupGrid()
         {

@@ -2,8 +2,6 @@
 using cs6232_g4.Controller;
 using cs6232_g4.Model;
 using Members.Controller;
-using System.Windows.Forms;
-using System.Linq;
 
 /// <summary>
 /// Handles the interaction between the view and the data layer to 
@@ -109,6 +107,7 @@ namespace cs6232_g4.View
 
         /// <summary>
         ///  initializes grid
+        ///  sets the selected line item
         /// </summary>
         private void MemberTransactionsDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -155,6 +154,7 @@ namespace cs6232_g4.View
         {
             if (!IsValidInput(true)) return;
             RentalLineItem updatedItem = this.rentalLineItemList.Find(item => item.FurnitureId == this.selectedLineItem.FurnitureId);
+            
             if (updatedItem != null)
             {
                 updatedItem.Quantity = int.Parse(this.quantityTextBox.Text);
